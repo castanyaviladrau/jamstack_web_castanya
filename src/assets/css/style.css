@@ -5336,6 +5336,26 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 .contact-page-benefit__icon {
   font-size: 38px;
   line-height: 1;
+  color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 42px 42px;
+}
+
+.contact-page-benefit:nth-child(1) .contact-page-benefit__icon {
+  background-image: url("/assets/images/gallery/contact/contact_house.png");
+}
+
+.contact-page-benefit:nth-child(2) .contact-page-benefit__icon {
+  background-image: url("/assets/images/gallery/contact/contact_hand.png");
+}
+
+.contact-page-benefit:nth-child(3) .contact-page-benefit__icon {
+  background-image: url("/assets/images/gallery/contact/contact_castanya.png");
 }
 
 .contact-page-benefit__title {
