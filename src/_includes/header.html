@@ -63,9 +63,28 @@
     <div class="nav-flex-container">
       <ul class="nav-list">
         <li
-          class="nav-item {% if '/visits' in page.url %}active{% endif %} has-dropdown"
+          class="nav-item {% if '/visits' in page.url %}active{% endif %} has-dropdown nav-item--dropdown"
         >
-          <a href="/visits">VISITES GUIADES</a>
+          <button
+            type="button"
+            class="nav-link-button"
+            aria-expanded="{% if '/visits' in page.url %}true{% else %}false{% endif %}"
+            aria-controls="visits-submenu"
+          >
+            VISITES GUIADES
+          </button>
+          <div class="nav-dropdown" id="visits-submenu">
+            <a
+              href="/visits/"
+              class="nav-dropdown__link {% if page.url == '/visits/' %}is-active{% endif %}"
+              >Visites guiades</a
+            >
+            <a
+              href="/visits/parc-natural-del-montseny/"
+              class="nav-dropdown__link {% if '/visits/parc-natural-del-montseny/' in page.url %}is-active{% endif %}"
+              >Parc natural del Montseny</a
+            >
+          </div>
         </li>
         <li class="nav-item {% if '/fusta' in page.url %}active{% endif %}">
           <a href="/fusta">FUSTA</a>

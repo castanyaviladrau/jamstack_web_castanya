@@ -2461,6 +2461,75 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-link-button {
   min-width: 0;
 }
 
+.visits-montseny-hero {
+  min-height: 760px;
+}
+
+.visits-montseny-hero__overlay {
+  align-items: center;
+  padding: 150px 24px 120px;
+}
+
+.visits-montseny-hero__content {
+  max-width: 860px;
+}
+
+.visits-montseny-hero__title {
+  max-width: 760px;
+  margin: 0 auto 14px;
+  font-size: clamp(2.15rem, 4.2vw, 3.7rem);
+  line-height: 1.08;
+  letter-spacing: 2px;
+}
+
+.visits-montseny-hero__text {
+  margin-bottom: 20px;
+  font-size: clamp(1.2rem, 1.9vw, 1.85rem);
+  font-weight: 700;
+  color: #fff;
+}
+
+.visits-montseny-hero__actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.visits-montseny-hero__cta {
+  padding-inline: 24px;
+  background: rgba(177, 150, 96, 0.94);
+}
+
+.visits-montseny-intro {
+  padding: 46px 24px 70px;
+}
+
+.visits-montseny-intro__inner {
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+  color: #8a7445;
+}
+
+.visits-montseny-intro__title {
+  margin: 0;
+  font-family: var(--font-secondary);
+  font-size: clamp(2.25rem, 4.8vw, 4.4rem);
+  font-weight: 400;
+  line-height: 0.96;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.visits-montseny-intro__text {
+  max-width: 940px;
+  margin: 22px auto 0;
+  font-size: clamp(1.3rem, 1.8vw, 1.95rem);
+  font-weight: 700;
+  line-height: 1.32;
+}
+
 .fusta-intro {
   padding-top: 80px;
 }
@@ -2821,6 +2890,41 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-link-button {
 
   .visits-hero__text {
     font-size: 1rem;
+  }
+
+  .visits-montseny-hero {
+    min-height: 640px;
+  }
+
+  .visits-montseny-hero__overlay {
+    padding: 128px 20px 92px;
+  }
+
+  .visits-montseny-hero__title {
+    font-size: clamp(1.9rem, 8vw, 2.7rem);
+    line-height: 1.1;
+  }
+
+  .visits-montseny-hero__text {
+    font-size: 1.1rem;
+  }
+
+  .visits-montseny-hero__actions {
+    gap: 10px;
+  }
+
+  .visits-montseny-hero__cta {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .visits-montseny-intro {
+    padding: 38px 20px 58px;
+  }
+
+  .visits-montseny-intro__text {
+    font-size: 1.05rem;
+    line-height: 1.45;
   }
 
   .fusta-intro {
