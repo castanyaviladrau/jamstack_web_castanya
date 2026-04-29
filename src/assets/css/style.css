@@ -6042,7 +6042,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .professionals-value-feature {
   background-color: #f4f1e6;
-  padding: 24px 20px 110px;
+  padding: 24px 20px 0;
 }
 
 .professionals-value-feature__inner {
@@ -6217,6 +6217,113 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
   align-items: start;
+}
+
+.professionals-value-feature__cta {
+  position: relative;
+  margin-top: 72px;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  min-height: 300px;
+  overflow: hidden;
+}
+
+.professionals-value-feature__cta-image,
+.professionals-value-feature__cta-overlay,
+.professionals-value-feature__cta-content {
+  position: absolute;
+  inset: 0;
+}
+
+.professionals-value-feature__cta-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.professionals-value-feature__cta-overlay {
+  background: rgba(57, 43, 22, 0.44);
+}
+
+.professionals-value-feature__cta-note {
+  position: absolute;
+  top: -26px;
+  right: 26px;
+  z-index: 2;
+  width: min(100%, 180px);
+  min-height: 126px;
+  padding: 28px 18px;
+  background: #d9d9d9;
+  color: #1e1e1e;
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.professionals-value-feature__cta-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 54px 28px 38px;
+  text-align: center;
+  color: #fff;
+}
+
+.professionals-value-feature__cta-title {
+  margin: 0;
+  font-family: var(--font-secondary);
+  font-size: clamp(32px, 3.2vw, 56px);
+  font-weight: 400;
+  line-height: 0.96;
+  text-transform: uppercase;
+}
+
+.professionals-value-feature__cta-text {
+  max-width: 880px;
+  margin: 16px auto 0;
+  font-family: var(--font-main);
+  font-size: clamp(16px, 1.2vw, 19px);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.professionals-value-feature__cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.professionals-value-feature__cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 12px 28px;
+  border-radius: 999px;
+  background: rgba(177, 150, 96, 0.96);
+  color: #fff;
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    transform var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.professionals-value-feature__cta-button:hover {
+  transform: translateY(-1px);
+  background: rgba(145, 119, 67, 0.98);
 }
 
 .professionals-value-product {
@@ -7567,7 +7674,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   }
 
   .professionals-value-feature {
-    padding: 12px 16px 84px;
+    padding: 12px 16px 0;
   }
 
   .professionals-value-feature__image {
@@ -7594,6 +7701,15 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   .professionals-value-feature__grid {
     grid-template-columns: 1fr 1fr;
     gap: 24px 16px;
+  }
+
+  .professionals-value-feature__cta {
+    margin-top: 58px;
+  }
+
+  .professionals-value-feature__cta-note {
+    top: 18px;
+    right: 18px;
   }
 
   .professionals-value-product__text {
@@ -8986,6 +9102,39 @@ body.internal.page-gastronomic-recipes {
 
   .professionals-value-feature__grid {
     grid-template-columns: 1fr;
+  }
+
+  .professionals-value-feature__cta {
+    min-height: 360px;
+    margin-top: 46px;
+  }
+
+  .professionals-value-feature__cta-content {
+    padding: 42px 20px 30px;
+  }
+
+  .professionals-value-feature__cta-note {
+    top: 14px;
+    right: 14px;
+    width: 150px;
+    min-height: 108px;
+    padding: 20px 14px;
+    font-size: 12px;
+  }
+
+  .professionals-value-feature__cta-title br {
+    display: none;
+  }
+
+  .professionals-value-feature__cta-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .professionals-value-feature__cta-button {
+    width: 100%;
+    max-width: 320px;
   }
 }
 
