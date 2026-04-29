@@ -4412,8 +4412,8 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .gastronomic-sensory__banner {
   position: relative;
-  max-width: 1160px;
-  margin: 0 auto;
+  width: calc(100% + 24px);
+  margin: 0 -12px;
   min-height: 340px;
   overflow: hidden;
 }
@@ -4652,6 +4652,25 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 .gastronomic-recipes-filters__search::after {
   content: ">";
   margin-left: 6px;
+}
+
+.gastronomic-recipes-filters__item {
+  padding: 15px 0;
+  font-family: var(--font-main);
+  display: inline-flex;
+  align-items: center;
+}
+
+.gastronomic-recipes-filters__item::after {
+  content: "\2304";
+  margin-left: 6px;
+}
+
+.gastronomic-recipes-filters__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
 }
 
 .gastronomic-recipes-section {
@@ -7506,6 +7525,11 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
   .gastronomic-recipes-filters__list {
     justify-content: center;
+    gap: 14px;
+  }
+
+  .gastronomic-recipes-filters__actions {
+    margin-left: 0;
   }
 
   .gastronomic-recipes-filters__search {

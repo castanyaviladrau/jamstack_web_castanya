@@ -6,17 +6,28 @@ footerVariant: visits-newsletter
 ---
 
 {% set pageContent = gastronomicRecipes.page %}
-
-{% macro recipeCard(slide) %}
+{% macro recipeCard(slide, dishType, remedyFlag) %}
 {% set href = '#' %}
 {% for recipe in collections.recipes %}
   {% if recipe.data.title == slide.title and recipe.url %}
     {% set href = recipe.url %}
   {% endif %}
 {% endfor %}
+{% set prepMinutes = (slide.time | replace(" minuts", "") | trim) %}
+{% set timeBucket = "medium" %}
+{% if prepMinutes and (prepMinutes | int) <= 20 %}
+  {% set timeBucket = "short" %}
+{% elif prepMinutes and (prepMinutes | int) > 30 %}
+  {% set timeBucket = "long" %}
+{% endif %}
 <a
   href="{{ href }}"
   class="professionals-inspiration-card gastronomic-recipes-card gastronomic-recipes-card--link"
+  data-recipe-card
+  data-difficulty="{{ slide.difficulty | lower }}"
+  data-time="{{ timeBucket }}"
+  data-dish-type="{{ dishType }}"
+  data-remedy="{{ remedyFlag }}"
 >
   <h3 class="professionals-inspiration-card__title">
     {{ slide.title }}
@@ -72,8 +83,25 @@ footerVariant: visits-newsletter
   </div>
 </section>
 
+<section class="gastronomic-recipes-filters">
+  <div class="gastronomic-recipes-filters__inner">
+    <div class="gastronomic-recipes-filters__list" aria-label="Filtres de receptes">
+      {% for item in pageContent.filtersBar.items %}
+      <span class="gastronomic-recipes-filters__item">{{ item }}</span>
+      {% endfor %}
+    </div>
+    <div class="gastronomic-recipes-filters__actions">
+      <a href="#receptes" class="gastronomic-recipes-filters__search">
+        {{ pageContent.filtersBar.searchLabel }}
+      </a>
+    </div>
+  </div>
+</section>
+
 <section
   class="professionals-inspiration-recipes professionals-inspiration-recipes--stacked gastronomic-recipes-section"
+  data-recipe-section
+  data-section-type="sweet"
 >
   <div class="professionals-inspiration-recipes__inner">
     <div class="professionals-inspiration-recipes__header">
@@ -113,7 +141,7 @@ footerVariant: visits-newsletter
         <div class="professionals-inspiration-recipes__grid">
           {% for slide in slideGroup %}
           {% if slide %}
-          {{ recipeCard(slide) }}
+          {{ recipeCard(slide, "sweet", "no") }}
           {% endif %}
           {% endfor %}
         </div>
@@ -130,6 +158,8 @@ footerVariant: visits-newsletter
 
 <section
   class="professionals-inspiration-recipes professionals-inspiration-recipes--stacked gastronomic-recipes-section"
+  data-recipe-section
+  data-section-type="remedies"
 >
   <div class="professionals-inspiration-recipes__inner">
     <div class="professionals-inspiration-recipes__header">
@@ -169,7 +199,7 @@ footerVariant: visits-newsletter
         <div class="professionals-inspiration-recipes__grid">
           {% for slide in slideGroup %}
           {% if slide %}
-          {{ recipeCard(slide) }}
+          {{ recipeCard(slide, "remedies", "yes") }}
           {% endif %}
           {% endfor %}
         </div>
@@ -184,25 +214,11 @@ footerVariant: visits-newsletter
   </div>
 </section>
 
-<section class="gastronomic-recipes-filters">
-  <div class="gastronomic-recipes-filters__inner">
-    <div class="gastronomic-recipes-filters__list">
-      {% for item in pageContent.filtersBar.items %}
-      <button type="button" class="gastronomic-recipes-filters__item">
-        {{ item }}
-      </button>
-      {% endfor %}
-    </div>
-
-    <a href="#receptes" class="gastronomic-recipes-filters__search">
-      {{ pageContent.filtersBar.searchLabel }}
-    </a>
-  </div>
-</section>
-
 <section
   class="professionals-inspiration-recipes gastronomic-recipes-section"
   id="receptes"
+  data-recipe-section
+  data-section-type="foundations"
 >
   <div class="professionals-inspiration-recipes__inner">
     <div class="professionals-inspiration-recipes__header">
@@ -242,7 +258,7 @@ footerVariant: visits-newsletter
         <div class="professionals-inspiration-recipes__grid">
           {% for slide in slideGroup %}
           {% if slide %}
-          {{ recipeCard(slide) }}
+          {{ recipeCard(slide, "foundations", "no") }}
           {% endif %}
           {% endfor %}
         </div>
@@ -259,6 +275,8 @@ footerVariant: visits-newsletter
 
 <section
   class="professionals-inspiration-recipes professionals-inspiration-recipes--stacked gastronomic-recipes-section"
+  data-recipe-section
+  data-section-type="home-traditions"
 >
   <div class="professionals-inspiration-recipes__inner">
     <div class="professionals-inspiration-recipes__header">
@@ -298,7 +316,7 @@ footerVariant: visits-newsletter
         <div class="professionals-inspiration-recipes__grid">
           {% for slide in slideGroup %}
           {% if slide %}
-          {{ recipeCard(slide) }}
+          {{ recipeCard(slide, "home-traditions", "no") }}
           {% endif %}
           {% endfor %}
         </div>
@@ -317,6 +335,8 @@ footerVariant: visits-newsletter
 
 <section
   class="professionals-inspiration-recipes professionals-inspiration-recipes--stacked gastronomic-recipes-section"
+  data-recipe-section
+  data-section-type="classics"
 >
   <div class="professionals-inspiration-recipes__inner">
     <div class="professionals-inspiration-recipes__header">
@@ -356,7 +376,7 @@ footerVariant: visits-newsletter
         <div class="professionals-inspiration-recipes__grid">
           {% for slide in slideGroup %}
           {% if slide %}
-          {{ recipeCard(slide) }}
+          {{ recipeCard(slide, "classics", "no") }}
           {% endif %}
           {% endfor %}
         </div>
@@ -373,6 +393,8 @@ footerVariant: visits-newsletter
 
 <section
   class="professionals-inspiration-recipes professionals-inspiration-recipes--stacked gastronomic-recipes-section"
+  data-recipe-section
+  data-section-type="healthy"
 >
   <div class="professionals-inspiration-recipes__inner">
     <div class="professionals-inspiration-recipes__header">
@@ -412,7 +434,7 @@ footerVariant: visits-newsletter
         <div class="professionals-inspiration-recipes__grid">
           {% for slide in slideGroup %}
           {% if slide %}
-          {{ recipeCard(slide) }}
+          {{ recipeCard(slide, "healthy", "no") }}
           {% endif %}
           {% endfor %}
         </div>
