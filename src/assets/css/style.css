@@ -6085,7 +6085,26 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .professionals-value-feature__content.is-switching {
   opacity: 0;
-  transform: translateY(10px);
+}
+
+.professionals-value-feature__content.is-switching-left {
+  transform: translateX(-34px);
+}
+
+.professionals-value-feature__content.is-switching-right {
+  transform: translateX(34px);
+}
+
+.professionals-value-feature__content.is-entering {
+  opacity: 0;
+}
+
+.professionals-value-feature__content.is-entering-left {
+  transform: translateX(34px);
+}
+
+.professionals-value-feature__content.is-entering-right {
+  transform: translateX(-34px);
 }
 
 .professionals-value-feature__eyebrow {

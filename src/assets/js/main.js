@@ -377,9 +377,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let currentIndex = 0;
 
-    const renderSlide = (index) => {
+    const renderSlide = (index, direction = "next") => {
       const slide = slides[index];
-      content.classList.add("is-switching");
+      const exitClass =
+        direction === "prev"
+          ? "is-switching-left"
+          : "is-switching-right";
+      const enterClass =
+        direction === "prev" ? "is-entering-left" : "is-entering-right";
+
+      content.classList.remove(
+        "is-switching",
+        "is-switching-left",
+        "is-switching-right",
+        "is-entering",
+        "is-entering-left",
+        "is-entering-right",
+      );
+      content.classList.add("is-switching", exitClass);
 
       window.setTimeout(() => {
         eyebrow.textContent = slide.eyebrow;
@@ -387,18 +402,27 @@ document.addEventListener("DOMContentLoaded", () => {
         title.textContent = slide.title;
         text.textContent = slide.text;
         icon.innerHTML = slide.icon;
-        content.classList.remove("is-switching");
+        content.classList.remove("is-switching", exitClass);
+        content.classList.add("is-entering", enterClass);
+
+        window.requestAnimationFrame(() => {
+          content.classList.remove(enterClass);
+        });
+
+        window.setTimeout(() => {
+          content.classList.remove("is-entering");
+        }, 220);
       }, 180);
     };
 
     prev.addEventListener("click", () => {
       currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-      renderSlide(currentIndex);
+      renderSlide(currentIndex, "prev");
     });
 
     next.addEventListener("click", () => {
       currentIndex = (currentIndex + 1) % slides.length;
-      renderSlide(currentIndex);
+      renderSlide(currentIndex, "next");
     });
   };
 
