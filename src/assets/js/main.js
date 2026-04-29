@@ -135,19 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const getStep = () => {
-      const firstCard = container.querySelector(
-        ".professionals-inspiration-card",
-      );
-
-      if (!firstCard) {
-        return container.clientWidth;
-      }
-
-      const styles = window.getComputedStyle(
-        container.querySelector(".professionals-inspiration-recipes__grid"),
-      );
-      const gap = Number.parseFloat(styles.columnGap || styles.gap || "0");
-      return firstCard.getBoundingClientRect().width + gap;
+      return container.clientWidth;
     };
 
     const toggleButtons = () => {
