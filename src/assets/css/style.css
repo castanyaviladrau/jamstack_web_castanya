@@ -6584,6 +6584,15 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 .shop-page-product {
   flex: 0 0 220px;
   text-align: center;
+  color: #7b6b43;
+  text-decoration: none;
+}
+
+.shop-page-product:visited,
+.shop-page-product:hover,
+.shop-page-product:focus-visible {
+  color: #7b6b43;
+  text-decoration: none;
 }
 
 .shop-page-product__image {
