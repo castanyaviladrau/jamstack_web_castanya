@@ -559,6 +559,62 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  const setupCookieBanner = () => {
+    const banner = document.getElementById("cookieBanner");
+
+    if (!banner) {
+      return;
+    }
+
+    const storageKey = "castanya-cookie-consent";
+    const buttons = banner.querySelectorAll("[data-cookie-action]");
+
+    const hideBanner = () => {
+      banner.classList.remove("is-visible");
+      document.body.classList.remove("has-cookie-banner");
+
+      window.setTimeout(() => {
+        banner.hidden = true;
+      }, 220);
+    };
+
+    let storedPreference = null;
+
+    try {
+      storedPreference = window.localStorage.getItem(storageKey);
+    } catch (error) {
+      storedPreference = null;
+    }
+
+    if (storedPreference === "accepted" || storedPreference === "rejected") {
+      return;
+    }
+
+    banner.hidden = false;
+    document.body.classList.add("has-cookie-banner");
+
+    window.requestAnimationFrame(() => {
+      banner.classList.add("is-visible");
+    });
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const action = button.dataset.cookieAction;
+
+        try {
+          window.localStorage.setItem(
+            storageKey,
+            action === "accept" ? "accepted" : "rejected",
+          );
+        } catch (error) {
+          // If storage is blocked, we still dismiss the banner for the session.
+        }
+
+        hideBanner();
+      });
+    });
+  };
+
   const setupFustaShowcase = () => {
     const prev = document.getElementById("fustaShowcasePrev");
     const next = document.getElementById("fustaShowcaseNext");
@@ -625,5 +681,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupProjecteFireTextSlider();
   setupHeaderDropdown();
   setupContactForm();
+  setupCookieBanner();
   setupFustaShowcase();
 });
