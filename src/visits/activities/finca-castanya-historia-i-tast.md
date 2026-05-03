@@ -62,27 +62,32 @@ additionalInfo: |
   - Activitat recomanada per a persones interessades en gastronomia, territori i projectes artesans.
   - Si vols completar la visita amb una compra final o un format mes privat, ho podem preparar.
 experienceHighlightsSection:
+  eyebrow: ""
   title: ENRIQUEIX LA TEVA AVENTURA AL MONTSENY
   intro: Detalls que fan que cada visita a la castanyeda sigui única.
   items:
     - title: LA CASTANYERA
       image: /assets/images/gallery/visites/visites_guiades_1.jpg
       imageAlt: Castanyera al Montseny
+      text: ""
     - title: EXPERIENCIA ANTIESTRES
       image: /assets/images/gallery/visites/visites_guiades_2.jpg
       imageAlt: Detall de castanyer al bosc
+      text: ""
     - title: APAT
       image: /assets/images/gallery/visites/visites_guiades_3.jpg
       imageAlt: Apat amb productes de castanya
+      text: ""
     - title: ARBRE DE CASTANYER
       image: /assets/images/gallery/visites/visites_guiades_banner.jpg
       imageAlt: Arbre de castanyer
+      text: ""
 reviewsSection:
-  eyebrow:
-  title:
+  eyebrow: ""
+  title: ""
   ratingLabel: ★ 4,79, · 1506 EVALUACIONS DE LA VISITA
-  ratingValue:
-  sourceLabel:
+  ratingValue: ""
+  sourceLabel: ""
   reviews:
     - quote: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
       author: Maria Sheferd

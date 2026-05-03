@@ -63,27 +63,32 @@ additionalInfo: |
   - Oferim formats amb dinar de carmanyola o espai per esmorzar.
   - Recomanem portar roba comoda, aigua i calcat adequat per terreny natural.
 experienceHighlightsSection:
+  eyebrow: ""
   title: ENRIQUEIX LA TEVA AVENTURA AL MONTSENY
   intro: Detalls que fan que cada visita a la castanyeda sigui única.
   items:
     - title: LA CASTANYERA
       image: /assets/images/gallery/visites/visites_guiades_1.jpg
       imageAlt: Castanyera al Montseny
+      text: ""
     - title: EXPERIENCIA ANTIESTRES
       image: /assets/images/gallery/visites/visites_guiades_2.jpg
       imageAlt: Detall de castanyer al bosc
+      text: ""
     - title: APAT
       image: /assets/images/gallery/visites/visites_guiades_3.jpg
       imageAlt: Apat amb productes de castanya
+      text: ""
     - title: ARBRE DE CASTANYER
       image: /assets/images/gallery/visites/visites_guiades_banner.jpg
       imageAlt: Arbre de castanyer
+      text: ""
 reviewsSection:
-  eyebrow:
-  title:
+  eyebrow: ""
+  title: ""
   ratingLabel: ★ 4,79, · 1506 EVALUACIONS DE LA VISITA
-  ratingValue:
-  sourceLabel:
+  ratingValue: ""
+  sourceLabel: ""
   reviews:
     - quote: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
       author: Maria Sheferd

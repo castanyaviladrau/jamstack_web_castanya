@@ -222,7 +222,7 @@ name: home
     </div>
 
     <div class="home-carousel-section home-carousel-section--partners">
-      <span class="label-small">ON TROBAR-NOS</span>
+      <span class="label-small">{{ home.partnersSection.labelSmall }}</span>
 
       <div class="title-nav-wrapper">
         <button class="nav-arrow-inline left" id="prevPartner" aria-label="Previous">
@@ -230,8 +230,8 @@ name: home
         </button>
 
         <h2 class="section-title-main">
-          BOTIGUES O RESTAURANTS QUE<br />
-          JA HAN CONFIAT EN NOSALTRES
+          {{ home.partnersSection.titleLine1 }}<br />
+          {{ home.partnersSection.titleLine2 }}
         </h2>
 
         <button class="nav-arrow-inline right" id="nextPartner" aria-label="Next">
@@ -239,14 +239,7 @@ name: home
         </button>
       </div>
 
-      {% set partners = [
-        { "src": "/assets/images/logo-la-coromina.png", "alt": "Xalet La Coromina" },
-        { "src": "/assets/images/logo-ccpae.png", "alt": "CCPAE" },
-        { "src": "/assets/images/logo-feta-osona.png", "alt": "Fet a Osona" },
-        { "src": "/assets/images/logo-girona-excelent.png", "alt": "Girona Excel·lent" },
-        { "src": "/assets/images/logo-venda-proximitat.png", "alt": "Venda de Proximitat" },
-        { "src": "/assets/images/logo-maria.png", "alt": "Maria" }
-      ] %}
+{% set partners = home.partnersSection.partners %}
 
       <div class="home-inline-carousel-wrap" aria-label="Botigues i restaurants">
         <div class="home-inline-carousel home-inline-carousel--partners" id="partnerScroll">
@@ -258,7 +251,7 @@ name: home
         </div>
       </div>
 
-      <a href="/trobar-nos" class="btn-olive">ON TROBAR-NOS</a>
+      <a href="{{ home.partnersSection.ctaHref }}" class="btn-olive">{{ home.partnersSection.ctaLabel }}</a>
     </div>
   </div>
 </section>

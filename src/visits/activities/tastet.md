@@ -79,11 +79,11 @@ experienceHighlightsSection:
       image: /assets/images/gallery/visites/visites_guiades_banner.jpg
       imageAlt: Arbre de castanyer
 reviewsSection:
-  eyebrow:
-  title:
+  eyebrow: ""
+  title: ""
   ratingLabel: ★ 4,79, · 1506 EVALUACIONS DE LA VISITA
-  ratingValue:
-  sourceLabel:
+  ratingValue: ""
+  sourceLabel: ""
   reviews:
     - quote: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
       author: Maria Sheferd

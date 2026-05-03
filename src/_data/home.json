@@ -1,0 +1,17 @@
+{
+  "partnersSection": {
+    "labelSmall": "ON TROBAR-NOS",
+    "titleLine1": "BOTIGUES O RESTAURANTS QUE",
+    "titleLine2": "JA HAN CONFIAT EN NOSALTRES",
+    "ctaLabel": "ON TROBAR-NOS",
+    "ctaHref": "/trobar-nos",
+    "partners": [
+      { "src": "/assets/images/logo-la-coromina.png", "alt": "Xalet La Coromina" },
+      { "src": "/assets/images/logo-ccpae.png", "alt": "CCPAE" },
+      { "src": "/assets/images/logo-feta-osona.png", "alt": "Fet a Osona" },
+      { "src": "/assets/images/logo-girona-excelent.png", "alt": "Girona Excel·lent" },
+      { "src": "/assets/images/logo-venda-proximitat.png", "alt": "Venda de Proximitat" },
+      { "src": "/assets/images/logo-maria.png", "alt": "Maria" }
+    ]
+  }
+}

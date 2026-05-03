@@ -149,7 +149,7 @@ export default defineConfig({
             type: "string",
             name: "formats",
             label: "Format options",
-            ui: { component: "textarea" },
+            list: true,
             required: true,
           },
           {
@@ -207,97 +207,6 @@ export default defineConfig({
         ui: {
           router: ({ document }) => `/shop/products/${document._sys.filename}/`,
         },
-      },
-      {
-        name: "site",
-        label: "Site Settings",
-        path: "src/_data",
-        format: "json",
-        // 'match' is deprecated in newer versions for 'ui.allowedActions' or specific paths.
-        // I kept your fields but removed the 'match' property as it's usually inferred from 'path'
-        ui: {
-          allowedActions: {
-            create: false,
-            delete: false,
-          },
-        },
-        fields: [
-          {
-            type: "string",
-            name: "title",
-            label: "Site Title",
-            required: true,
-          },
-          {
-            type: "string",
-            name: "description",
-            label: "Site Description",
-            required: true,
-          },
-          { type: "string", name: "url", label: "Site URL", required: true },
-          {
-            type: "string",
-            name: "lang",
-            label: "Language",
-            options: [
-              { label: "English", value: "en" },
-              { label: "Spanish", value: "es" },
-              { label: "French", value: "fr" },
-              { label: "German", value: "de" },
-            ],
-            required: true,
-          },
-          { type: "string", name: "author", label: "Author", required: true },
-          { type: "image", name: "logo", label: "Site Logo" },
-          {
-            type: "object",
-            name: "social",
-            label: "Social Media Links",
-            list: true,
-            fields: [
-              {
-                type: "string",
-                name: "name",
-                label: "Platform Name",
-                options: ["Facebook", "Twitter", "Instagram", "LinkedIn"],
-              },
-              { type: "string", name: "url", label: "URL" },
-            ],
-          },
-          {
-            type: "object",
-            name: "contact",
-            label: "Contact Information",
-            fields: [
-              { type: "string", name: "email", label: "Email" },
-              { type: "string", name: "phone", label: "Phone" },
-              { type: "string", name: "address", label: "Address" },
-            ],
-          },
-          {
-            type: "object",
-            name: "ecommerce",
-            label: "E-commerce Settings",
-            fields: [
-              {
-                type: "string",
-                name: "currency",
-                label: "Currency",
-                options: ["EUR", "USD", "GBP"],
-              },
-              {
-                type: "number",
-                name: "freeShippingThreshold",
-                label: "Free Shipping Threshold",
-              },
-              {
-                type: "number",
-                name: "shippingCost",
-                label: "Standard Shipping Cost",
-              },
-            ],
-          },
-        ],
       },
       {
         name: "visits",
@@ -611,7 +520,7 @@ export default defineConfig({
             list: true,
             fields: [
               {
-                type: "string",
+                type: "number",
                 name: "group",
                 label: "Group Size",
                 required: true,
@@ -654,7 +563,6 @@ export default defineConfig({
                 type: "string",
                 name: "eyebrow",
                 label: "Eyebrow",
-                required: true,
               },
               {
                 type: "string",
@@ -698,7 +606,6 @@ export default defineConfig({
                     name: "text",
                     label: "Card Text",
                     ui: { component: "textarea" },
-                    required: true,
                   },
                 ],
               },
@@ -713,13 +620,11 @@ export default defineConfig({
                 type: "string",
                 name: "eyebrow",
                 label: "Eyebrow",
-                required: true,
               },
               {
                 type: "string",
                 name: "title",
                 label: "Title",
-                required: true,
               },
               {
                 type: "string",
@@ -731,13 +636,11 @@ export default defineConfig({
                 type: "string",
                 name: "ratingValue",
                 label: "Rating Value",
-                required: true,
               },
               {
                 type: "string",
                 name: "sourceLabel",
                 label: "Source Label",
-                required: true,
               },
               {
                 type: "object",
@@ -2173,6 +2076,45 @@ export default defineConfig({
                     list: true,
                     required: true,
                   },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "home",
+        label: "Home Page",
+        path: "src/_data",
+        format: "json",
+        match: {
+          include: "home",
+        },
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "object",
+            name: "partnersSection",
+            label: "Partners Slider",
+            fields: [
+              { type: "string", name: "labelSmall", label: "Small Label", required: true },
+              { type: "string", name: "titleLine1", label: "Title Line 1", required: true },
+              { type: "string", name: "titleLine2", label: "Title Line 2", required: true },
+              { type: "string", name: "ctaLabel", label: "Button Label", required: true },
+              { type: "string", name: "ctaHref", label: "Button Link", required: true },
+              {
+                type: "object",
+                name: "partners",
+                label: "Partner Logos",
+                list: true,
+                fields: [
+                  { type: "image", name: "src", label: "Logo Image", required: true },
+                  { type: "string", name: "alt", label: "Alt Text", required: true },
                 ],
               },
             ],
