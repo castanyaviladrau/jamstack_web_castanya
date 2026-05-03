@@ -414,6 +414,86 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  const setupProjecteFireTextSlider = () => {
+    const prev = document.getElementById("projecteFirePrev");
+    const next = document.getElementById("projecteFireNext");
+    const content = document.getElementById("projecteFireContent");
+    const textWrap = content?.querySelector(".projecte-feature__text");
+    const title = document.getElementById("projecteFireTitle");
+    const copy = document.getElementById("projecteFireCopy");
+    const slideNodes = content?.querySelectorAll(".projecte-feature__slide");
+
+    if (
+      !prev ||
+      !next ||
+      !content ||
+      !textWrap ||
+      !title ||
+      !copy ||
+      !slideNodes?.length
+    ) {
+      return;
+    }
+
+    const slides = Array.from(slideNodes)
+      .map((node) => ({
+        title: node.querySelector("h2")?.textContent?.trim() || "",
+        copy: node.querySelector("p")?.textContent?.trim() || "",
+      }))
+      .filter((slide) => slide.title || slide.copy);
+
+    if (slides.length <= 1) {
+      prev.style.display = "none";
+      next.style.display = "none";
+      return;
+    }
+
+    let currentIndex = 0;
+
+    const renderSlide = (index, direction = "next") => {
+      const slide = slides[index];
+      const exitClass =
+        direction === "prev" ? "is-switching-left" : "is-switching-right";
+      const enterClass =
+        direction === "prev" ? "is-entering-left" : "is-entering-right";
+
+      textWrap.classList.remove(
+        "is-switching",
+        "is-switching-left",
+        "is-switching-right",
+        "is-entering",
+        "is-entering-left",
+        "is-entering-right",
+      );
+      textWrap.classList.add("is-switching", exitClass);
+
+      window.setTimeout(() => {
+        title.textContent = slide.title;
+        copy.textContent = slide.copy;
+        textWrap.classList.remove("is-switching", exitClass);
+        textWrap.classList.add("is-entering", enterClass);
+
+        window.requestAnimationFrame(() => {
+          textWrap.classList.remove(enterClass);
+        });
+
+        window.setTimeout(() => {
+          textWrap.classList.remove("is-entering");
+        }, 220);
+      }, 180);
+    };
+
+    prev.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      renderSlide(currentIndex, "prev");
+    });
+
+    next.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      renderSlide(currentIndex, "next");
+    });
+  };
+
   const setupContactForm = () => {
     const form = document.getElementById("contactForm");
     const status = document.getElementById("contactFormStatus");
@@ -542,6 +622,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   setupProfessionalsValueFeature();
+  setupProjecteFireTextSlider();
   setupHeaderDropdown();
   setupContactForm();
   setupFustaShowcase();

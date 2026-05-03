@@ -116,7 +116,7 @@ footerVariant: projecte-newsletter
       <h2 class="projecte-process__title">TANQUEM EL CERCLE: L'HONESTEDAT DE TOT UN CICLE</h2>
       <p class="projecte-process__copy">
         A la Castanya de Viladrau no som nomes productors, som els artesans que acompanyen el castanyer en tot el seu recorregut. El nostre valor
-        diferencial neix de tancar el cercle, garantint la traçabilitat i l'estima en cada etapa.
+        diferencial neix de tancar el cercle, garantint la traÃ§abilitat i l'estima en cada etapa.
       </p>
     </div>
 
@@ -137,14 +137,62 @@ footerVariant: projecte-newsletter
     />
     <div class="projecte-feature__overlay"></div>
 
-    <div class="projecte-feature__content">
+    <div class="projecte-feature__content projecte-feature__content--slider" id="projecteFireContent">
+      <button
+        class="projecte-feature__nav projecte-feature__nav--prev"
+        id="projecteFirePrev"
+        type="button"
+        aria-label="Text anterior"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M15 18l-6-6 6-6" />
+        </svg>
+      </button>
+
       <div class="projecte-feature__text">
-        <h2 class="projecte-feature__title">VORA EL FOC: UN ESPAI PER CONTEMPLAR</h2>
-        <p class="projecte-feature__copy">
-          Tot aquest esforç convergeix en el nostre espai "Vora el Foc". Es el nostre punt de trobada atemporal, un lloc on el temps s'atura i
+        <h2 class="projecte-feature__title" id="projecteFireTitle">
+          VORA EL FOC: UN ESPAI PER CONTEMPLAR
+        </h2>
+        <p class="projecte-feature__copy" id="projecteFireCopy">
+          Tot aquest esforÃ§ convergeix en el nostre espai "Vora el Foc". Es el nostre punt de trobada atemporal, un lloc on el temps s'atura i
           les persones es troben mes enlla de la feina. Aqui, sentint el bosc i el caliu de les brases, tanquem el cercle entre la gestio
           forestal, el fruit i el sentir huma.
         </p>
+      </div>
+
+      <button
+        class="projecte-feature__nav projecte-feature__nav--next"
+        id="projecteFireNext"
+        type="button"
+        aria-label="Text següent"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9 6l6 6-6 6" />
+        </svg>
+      </button>
+
+      <div class="projecte-feature__slides" hidden>
+        <div class="projecte-feature__slide">
+          <h2>VORA EL FOC: UN ESPAI PER CONTEMPLAR</h2>
+          <p>
+            Aquest es un text de prova en catala per veure com respira el slider dins del banner. La idea es comprovar com entra i surt el copy,
+            quina presencia te sobre la imatge i com es llegeix quan el moviment acompanya el canvi de missatge.
+          </p>
+        </div>
+        <div class="projecte-feature__slide">
+          <h2>VORA EL FOC: PROVA DE TRANSICIO VISUAL</h2>
+          <p>
+            Aqui hi posem un segon text simulat, una mica diferent en ritme i longitud, per validar si el desplacament cap a l'esquerra o cap a la
+            dreta funciona be i si el conjunt manté una sensacio elegant i natural.
+          </p>
+        </div>
+        <div class="projecte-feature__slide">
+          <h2>VORA EL FOC: TEXT MOCK PER MAQUETAR</h2>
+          <p>
+            Aquest tercer bloc serveix nomes per fer proves de maquetacio. Pots mirar si el contrast es suficient, si la caixa central queda ben
+            equilibrada i si el canvi entre titulars genera l'efecte que vols abans d'entrar el contingut definitiu.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -152,7 +200,7 @@ footerVariant: projecte-newsletter
   <section class="projecte-feature projecte-feature--forest">
     <img
       src="/assets/images/gallery/projects/project_bosc_2.jpg"
-      alt="Camí de bosc al Montseny"
+      alt="CamÃ­ de bosc al Montseny"
       class="projecte-feature__background"
     />
     <div class="projecte-feature__overlay"></div>
@@ -169,3 +217,4 @@ footerVariant: projecte-newsletter
       </p>
     </div>
   </section>
+</section>
