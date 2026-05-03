@@ -3476,7 +3476,8 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .professionals-inspiration-banner__cta {
   align-self: center;
-  margin-top: 18px;
+  display: block;
+  margin: 18px auto 0;
   background: rgba(160, 136, 90, 0.92);
 }
 
@@ -7865,7 +7866,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   }
 
   .professionals-inspiration-banner__cta {
-    align-self: stretch;
+    align-self: center;
     width: 100%;
     max-width: 290px;
   }
@@ -9282,7 +9283,7 @@ body.internal.page-gastronomic-recipes {
   }
 
   .professionals-inspiration-banner__cta {
-    align-self: stretch;
+    align-self: center;
     width: 100%;
     max-width: 290px;
   }
