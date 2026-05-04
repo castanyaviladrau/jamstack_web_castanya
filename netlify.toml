@@ -3,8 +3,8 @@
   command = "npm run build"
   
 [build.environment]
-  NODE_VERSION = "18"
-  NPM_VERSION = "9"
+  NODE_VERSION = "24"
+  NPM_VERSION = "10"
 
 # Build plugins
 [[plugins]]

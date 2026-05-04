@@ -5,7 +5,7 @@
   "main": ".eleventy.js",
   "scripts": {
     "dev": "eleventy --serve",
-    "build": "npx eleventy",
+    "build": "eleventy",
     "tina:dev": "tinacms dev -c \"npm run dev\"",
     "tina:build": "tinacms build",
     "format": "prettier --write .",
