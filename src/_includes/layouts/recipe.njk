@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ site.language }}">
 
   {% include "head.html" %}
 
@@ -139,6 +139,55 @@
       </div>
       {% include "footer.html" %}
     </div>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Recipe",
+        "name": {{ title | dump | safe }},
+        "description": {{ (seoDescription or summary or description or title) | dump | safe }},
+        "image": [{{ (seoImage or image or site.defaultOgImage) | absoluteUrl(site.url) | dump | safe }}],
+        "author": {
+          "@type": "Person",
+          "name": {{ (author or site.name) | dump | safe }}
+        },
+        "recipeIngredient": {{ (ingredients or []) | dump | safe }},
+        "recipeInstructions": [
+          {% for step in steps %}
+          {
+            "@type": "HowToStep",
+            "name": {{ step.title | dump | safe }},
+            "text": {{ step.text | dump | safe }}
+          }{% if not loop.last %},{% endif %}
+          {% endfor %}
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Inici",
+            "item": {{ site.url | dump | safe }}
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Receptes",
+            "item": {{ ('/gastronomic/receptes/' | absoluteUrl(site.url)) | dump | safe }}
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": {{ title | dump | safe }},
+            "item": {{ (page.url | absoluteUrl(site.url)) | dump | safe }}
+          }
+        ]
+      }
+    </script>
     <script src="/assets/js/main.js"></script>
   </body>
 </html>

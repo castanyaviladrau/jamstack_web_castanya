@@ -1,11 +1,16 @@
 ---
 layout: base
-title: Actualitat
+title: "Actualitat"
+seoTitle: "Actualitat | Blog i novetats de Castanya de Viladrau"
+description: "Actualitat de Castanya de Viladrau amb novetats, receptes, sostenibilitat i histories del Montseny."
+seoImage: /assets/images/gallery/sostenibilitat.jpeg
 name: blog
 footerVariant: none
 ---
 
 {% set pageContent = actualitat.page %}
+{% set posts = collections.posts %}
+{% set featuredPost = posts[0] %}
 
 <section class="blog-header-section">
   <div class="blog-hero">
@@ -46,99 +51,82 @@ footerVariant: none
 </section>
 
 <div class="container">
-  <a class="featured-news-card" href="{{ pageContent.featuredArticle.href }}">
+  {% if featuredPost %}
+  <a class="featured-news-card" href="{{ featuredPost.url }}">
     <div class="featured-news-copy">
-      <p class="featured-news-date">{{ pageContent.featuredArticle.date }}</p>
+      <p class="featured-news-date">{% if featuredPost.data.displayDate %}{{ featuredPost.data.displayDate }}{% else %}{{ featuredPost.date | readableDate }}{% endif %}</p>
       <h2 class="featured-news-title">
-        {{ pageContent.featuredArticle.title | replace("\n", "<br />") | safe }}
+        {{ featuredPost.data.title | replace("\n", "<br />") | safe }}
       </h2>
-      <p class="featured-news-excerpt">{{ pageContent.featuredArticle.excerpt }}</p>
+      <p class="featured-news-excerpt">{{ featuredPost.data.description }}</p>
       <div class="featured-news-meta">
         <p>
-          <strong>{{ pageContent.featuredArticle.readingTimeLabel }}</strong><br />
-          {{ pageContent.featuredArticle.readingTimeValue }}
+          <strong>Temps de lectura</strong><br />
+          {% if featuredPost.data.readingTimeValue %}{{ featuredPost.data.readingTimeValue }}{% else %}{{ featuredPost.templateContent | readingTime }} minuts{% endif %}
         </p>
         <p>
-          <strong>{{ pageContent.featuredArticle.tagsLabel }}</strong><br />
-          {{ pageContent.featuredArticle.tagsValue }}
+          <strong>Etiquetes</strong><br />
+          {% if featuredPost.data.tags %}
+            {% for tag in featuredPost.data.tags %}{% if tag != 'posts' %}{{ tag }} {% endif %}{% endfor %}
+          {% else %}
+            Actualitat
+          {% endif %}
         </p>
       </div>
     </div>
 
     <div class="featured-news-image-link">
       <div class="featured-news-image">
-        <span class="featured-news-chip">{{ pageContent.featuredArticle.imageBadge }}</span>
+        <span class="featured-news-chip">Destacat</span>
         <img
-          src="{{ pageContent.featuredArticle.image }}"
-          alt="{{ pageContent.featuredArticle.imageAlt }}"
+          src="{{ featuredPost.data.image or site.defaultOgImage }}"
+          alt="{{ featuredPost.data.imageAlt or featuredPost.data.title }}"
           class="fit-img"
         />
       </div>
     </div>
   </a>
+  {% endif %}
 
   <section class="actualitat-grid" aria-label="Més articles">
-    {% for item in pageContent.articleGrid.items %}
-    <a class="actualitat-card" href="{{ item.href }}">
+    {% for post in posts %}
+    {% if not loop.first %}
+    <a class="actualitat-card" href="{{ post.url }}">
       <div class="actualitat-card-image">
-        <span class="featured-news-chip">{{ item.imageBadge }}</span>
-        <img src="{{ item.image }}" alt="{{ item.imageAlt }}" class="fit-img" />
+        <span class="featured-news-chip">Actualitat</span>
+        <img src="{{ post.data.image or site.defaultOgImage }}" alt="{{ post.data.imageAlt or post.data.title }}" class="fit-img" />
       </div>
 
       <div class="actualitat-card-content">
-        <p class="actualitat-card-date">{{ item.date }}</p>
+        <p class="actualitat-card-date">{% if post.data.displayDate %}{{ post.data.displayDate }}{% else %}{{ post.date | readableDate }}{% endif %}</p>
         <h3 class="actualitat-card-title">
-          {{ item.title | replace("\n", "<br />") | safe }}
+          {{ post.data.title | replace("\n", "<br />") | safe }}
         </h3>
-        <p class="actualitat-card-excerpt">{{ item.excerpt }}</p>
+        <p class="actualitat-card-excerpt">{{ post.data.description }}</p>
         <div class="actualitat-card-meta">
           <p>
-            <strong>{{ item.readingTimeLabel }}</strong><br />
-            {{ item.readingTimeValue }}
+            <strong>Temps de lectura</strong><br />
+            {% if post.data.readingTimeValue %}{{ post.data.readingTimeValue }}{% else %}{{ post.templateContent | readingTime }} minuts{% endif %}
           </p>
           <p>
-            <strong>{{ item.tagsLabel }}</strong><br />
-            {{ item.tagsValue }}
+            <strong>Etiquetes</strong><br />
+            {% if post.data.tags %}
+              {% for tag in post.data.tags %}{% if tag != 'posts' %}{{ tag }} {% endif %}{% endfor %}
+            {% else %}
+              Actualitat
+            {% endif %}
           </p>
         </div>
       </div>
     </a>
-    {% endfor %}
-  </section>
-
-  <section class="actualitat-grid actualitat-grid--continued" aria-label="Més articles destacats">
-    {% for item in pageContent.articleContinuation.items %}
-    <a class="actualitat-card{% if item.wide %} actualitat-card--wide{% endif %}" href="{{ item.href }}">
-      <div class="actualitat-card-image">
-        <span class="featured-news-chip">{{ item.imageBadge }}</span>
-        <img src="{{ item.image }}" alt="{{ item.imageAlt }}" class="fit-img" />
-      </div>
-
-      <div class="actualitat-card-content">
-        <p class="actualitat-card-date">{{ item.date }}</p>
-        <h3 class="actualitat-card-title">
-          {{ item.title | replace("\n", "<br />") | safe }}
-        </h3>
-        <p class="actualitat-card-excerpt">{{ item.excerpt }}</p>
-        <div class="actualitat-card-meta">
-          <p>
-            <strong>{{ item.readingTimeLabel }}</strong><br />
-            {{ item.readingTimeValue }}
-          </p>
-          <p>
-            <strong>{{ item.tagsLabel }}</strong><br />
-            {{ item.tagsValue }}
-          </p>
-        </div>
-      </div>
-    </a>
+    {% endif %}
     {% endfor %}
   </section>
 
   <nav class="actualitat-pagination" aria-label="Paginació d'articles">
-    <a href="#" aria-label="Pàgina anterior">&lsaquo;</a>
-    <span>1 · 2 · 3 · 4 ....12</span>
-    <a href="#" aria-label="Pàgina següent">&rsaquo;</a>
+    <span aria-hidden="true">&lsaquo;</span>
+    <span>1</span>
+    <span aria-hidden="true">&rsaquo;</span>
   </nav>
 
   <div class="actualitat-load-more">

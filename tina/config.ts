@@ -62,6 +62,14 @@ export default defineConfig({
           },
           { type: "image", name: "image", label: "Featured Image" },
           { type: "string", name: "imageAlt", label: "Image Alt Text" },
+          { type: "string", name: "seoTitle", label: "SEO Title" },
+          {
+            type: "string",
+            name: "seoDescription",
+            label: "SEO Description",
+            ui: { component: "textarea" },
+          },
+          { type: "image", name: "seoImage", label: "SEO Image" },
           { type: "string", name: "tags", label: "Tags", list: true },
           { type: "boolean", name: "featured", label: "Featured Post" },
           {
@@ -132,6 +140,22 @@ export default defineConfig({
             label: "Main image",
             required: true,
           },
+          {
+            type: "string",
+            name: "description",
+            label: "Short description",
+            ui: { component: "textarea" },
+            required: true,
+          },
+          { type: "string", name: "imageAlt", label: "Main image alt text" },
+          { type: "string", name: "seoTitle", label: "SEO Title" },
+          {
+            type: "string",
+            name: "seoDescription",
+            label: "SEO Description",
+            ui: { component: "textarea" },
+          },
+          { type: "image", name: "seoImage", label: "SEO Image" },
           {
             type: "object",
             name: "gallery",

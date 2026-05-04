@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ site.language }}">
 
   {% include "head.html" %}
 
@@ -51,6 +51,29 @@
       </section>
 
     </div>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": {{ site.name | dump | safe }},
+        "url": {{ site.url | dump | safe }},
+        "logo": {{ ('/assets/images/logo.png' | absoluteUrl(site.url)) | dump | safe }},
+        "email": {{ site.business.email | dump | safe }},
+        "telephone": {{ site.business.phone | dump | safe }},
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": {{ site.business.address.streetAddress | dump | safe }},
+          "addressLocality": {{ site.business.address.addressLocality | dump | safe }},
+          "postalCode": {{ site.business.address.postalCode | dump | safe }},
+          "addressRegion": {{ site.business.address.addressRegion | dump | safe }},
+          "addressCountry": {{ site.business.address.addressCountry | dump | safe }}
+        }{% if site.social.instagram or site.social.whatsapp %},
+        "sameAs": [
+          {% if site.social.instagram %}{{ site.social.instagram | dump | safe }}{% if site.social.whatsapp %},{% endif %}{% endif %}
+          {% if site.social.whatsapp %}{{ site.social.whatsapp | dump | safe }}{% endif %}
+        ]{% endif %}
+      }
+    </script>
     <script src="/assets/js/main.js"></script>
   </body>
 </html>

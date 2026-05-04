@@ -3,14 +3,33 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>
-    {% if page.title %}{{ page.title }} | Castanya de Viladrau{% else %}Castanya de Viladrau - Productes de la terra{% endif %}
-  </title>
-  <meta name="description" content="Descobreix el món de la castanya al cor del Montseny. Visites guiades, fusta de castanyer i gastronomia local." />
+  {% set pageTitle = title or page.title %}
+  {% set fullTitle = seoTitle or (pageTitle + ' | ' + site.titleSuffix if pageTitle else site.defaultTitle) %}
+  {% set metaDescription = seoDescription or description or site.defaultDescription %}
+  {% set canonicalUrl = canonical or (page.url | absoluteUrl(site.url)) %}
+  {% set robotsValue = robots or 'index,follow' %}
+  {% set socialImage = (seoImage or image or site.defaultOgImage) | absoluteUrl(site.url) %}
+
+  <title>{{ fullTitle }}</title>
+  <meta name="description" content="{{ metaDescription }}" />
+  <meta name="robots" content="{{ robotsValue }}" />
+  <link rel="canonical" href="{{ canonicalUrl }}" />
+
+  <meta property="og:site_name" content="{{ site.name }}" />
+  <meta property="og:locale" content="{{ site.locale }}" />
+  <meta property="og:type" content="{% if layout == 'post' %}article{% else %}website{% endif %}" />
+  <meta property="og:title" content="{{ fullTitle }}" />
+  <meta property="og:description" content="{{ metaDescription }}" />
+  <meta property="og:url" content="{{ canonicalUrl }}" />
+  <meta property="og:image" content="{{ socialImage }}" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ fullTitle }}" />
+  <meta name="twitter:description" content="{{ metaDescription }}" />
+  <meta name="twitter:image" content="{{ socialImage }}" />
 
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}">
-  
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | url }}" />
+  <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ '/feed.xml' | absoluteUrl(site.url) }}" />
 
   <link rel="icon" type="image/png" href="/assets/images/logo.png">
 </head>

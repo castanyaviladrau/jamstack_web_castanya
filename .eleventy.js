@@ -12,6 +12,22 @@ const md = markdownIt({
 module.exports = function (eleventyConfig) {
   eleventyConfig.setDataDeepMerge(true);
 
+  eleventyConfig.addFilter("absoluteUrl", (path, base) => {
+    if (!path) {
+      return base;
+    }
+
+    try {
+      return new URL(path, base).toString();
+    } catch (error) {
+      return path;
+    }
+  });
+
+  eleventyConfig.addFilter("stripHtml", (content = "") => {
+    return String(content).replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+  });
+
   eleventyConfig.addFilter("slugify", (value = "") => {
     return String(value)
       .normalize("NFD")
@@ -106,6 +122,34 @@ module.exports = function (eleventyConfig) {
     return collectionApi
       .getFilteredByGlob("./src/gastronomic/receptes/recipes/*.md")
       .sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
+  });
+
+  eleventyConfig.addCollection("products", (collectionApi) => {
+    return collectionApi
+      .getFilteredByGlob("./src/shop/products/*.md")
+      .sort((a, b) => a.data.title.localeCompare(b.data.title));
+  });
+
+  eleventyConfig.addCollection("posts", (collectionApi) => {
+    return collectionApi.getFilteredByTag("posts").sort((a, b) => b.date - a.date);
+  });
+
+  eleventyConfig.addCollection("indexablePages", (collectionApi) => {
+    return collectionApi.getAll().filter((item) => {
+      if (!item.url || !item.outputPath || !item.outputPath.endsWith(".html")) {
+        return false;
+      }
+
+      if (item.url.startsWith("/admin/")) {
+        return false;
+      }
+
+      if (item.data.robots && String(item.data.robots).includes("noindex")) {
+        return false;
+      }
+
+      return item.url !== "/404.html";
+    });
   });
 
   return {

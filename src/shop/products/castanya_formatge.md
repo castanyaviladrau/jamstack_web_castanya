@@ -2,12 +2,14 @@
 layout: product
 permalink: /shop/products/castanya_formatge/
 title: CASTANYA DE VILADRAU TORRADA
+description: "Castanya torrada artesana de Viladrau, elaborada al Montseny i disponible tot l'any per a cuina, aperitius i receptes de temporada."
 tagline: El gust de la tardor tot l'any
 price: 100% castanya
 availability: De l'arbre al teu rebost
 ingredientsLabel: INGREDIENTS
 ingredients: 100% castanya
 image: /assets/images/gallery/botiga/botiga_formatge.png
+imageAlt: Pot de castanya torrada de Castanya de Viladrau
 gallery:
   - image: /assets/images/gallery/botiga/botiga_formatge.png
   - image: /assets/images/gallery/botiga/botiga_formatge.png

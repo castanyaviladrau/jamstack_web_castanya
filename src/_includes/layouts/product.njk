@@ -90,6 +90,49 @@ footerVariant: projecte-newsletter
   </div>
 </section>
 
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": {{ title | dump | safe }},
+    "description": {{ (seoDescription or description or tagline or ingredients) | dump | safe }},
+    "image": [{{ (seoImage or image or site.defaultOgImage) | absoluteUrl(site.url) | dump | safe }}],
+    "brand": {
+      "@type": "Brand",
+      "name": {{ site.name | dump | safe }}
+    },
+    "url": {{ (page.url | absoluteUrl(site.url)) | dump | safe }},
+    "availability": {{ availability | dump | safe }}
+  }
+</script>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inici",
+        "item": {{ site.url | dump | safe }}
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Botiga",
+        "item": {{ ('/shop/products/' | absoluteUrl(site.url)) | dump | safe }}
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": {{ title | dump | safe }},
+        "item": {{ (page.url | absoluteUrl(site.url)) | dump | safe }}
+      }
+    ]
+  }
+</script>
+
 <section class="product-detail__related" aria-labelledby="product-related-title">
   <div class="product-detail__related-inner">
     <h2 id="product-related-title" class="product-detail__related-title">

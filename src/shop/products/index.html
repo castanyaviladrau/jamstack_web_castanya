@@ -1,9 +1,14 @@
 ---
 layout: base
-title: Botiga
+title: "Botiga"
+seoTitle: "Botiga | Productes de castanya artesans de Castanya de Viladrau"
+description: "Compra productes artesans de castanya de Castanya de Viladrau, elaborats al Montseny amb respecte pel territori i disponibles tot l'any."
+seoImage: /assets/images/gallery/elaborats.jpg
 name: botiga
 footerVariant: projecte-newsletter
 ---
+
+{% set productsList = collections.products %}
 
 <section class="shop-page-hero">
   <img
@@ -76,50 +81,16 @@ footerVariant: projecte-newsletter
   </div>
 
   <div class="shop-page-products__scroller" id="galleryScroll">
-    <a href="/shop/products/castanya_formatge/" class="shop-page-product gallery-item">
+    {% for product in productsList %}
+    <a href="{{ product.url }}" class="shop-page-product gallery-item">
       <img
-        src="/assets/images/gallery/chestnuts_hexagon.png"
-        alt="Castanya fresca"
+        src="{{ product.data.image }}"
+        alt="{{ product.data.title }}"
         class="shop-page-product__image"
       />
-      <h3 class="shop-page-product__title">CASTANYA</h3>
+      <h3 class="shop-page-product__title">{{ product.data.title }}</h3>
     </a>
-
-    <a href="/shop/products/castanya_formatge/" class="shop-page-product gallery-item">
-      <img
-        src="/assets/images/gallery/product_castanya_seca.png"
-        alt="Secallona de castanya"
-        class="shop-page-product__image"
-      />
-      <h3 class="shop-page-product__title">CASTANYA</h3>
-    </a>
-
-    <a href="/shop/products/castanya_formatge/" class="shop-page-product gallery-item">
-      <img
-        src="/assets/images/gallery/elaborats.jpg"
-        alt="Crema artesana de castanya"
-        class="shop-page-product__image"
-      />
-      <h3 class="shop-page-product__title">CASTANYA</h3>
-    </a>
-
-    <a href="/shop/products/castanya_formatge/" class="shop-page-product gallery-item">
-      <img
-        src="/assets/images/gallery/product_castanya_farina.png"
-        alt="Farina de castanya"
-        class="shop-page-product__image"
-      />
-      <h3 class="shop-page-product__title">CASTANYA</h3>
-    </a>
-
-    <a href="/shop/products/castanya_formatge/" class="shop-page-product gallery-item">
-      <img
-        src="/assets/images/gallery/product_castanya_flocs.png"
-        alt="Flocs de castanya"
-        class="shop-page-product__image"
-      />
-      <h3 class="shop-page-product__title">CASTANYA</h3>
-    </a>
+    {% endfor %}
   </div>
 </section>
 
@@ -202,75 +173,18 @@ footerVariant: projecte-newsletter
   </div>
 
   <div class="shop-page-featured__scroller" id="shopFeaturedCarousel">
-    <a href="/shop/products/castanya_formatge/" class="shop-page-featured-product gallery-item">
+    {% for product in productsList %}
+    <a href="{{ product.url }}" class="shop-page-featured-product gallery-item">
       <img
-        src="/assets/images/gallery/chestnuts_hexagon.png"
-        alt="Castanya torrada"
+        src="{{ product.data.image }}"
+        alt="{{ product.data.title }}"
         class="shop-page-featured-product__image"
       />
-      <h3 class="shop-page-featured-product__title">
-        CASTANYA<br />
-        TORRADA
-      </h3>
-      <p class="shop-page-featured-product__meta">Disponible 365 l'any</p>
-      <p class="shop-page-featured-product__price">24&euro;</p>
+      <h3 class="shop-page-featured-product__title">{{ product.data.title | replace(' ', '<br />') | safe }}</h3>
+      <p class="shop-page-featured-product__meta">{{ product.data.availability }}</p>
+      <p class="shop-page-featured-product__price">{{ product.data.price }}</p>
     </a>
-
-    <a href="/shop/products/castanya_formatge/" class="shop-page-featured-product gallery-item">
-      <img
-        src="/assets/images/gallery/chestnuts_hexagon.png"
-        alt="Castanya torrada"
-        class="shop-page-featured-product__image"
-      />
-      <h3 class="shop-page-featured-product__title">
-        CASTANYA<br />
-        TORRADA
-      </h3>
-      <p class="shop-page-featured-product__meta">Disponible 365 l'any</p>
-      <p class="shop-page-featured-product__price">24&euro;</p>
-    </a>
-
-    <a href="/shop/products/castanya_formatge/" class="shop-page-featured-product gallery-item">
-      <img
-        src="/assets/images/gallery/chestnuts_hexagon.png"
-        alt="Castanya torrada"
-        class="shop-page-featured-product__image"
-      />
-      <h3 class="shop-page-featured-product__title">
-        CASTANYA<br />
-        TORRADA
-      </h3>
-      <p class="shop-page-featured-product__meta">Disponible 365 l'any</p>
-      <p class="shop-page-featured-product__price">24&euro;</p>
-    </a>
-
-    <a href="/shop/products/castanya_formatge/" class="shop-page-featured-product gallery-item">
-      <img
-        src="/assets/images/gallery/chestnuts_hexagon.png"
-        alt="Castanya torrada"
-        class="shop-page-featured-product__image"
-      />
-      <h3 class="shop-page-featured-product__title">
-        CASTANYA<br />
-        TORRADA
-      </h3>
-      <p class="shop-page-featured-product__meta">Disponible 365 l'any</p>
-      <p class="shop-page-featured-product__price">24&euro;</p>
-    </a>
-
-    <a href="/shop/products/castanya_formatge/" class="shop-page-featured-product gallery-item">
-      <img
-        src="/assets/images/gallery/chestnuts_hexagon.png"
-        alt="Castanya torrada"
-        class="shop-page-featured-product__image"
-      />
-      <h3 class="shop-page-featured-product__title">
-        CASTANYA<br />
-        TORRADA
-      </h3>
-      <p class="shop-page-featured-product__meta">Disponible 365 l'any</p>
-      <p class="shop-page-featured-product__price">24&euro;</p>
-    </a>
+    {% endfor %}
   </div>
 
   <a href="/contact/" class="shop-page-featured__cta">VEURE TOTES</a>

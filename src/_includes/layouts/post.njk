@@ -3,6 +3,7 @@ layout: base
 ---
 
 {% set pageContent = actualitat.page %}
+{% set articleDescription = seoDescription or description or title %}
 
 <article class="actualitat-post">
   <div class="container actualitat-post__inner">
@@ -72,3 +73,55 @@ layout: base
     </form>
   </div>
 </section>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": {{ (seoTitle or title) | dump | safe }},
+    "description": {{ articleDescription | dump | safe }},
+    "datePublished": {{ page.date.toISOString() | dump | safe }},
+    "dateModified": {{ page.date.toISOString() | dump | safe }},
+    "mainEntityOfPage": {{ (page.url | absoluteUrl(site.url)) | dump | safe }},
+    "author": {
+      "@type": "Organization",
+      "name": {{ site.name | dump | safe }}
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": {{ site.name | dump | safe }},
+      "logo": {
+        "@type": "ImageObject",
+        "url": {{ ('/assets/images/logo.png' | absoluteUrl(site.url)) | dump | safe }}
+      }
+    }{% if image %},
+    "image": [{{ (image | absoluteUrl(site.url)) | dump | safe }}]{% endif %}
+  }
+</script>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inici",
+        "item": {{ site.url | dump | safe }}
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Actualitat",
+        "item": {{ ('/blog/' | absoluteUrl(site.url)) | dump | safe }}
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": {{ title | dump | safe }},
+        "item": {{ (page.url | absoluteUrl(site.url)) | dump | safe }}
+      }
+    ]
+  }
+</script>
