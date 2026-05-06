@@ -30,6 +30,7 @@ This project follows the JAMStack (JavaScript, APIs, Markup) architecture patter
 ### Services & APIs
 - **[RedSys](https://www.redsys.es/)** - Spanish payment gateway integration
 - **[SendGrid](https://sendgrid.com/)** - Email delivery service
+- **[Supabase](https://supabase.com/)** - Low-cost order storage for guest checkout
 - **Netlify Functions** - Serverless functions for API endpoints
 
 ### Development Tools
@@ -155,10 +156,12 @@ project-root/
 3. **Environment variables**
    Create `.env` file:
    ```env
-   SENDGRID_API_KEY=your_sendgrid_api_key
-   REDSYS_MERCHANT_CODE=your_merchant_code
-   REDSYS_SECRET_KEY=your_secret_key
-   TINA_TOKEN=your_tina_token
+    SENDGRID_API_KEY=your_sendgrid_api_key
+    REDSYS_MERCHANT_CODE=your_merchant_code
+    REDSYS_SECRET_KEY=your_secret_key
+    SUPABASE_URL=your_supabase_project_url
+    SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+    TINA_TOKEN=your_tina_token
    ```
 
 4. **Start development server**
@@ -217,6 +220,56 @@ project-root/
 - Functions configuration
 - Headers and redirects
 - Environment variables
+
+## Supabase Orders Schema
+
+For the low-cost guest checkout flow, this repo now includes a minimal schema for orders only:
+
+- `public.orders`
+- `public.order_items`
+
+Run `supabase/schema-orders.sql` in the Supabase SQL Editor before implementing the backend checkout steps.
+
+This schema is intentionally small:
+
+- cart state stays in the browser with `localStorage`
+- customer accounts are not required
+- orders are created through Netlify Functions using the service role key
+- Supabase Table Editor can be used as the initial admin interface
+
+## Create Order Function
+
+Step 6 uses `netlify/functions/create-order.js` to create guest checkout orders in Supabase.
+
+Request body shape:
+
+```json
+{
+  "items": [
+    {
+      "sku": "castanya-viladrau-torrada-250",
+      "quantity": 2
+    }
+  ],
+  "customer": {
+    "name": "Nom Client",
+    "email": "client@example.com",
+    "phone": "+34 600 000 000",
+    "country": "Espanya",
+    "address": "Carrer Exemple 12",
+    "city": "Barcelona",
+    "postalCode": "08001",
+    "notes": "Trucar abans d'entregar"
+  }
+}
+```
+
+Important behavior:
+
+- prices are recalculated on the backend
+- browser totals are ignored
+- SKUs are validated against `src/_data/products.json`
+- the function inserts one row in `orders` and many rows in `order_items`
 
 ### TinaCMS Configuration (`tina/config.ts`)
 - Content schema definition

@@ -6,6 +6,10 @@ footerVariant: projecte-newsletter
 {% set currentUrl = page.url %}
 {% set relatedCollection = collections.products | default([]) | reverse %}
 {% set relatedFallback = relatedProducts.list | default([]) %}
+{% set defaultFormat = formats[0] if formats and formats.length else null %}
+{% set defaultSku = defaultFormat.sku if defaultFormat and defaultFormat.sku else sku %}
+{% set defaultPrice = defaultFormat.price if defaultFormat and defaultFormat.price else price %}
+{% set priceText = priceLabel or price %}
 
 <section class="product-detail">
   <div class="product-detail__inner">
@@ -41,11 +45,27 @@ footerVariant: projecte-newsletter
           <label class="product-detail__format-label" for="product-format">{{ formatLabel }}</label>
           <select id="product-format" class="product-detail__format-select">
             {% for option in formats %}
-              <option>{{ option }}</option>
+              {% set optionLabel = option.label if option.label else option %}
+              {% set optionSku = option.sku if option.sku else sku %}
+              {% set optionPrice = option.price if option.price else price %}
+              <option value="{{ optionLabel }}" data-sku="{{ optionSku }}" data-price="{{ optionPrice }}">{{ optionLabel }}</option>
             {% endfor %}
           </select>
 
-          <a href="{{ ctaHref }}" class="product-detail__cta">{{ ctaLabel }}</a>
+          <button
+            type="button"
+            class="product-detail__cta"
+            data-add-to-cart
+            data-product-slug="{{ page.fileSlug }}"
+            data-product-name="{{ title }}"
+            data-product-image="{{ image }}"
+            data-product-sku="{{ defaultSku }}"
+            data-product-price="{{ defaultPrice }}"
+            data-product-currency="{{ currency or 'EUR' }}"
+          >
+            {{ ctaLabel }}
+          </button>
+          <p class="product-detail__cta-feedback" data-add-to-cart-feedback hidden></p>
         </div>
 
         <div class="product-detail__info-list">
@@ -64,7 +84,7 @@ footerVariant: projecte-newsletter
         </div>
 
         <div class="product-detail__notes">
-          <p class="product-detail__price">{{ price }}</p>
+          <p class="product-detail__price" data-product-price-display>{{ priceText }}</p>
           <p class="product-detail__availability">{{ availability }}</p>
 
           {% if detailNotes and detailNotes.length %}

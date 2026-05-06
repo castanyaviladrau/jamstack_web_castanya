@@ -28,13 +28,13 @@ footerVariant: projecte-newsletter
     <div class="shop-cart__main">
       <div class="shop-cart__heading">
         <span class="shop-cart__eyebrow">CISTELLA ACTUAL</span>
-        <h2 id="shop-cart-title" class="shop-cart__title">ENCARA NO HI HA CAP PRODUCTE A LA TEVA CISTELLA</h2>
-        <p class="shop-cart__intro">
+        <h2 id="shop-cart-title" class="shop-cart__title" data-cart-title>ENCARA NO HI HA CAP PRODUCTE A LA TEVA CISTELLA</h2>
+        <p class="shop-cart__intro" data-cart-intro>
           Quan afegeixis productes des de la botiga, els trobaras aqui per revisar formats, quantitats i el resum de la comanda.
         </p>
       </div>
 
-      <article class="shop-cart-empty-card">
+      <article class="shop-cart-empty-card" data-cart-empty>
         <div class="shop-cart-empty-card__media" aria-hidden="true">
           <img
             src="/assets/images/shopping_cart_button.png"
@@ -56,6 +56,59 @@ footerVariant: projecte-newsletter
           </div>
         </div>
       </article>
+
+      <div class="shop-cart-items" data-cart-items hidden></div>
+
+      <section class="shop-cart-checkout" aria-labelledby="shop-cart-checkout-title" data-checkout-section hidden>
+        <div class="shop-cart-checkout__heading">
+          <p class="shop-cart__eyebrow">DADES D'ENVIAMENT</p>
+          <h3 id="shop-cart-checkout-title" class="shop-cart-checkout__title">PREPARA LA TEVA COMANDA</h3>
+          <p class="shop-cart-checkout__intro">
+            Aquest formulari sera el punt de sortida per connectar la creacio de comandes amb Supabase al proxim pas.
+          </p>
+        </div>
+
+        <form class="shop-cart-checkout__form" data-checkout-form novalidate>
+          <div class="shop-cart-checkout__grid">
+            <label class="shop-cart-checkout__field">
+              <span>Nom i cognoms</span>
+              <input type="text" name="name" autocomplete="name" required />
+            </label>
+            <label class="shop-cart-checkout__field">
+              <span>Correu electronic</span>
+              <input type="email" name="email" autocomplete="email" required />
+            </label>
+            <label class="shop-cart-checkout__field">
+              <span>Telefon</span>
+              <input type="tel" name="phone" autocomplete="tel" required />
+            </label>
+            <label class="shop-cart-checkout__field">
+              <span>Pais</span>
+              <input type="text" name="country" autocomplete="country-name" value="Espanya" required />
+            </label>
+            <label class="shop-cart-checkout__field shop-cart-checkout__field--full">
+              <span>Adreca</span>
+              <input type="text" name="address" autocomplete="street-address" required />
+            </label>
+            <label class="shop-cart-checkout__field">
+              <span>Ciutat</span>
+              <input type="text" name="city" autocomplete="address-level2" required />
+            </label>
+            <label class="shop-cart-checkout__field">
+              <span>Codi postal</span>
+              <input type="text" name="postalCode" autocomplete="postal-code" required />
+            </label>
+            <label class="shop-cart-checkout__field shop-cart-checkout__field--full">
+              <span>Notes de la comanda</span>
+              <textarea name="notes" rows="4"></textarea>
+            </label>
+          </div>
+
+          <p class="shop-cart-checkout__message" data-checkout-message hidden></p>
+
+          <button type="submit" class="shop-cart-summary__cta">CONTINUAR CAP AL PAGAMENT</button>
+        </form>
+      </section>
     </div>
 
     <aside class="shop-cart-summary" aria-labelledby="shop-cart-summary-title">
@@ -65,28 +118,28 @@ footerVariant: projecte-newsletter
       <div class="shop-cart-summary__rows">
         <div class="shop-cart-summary__row">
           <span>Productes</span>
-          <strong>0</strong>
+          <strong data-cart-product-count>0</strong>
         </div>
         <div class="shop-cart-summary__row">
           <span>Subtotal</span>
-          <strong>0,00&euro;</strong>
+          <strong data-cart-subtotal>0,00 EUR</strong>
         </div>
         <div class="shop-cart-summary__row">
           <span>Enviament</span>
-          <strong>A calcular</strong>
+          <strong data-cart-shipping>A calcular al proxim pas</strong>
         </div>
       </div>
 
       <div class="shop-cart-summary__total">
         <span>Total estimat</span>
-        <strong>0,00&euro;</strong>
+        <strong data-cart-total>0,00 EUR</strong>
       </div>
 
-      <p class="shop-cart-summary__note">
-        En el proxim pas podras incorporar la logica de seleccio, cache i connexio amb RedSys sense haver de redissenyar aquesta vista.
+      <p class="shop-cart-summary__note" data-cart-summary-note>
+        La cistella es guarda en aquest navegador. Quan confirmis, al proxim pas connectarem aquestes dades amb la creacio de comandes real a Supabase.
       </p>
 
-      <a href="/shop/products/" class="shop-cart-summary__cta">SEGUIR COMPRANT</a>
+      <a href="/shop/products/" class="shop-cart-summary__cta" data-cart-summary-link>SEGUIR COMPRANT</a>
     </aside>
   </div>
 </section>

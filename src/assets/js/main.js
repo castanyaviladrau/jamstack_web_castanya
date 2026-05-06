@@ -776,6 +776,374 @@ document.addEventListener("DOMContentLoaded", () => {
     renderSlide();
   };
 
+  const setupCart = () => {
+    const cartStorageKey = "castanya-cart";
+    const checkoutStorageKey = "castanya-checkout-draft";
+    const currency = "EUR";
+
+    const formatMoney = (value) => {
+      return new Intl.NumberFormat("ca-ES", {
+        style: "currency",
+        currency,
+      }).format(Number(value) || 0);
+    };
+
+    const readCart = () => {
+      try {
+        const rawCart = window.localStorage.getItem(cartStorageKey);
+        const parsed = rawCart ? JSON.parse(rawCart) : null;
+        if (!parsed || !Array.isArray(parsed.items)) {
+          return { items: [] };
+        }
+
+        const items = parsed.items.filter(
+          (item) => item && item.sku && Number(item.quantity) > 0,
+        );
+        return { items };
+      } catch (error) {
+        return { items: [] };
+      }
+    };
+
+    const writeCart = (cart) => {
+      try {
+        window.localStorage.setItem(cartStorageKey, JSON.stringify(cart));
+      } catch (error) {
+        // Ignore storage failures and keep UI responsive.
+      }
+    };
+
+    const getCartCount = (cart) => {
+      return cart.items.reduce((sum, item) => sum + Number(item.quantity || 0), 0);
+    };
+
+    const getCartSubtotal = (cart) => {
+      return cart.items.reduce(
+        (sum, item) => sum + Number(item.unitPrice || 0) * Number(item.quantity || 0),
+        0,
+      );
+    };
+
+    const updateCartCount = () => {
+      const count = getCartCount(readCart());
+      const countNodes = document.querySelectorAll("[data-cart-count]");
+
+      countNodes.forEach((node) => {
+        node.textContent = String(count);
+        node.hidden = count === 0;
+      });
+    };
+
+    const saveCheckoutDraft = (draft) => {
+      try {
+        window.localStorage.setItem(checkoutStorageKey, JSON.stringify(draft));
+      } catch (error) {
+        // Ignore storage failures and keep UI responsive.
+      }
+    };
+
+    const readCheckoutDraft = () => {
+      try {
+        const rawDraft = window.localStorage.getItem(checkoutStorageKey);
+        return rawDraft ? JSON.parse(rawDraft) : {};
+      } catch (error) {
+        return {};
+      }
+    };
+
+    const upsertCartItem = (nextItem) => {
+      const cart = readCart();
+      const existingItem = cart.items.find(
+        (item) => item.sku === nextItem.sku && item.variantLabel === nextItem.variantLabel,
+      );
+
+      if (existingItem) {
+        existingItem.quantity += nextItem.quantity;
+      } else {
+        cart.items.push(nextItem);
+      }
+
+      writeCart(cart);
+      updateCartCount();
+    };
+
+    const bindProductActions = () => {
+      const addButtons = document.querySelectorAll("[data-add-to-cart]");
+
+      addButtons.forEach((button) => {
+        const productDetail = button.closest(".product-detail__purchase");
+        const formatSelect = productDetail?.querySelector("#product-format");
+        const priceNode = document.querySelector("[data-product-price-display]");
+        const feedbackNode = productDetail?.querySelector("[data-add-to-cart-feedback]");
+
+        const syncSelectedFormat = () => {
+          if (!formatSelect) {
+            return;
+          }
+
+          const selectedOption = formatSelect.options[formatSelect.selectedIndex];
+          const selectedPrice = Number(selectedOption.dataset.price || button.dataset.productPrice || 0);
+
+          button.dataset.productSku = selectedOption.dataset.sku || button.dataset.productSku;
+          button.dataset.productPrice = String(selectedPrice);
+
+          if (priceNode) {
+            priceNode.textContent = formatMoney(selectedPrice);
+          }
+        };
+
+        if (formatSelect) {
+          syncSelectedFormat();
+          formatSelect.addEventListener("change", syncSelectedFormat);
+        }
+
+        button.addEventListener("click", () => {
+          const selectedOption = formatSelect?.options[formatSelect.selectedIndex];
+          const variantLabel = selectedOption?.value || "Format general";
+          const sku = selectedOption?.dataset.sku || button.dataset.productSku;
+          const unitPrice = Number(selectedOption?.dataset.price || button.dataset.productPrice || 0);
+
+          if (!sku || unitPrice <= 0) {
+            if (feedbackNode) {
+              feedbackNode.hidden = false;
+              feedbackNode.dataset.state = "error";
+              feedbackNode.textContent = "Aquest producte encara no te un format o preu valid per comprar-lo.";
+            }
+            return;
+          }
+
+          upsertCartItem({
+            sku,
+            slug: button.dataset.productSlug,
+            name: button.dataset.productName,
+            image: button.dataset.productImage,
+            currency: button.dataset.productCurrency || currency,
+            variantLabel,
+            unitPrice,
+            quantity: 1,
+          });
+
+          if (feedbackNode) {
+            feedbackNode.hidden = false;
+            feedbackNode.dataset.state = "success";
+            feedbackNode.textContent = "Producte afegit a la cistella.";
+          }
+        });
+      });
+    };
+
+    const bindCartPage = () => {
+      const cartRoot = document.querySelector("[data-cart-items]");
+      if (!cartRoot) {
+        return;
+      }
+
+      const titleNode = document.querySelector("[data-cart-title]");
+      const introNode = document.querySelector("[data-cart-intro]");
+      const emptyNode = document.querySelector("[data-cart-empty]");
+      const countNode = document.querySelector("[data-cart-product-count]");
+      const subtotalNode = document.querySelector("[data-cart-subtotal]");
+      const totalNode = document.querySelector("[data-cart-total]");
+      const noteNode = document.querySelector("[data-cart-summary-note]");
+      const summaryLink = document.querySelector("[data-cart-summary-link]");
+      const checkoutSection = document.querySelector("[data-checkout-section]");
+      const checkoutForm = document.querySelector("[data-checkout-form]");
+      const checkoutMessage = document.querySelector("[data-checkout-message]");
+
+      const fillCheckoutDraft = () => {
+        if (!checkoutForm) {
+          return;
+        }
+
+        const draft = readCheckoutDraft();
+        Array.from(checkoutForm.elements).forEach((field) => {
+          if (field.name && draft[field.name]) {
+            field.value = draft[field.name];
+          }
+        });
+      };
+
+      const renderCartPage = () => {
+        const cart = readCart();
+        const hasItems = cart.items.length > 0;
+        const itemCount = getCartCount(cart);
+        const subtotal = getCartSubtotal(cart);
+
+        cartRoot.innerHTML = "";
+        cartRoot.hidden = !hasItems;
+        if (emptyNode) {
+          emptyNode.hidden = hasItems;
+        }
+        if (checkoutSection) {
+          checkoutSection.hidden = !hasItems;
+        }
+
+        if (titleNode) {
+          titleNode.textContent = hasItems
+            ? "REVISA LA TEVA CISTELLA"
+            : "ENCARA NO HI HA CAP PRODUCTE A LA TEVA CISTELLA";
+        }
+
+        if (introNode) {
+          introNode.textContent = hasItems
+            ? "Pots ajustar quantitats, eliminar productes i deixar a punt les dades d'enviament abans de passar al backend de comandes."
+            : "Quan afegeixis productes des de la botiga, els trobaras aqui per revisar formats, quantitats i el resum de la comanda.";
+        }
+
+        if (countNode) {
+          countNode.textContent = String(itemCount);
+        }
+        if (subtotalNode) {
+          subtotalNode.textContent = formatMoney(subtotal);
+        }
+        if (totalNode) {
+          totalNode.textContent = formatMoney(subtotal);
+        }
+        if (noteNode) {
+          noteNode.textContent = hasItems
+            ? "Enviament i pagament quedaran tancats al proxim pas, quan connectem aquesta cistella amb Supabase i RedSys."
+            : "La cistella es guarda en aquest navegador. Quan confirmis, al proxim pas connectarem aquestes dades amb la creacio de comandes real a Supabase.";
+        }
+        if (summaryLink) {
+          summaryLink.textContent = hasItems ? "TORNAR A LA BOTIGA" : "SEGUIR COMPRANT";
+        }
+
+        if (!hasItems) {
+          return;
+        }
+
+        const itemsMarkup = cart.items
+          .map((item) => {
+            const lineTotal = Number(item.unitPrice || 0) * Number(item.quantity || 0);
+
+            return `
+              <article class="shop-cart-item" data-cart-item data-sku="${item.sku}" data-variant="${item.variantLabel}">
+                <img src="${item.image}" alt="${item.name}" class="shop-cart-item__image" />
+                <div class="shop-cart-item__body">
+                  <div class="shop-cart-item__top">
+                    <div>
+                      <h3 class="shop-cart-item__name">${item.name}</h3>
+                      <div class="shop-cart-item__meta">
+                        <p class="shop-cart-item__variant">Format: ${item.variantLabel}</p>
+                        <p class="shop-cart-item__price">Preu unitari: ${formatMoney(item.unitPrice)}</p>
+                      </div>
+                    </div>
+                    <p class="shop-cart-item__line-total">${formatMoney(lineTotal)}</p>
+                  </div>
+                  <div class="shop-cart-item__actions">
+                    <div class="shop-cart-item__qty" aria-label="Quantitat">
+                      <button type="button" class="shop-cart-item__qty-button" data-cart-decrease>-</button>
+                      <span>${item.quantity}</span>
+                      <button type="button" class="shop-cart-item__qty-button" data-cart-increase>+</button>
+                    </div>
+                    <button type="button" class="shop-cart-item__remove" data-cart-remove>Eliminar</button>
+                  </div>
+                </div>
+              </article>
+            `;
+          })
+          .join("");
+
+        cartRoot.innerHTML = itemsMarkup;
+      };
+
+      const updateQuantity = (sku, variantLabel, delta) => {
+        const cart = readCart();
+        const item = cart.items.find(
+          (entry) => entry.sku === sku && entry.variantLabel === variantLabel,
+        );
+
+        if (!item) {
+          return;
+        }
+
+        item.quantity += delta;
+        cart.items = cart.items.filter((entry) => entry.quantity > 0);
+        writeCart(cart);
+        updateCartCount();
+        renderCartPage();
+      };
+
+      cartRoot.addEventListener("click", (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLElement)) {
+          return;
+        }
+
+        const itemNode = target.closest("[data-cart-item]");
+        if (!itemNode) {
+          return;
+        }
+
+        const sku = itemNode.dataset.sku;
+        const variantLabel = itemNode.dataset.variant;
+        if (!sku || !variantLabel) {
+          return;
+        }
+
+        if (target.matches("[data-cart-increase]")) {
+          updateQuantity(sku, variantLabel, 1);
+        }
+
+        if (target.matches("[data-cart-decrease]")) {
+          updateQuantity(sku, variantLabel, -1);
+        }
+
+        if (target.matches("[data-cart-remove]")) {
+          updateQuantity(sku, variantLabel, -999);
+        }
+      });
+
+      checkoutForm?.addEventListener("input", () => {
+        const formData = new FormData(checkoutForm);
+        saveCheckoutDraft(Object.fromEntries(formData.entries()));
+      });
+
+      checkoutForm?.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(checkoutForm);
+        const payload = Object.fromEntries(formData.entries());
+        const requiredFields = [
+          "name",
+          "email",
+          "phone",
+          "country",
+          "address",
+          "city",
+          "postalCode",
+        ];
+        const missingField = requiredFields.find((field) => !String(payload[field] || "").trim());
+
+        if (checkoutMessage) {
+          checkoutMessage.hidden = false;
+        }
+
+        if (missingField) {
+          if (checkoutMessage) {
+            checkoutMessage.dataset.state = "error";
+            checkoutMessage.textContent = "Completa tots els camps obligatoris abans de continuar.";
+          }
+          return;
+        }
+
+        saveCheckoutDraft(payload);
+
+        if (checkoutMessage) {
+          checkoutMessage.dataset.state = "success";
+          checkoutMessage.textContent = "Dades desades en aquest navegador. Si ho valides, el proxim pas ja sera crear la comanda a Supabase.";
+        }
+      });
+
+      fillCheckoutDraft();
+      renderCartPage();
+    };
+
+    updateCartCount();
+    bindProductActions();
+    bindCartPage();
+  };
+
   setupProfessionalsValueFeature();
   setupProjecteFireTextSlider();
   setupHeaderDropdown();
@@ -783,4 +1151,5 @@ document.addEventListener("DOMContentLoaded", () => {
   setupCookieBanner();
   setupConsentMaps();
   setupFustaShowcase();
+  setupCart();
 });
