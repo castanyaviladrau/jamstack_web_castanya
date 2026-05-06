@@ -779,6 +779,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const setupCart = () => {
     const cartStorageKey = "castanya-cart";
     const checkoutStorageKey = "castanya-checkout-draft";
+    const checkoutSessionKey = "castanya-checkout-session";
     const currency = "EUR";
 
     const formatMoney = (value) => {
@@ -849,6 +850,107 @@ document.addEventListener("DOMContentLoaded", () => {
       } catch (error) {
         return {};
       }
+    };
+
+    const saveCheckoutSession = (session) => {
+      try {
+        window.localStorage.setItem(checkoutSessionKey, JSON.stringify(session));
+      } catch (error) {
+        // Ignore storage failures and keep UI responsive.
+      }
+    };
+
+    const readCheckoutSession = () => {
+      try {
+        const rawSession = window.localStorage.getItem(checkoutSessionKey);
+        return rawSession ? JSON.parse(rawSession) : null;
+      } catch (error) {
+        return null;
+      }
+    };
+
+    const clearCheckoutSession = () => {
+      try {
+        window.localStorage.removeItem(checkoutSessionKey);
+      } catch (error) {
+        // Ignore storage failures and keep UI responsive.
+      }
+    };
+
+    const buildCartFingerprint = (cart) => {
+      return cart.items
+        .map((item) => `${item.sku}:${item.variantLabel}:${Number(item.quantity || 0)}`)
+        .sort()
+        .join("|");
+    };
+
+    const normalizeCheckoutPayload = (payload) => {
+      return {
+        name: String(payload.name || "").trim(),
+        email: String(payload.email || "").trim().toLowerCase(),
+        phone: String(payload.phone || "").trim(),
+        country: String(payload.country || "").trim(),
+        address: String(payload.address || "").trim(),
+        city: String(payload.city || "").trim(),
+        postalCode: String(payload.postalCode || "").trim(),
+        notes: String(payload.notes || "").trim(),
+      };
+    };
+
+    const submitPaymentForm = (payment) => {
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = payment.redsysUrl;
+      form.hidden = true;
+
+      [
+        ["Ds_SignatureVersion", payment.signatureVersion],
+        ["Ds_MerchantParameters", payment.parameters],
+        ["Ds_Signature", payment.signature],
+      ].forEach(([name, value]) => {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = name;
+        input.value = value;
+        form.appendChild(input);
+      });
+
+      document.body.appendChild(form);
+      form.submit();
+    };
+
+    const createOrder = async ({ items, customer }) => {
+      const response = await fetch("/.netlify/functions/create-order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ items, customer }),
+      });
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok || !data?.success || !data?.order?.id) {
+        throw new Error(data?.details || data?.error || "No hem pogut crear la comanda.");
+      }
+
+      return data.order;
+    };
+
+    const initiatePayment = async ({ orderId, publicOrderCode }) => {
+      const response = await fetch("/.netlify/functions/payment-process", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ orderId, publicOrderCode }),
+      });
+      const data = await response.json().catch(() => ({}));
+
+      return {
+        ok: response.ok,
+        status: response.status,
+        data,
+      };
     };
 
     const upsertCartItem = (nextItem) => {
@@ -949,6 +1051,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const checkoutSection = document.querySelector("[data-checkout-section]");
       const checkoutForm = document.querySelector("[data-checkout-form]");
       const checkoutMessage = document.querySelector("[data-checkout-message]");
+      const checkoutSubmitButton = checkoutForm?.querySelector('button[type="submit"]');
 
       const fillCheckoutDraft = () => {
         if (!checkoutForm) {
@@ -1001,8 +1104,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         if (noteNode) {
           noteNode.textContent = hasItems
-            ? "Enviament i pagament quedaran tancats al proxim pas, quan connectem aquesta cistella amb Supabase i RedSys."
-            : "La cistella es guarda en aquest navegador. Quan confirmis, al proxim pas connectarem aquestes dades amb la creacio de comandes real a Supabase.";
+            ? "La teva comanda es creara a Supabase en confirmar. Si RedSys encara no esta configurat, la deixarem preparada per completar el pagament mes endavant."
+            : "La cistella es guarda en aquest navegador. Quan confirmis, crearem la comanda real i intentarem iniciar el pagament si la passarel-la ja esta activa.";
         }
         if (summaryLink) {
           summaryLink.textContent = hasItems ? "TORNAR A LA BOTIGA" : "SEGUIR COMPRANT";
@@ -1099,11 +1202,12 @@ document.addEventListener("DOMContentLoaded", () => {
         saveCheckoutDraft(Object.fromEntries(formData.entries()));
       });
 
-      checkoutForm?.addEventListener("submit", (event) => {
+      checkoutForm?.addEventListener("submit", async (event) => {
         event.preventDefault();
 
+        const cart = readCart();
         const formData = new FormData(checkoutForm);
-        const payload = Object.fromEntries(formData.entries());
+        const payload = normalizeCheckoutPayload(Object.fromEntries(formData.entries()));
         const requiredFields = [
           "name",
           "email",
@@ -1127,11 +1231,93 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
+        if (!cart.items.length) {
+          if (checkoutMessage) {
+            checkoutMessage.dataset.state = "error";
+            checkoutMessage.textContent = "La cistella esta buida. Afegeix-hi algun producte abans de continuar.";
+          }
+          return;
+        }
+
         saveCheckoutDraft(payload);
 
-        if (checkoutMessage) {
-          checkoutMessage.dataset.state = "success";
-          checkoutMessage.textContent = "Dades desades en aquest navegador. Si ho valides, el proxim pas ja sera crear la comanda a Supabase.";
+        const cartFingerprint = buildCartFingerprint(cart);
+        const existingSession = readCheckoutSession();
+
+        if (checkoutSubmitButton) {
+          checkoutSubmitButton.disabled = true;
+          checkoutSubmitButton.textContent = "PREPARANT LA COMANDA...";
+        }
+
+        try {
+          if (checkoutMessage) {
+            checkoutMessage.dataset.state = "success";
+            checkoutMessage.textContent = "Creant la comanda i preparant el pas de pagament...";
+          }
+
+          let order = null;
+          if (
+            existingSession?.orderId &&
+            existingSession?.publicOrderCode &&
+            existingSession?.cartFingerprint === cartFingerprint &&
+            existingSession?.customerEmail === payload.email
+          ) {
+            order = {
+              id: existingSession.orderId,
+              publicOrderCode: existingSession.publicOrderCode,
+            };
+          } else {
+            clearCheckoutSession();
+            order = await createOrder({
+              items: cart.items,
+              customer: payload,
+            });
+            saveCheckoutSession({
+              orderId: order.id,
+              publicOrderCode: order.publicOrderCode,
+              customerEmail: payload.email,
+              cartFingerprint,
+              createdAt: new Date().toISOString(),
+            });
+          }
+
+          const paymentResult = await initiatePayment({
+            orderId: order.id,
+            publicOrderCode: order.publicOrderCode,
+          });
+
+          if (paymentResult.ok && paymentResult.data?.success && paymentResult.data?.payment) {
+            if (checkoutMessage) {
+              checkoutMessage.dataset.state = "success";
+              checkoutMessage.textContent = `Comanda ${order.publicOrderCode} creada. Redirigint cap al pagament...`;
+            }
+            submitPaymentForm(paymentResult.data.payment);
+            return;
+          }
+
+          if (paymentResult.status === 503) {
+            if (checkoutMessage) {
+              checkoutMessage.dataset.state = "success";
+              checkoutMessage.textContent = `Comanda ${order.publicOrderCode} creada i guardada. El pagament encara no esta disponible; la teva comanda queda pendent de pagament fins que activem RedSys.`;
+            }
+            return;
+          }
+
+          throw new Error(
+            paymentResult.data?.details ||
+              paymentResult.data?.error ||
+              "No hem pogut preparar el pagament ara mateix.",
+          );
+        } catch (error) {
+          if (checkoutMessage) {
+            checkoutMessage.dataset.state = "error";
+            checkoutMessage.textContent = error.message || "Hi ha hagut un error en preparar la comanda.";
+          }
+        } finally {
+          if (checkoutSubmitButton) {
+            checkoutSubmitButton.disabled = false;
+            checkoutSubmitButton.textContent = "CONTINUAR CAP AL PAGAMENT";
+          }
         }
       });
 
