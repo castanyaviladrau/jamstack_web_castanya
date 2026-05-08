@@ -19,7 +19,8 @@ export default defineConfig({
   },
   media: {
     tina: {
-      mediaRoot: "assets/assets/images",
+      // Keep Tina-managed media in the same folder the site already serves as /assets/images/...
+      mediaRoot: "assets/images",
       publicFolder: "src",
     },
   },
