@@ -36,10 +36,16 @@ function normalizeSignature(signature) {
 
 function encryptOrder(order, key) {
   const keyBytes = Buffer.from(key, 'base64');
-  const cipher = crypto.createCipher('des-ede3-cbc', keyBytes);
-  let encrypted = cipher.update(order, 'utf8', 'base64');
-  encrypted += cipher.final('base64');
-  return encrypted;
+
+  if (keyBytes.length !== 24) {
+    throw new Error(
+      `Invalid RedSys secret key length. Expected 24 bytes after base64 decode, got ${keyBytes.length}.`,
+    );
+  }
+
+  const iv = Buffer.alloc(8, 0);
+  const cipher = crypto.createCipheriv('des-ede3-cbc', keyBytes, iv);
+  return Buffer.concat([cipher.update(order, 'utf8'), cipher.final()]).toString('base64');
 }
 
 function verifySignature(merchantParameters, signature, secretKey) {
@@ -233,8 +239,9 @@ exports.handler = async (event) => {
       }
 
       const updatedOrder = await updateOrder(order.id, {
-        status: 'paid',
+        status: 'processed',
         payment_status: 'paid',
+        fulfillment_status: 'delivered',
         payment_raw_response: paymentSnapshot,
       });
 

@@ -11,18 +11,18 @@ permalink: /payment/success/
     <div class="shop-cart__main">
       <div class="shop-cart__heading">
         <span class="shop-cart__eyebrow">PAGAMENT</span>
-        <h1 id="payment-success-title" class="shop-cart__title">HEM REBUT EL TEU RETORN DE PAGAMENT</h1>
+        <h1 id="payment-success-title" class="shop-cart__title">PAGAMENT CONFIRMAT</h1>
         <p class="shop-cart__intro">
-          Si la transaccio s'ha completat correctament, la comanda quedara confirmada quan el callback del banc actualitzi l'estat.
+          Hem rebut el teu pagament i la comanda ja esta confirmada.
         </p>
       </div>
 
       <article class="shop-cart-empty-card">
         <div class="shop-cart-empty-card__body">
-          <p class="shop-cart-empty-card__kicker">COMANDA EN REVISIO</p>
-          <h2 class="shop-cart-empty-card__title">T'ENVIAREM LA CONFIRMACIO QUAN EL PAGAMENT QUEDI VALIDAT</h2>
+          <p class="shop-cart-empty-card__kicker">COMANDA CONFIRMADA</p>
+          <h2 class="shop-cart-empty-card__title">GRACIES PER LA TEVA COMPRA</h2>
           <p class="shop-cart-empty-card__text">
-            Pots tornar a la botiga o posar-te en contacte amb nosaltres si necessites ajuda amb la teva comanda.
+            Pots tornar a la botiga o posar-te en contacte amb nosaltres si necessites ajuda.
           </p>
           <div class="shop-cart-empty-card__actions">
             <a href="/shop/products/" class="btn-olive">TORNAR A LA BOTIGA</a>

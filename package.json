@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "eleventy --serve",
     "netlify:dev": "netlify dev",
-    "build": "npx @11ty/eleventy",
+    "products:generate": "node scripts/generate-products-json.js",
+    "build": "npm run products:generate && npx @11ty/eleventy",
     "tina:dev": "tinacms dev -c \"npm run dev\"",
     "tina:build": "tinacms build",
     "format": "prettier --write .",

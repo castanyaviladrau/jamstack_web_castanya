@@ -776,11 +776,19 @@ document.addEventListener("DOMContentLoaded", () => {
     renderSlide();
   };
 
-  const setupCart = () => {
-    const cartStorageKey = "castanya-cart";
-    const checkoutStorageKey = "castanya-checkout-draft";
-    const checkoutSessionKey = "castanya-checkout-session";
-    const currency = "EUR";
+    const setupCart = () => {
+      const cartStorageKey = "castanya-cart";
+      const checkoutStorageKey = "castanya-checkout-draft";
+      const checkoutSessionKey = "castanya-checkout-session";
+      const currency = "EUR";
+
+      const clearCart = () => {
+        try {
+          window.localStorage.removeItem(cartStorageKey);
+        } catch (error) {
+          // Ignore storage failures.
+        }
+      };
 
     const formatMoney = (value) => {
       return new Intl.NumberFormat("ca-ES", {
@@ -873,20 +881,25 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
 
-    const clearCheckoutSession = () => {
-      try {
-        window.localStorage.removeItem(checkoutSessionKey);
-      } catch (error) {
-        // Ignore storage failures and keep UI responsive.
-      }
-    };
+      const clearCheckoutSession = () => {
+        try {
+          window.localStorage.removeItem(checkoutSessionKey);
+        } catch (error) {
+          // Ignore storage failures and keep UI responsive.
+        }
+      };
+
+      const clearCheckoutDraft = () => {
+        try {
+          window.localStorage.removeItem(checkoutStorageKey);
+        } catch (error) {
+          // Ignore storage failures.
+        }
+      };
 
     const buildCartFingerprint = (cart) => {
       return cart.items
-        .map(
-          (item) =>
-            `${item.productSlug}:${item.variantLabel}:${Number(item.quantity || 0)}`,
-        )
+        .map((item) => `${String(item.sku || "").trim()}:${Number(item.quantity || 0)}`)
         .sort()
         .join("|");
     };
@@ -963,9 +976,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const upsertCartItem = (nextItem) => {
       const cart = readCart();
       const existingItem = cart.items.find(
-        (item) =>
-          item.productSlug === nextItem.productSlug &&
-          item.variantLabel === nextItem.variantLabel,
+        (item) => item.sku && nextItem.sku && item.sku === nextItem.sku,
       );
 
       if (existingItem) {
@@ -994,12 +1005,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
           const selectedOption = formatSelect.options[formatSelect.selectedIndex];
           const selectedPrice = Number(selectedOption.dataset.price || button.dataset.productPrice || 0);
+          const selectedSku = String(selectedOption.dataset.sku || button.dataset.productSku || "").trim();
 
           button.dataset.productVariantLabel =
             selectedOption.dataset.variantLabel ||
             selectedOption.value ||
             button.dataset.productVariantLabel;
           button.dataset.productPrice = String(selectedPrice);
+          button.dataset.productSku = selectedSku;
 
           if (priceNode) {
             priceNode.textContent = formatMoney(selectedPrice);
@@ -1020,8 +1033,9 @@ document.addEventListener("DOMContentLoaded", () => {
             button.dataset.productVariantLabel ||
             variantLabel;
           const unitPrice = Number(selectedOption?.dataset.price || button.dataset.productPrice || 0);
+          const sku = String(selectedOption?.dataset.sku || button.dataset.productSku || "").trim();
 
-          if (!productSlug || !normalizedVariantLabel || unitPrice <= 0) {
+          if (!sku || !productSlug || !normalizedVariantLabel || unitPrice <= 0) {
             if (feedbackNode) {
               feedbackNode.hidden = false;
               feedbackNode.dataset.state = "error";
@@ -1031,6 +1045,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
           upsertCartItem({
+            sku,
             productSlug,
             name: button.dataset.productName,
             image: button.dataset.productImage,
@@ -1049,7 +1064,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     };
 
-    const bindCartPage = () => {
+      const bindCartPage = () => {
       const cartRoot = document.querySelector("[data-cart-items]");
       if (!cartRoot) {
         return;
@@ -1080,6 +1095,15 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
       };
+
+      // On successful return from payment, clear client-side cart/session.
+      // The order is already persisted server-side.
+      if (window.location?.pathname === "/payment/success/") {
+        clearCart();
+        clearCheckoutDraft();
+        clearCheckoutSession();
+        updateCartCount();
+      }
 
       const renderCartPage = () => {
         const cart = readCart();
@@ -1119,8 +1143,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         if (noteNode) {
           noteNode.textContent = hasItems
-            ? "La teva comanda es creara a Supabase en confirmar. Si RedSys encara no esta configurat, la deixarem preparada per completar el pagament mes endavant."
-            : "La cistella es guarda en aquest navegador. Quan confirmis, crearem la comanda real i intentarem iniciar el pagament si la passarel-la ja esta activa.";
+            ? ""
+            : "La cistella es guarda en aquest navegador fins que finalitzis la compra.";
         }
         if (summaryLink) {
           summaryLink.textContent = hasItems ? "TORNAR A LA BOTIGA" : "SEGUIR COMPRANT";
@@ -1135,7 +1159,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const lineTotal = Number(item.unitPrice || 0) * Number(item.quantity || 0);
 
             return `
-              <article class="shop-cart-item" data-cart-item data-slug="${item.productSlug}" data-variant="${item.variantLabel}">
+              <article class="shop-cart-item" data-cart-item data-sku="${item.sku}" data-slug="${item.productSlug}" data-variant="${item.variantLabel}">
                 <img src="${item.image}" alt="${item.name}" class="shop-cart-item__image" />
                 <div class="shop-cart-item__body">
                   <div class="shop-cart-item__top">
@@ -1165,10 +1189,10 @@ document.addEventListener("DOMContentLoaded", () => {
         cartRoot.innerHTML = itemsMarkup;
       };
 
-      const updateQuantity = (productSlug, variantLabel, delta) => {
+      const updateQuantity = (sku, delta) => {
         const cart = readCart();
         const item = cart.items.find(
-          (entry) => entry.productSlug === productSlug && entry.variantLabel === variantLabel,
+          (entry) => entry.sku && sku && entry.sku === sku,
         );
 
         if (!item) {
@@ -1193,22 +1217,21 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
-        const sku = itemNode.dataset.slug;
-        const variantLabel = itemNode.dataset.variant;
-        if (!sku || !variantLabel) {
+        const sku = itemNode.dataset.sku;
+        if (!sku) {
           return;
         }
 
         if (target.matches("[data-cart-increase]")) {
-          updateQuantity(sku, variantLabel, 1);
+          updateQuantity(sku, 1);
         }
 
         if (target.matches("[data-cart-decrease]")) {
-          updateQuantity(sku, variantLabel, -1);
+          updateQuantity(sku, -1);
         }
 
         if (target.matches("[data-cart-remove]")) {
-          updateQuantity(sku, variantLabel, -999);
+          updateQuantity(sku, -999);
         }
       });
 
@@ -1220,9 +1243,9 @@ document.addEventListener("DOMContentLoaded", () => {
       checkoutForm?.addEventListener("submit", async (event) => {
         event.preventDefault();
 
-        const cart = readCart();
-        const formData = new FormData(checkoutForm);
-        const payload = normalizeCheckoutPayload(Object.fromEntries(formData.entries()));
+          const cart = readCart();
+          const formData = new FormData(checkoutForm);
+          const payload = normalizeCheckoutPayload(Object.fromEntries(formData.entries()));
         const requiredFields = [
           "name",
           "email",
@@ -1246,31 +1269,40 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
-        if (!cart.items.length) {
-          if (checkoutMessage) {
-            checkoutMessage.dataset.state = "error";
-            checkoutMessage.textContent = "La cistella esta buida. Afegeix-hi algun producte abans de continuar.";
+          if (!cart.items.length) {
+            if (checkoutMessage) {
+              checkoutMessage.dataset.state = "error";
+              checkoutMessage.textContent = "La cistella esta buida. Afegeix-hi algun producte abans de continuar.";
+            }
+            return;
           }
-          return;
-        }
 
-        saveCheckoutDraft(payload);
+          const invalidItem = cart.items.find((item) => !String(item.sku || "").trim());
+          if (invalidItem) {
+            if (checkoutMessage) {
+              checkoutMessage.dataset.state = "error";
+              checkoutMessage.textContent = "Hi ha un producte a la cistella sense SKU. Torna a afegir els productes a la cistella.";
+            }
+            return;
+          }
 
-        const cartFingerprint = buildCartFingerprint(cart);
-        const existingSession = readCheckoutSession();
+          saveCheckoutDraft(payload);
+
+          const cartFingerprint = buildCartFingerprint(cart);
+          const existingSession = readCheckoutSession();
 
         if (checkoutSubmitButton) {
           checkoutSubmitButton.disabled = true;
           checkoutSubmitButton.textContent = "PREPARANT LA COMANDA...";
         }
 
-        try {
+          try {
           if (checkoutMessage) {
             checkoutMessage.dataset.state = "success";
             checkoutMessage.textContent = "Creant la comanda i preparant el pas de pagament...";
           }
 
-          let order = null;
+            let order = null;
           if (
             existingSession?.orderId &&
             existingSession?.publicOrderCode &&
@@ -1283,8 +1315,9 @@ document.addEventListener("DOMContentLoaded", () => {
             };
           } else {
             clearCheckoutSession();
+            // Server-side pricing is authoritative; we only send sku + quantity.
             order = await createOrder({
-              items: cart.items,
+              items: cart.items.map((item) => ({ sku: item.sku, quantity: item.quantity })),
               customer: payload,
             });
             saveCheckoutSession({
@@ -1312,8 +1345,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
           if (paymentResult.status === 503) {
             if (checkoutMessage) {
-              checkoutMessage.dataset.state = "success";
-              checkoutMessage.textContent = `Comanda ${order.publicOrderCode} creada i guardada. El pagament encara no esta disponible; la teva comanda queda pendent de pagament fins que activem RedSys.`;
+              checkoutMessage.dataset.state = "error";
+              checkoutMessage.textContent = "No hem pogut iniciar el pagament ara mateix. Torna-ho a provar en uns minuts o contacta amb nosaltres.";
             }
             return;
           }
@@ -1340,10 +1373,10 @@ document.addEventListener("DOMContentLoaded", () => {
       renderCartPage();
     };
 
-    updateCartCount();
-    bindProductActions();
-    bindCartPage();
-  };
+      updateCartCount();
+      bindProductActions();
+      bindCartPage();
+    };
 
   setupProfessionalsValueFeature();
   setupProjecteFireTextSlider();

@@ -94,11 +94,17 @@ function createMerchantOrderCode(order) {
 function generateSignature(parameters, key) {
   const order = parameters.Ds_Merchant_Order;
   const keyBytes = Buffer.from(key, 'base64');
+
+  if (keyBytes.length !== 24) {
+    throw new Error(
+      `Invalid RedSys secret key length. Expected 24 bytes after base64 decode, got ${keyBytes.length}.`,
+    );
+  }
+  const iv = Buffer.alloc(8, 0);
   
   // Encrypt order with 3DES
-  const cipher = crypto.createCipher('des-ede3-cbc', keyBytes);
-  let encrypted = cipher.update(order, 'utf8', 'base64');
-  encrypted += cipher.final('base64');
+  const cipher = crypto.createCipheriv('des-ede3-cbc', keyBytes, iv);
+  const encrypted = Buffer.concat([cipher.update(order, 'utf8'), cipher.final()]).toString('base64');
   
   // Create HMAC with encrypted key
   const hmac = crypto.createHmac('sha256', Buffer.from(encrypted, 'base64'));

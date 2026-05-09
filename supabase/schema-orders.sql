@@ -23,7 +23,7 @@ create table if not exists public.orders (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
   constraint orders_status_check check (
-    status in ('pending_payment', 'paid', 'preparing', 'shipped', 'cancelled')
+    status in ('pending_payment', 'paid', 'processed', 'preparing', 'shipped', 'cancelled')
   ),
   constraint orders_payment_status_check check (
     payment_status in ('pending', 'paid', 'failed', 'refunded')

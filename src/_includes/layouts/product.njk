@@ -9,6 +9,7 @@ footerVariant: projecte-newsletter
 {% set defaultFormat = formats[0] if formats and formats.length else null %}
 {% set defaultVariantLabel = defaultFormat.label if defaultFormat and defaultFormat.label else (defaultFormat if defaultFormat else '') %}
 {% set defaultPrice = defaultFormat.price if defaultFormat and defaultFormat.price else price %}
+{% set defaultSku = defaultFormat.sku if defaultFormat and defaultFormat.sku else sku %}
 {% set priceText = priceLabel or price %}
 
 <section class="product-detail">
@@ -47,7 +48,8 @@ footerVariant: projecte-newsletter
             {% for option in formats %}
               {% set optionLabel = option.label if option.label else option %}
               {% set optionPrice = option.price if option.price else price %}
-              <option value="{{ optionLabel }}" data-variant-label="{{ optionLabel }}" data-price="{{ optionPrice }}">{{ optionLabel }}</option>
+              {% set optionSku = option.sku if option.sku else sku %}
+              <option value="{{ optionLabel }}" data-variant-label="{{ optionLabel }}" data-price="{{ optionPrice }}" data-sku="{{ optionSku }}">{{ optionLabel }}</option>
             {% endfor %}
           </select>
 
@@ -60,6 +62,7 @@ footerVariant: projecte-newsletter
             data-product-image="{{ image }}"
             data-product-variant-label="{{ defaultVariantLabel }}"
             data-product-price="{{ defaultPrice }}"
+            data-product-sku="{{ defaultSku }}"
             data-product-currency="{{ currency or 'EUR' }}"
           >
             {{ ctaLabel }}

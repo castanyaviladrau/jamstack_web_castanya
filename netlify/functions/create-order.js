@@ -1,5 +1,8 @@
 require('dotenv').config();
 
+const fs = require('fs');
+const path = require('path');
+
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
@@ -33,6 +36,34 @@ function normalizeText(value) {
   return String(value || '').trim();
 }
 
+function loadProductsIndex() {
+  const filePath = path.join(process.cwd(), 'src', '_data', 'products.json');
+  const raw = fs.readFileSync(filePath, 'utf8');
+  const parsed = JSON.parse(raw);
+  const list = Array.isArray(parsed?.list) ? parsed.list : [];
+
+  const skuIndex = new Map();
+  list.forEach((product) => {
+    const variants = Array.isArray(product?.variants) ? product.variants : [];
+    variants.forEach((variant) => {
+      const sku = normalizeText(variant?.sku);
+      if (!sku) {
+        return;
+      }
+
+      skuIndex.set(sku, {
+        product_slug: normalizeText(product?.slug),
+        product_name: normalizeText(product?.name),
+        product_image: normalizeText(product?.image) || null,
+        variant_label: normalizeText(variant?.label),
+        unit_price: Number(variant?.price),
+      });
+    });
+  });
+
+  return skuIndex;
+}
+
 function validateCustomer(customer) {
   const payload = customer || {};
   const requiredFields = ['name', 'email', 'phone', 'country', 'address', 'city', 'postalCode'];
@@ -59,25 +90,16 @@ function buildValidatedItems(rawItems) {
     throw new Error('Cart is empty');
   }
 
+  const productsIndex = loadProductsIndex();
+
   return rawItems.map((item, index) => {
     const safeItem = item && typeof item === 'object' ? item : {};
-    // Accept a few historical/client-side keys to avoid hard failures when
-    // older carts exist in localStorage or the payload shape evolves.
-    const productSlug = normalizeText(
-      safeItem.productSlug || safeItem.slug || safeItem.product_slug,
-    );
-    const variantLabel = normalizeText(
-      safeItem.variantLabel || safeItem.variant || safeItem.variant_label,
-    );
+    const sku = normalizeText(safeItem.sku);
     const quantity = Number(safeItem.quantity);
-    const unitPrice = Number(safeItem.unitPrice || safeItem.unit_price);
-    const productName = normalizeText(safeItem.name || safeItem.productName || safeItem.product_name);
-    const productImage = normalizeText(safeItem.image || safeItem.productImage || safeItem.product_image);
-    const itemCurrency = normalizeText(safeItem.currency) || 'EUR';
 
-    if (!productSlug || !variantLabel) {
+    if (!sku) {
       throw new Error(
-        `Invalid cart item payload at index ${index}: missing productSlug/variantLabel`,
+        `Invalid cart item payload at index ${index}: missing sku`,
       );
     }
 
@@ -85,19 +107,28 @@ function buildValidatedItems(rawItems) {
       throw new Error('Invalid cart item quantity');
     }
 
-    if (!Number.isFinite(unitPrice) || unitPrice <= 0) {
-      throw new Error('Invalid cart item price');
+    const resolved = productsIndex.get(sku);
+    if (!resolved) {
+      throw new Error(`Unknown SKU in cart at index ${index}: ${sku}`);
     }
 
-    const lineTotal = Number((unitPrice * quantity).toFixed(2));
+    if (!Number.isFinite(resolved.unit_price) || resolved.unit_price <= 0) {
+      throw new Error(`Invalid price for SKU ${sku}`);
+    }
+
+    if (!resolved.product_slug || !resolved.variant_label) {
+      throw new Error(`Product index entry is missing slug/label for SKU ${sku}`);
+    }
+
+    const lineTotal = Number((resolved.unit_price * quantity).toFixed(2));
 
     return {
-      product_slug: productSlug,
-      product_name: productName || productSlug,
-      variant_label: variantLabel,
-      product_image: productImage || null,
-      currency: itemCurrency,
-      unit_price: unitPrice,
+      sku,
+      product_slug: resolved.product_slug,
+      product_name: resolved.product_name || resolved.product_slug,
+      variant_label: resolved.variant_label,
+      product_image: resolved.product_image,
+      unit_price: resolved.unit_price,
       quantity,
       line_total: lineTotal,
     };
@@ -204,8 +235,9 @@ exports.handler = async (event) => {
         subtotalAmount,
         shippingAmount,
         totalAmount,
-        currency: insertedOrder.currency,
+          currency: insertedOrder.currency,
           items: validatedItems.map((item) => ({
+            sku: item.sku,
             name: item.product_name,
             variantLabel: item.variant_label,
             quantity: item.quantity,

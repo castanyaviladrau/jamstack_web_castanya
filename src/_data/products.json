@@ -26,12 +26,12 @@
       "variants": [
         {
           "sku": "llonganissa-castanya-250",
-          "label": "Peca 250 g",
+          "label": "Peça 250 g",
           "price": 10
         },
         {
           "sku": "llonganissa-castanya-500",
-          "label": "Peca 500 g",
+          "label": "Peça 500 g",
           "price": 18
         }
       ]
