@@ -12,8 +12,6 @@ tags:
 featured: true
 ---
 
-![La Castanyissa](/assets/images/blog/2026/la-castanyissa/featured.jpg)
-
 Hi ha productes que es mengen, i n'hi ha d'altres que s'expliquen. La **Castanyissa** pertany a aquest segon grup. No es nomes un embotit; es el resultat d'una unio de voluntats, una manera d'entendre la terra i el retorn a una practica que el temps havia deixat en l'oblit.
 
 Aquest projecte neix de la complicitat entre **El Soler d'en Hug** i **La Castanya**, dues realitats que compartim un mateix ADN: el respecte per l'arrel i la recerca de l'essencia en tot allo que fem.

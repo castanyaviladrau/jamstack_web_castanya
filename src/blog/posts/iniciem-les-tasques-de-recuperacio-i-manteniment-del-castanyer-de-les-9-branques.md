@@ -12,8 +12,6 @@ tags:
 featured: true
 ---
 
-![Castanyer de les 9 branques](/assets/images/blog/2026/castanyer-9-branques/featured.jpeg)
-
 Des de **Castanya de Viladrau** hem iniciat les tasques de recuperacio i manteniment del **castanyer de les 9 branques**, un arbre singular que forma part del patrimoni natural, historic i emocional del nostre territori.
 
 No es tracta d'una actuacio puntual ni d'una intervencio rapida. Es, sobretot, l'inici d'un **proces de cura, respecte i compromis**, que afrontem amb la consciencia que preservar un arbre com aquest demana temps, sensibilitat i continuitat. Recuperar-ne l'entorn, vetllar pel seu estat i dignificar la seva presencia es una feina que s'ha d'entendre des d'una mirada llarga.

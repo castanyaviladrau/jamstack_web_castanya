@@ -4,6 +4,7 @@ layout: base
 
 {% set pageContent = actualitat.page %}
 {% set articleDescription = seoDescription or description or title %}
+{% set posts = collections.posts %}
 
 <article class="actualitat-post">
   <div class="container actualitat-post__inner">
@@ -34,8 +35,8 @@ layout: base
   </div>
 
   {% if image %}
-  <figure class="actualitat-post__hero">
-    <img src="{{ image }}" alt="{% if imageAlt %}{{ imageAlt }}{% else %}{{ title }}{% endif %}" />
+  <figure class="actualitat-post__hero-media">
+    <img src="{{ image }}" alt="{{ imageAlt or title }}" loading="eager" decoding="async" />
   </figure>
   {% endif %}
 
@@ -54,10 +55,24 @@ layout: base
     {% endif %}
   </div>
 
+  {% for post in posts %}
+    {% if post.url == page.url %}
+      {% set previousPost = posts[loop.index] %}
+      {% set nextPost = posts[loop.index0 - 1] if loop.index0 > 0 else null %}
   <nav class="container actualitat-post__nav" aria-label="Articles relacionats">
-    <a href="/blog/">← ANTERIOR ARTICLE</a>
-    <a href="/blog/">SEGÜENT ARTICLE →</a>
+    {% if previousPost %}
+    <a href="{{ previousPost.url }}">← ANTERIOR ARTICLE</a>
+    {% else %}
+    <a href="/blog/">← TOTES LES NOTICIES</a>
+    {% endif %}
+    {% if nextPost %}
+    <a href="{{ nextPost.url }}">SEGÜENT ARTICLE →</a>
+    {% else %}
+    <a href="/blog/">TORNAR AL BLOG →</a>
+    {% endif %}
   </nav>
+    {% endif %}
+  {% endfor %}
 </article>
 
 <section class="actualitat-newsletter" aria-labelledby="actualitat-post-newsletter-title">

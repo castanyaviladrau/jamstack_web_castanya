@@ -12,8 +12,6 @@ tags:
 featured: true
 ---
 
-![Xef Oficial de la Castanya](/assets/images/blog/2026/neix-la-ruta-gastronomica/featured.png)
-
 Des de **La Castanya** fem un nou pas endavant en la nostra tasca de posar en valor aquest fruit com a producte, patrimoni i simbol compartit. Ens fa molta il.lusio anunciar l'inici de la **Ruta Gastronomica de la Castanya**, una proposta que neix per donar visibilitat a aquest element emblematic des de la cuina, l'experiencia i la identitat.
 
 Aquesta ruta no es nomes un itinerari culinar; es un relat viu que connecta el bosc amb la taula per explicar qui som i com entenem la nostra terra.
