@@ -16,6 +16,17 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Gotham-Medium";
+  src:
+    local("Gotham Medium"),
+    local("Gotham-Medium"),
+    local("GothamMedium");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
 * {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
@@ -35,11 +46,19 @@
   --color-cream: #fefdf9;
   --font-main: "Montserrat", sans-serif;
   --font-secondary: "Frutiger LT Std", Helvetica, Arial, sans-serif;
+  --font-subtitle: "Gotham-Medium", "Gotham Medium", var(--font-main);
   --transition-fast: 0.2s ease;
   --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --header-bg: #7b6b43; /* The specific olive-brown from your screenshot */
   --header-border: rgba(255, 255, 255, 0.4);
   --cookie-shadow: 0 24px 60px rgba(30, 30, 30, 0.18);
+}
+
+[class$="__eyebrow"],
+[class$="__kicker"],
+.label-small {
+  font-family: var(--font-subtitle);
+  font-weight: 500;
 }
 
 body.has-cookie-banner {
