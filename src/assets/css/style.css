@@ -49,6 +49,12 @@
   --font-title: "PP Neue World", serif;
   --font-slider-title: "Copperplate Castanya", "Copperplate", serif;
   --font-subtitle: "Gotham-Medium", "Gotham Medium", var(--font-main);
+  --type-label-size: clamp(12px, 0.95vw, 14px);
+  --type-label-weight: 700;
+  --type-label-letter-spacing: 0.14em;
+  --type-banner-title-size: clamp(28px, 3.4vw, 52px);
+  --type-banner-title-line-height: 0.98;
+  --type-banner-text-size: clamp(17px, 1.3vw, 22px);
   --transition-fast: 0.2s ease;
   --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --header-bg: #7b6b43; /* The specific olive-brown from your screenshot */
@@ -71,6 +77,16 @@
 .where-page__subtitle {
   font-family: var(--font-subtitle);
   font-weight: 500;
+}
+
+[class$="__eyebrow"],
+[class$="__kicker"],
+[class$="__label"],
+.label-small {
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
+  letter-spacing: var(--type-label-letter-spacing);
+  text-transform: uppercase;
 }
 
 [class$="__title"],
@@ -2206,6 +2222,11 @@ body:not(.home) .header-logo img {
   border-left: 1px solid var(--header-border);
 }
 
+.nav-item:first-child .nav-link-button {
+  font-size: 12px;
+  line-height: 1.15;
+}
+
 .nav-item a,
 .nav-link-button {
   display: flex;
@@ -3263,16 +3284,16 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 .fusta-cta-banner__title {
   margin: 0;
   max-width: 900px;
-  font-family: var(--font-secondary);
-  font-size: clamp(38px, 3.6vw, 60px);
-  line-height: 0.98;
+  font-family: var(--font-title);
+  font-size: var(--type-banner-title-size);
+  line-height: var(--type-banner-title-line-height);
   text-transform: uppercase;
 }
 
 .fusta-cta-banner__text {
   margin: 18px auto 0;
   max-width: 900px;
-  font-size: 18px;
+  font-size: var(--type-banner-text-size);
   line-height: 1.45;
 }
 
@@ -5336,9 +5357,10 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .cta-title {
   color: white;
-  font-family: var(--font-secondary);
-  font-size: 32px;
+  font-family: var(--font-title);
+  font-size: var(--type-banner-title-size);
   margin-bottom: 30px;
+  line-height: var(--type-banner-title-line-height);
   text-transform: uppercase;
 }
 
@@ -5370,8 +5392,8 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .cta-title--professionals {
   margin: 0;
-  font-size: clamp(34px, 3.6vw, 56px);
-  line-height: 0.98;
+  font-size: var(--type-banner-title-size);
+  line-height: var(--type-banner-title-line-height);
 }
 
 .cta-text {
@@ -5382,7 +5404,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .cta-text--professionals {
   max-width: 700px;
-  font-size: clamp(17px, 1.35vw, 22px);
+  font-size: var(--type-banner-text-size);
 }
 
 .btn-olive-transparent--professionals {
@@ -5408,13 +5430,13 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .cta-title--gastronomic {
   margin: 0;
-  font-size: clamp(34px, 4vw, 62px);
-  line-height: 0.96;
+  font-size: var(--type-banner-title-size);
+  line-height: var(--type-banner-title-line-height);
 }
 
 .cta-text--gastronomic {
   max-width: 840px;
-  font-size: clamp(20px, 1.5vw, 28px);
+  font-size: var(--type-banner-text-size);
   line-height: 1.34;
 }
 
@@ -6160,9 +6182,9 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 .where-sales-cta__title {
   max-width: 700px;
   font-family: var(--font-title);
-  font-size: 58px;
+  font-size: var(--type-banner-title-size);
   font-weight: 400;
-  line-height: 0.95;
+  line-height: var(--type-banner-title-line-height);
   text-transform: uppercase;
 }
 
@@ -6170,7 +6192,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   max-width: 760px;
   margin-top: 24px;
   font-family: var(--font-main);
-  font-size: 18px;
+  font-size: var(--type-banner-text-size);
   font-weight: 600;
   line-height: 1.5;
 }
@@ -6708,10 +6730,10 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .professionals-value-feature__cta-title {
   margin: 0;
-  font-family: var(--font-secondary);
-  font-size: clamp(32px, 3.2vw, 56px);
+  font-family: var(--font-title);
+  font-size: var(--type-banner-title-size);
   font-weight: 400;
-  line-height: 0.96;
+  line-height: var(--type-banner-title-line-height);
   text-transform: uppercase;
 }
 
@@ -6719,7 +6741,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   max-width: 880px;
   margin: 16px auto 0;
   font-family: var(--font-main);
-  font-size: clamp(16px, 1.2vw, 19px);
+  font-size: var(--type-banner-text-size);
   font-weight: 600;
   line-height: 1.4;
 }
@@ -8210,10 +8232,10 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 .shop-page-professionals__title {
   margin: 0;
   color: #fff;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(34px, 3.8vw, 58px);
+  font-family: var(--font-title);
+  font-size: var(--type-banner-title-size);
   font-weight: 400;
-  line-height: 0.94;
+  line-height: var(--type-banner-title-line-height);
   text-transform: uppercase;
 }
 
@@ -9163,13 +9185,13 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .cta-title--visits {
   margin: 0;
-  font-size: clamp(28px, 3.4vw, 52px);
-  line-height: 0.98;
+  font-size: var(--type-banner-title-size);
+  line-height: var(--type-banner-title-line-height);
 }
 
 .cta-text--visits {
   max-width: 760px;
-  font-size: clamp(17px, 1.3vw, 22px);
+  font-size: var(--type-banner-text-size);
 }
 
 .btn-olive-transparent--visits {

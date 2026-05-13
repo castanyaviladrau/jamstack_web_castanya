@@ -410,6 +410,7 @@ FodyWeavers.xsd
 # Built Visual Studio Code Extensions
 *.vsix
 .vscode
+.pnpm-store/
 
 # Windows Installer files from build outputs
 *.cab
