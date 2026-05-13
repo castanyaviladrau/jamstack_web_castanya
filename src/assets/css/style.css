@@ -1,10 +1,29 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
 
 @font-face {
-  font-family: "Montserrat";
-  src: url("/assets/fonts/Montserrat-Variable.ttf") format("truetype");
+  font-family: "PP Neue World";
+  src: url("/assets/fonts/PPNeueWorld-Regular.otf") format("opentype");
   font-style: normal;
-  font-weight: 100 900;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Copperplate Castanya";
+  src: url("/assets/fonts/Copperplate.ttc") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham-Medium";
+  src:
+    local("Gotham Medium"),
+    local("Gotham-Medium"),
+    local("GothamMedium");
+  font-style: normal;
+  font-weight: 500;
   font-display: swap;
 }
 
@@ -25,13 +44,75 @@
   --color-body: #444444;
   --color-bg: #fcfcfc;
   --color-cream: #fefdf9;
-  --font-main: "Montserrat", sans-serif;
-  --font-secondary: "Frutiger LT Std", Helvetica, Arial, sans-serif;
+  --font-main: "Gotham-Medium", "Gotham Medium", sans-serif;
+  --font-secondary: "Gotham-Medium", "Gotham Medium", sans-serif;
+  --font-title: "PP Neue World", serif;
+  --font-slider-title: "Copperplate Castanya", "Copperplate", serif;
+  --font-subtitle: "Gotham-Medium", "Gotham Medium", var(--font-main);
+  --type-label-size: clamp(12px, 0.95vw, 14px);
+  --type-label-weight: 700;
+  --type-label-letter-spacing: 0.14em;
+  --type-banner-title-size: clamp(28px, 3.4vw, 52px);
+  --type-banner-title-line-height: 0.98;
+  --type-banner-text-size: clamp(17px, 1.3vw, 22px);
   --transition-fast: 0.2s ease;
   --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --header-bg: #7b6b43; /* The specific olive-brown from your screenshot */
   --header-border: rgba(255, 255, 255, 0.4);
   --cookie-shadow: 0 24px 60px rgba(30, 30, 30, 0.18);
+}
+
+[class$="__eyebrow"],
+[class$="__kicker"],
+[class$="__subtitle"],
+[class$="__label"],
+[class$="__tagline"],
+.label-small,
+.botiga-subtitle,
+.intro-subtitle,
+.section-subtitle,
+.blog-hero-subtitle,
+.post-subtitle,
+.section-subtitle-italic,
+.where-page__subtitle {
+  font-family: var(--font-subtitle);
+  font-weight: 500;
+}
+
+[class$="__eyebrow"],
+[class$="__kicker"],
+[class$="__label"],
+.label-small {
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
+  letter-spacing: var(--type-label-letter-spacing);
+  text-transform: uppercase;
+}
+
+[class$="__title"],
+[class$="__heading"],
+[class$="__name"],
+.hero-title,
+.hero-subtitle,
+.hero-title-elegant,
+.section-title,
+.section-title-main,
+.card-title,
+.botiga-title,
+.info-title,
+.intro-title,
+.post-title,
+.featured-news-title,
+.actualitat-card-title,
+.logo-title,
+.cta-title,
+.newsletter-heading,
+.visit-activity-section-title,
+.footer-col h3,
+.footer-grid h3,
+.projecte-feature__slide h2,
+.visit-activity-experience__card h3 {
+  font-family: var(--font-title) !important;
 }
 
 body.has-cookie-banner {
@@ -997,7 +1078,7 @@ button:focus-visible {
 
 /* Update these for the "L'últim a la Castanya" section */
 .section-title {
-  font-family: var(--font-secondary);
+  font-family: var(--font-title);
   font-weight: 800; /* Force bold */
   font-size: 28px;
   margin-bottom: 10px;
@@ -1012,7 +1093,7 @@ button:focus-visible {
 
 /* Update for the card titles within the grid */
 .card-title {
-  font-family: var(--font-secondary);
+  font-family: var(--font-title);
   font-weight: 800; /* Bold headers in cards */
   font-size: 18px;
   margin-bottom: 10px;
@@ -1902,7 +1983,7 @@ body.page-blog .content-wrap {
 }
 
 .hero-central-logo {
-  height: clamp(140px, 12vw, 210px);
+  height: clamp(260px, 20vw, 340px);
   margin-bottom: 10px;
   width: auto;
   object-fit: contain;
@@ -1935,7 +2016,7 @@ body.page-blog .content-wrap {
 }
 
 .hero-brand-name {
-  font-family: serif;
+  font-family: "PP Neue World", serif;
   font-size: clamp(1.6rem, 3vw, 2.6rem);
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -1945,7 +2026,7 @@ body.page-blog .content-wrap {
 
 /* Main Typography from Screenshot */
 .hero-title {
-  font-family: var(--font-main);
+  font-family: var(--font-title);
   font-size: clamp(2.5rem, 6vw, 5rem); /* Responsive sizing */
   font-weight: 800;
   letter-spacing: 2px;
@@ -1955,7 +2036,7 @@ body.page-blog .content-wrap {
 }
 
 .hero-subtitle {
-  font-family: var(--font-main);
+  font-family: var(--font-title);
   font-size: clamp(2.1rem, 5vw, 4.5rem);
   font-weight: 800;
   letter-spacing: 2px;
@@ -1964,8 +2045,16 @@ body.page-blog .content-wrap {
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
+body.home .hero-title,
+body.home .hero-subtitle {
+  font-family: "Copperplate Castanya", Copperplate, "Copperplate Gothic Light", "Copperplate Gothic Bold", serif !important;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  font-stretch: normal;
+}
+
 .hero-tagline {
-  font-family: var(--font-secondary); /* Using the serif font */
+  font-family: "Gotham-Medium", "Gotham Medium", var(--font-main);
   font-style: italic;
   font-size: 18px;
   opacity: 0.9;
@@ -2032,12 +2121,22 @@ body.home .site-header:not(.is-scrolled) .logo-img--white {
   display: block;
 }
 
+body.home .site-header:not(.is-scrolled) .header-logo .logo-link {
+  opacity: 0;
+  pointer-events: none;
+}
+
 body.home .site-header.is-scrolled .logo-img--white {
   display: none;
 }
 
 body.home .site-header.is-scrolled .logo-img--color {
   display: block;
+}
+
+body.home .site-header.is-scrolled .header-logo .logo-link {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* Non-home: always show color logo */
@@ -2050,7 +2149,7 @@ body:not(.home) .logo-img--color {
 }
 
 .logo-title {
-  font-family: serif; /* Matches the elegant serif in screenshot */
+  font-family: "PP Neue World", serif;
   font-size: 24px;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -2059,7 +2158,7 @@ body:not(.home) .logo-img--color {
 }
 
 .logo-text {
-  font-family: "Frutiger LT Std", serif;
+  font-family: "Gotham-Medium", "Gotham Medium", var(--font-main);
   font-size: 28px;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -2123,6 +2222,11 @@ body:not(.home) .header-logo img {
   border-left: 1px solid var(--header-border);
 }
 
+.nav-item:first-child .nav-link-button {
+  font-size: 12px;
+  line-height: 1.15;
+}
+
 .nav-item a,
 .nav-link-button {
   display: flex;
@@ -2131,6 +2235,7 @@ body:not(.home) .header-logo img {
   padding: 10px 15px;
   color: white;
   text-decoration: none;
+  font-family: "Gotham-Medium", var(--font-main);
   font-size: 14px;
   font-weight: 700;
   line-height: 1.2;
@@ -2199,6 +2304,7 @@ body:not(.home) .header-logo img {
   padding: 12px 14px;
   color: #7b6b43 !important;
   text-decoration: none;
+  font-family: "Gotham-Medium", var(--font-main);
   text-transform: uppercase;
   letter-spacing: 0.9px;
   font-size: 12px;
@@ -2964,7 +3070,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 .fusta-showcase__title {
   margin: 24px 0 0;
   max-width: 820px;
-  font-family: var(--font-secondary);
+  font-family: var(--font-slider-title);
   font-size: clamp(44px, 4vw, 68px);
   line-height: 0.96;
   text-transform: uppercase;
@@ -3007,7 +3113,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   display: grid;
   grid-template-columns: minmax(320px, 0.95fr) minmax(360px, 1.05fr);
   gap: 48px;
-  align-items: center;
+  align-items: start;
   padding: 54px 28px 0;
 }
 
@@ -3018,9 +3124,9 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .fusta-showcase__details-title {
   margin: 0;
-  font-family: var(--font-secondary);
-  font-size: clamp(32px, 2.6vw, 48px);
-  line-height: 1.02;
+  font-family: var(--font-slider-title);
+  font-size: clamp(28px, 2.4vw, 44px);
+  line-height: 1.05;
   text-transform: uppercase;
   color: #8b7445;
 }
@@ -3178,16 +3284,16 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 .fusta-cta-banner__title {
   margin: 0;
   max-width: 900px;
-  font-family: var(--font-secondary);
-  font-size: clamp(38px, 3.6vw, 60px);
-  line-height: 0.98;
+  font-family: var(--font-title);
+  font-size: var(--type-banner-title-size);
+  line-height: var(--type-banner-title-line-height);
   text-transform: uppercase;
 }
 
 .fusta-cta-banner__text {
   margin: 18px auto 0;
   max-width: 900px;
-  font-size: 18px;
+  font-size: var(--type-banner-text-size);
   line-height: 1.45;
 }
 
@@ -3681,7 +3787,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 }
 
 .section-title-main {
-  font-family: var(--font-secondary);
+  font-family: var(--font-slider-title);
   font-size: 34px;
   font-weight: 800;
   color: #7b6b43;
@@ -3736,7 +3842,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 }
 
 .hero-title-elegant {
-  font-family: "Frutiger LT Std", serif; /* Or your chosen serif font */
+  font-family: var(--font-title);
   font-size: clamp(28px, 4vw, 48px);
   line-height: 1.1;
   color: #7b6b43;
@@ -3923,7 +4029,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .projecte-page__hero-title,
 .projecte-page__heading {
-  font-family: var(--font-secondary);
+  font-family: var(--font-slider-title);
   color: #8f7240;
   text-transform: uppercase;
 }
@@ -4138,7 +4244,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .projecte-feature__title {
   margin: 0 0 18px;
-  font-family: var(--font-secondary);
+  font-family: var(--font-slider-title);
   font-size: clamp(2.2rem, 4vw, 3.8rem);
   line-height: 1.02;
   text-transform: uppercase;
@@ -4676,16 +4782,17 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .gastronomic-sensory__banner-title {
   margin: 0;
-  font-family: var(--font-secondary);
-  font-size: clamp(36px, 4.2vw, 58px);
+  font-family: var(--font-title);
+  font-size: clamp(32px, 4vw, 56px);
   font-weight: 400;
-  line-height: 1;
+  line-height: 1.05;
   text-transform: uppercase;
 }
 
 .gastronomic-sensory__banner-text {
   max-width: 760px;
   margin: 18px auto 0;
+  font-family: var(--font-main);
   font-size: clamp(18px, 1.45vw, 24px);
   line-height: 1.4;
 }
@@ -5251,9 +5358,10 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .cta-title {
   color: white;
-  font-family: var(--font-secondary);
-  font-size: 32px;
+  font-family: var(--font-title);
+  font-size: var(--type-banner-title-size);
   margin-bottom: 30px;
+  line-height: var(--type-banner-title-line-height);
   text-transform: uppercase;
 }
 
@@ -5285,8 +5393,8 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .cta-title--professionals {
   margin: 0;
-  font-size: clamp(34px, 3.6vw, 56px);
-  line-height: 0.98;
+  font-size: var(--type-banner-title-size);
+  line-height: var(--type-banner-title-line-height);
 }
 
 .cta-text {
@@ -5297,7 +5405,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .cta-text--professionals {
   max-width: 700px;
-  font-size: clamp(17px, 1.35vw, 22px);
+  font-size: var(--type-banner-text-size);
 }
 
 .btn-olive-transparent--professionals {
@@ -5323,13 +5431,13 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .cta-title--gastronomic {
   margin: 0;
-  font-size: clamp(34px, 4vw, 62px);
-  line-height: 0.96;
+  font-size: var(--type-banner-title-size);
+  line-height: var(--type-banner-title-line-height);
 }
 
 .cta-text--gastronomic {
   max-width: 840px;
-  font-size: clamp(20px, 1.5vw, 28px);
+  font-size: var(--type-banner-text-size);
   line-height: 1.34;
 }
 
@@ -5893,7 +6001,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 }
 
 .where-card__title {
-  font-family: "Frutiger LT Std", serif;
+  font-family: var(--font-title);
   font-size: 33px;
   font-weight: 400;
   text-transform: uppercase;
@@ -5932,7 +6040,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 }
 
 .where-stockists__title {
-  font-family: var(--font-secondary);
+  font-family: var(--font-title);
   font-size: 28px;
   font-weight: 700;
   letter-spacing: 0.8px;
@@ -6009,7 +6117,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 }
 
 .stockist-card__title {
-  font-family: "Frutiger LT Std", serif;
+  font-family: var(--font-title);
   font-size: 28px;
   font-weight: 400;
   text-transform: uppercase;
@@ -6074,10 +6182,10 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .where-sales-cta__title {
   max-width: 700px;
-  font-family: "Frutiger LT Std", serif;
-  font-size: 58px;
+  font-family: var(--font-title);
+  font-size: var(--type-banner-title-size);
   font-weight: 400;
-  line-height: 0.95;
+  line-height: var(--type-banner-title-line-height);
   text-transform: uppercase;
 }
 
@@ -6085,7 +6193,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   max-width: 760px;
   margin-top: 24px;
   font-family: var(--font-main);
-  font-size: 18px;
+  font-size: var(--type-banner-text-size);
   font-weight: 600;
   line-height: 1.5;
 }
@@ -6485,7 +6593,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .professionals-value-feature__title {
   margin: 18px 0 0;
-  font-family: var(--font-secondary);
+  font-family: var(--font-slider-title);
   font-size: clamp(36px, 4vw, 56px);
   font-weight: 400;
   line-height: 1;
@@ -6623,10 +6731,10 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .professionals-value-feature__cta-title {
   margin: 0;
-  font-family: var(--font-secondary);
-  font-size: clamp(32px, 3.2vw, 56px);
+  font-family: var(--font-title);
+  font-size: var(--type-banner-title-size);
   font-weight: 400;
-  line-height: 0.96;
+  line-height: var(--type-banner-title-line-height);
   text-transform: uppercase;
 }
 
@@ -6634,7 +6742,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   max-width: 880px;
   margin: 16px auto 0;
   font-family: var(--font-main);
-  font-size: clamp(16px, 1.2vw, 19px);
+  font-size: var(--type-banner-text-size);
   font-weight: 600;
   line-height: 1.4;
 }
@@ -6993,7 +7101,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .shop-page-commitment__title {
   margin: 0;
-  font-family: var(--font-main);
+  font-family: var(--font-title);
   font-size: clamp(16px, 1.1vw, 18px);
   font-weight: 700;
   letter-spacing: 2.4px;
@@ -7297,7 +7405,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 .product-detail__title {
   margin: 0 0 8px;
   color: #6f5a33;
-  font-family: var(--font-main);
+  font-family: var(--font-title);
   font-size: 30px;
   font-weight: 700;
 }
@@ -7694,7 +7802,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 .shop-cart-summary__title {
   margin: 12px 0 0;
   color: #7b6b43;
-  font-family: var(--font-main);
+  font-family: var(--font-title);
   font-size: clamp(24px, 2vw, 34px);
   font-weight: 700;
   line-height: 1.08;
@@ -8125,10 +8233,10 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 .shop-page-professionals__title {
   margin: 0;
   color: #fff;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(34px, 3.8vw, 58px);
+  font-family: var(--font-title);
+  font-size: var(--type-banner-title-size);
   font-weight: 400;
-  line-height: 0.94;
+  line-height: var(--type-banner-title-line-height);
   text-transform: uppercase;
 }
 
@@ -8768,7 +8876,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .visits-slider__title {
   margin: 0;
-  font-family: var(--font-main);
+  font-family: var(--font-slider-title);
   font-size: clamp(24px, 2.1vw, 34px);
   font-weight: 700;
   line-height: 1.1;
@@ -8833,7 +8941,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .visits-card__title {
   margin: 15px 0;
-  font-family: var(--font-main);
+  font-family: var(--font-slider-title);
   font-size: clamp(18px, 1.5vw, 24px);
   font-weight: 700;
   line-height: 1.2;
@@ -9078,13 +9186,13 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .cta-title--visits {
   margin: 0;
-  font-size: clamp(28px, 3.4vw, 52px);
-  line-height: 0.98;
+  font-size: var(--type-banner-title-size);
+  line-height: var(--type-banner-title-line-height);
 }
 
 .cta-text--visits {
   max-width: 760px;
-  font-size: clamp(17px, 1.3vw, 22px);
+  font-size: var(--type-banner-text-size);
 }
 
 .btn-olive-transparent--visits {
@@ -9916,7 +10024,7 @@ body.internal.page-gastronomic-recipes {
 .recipe-detail__step-title,
 .recipe-detail__title {
   margin: 0;
-  font-family: var(--font-secondary);
+  font-family: var(--font-title);
   text-transform: uppercase;
   color: #8b7445;
 }
@@ -10050,7 +10158,7 @@ body.internal.page-gastronomic-recipes {
 .recipe-detail__related-products-title,
 .recipe-detail__related-product-title {
   margin: 0;
-  font-family: var(--font-secondary);
+  font-family: var(--font-title);
   text-transform: uppercase;
   color: #8b7445;
 }
