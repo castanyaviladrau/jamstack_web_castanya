@@ -2040,12 +2040,22 @@ body.home .site-header:not(.is-scrolled) .logo-img--white {
   display: block;
 }
 
+body.home .site-header:not(.is-scrolled) .header-logo .logo-link {
+  opacity: 0;
+  pointer-events: none;
+}
+
 body.home .site-header.is-scrolled .logo-img--white {
   display: none;
 }
 
 body.home .site-header.is-scrolled .logo-img--color {
   display: block;
+}
+
+body.home .site-header.is-scrolled .header-logo .logo-link {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* Non-home: always show color logo */
