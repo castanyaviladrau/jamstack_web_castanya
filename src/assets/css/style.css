@@ -8,6 +8,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "PP Neue World";
+  src: url("/assets/fonts/PPNeueWorld-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 * {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
@@ -1935,7 +1943,7 @@ body.page-blog .content-wrap {
 }
 
 .hero-brand-name {
-  font-family: serif;
+  font-family: "PP Neue World", serif;
   font-size: clamp(1.6rem, 3vw, 2.6rem);
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -2050,7 +2058,7 @@ body:not(.home) .logo-img--color {
 }
 
 .logo-title {
-  font-family: serif; /* Matches the elegant serif in screenshot */
+  font-family: "PP Neue World", serif;
   font-size: 24px;
   text-transform: uppercase;
   letter-spacing: 1px;
