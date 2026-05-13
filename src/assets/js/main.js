@@ -808,6 +808,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const items = parsed.items.filter(
           (item) =>
             item &&
+            item.sku &&
             item.productSlug &&
             item.variantLabel &&
             Number(item.quantity) > 0,
@@ -1098,7 +1099,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // On successful return from payment, clear client-side cart/session.
       // The order is already persisted server-side.
-      if (window.location?.pathname === "/payment/success/") {
+      const normalizedPath = String(window.location?.pathname || "").replace(/\/+$/, "");
+      if (normalizedPath === "/payment/success") {
         clearCart();
         clearCheckoutDraft();
         clearCheckoutSession();

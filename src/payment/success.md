@@ -33,3 +33,14 @@ permalink: /payment/success/
     </div>
   </div>
 </section>
+
+<script>
+  // Payment is confirmed server-side; clear any client-side cart remnants.
+  try {
+    window.localStorage.removeItem("castanya-cart");
+    window.localStorage.removeItem("castanya-checkout-draft");
+    window.localStorage.removeItem("castanya-checkout-session");
+  } catch (e) {
+    // ignore
+  }
+</script>
