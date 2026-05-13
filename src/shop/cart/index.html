@@ -80,11 +80,37 @@ footerVariant: projecte-newsletter
             </label>
             <label class="shop-cart-checkout__field">
               <span>Telefon</span>
-              <input type="tel" name="phone" autocomplete="tel" required />
+              <input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+34 600 123 123" required />
             </label>
-            <label class="shop-cart-checkout__field">
+            <label class="shop-cart-checkout__field shop-cart-checkout__field--select">
               <span>Pais</span>
-              <input type="text" name="country" autocomplete="country-name" value="Espanya" required />
+              <select name="country" autocomplete="country-name" required>
+                <option value="Espanya" selected>Espanya</option>
+                <option value="Portugal">Portugal</option>
+                <option value="Franca">Franca</option>
+                <option value="Italia">Italia</option>
+                <option value="Alemanya">Alemanya</option>
+                <option value="Regne Unit">Regne Unit</option>
+                <option value="Irlanda">Irlanda</option>
+                <option value="Belgica">Belgica</option>
+                <option value="Paisos Baixos">Paisos Baixos</option>
+                <option value="Luxemburg">Luxemburg</option>
+                <option value="Suissa">Suissa</option>
+                <option value="Austria">Austria</option>
+                <option value="Dinamarca">Dinamarca</option>
+                <option value="Suecia">Suecia</option>
+                <option value="Noruega">Noruega</option>
+                <option value="Finlandia">Finlandia</option>
+                <option value="Polonia">Polonia</option>
+                <option value="Republica Txeca">Republica Txeca</option>
+                <option value="Eslovaquia">Eslovaquia</option>
+                <option value="Hongria">Hongria</option>
+                <option value="Eslovenia">Eslovenia</option>
+                <option value="Croacia">Croacia</option>
+                <option value="Grecia">Grecia</option>
+                <option value="Romania">Romania</option>
+                <option value="Bulgaria">Bulgaria</option>
+              </select>
             </label>
             <label class="shop-cart-checkout__field shop-cart-checkout__field--full">
               <span>Adreca</span>

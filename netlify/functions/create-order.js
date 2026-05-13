@@ -36,6 +36,25 @@ function normalizeText(value) {
   return String(value || '').trim();
 }
 
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizeText(value));
+}
+
+function isValidInternationalPhone(value) {
+  const phone = normalizeText(value);
+  if (!/^\+?[0-9\s().-]+$/.test(phone)) {
+    return false;
+  }
+
+  const digits = phone.replace(/\D/g, '');
+  if (digits.length < 7 || digits.length > 15) {
+    return false;
+  }
+
+  const plusCount = (phone.match(/\+/g) || []).length;
+  return plusCount === 0 || (plusCount === 1 && phone.startsWith('+'));
+}
+
 function loadProductsIndex() {
   const filePath = path.join(process.cwd(), 'src', '_data', 'products.json');
   const raw = fs.readFileSync(filePath, 'utf8');
@@ -71,6 +90,14 @@ function validateCustomer(customer) {
 
   if (missingField) {
     throw new Error(`Missing customer field: ${missingField}`);
+  }
+
+  if (!isValidEmail(payload.email)) {
+    throw new Error('Invalid customer email');
+  }
+
+  if (!isValidInternationalPhone(payload.phone)) {
+    throw new Error('Invalid customer phone');
   }
 
   return {
@@ -248,7 +275,19 @@ exports.handler = async (event) => {
       });
   } catch (error) {
     console.error('Create order error:', error);
-    return jsonResponse(500, {
+    const statusCode =
+      /^Missing customer field:/.test(error.message) ||
+      error.message === 'Invalid customer email' ||
+      error.message === 'Invalid customer phone' ||
+      error.message === 'Cart is empty' ||
+      error.message.startsWith('Invalid cart item') ||
+      error.message.startsWith('Unknown SKU') ||
+      error.message.startsWith('Invalid price') ||
+      error.message.startsWith('Product index entry is missing')
+        ? 400
+        : 500;
+
+    return jsonResponse(statusCode, {
       success: false,
       error: 'Order creation failed',
       details: error.message,

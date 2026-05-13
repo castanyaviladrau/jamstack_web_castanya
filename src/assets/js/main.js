@@ -918,6 +918,61 @@ document.addEventListener("DOMContentLoaded", () => {
       };
     };
 
+    const isValidEmail = (value) => {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || "").trim());
+    };
+
+    const isValidInternationalPhone = (value) => {
+      const phone = String(value || "").trim();
+      if (!/^\+?[0-9\s().-]+$/.test(phone)) {
+        return false;
+      }
+
+      const digits = phone.replace(/\D/g, "");
+      if (digits.length < 7 || digits.length > 15) {
+        return false;
+      }
+
+      const plusCount = (phone.match(/\+/g) || []).length;
+      return plusCount === 0 || (plusCount === 1 && phone.startsWith("+"));
+    };
+
+    const getCheckoutValidationError = (payload) => {
+      const requiredFields = [
+        "name",
+        "email",
+        "phone",
+        "country",
+        "address",
+        "city",
+        "postalCode",
+      ];
+      const missingField = requiredFields.find((field) => !String(payload[field] || "").trim());
+
+      if (missingField) {
+        return {
+          field: missingField,
+          message: "Completa tots els camps obligatoris abans de continuar.",
+        };
+      }
+
+      if (!isValidEmail(payload.email)) {
+        return {
+          field: "email",
+          message: "Introdueix un correu electronic valid.",
+        };
+      }
+
+      if (!isValidInternationalPhone(payload.phone)) {
+        return {
+          field: "phone",
+          message: "Introdueix un telefon valid amb extensio internacional si cal.",
+        };
+      }
+
+      return null;
+    };
+
     const submitPaymentForm = (payment) => {
       const form = document.createElement("form");
       form.method = "POST";
@@ -1237,7 +1292,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
-      checkoutForm?.addEventListener("input", () => {
+      checkoutForm?.addEventListener("input", (event) => {
+        const target = event.target;
+        if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement || target instanceof HTMLSelectElement) {
+          target.setCustomValidity("");
+        }
         const formData = new FormData(checkoutForm);
         saveCheckoutDraft(Object.fromEntries(formData.entries()));
       });
@@ -1248,25 +1307,26 @@ document.addEventListener("DOMContentLoaded", () => {
           const cart = readCart();
           const formData = new FormData(checkoutForm);
           const payload = normalizeCheckoutPayload(Object.fromEntries(formData.entries()));
-        const requiredFields = [
-          "name",
-          "email",
-          "phone",
-          "country",
-          "address",
-          "city",
-          "postalCode",
-        ];
-        const missingField = requiredFields.find((field) => !String(payload[field] || "").trim());
-
         if (checkoutMessage) {
           checkoutMessage.hidden = false;
         }
 
-        if (missingField) {
+        const validationError = getCheckoutValidationError(payload);
+        if (validationError) {
+          const invalidField = checkoutForm?.elements.namedItem(validationError.field);
+          if (
+            invalidField instanceof HTMLInputElement ||
+            invalidField instanceof HTMLTextAreaElement ||
+            invalidField instanceof HTMLSelectElement
+          ) {
+            invalidField.setCustomValidity(validationError.message);
+            invalidField.reportValidity();
+            invalidField.focus();
+          }
+
           if (checkoutMessage) {
             checkoutMessage.dataset.state = "error";
-            checkoutMessage.textContent = "Completa tots els camps obligatoris abans de continuar.";
+            checkoutMessage.textContent = validationError.message;
           }
           return;
         }
