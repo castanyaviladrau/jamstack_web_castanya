@@ -1,14 +1,6 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
 
 @font-face {
-  font-family: "Montserrat";
-  src: url("/assets/fonts/Montserrat-Variable.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-}
-
-@font-face {
   font-family: "PP Neue World";
   src: url("/assets/fonts/PPNeueWorld-Regular.otf") format("opentype");
   font-style: normal;
@@ -2150,7 +2142,7 @@ body:not(.home) .logo-img--color {
 }
 
 .logo-text {
-  font-family: "Frutiger LT Std", serif;
+  font-family: "Gotham-Medium", "Gotham Medium", var(--font-main);
   font-size: 28px;
   letter-spacing: 2px;
   text-transform: uppercase;
