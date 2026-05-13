@@ -30,6 +30,7 @@ test('newsletter-subscribe handler returns 400 for invalid email', async () => {
 });
 
 test('newsletter-subscribe handler sends newsletter email through Brevo', async () => {
+  process.env.EMAIL_SENDING_ENABLED = 'true';
   process.env.BREVO_API_KEY = 'brevo-key';
   process.env.FROM_EMAIL = 'no-reply@example.com';
   process.env.FROM_NAME = 'Castanya de Viladrau';
@@ -74,6 +75,7 @@ test('newsletter-subscribe handler sends newsletter email through Brevo', async 
 });
 
 test('newsletter-subscribe handler returns 500 when Brevo is not configured', async () => {
+  process.env.EMAIL_SENDING_ENABLED = 'true';
   process.env.BREVO_API_KEY = '';
   process.env.FROM_EMAIL = '';
 
@@ -88,4 +90,34 @@ test('newsletter-subscribe handler returns 500 when Brevo is not configured', as
     success: false,
     error: 'Failed to subscribe to newsletter',
   });
+});
+
+test('newsletter-subscribe handler succeeds without sending when EMAIL_SENDING_ENABLED is false', async () => {
+  process.env.EMAIL_SENDING_ENABLED = 'false';
+  process.env.BREVO_API_KEY = 'brevo-key';
+  process.env.FROM_EMAIL = 'no-reply@example.com';
+
+  const originalFetch = global.fetch;
+  let fetchCalled = false;
+  global.fetch = async () => {
+    fetchCalled = true;
+    throw new Error('fetch should not be called');
+  };
+
+  try {
+    const mod = freshRequire('../netlify/functions/newsletter-subscribe.js');
+    const response = await mod.handler({
+      httpMethod: 'POST',
+      body: JSON.stringify({ email: 'client@example.com' }),
+    });
+
+    assert.equal(response.statusCode, 200);
+    assert.equal(fetchCalled, false);
+    assert.deepEqual(JSON.parse(response.body), {
+      success: true,
+      message: 'Successfully subscribed to newsletter',
+    });
+  } finally {
+    global.fetch = originalFetch;
+  }
 });

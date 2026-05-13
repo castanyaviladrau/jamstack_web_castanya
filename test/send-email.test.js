@@ -7,6 +7,7 @@ function freshRequire(modulePath) {
 }
 
 test('send-email handler returns 503 when Brevo is not configured', async () => {
+  process.env.EMAIL_SENDING_ENABLED = 'true';
   process.env.BREVO_API_KEY = '';
   process.env.FROM_EMAIL = '';
 
@@ -25,6 +26,7 @@ test('send-email handler returns 503 when Brevo is not configured', async () => 
 });
 
 test('send-email handler returns 500 when contact recipient is missing', async () => {
+  process.env.EMAIL_SENDING_ENABLED = 'true';
   process.env.BREVO_API_KEY = 'brevo-key';
   process.env.FROM_EMAIL = 'no-reply@example.com';
   process.env.CONTACT_EMAIL = '';
@@ -64,6 +66,7 @@ test('send-email handler returns 500 when contact recipient is missing', async (
 });
 
 test('send-email handler sends contact email when configured', async () => {
+  process.env.EMAIL_SENDING_ENABLED = 'true';
   process.env.BREVO_API_KEY = 'brevo-key';
   process.env.FROM_EMAIL = 'no-reply@example.com';
   process.env.FROM_NAME = 'Castanya de Viladrau';
@@ -102,6 +105,38 @@ test('send-email handler sends contact email when configured', async () => {
     assert.equal(payload.to[0].email, 'info@example.com');
     assert.equal(payload.sender.email, 'no-reply@example.com');
     assert.equal(payload.subject, 'Nuevo mensaje de contacto de Test');
+  } finally {
+    global.fetch = originalFetch;
+  }
+});
+
+test('send-email handler skips sending when EMAIL_SENDING_ENABLED is false', async () => {
+  process.env.EMAIL_SENDING_ENABLED = 'false';
+  process.env.BREVO_API_KEY = 'brevo-key';
+  process.env.FROM_EMAIL = 'no-reply@example.com';
+
+  const originalFetch = global.fetch;
+  let fetchCalled = false;
+  global.fetch = async () => {
+    fetchCalled = true;
+    throw new Error('fetch should not be called');
+  };
+
+  try {
+    const mod = freshRequire('../netlify/functions/send-email.js');
+    const response = await mod.handler({
+      httpMethod: 'POST',
+      body: JSON.stringify({ type: 'contact', data: { name: 'Test' } }),
+    });
+
+    assert.equal(response.statusCode, 200);
+    assert.equal(fetchCalled, false);
+    assert.deepEqual(JSON.parse(response.body), {
+      success: true,
+      message: 'Email sending skipped',
+      skipped: true,
+      reason: 'disabled_by_env',
+    });
   } finally {
     global.fetch = originalFetch;
   }

@@ -92,6 +92,7 @@ test('payment-callback handler returns 400 for invalid signature', async () => {
 });
 
 test('payment-callback handler marks order as paid on successful response', async () => {
+  process.env.EMAIL_SENDING_ENABLED = 'true';
   process.env.SUPABASE_URL = 'https://example.supabase.co';
   process.env.SUPABASE_SERVICE_ROLE_KEY = 'service-role';
   process.env.REDSYS_SECRET_KEY = Buffer.alloc(24, 9).toString('base64');
@@ -178,6 +179,7 @@ test('payment-callback handler marks order as paid on successful response', asyn
 });
 
 test('payment-callback handler marks order as failed on unsuccessful response', async () => {
+  process.env.EMAIL_SENDING_ENABLED = 'true';
   process.env.SUPABASE_URL = 'https://example.supabase.co';
   process.env.SUPABASE_SERVICE_ROLE_KEY = 'service-role';
   process.env.REDSYS_SECRET_KEY = Buffer.alloc(24, 10).toString('base64');
@@ -247,6 +249,7 @@ test('payment-callback handler marks order as failed on unsuccessful response', 
 });
 
 test('payment-callback handler returns 400 when callback payload is missing', async () => {
+  process.env.EMAIL_SENDING_ENABLED = 'true';
   process.env.SUPABASE_URL = 'https://example.supabase.co';
   process.env.SUPABASE_SERVICE_ROLE_KEY = 'service-role';
   process.env.REDSYS_SECRET_KEY = Buffer.alloc(24, 12).toString('base64');
@@ -264,6 +267,7 @@ test('payment-callback handler returns 400 when callback payload is missing', as
 });
 
 test('payment-callback handler returns 503 when secret key is missing', async () => {
+  process.env.EMAIL_SENDING_ENABLED = 'true';
   process.env.SUPABASE_URL = 'https://example.supabase.co';
   process.env.SUPABASE_SERVICE_ROLE_KEY = 'service-role';
   process.env.REDSYS_SECRET_KEY = '';
@@ -282,6 +286,7 @@ test('payment-callback handler returns 503 when secret key is missing', async ()
 });
 
 test('payment-callback handler is idempotent when order is already paid', async () => {
+  process.env.EMAIL_SENDING_ENABLED = 'true';
   process.env.SUPABASE_URL = 'https://example.supabase.co';
   process.env.SUPABASE_SERVICE_ROLE_KEY = 'service-role';
   process.env.REDSYS_SECRET_KEY = Buffer.alloc(24, 13).toString('base64');
@@ -334,6 +339,7 @@ test('payment-callback handler is idempotent when order is already paid', async 
 });
 
 test('payment-callback handler sends customer and provider emails when Brevo is configured', async () => {
+  process.env.EMAIL_SENDING_ENABLED = 'true';
   process.env.SUPABASE_URL = 'https://example.supabase.co';
   process.env.SUPABASE_SERVICE_ROLE_KEY = 'service-role';
   process.env.REDSYS_SECRET_KEY = Buffer.alloc(24, 14).toString('base64');
@@ -444,6 +450,85 @@ test('payment-callback handler sends customer and provider emails when Brevo is 
     const providerEmailPayload = JSON.parse(brevoCalls[1].options.body);
     assert.equal(customerEmailPayload.to[0].email, 'buyer@example.com');
     assert.equal(providerEmailPayload.to[0].email, 'orders@example.com');
+  } finally {
+    global.fetch = originalFetch;
+  }
+});
+
+test('payment-callback handler skips order emails when EMAIL_SENDING_ENABLED is false', async () => {
+  process.env.EMAIL_SENDING_ENABLED = 'false';
+  process.env.SUPABASE_URL = 'https://example.supabase.co';
+  process.env.SUPABASE_SERVICE_ROLE_KEY = 'service-role';
+  process.env.REDSYS_SECRET_KEY = Buffer.alloc(24, 15).toString('base64');
+  process.env.PAYMENT_PROVIDER = '';
+  process.env.BREVO_API_KEY = 'brevo-key';
+  process.env.FROM_EMAIL = 'no-reply@example.com';
+  process.env.ORDER_NOTIFICATION_EMAIL = 'orders@example.com';
+
+  const originalFetch = global.fetch;
+  const fetchCalls = [];
+  global.fetch = async (url, options = {}) => {
+    fetchCalls.push({ url, options });
+
+    if (String(url).includes('payment_reference=eq.123456789012')) {
+      return {
+        ok: true,
+        json: async () => [
+          {
+            id: 'order-4',
+            public_order_code: 'CV-PAID-NO-EMAILS',
+            payment_status: 'pending',
+            payment_raw_response: { initiated_at: '2026-01-01T00:00:00.000Z' },
+            customer_email: 'buyer@example.com',
+            customer_name: 'Buyer',
+            shipping_address_json: {},
+          },
+        ],
+      };
+    }
+
+    if (String(url).includes('/rest/v1/orders?id=eq.order-4')) {
+      return {
+        ok: true,
+        json: async () => [
+          {
+            id: 'order-4',
+            public_order_code: 'CV-PAID-NO-EMAILS',
+            payment_status: 'paid',
+            customer_email: 'buyer@example.com',
+            customer_name: 'Buyer',
+            shipping_address_json: {},
+          },
+        ],
+      };
+    }
+
+    if (String(url) === 'https://api.brevo.com/v3/smtp/email') {
+      throw new Error('Brevo should not be called when email sending is disabled');
+    }
+
+    throw new Error(`Unexpected fetch call: ${url}`);
+  };
+
+  try {
+    const mod = freshRequire('../netlify/functions/payment-callback.js');
+    const callbackPayload = { Ds_Order: '123456789012', Ds_Response: '0000' };
+    const merchantParameters = Buffer.from(JSON.stringify(callbackPayload), 'utf8').toString('base64');
+    const signature = signMerchantParameters(
+      merchantParameters,
+      callbackPayload.Ds_Order,
+      process.env.REDSYS_SECRET_KEY,
+    );
+
+    const response = await mod.handler({
+      httpMethod: 'POST',
+      headers: { 'content-type': 'application/x-www-form-urlencoded' },
+      body: `Ds_MerchantParameters=${encodeURIComponent(merchantParameters)}&Ds_Signature=${encodeURIComponent(signature)}`,
+    });
+
+    assert.equal(response.statusCode, 200);
+    assert.equal(response.body, 'OK');
+    assert.equal(fetchCalls.length, 2);
   } finally {
     global.fetch = originalFetch;
   }

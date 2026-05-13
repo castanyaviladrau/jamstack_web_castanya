@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const querystring = require('querystring');
 require('dotenv').config();
-const { sendEmail, isBrevoConfigured } = require('./send-email');
+const { sendEmail, isBrevoConfigured, isEmailSendingEnabled } = require('./send-email');
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -164,6 +164,11 @@ function mergePaymentSnapshot(existingSnapshot, nextSnapshot) {
 }
 
 async function sendOrderEmails(order) {
+  if (!isEmailSendingEnabled()) {
+    console.log(`Email sending disabled by env, skipping order emails for ${order.public_order_code}`);
+    return { skipped: true, reason: 'disabled_by_env' };
+  }
+
   if (!isBrevoConfigured()) {
     console.log(`Brevo not configured, skipping order emails for ${order.public_order_code}`);
     return { skipped: true, reason: 'not_configured' };

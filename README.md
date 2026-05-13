@@ -207,10 +207,11 @@ These tests are unit-level and mock external services such as Supabase. They do 
 3. **Environment variables**
    Create `.env` file:
    ```env
-    BREVO_API_KEY=your_brevo_api_key
-    FROM_EMAIL=no-reply@example.com
-    FROM_NAME=Castanya de Viladrau
-    ORDER_NOTIFICATION_EMAIL=orders@example.com
+     BREVO_API_KEY=your_brevo_api_key
+     EMAIL_SENDING_ENABLED=true
+     FROM_EMAIL=no-reply@example.com
+     FROM_NAME=Castanya de Viladrau
+     ORDER_NOTIFICATION_EMAIL=orders@example.com
     REDSYS_MERCHANT_CODE=your_merchant_code
     REDSYS_SECRET_KEY=your_secret_key
     SUPABASE_URL=your_supabase_project_url
@@ -385,6 +386,7 @@ Important behavior:
 
 - payment success is written to Supabase first
 - confirmation email is attempted afterwards as a best-effort action
+- set `EMAIL_SENDING_ENABLED=false` to disable all outgoing emails from `.env`
 - if `BREVO_API_KEY` or `FROM_EMAIL` is missing, payment still remains `paid`
 - missing Brevo configuration is treated like RedSys configuration: code is ready, activation depends on environment variables
 
