@@ -49,8 +49,6 @@ async function fetchSupabaseOrder({ orderId, publicOrderCode }) {
     throw new Error('Missing order identifier');
   }
 
-  // PostgREST logic-tree filters (or/and) use dot syntax (col.op.value)
-  // while normal query params use equals (col=op.value).
   const query = filters.length > 1 ? `or=(${logicFilters.join(',')})` : filters[0];
   const response = await fetch(
     `${SUPABASE_URL}/rest/v1/orders?select=*&limit=1&${query}`,
@@ -143,6 +141,7 @@ exports.handler = async (event, context) => {
 
   const isMockProvider = PAYMENT_PROVIDER === 'mock';
   if (isMockProvider) {
+    // TODO: Remove this mock payment-provider path before production hardening to avoid keeping a fake RedSys flow available long-term.
     // In mock mode we still generate signatures so callback verification stays meaningful.
     // Allow a dedicated dev key, falling back to the standard key.
     if (!process.env.REDSYS_SECRET_KEY_DEV && !SECRET_KEY) {
