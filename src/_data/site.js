@@ -9,7 +9,7 @@ module.exports = {
   locale: "ca_ES",
   language: "ca",
   social: {
-    instagram: null,
+    instagram: "https://www.instagram.com/castanyadeviladrau/",
     whatsapp: "https://wa.me/34608131199?text=Hola%2C%20m%27interessaria%20fer%20una%20consulta...",
   },
   business: {
