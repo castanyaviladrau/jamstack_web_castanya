@@ -96,7 +96,34 @@ export default defineConfig({
         label: "Products",
         path: "src/shop/products",
         format: "md",
+        ui: {
+          router: ({ document }) => `/shop/products/${document._sys.filename}/`,
+          defaultItem: () => ({
+            layout: "product",
+            currency: "EUR",
+            priceLabel: "Des de 0,00 EUR",
+            ingredientsLabel: "INGREDIENTS",
+            gallery: [],
+            formatLabel: "Selecciona format",
+            formats: [{ label: "Format 1", sku: "sku-1", price: 0 }],
+            highlights: [],
+            detailLabel: "DESCRIPCIO",
+            detailNotes: [],
+            ctaLabel: "AFEGIR A LA CISTELLA",
+            ctaHref: "/shop/cart/",
+            featured: false,
+          }),
+        },
         fields: [
+          {
+            type: "string",
+            name: "layout",
+            label: "Layout",
+            required: true,
+            ui: {
+              component: "hidden",
+            },
+          },
           {
             type: "string",
             name: "title",
@@ -264,9 +291,6 @@ export default defineConfig({
             isBody: true,
           },
         ],
-        ui: {
-          router: ({ document }) => `/shop/products/${document._sys.filename}/`,
-        },
       },
       {
         name: "visits",
