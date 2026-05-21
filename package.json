@@ -7,7 +7,7 @@
     "dev": "eleventy --serve",
     "netlify:dev": "netlify dev",
     "products:generate": "node scripts/generate-products-json.js",
-    "build": "pnpm products:generate && pnpm exec eleventy",
+    "build": "pnpm tina:build && pnpm products:generate && pnpm exec eleventy",
     "test": "node --test",
     "tina:dev": "tinacms dev -c \"pnpm dev\"",
     "tina:build": "tinacms build",
