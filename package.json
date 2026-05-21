@@ -47,6 +47,7 @@
     "@tinacms/auth": "^1.0.2",
     "crypto-js": "^4.1.1",
     "dotenv": "^16.3.1",
+    "gray-matter": "^4.0.3",
     "netlify-plugin-cache": "^1.0.3",
     "node-fetch": "^3.3.2",
     "tinacms": "^3.6.1"
