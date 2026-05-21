@@ -30,7 +30,12 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Frame-Options = "DENY"
+    # Changed from DENY to SAMEORIGIN so TinaCMS can load pages within the same domain
+    X-Frame-Options = "SAMEORIGIN"
+    
+    # Added CSP frame-ancestors to explicitly allow your site to frame itself
+    Content-Security-Policy = "frame-ancestors 'self' https://web-castanya.netlify.app;"
+    
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
