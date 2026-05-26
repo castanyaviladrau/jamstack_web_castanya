@@ -118,7 +118,12 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleArrows();
   }
 
-  const setupCarousel = (scrollId, prevId, nextId, cardSelector = ".gallery-item") => {
+  const setupCarousel = (
+    scrollId,
+    prevId,
+    nextId,
+    cardSelector = ".gallery-item",
+  ) => {
     const container = document.getElementById(scrollId);
     const prev = document.getElementById(prevId);
     const next = document.getElementById(nextId);
@@ -187,11 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize all three carousels
   setupCarousel("galleryScroll", "prevBtn", "nextBtn");
-  setupCarousel(
-    "shopFeaturedCarousel",
-    "shopFeaturedPrev",
-    "shopFeaturedNext",
-  );
+  setupCarousel("shopFeaturedCarousel", "shopFeaturedPrev", "shopFeaturedNext");
   setupCarousel(
     "testimonialScroll",
     "prevTestimonial",
@@ -391,9 +392,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const renderSlide = (index, direction = "next") => {
       const slide = slides[index];
       const exitClass =
-        direction === "prev"
-          ? "is-switching-left"
-          : "is-switching-right";
+        direction === "prev" ? "is-switching-left" : "is-switching-right";
       const enterClass =
         direction === "prev" ? "is-entering-left" : "is-entering-right";
 
@@ -584,7 +583,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const setupCookieBanner = () => {
     const banner = document.getElementById("cookieBanner");
-    const reopenControls = document.querySelectorAll("[data-cookie-preferences]");
+    const reopenControls = document.querySelectorAll(
+      "[data-cookie-preferences]",
+    );
 
     if (!banner) {
       return;
@@ -636,7 +637,9 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const setupConsentMaps = () => {
-    const mapFrames = Array.from(document.querySelectorAll(".where-card__map-frame"));
+    const mapFrames = Array.from(
+      document.querySelectorAll(".where-card__map-frame"),
+    );
 
     const mapEmbeds = mapFrames
       .map((frame) => {
@@ -681,7 +684,9 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const acceptButton = placeholder.querySelector('[data-map-action="accept"]');
+      const acceptButton = placeholder.querySelector(
+        '[data-map-action="accept"]',
+      );
 
       if (!acceptButton) {
         return;
@@ -776,19 +781,19 @@ document.addEventListener("DOMContentLoaded", () => {
     renderSlide();
   };
 
-    const setupCart = () => {
-      const cartStorageKey = "castanya-cart";
-      const checkoutStorageKey = "castanya-checkout-draft";
-      const checkoutSessionKey = "castanya-checkout-session";
-      const currency = "EUR";
+  const setupCart = () => {
+    const cartStorageKey = "castanya-cart";
+    const checkoutStorageKey = "castanya-checkout-draft";
+    const checkoutSessionKey = "castanya-checkout-session";
+    const currency = "EUR";
 
-      const clearCart = () => {
-        try {
-          window.localStorage.removeItem(cartStorageKey);
-        } catch (error) {
-          // Ignore storage failures.
-        }
-      };
+    const clearCart = () => {
+      try {
+        window.localStorage.removeItem(cartStorageKey);
+      } catch (error) {
+        // Ignore storage failures.
+      }
+    };
 
     const formatMoney = (value) => {
       return new Intl.NumberFormat("ca-ES", {
@@ -828,12 +833,16 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const getCartCount = (cart) => {
-      return cart.items.reduce((sum, item) => sum + Number(item.quantity || 0), 0);
+      return cart.items.reduce(
+        (sum, item) => sum + Number(item.quantity || 0),
+        0,
+      );
     };
 
     const getCartSubtotal = (cart) => {
       return cart.items.reduce(
-        (sum, item) => sum + Number(item.unitPrice || 0) * Number(item.quantity || 0),
+        (sum, item) =>
+          sum + Number(item.unitPrice || 0) * Number(item.quantity || 0),
         0,
       );
     };
@@ -867,7 +876,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const saveCheckoutSession = (session) => {
       try {
-        window.localStorage.setItem(checkoutSessionKey, JSON.stringify(session));
+        window.localStorage.setItem(
+          checkoutSessionKey,
+          JSON.stringify(session),
+        );
       } catch (error) {
         // Ignore storage failures and keep UI responsive.
       }
@@ -882,25 +894,28 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
 
-      const clearCheckoutSession = () => {
-        try {
-          window.localStorage.removeItem(checkoutSessionKey);
-        } catch (error) {
-          // Ignore storage failures and keep UI responsive.
-        }
-      };
+    const clearCheckoutSession = () => {
+      try {
+        window.localStorage.removeItem(checkoutSessionKey);
+      } catch (error) {
+        // Ignore storage failures and keep UI responsive.
+      }
+    };
 
-      const clearCheckoutDraft = () => {
-        try {
-          window.localStorage.removeItem(checkoutStorageKey);
-        } catch (error) {
-          // Ignore storage failures.
-        }
-      };
+    const clearCheckoutDraft = () => {
+      try {
+        window.localStorage.removeItem(checkoutStorageKey);
+      } catch (error) {
+        // Ignore storage failures.
+      }
+    };
 
     const buildCartFingerprint = (cart) => {
       return cart.items
-        .map((item) => `${String(item.sku || "").trim()}:${Number(item.quantity || 0)}`)
+        .map(
+          (item) =>
+            `${String(item.sku || "").trim()}:${Number(item.quantity || 0)}`,
+        )
         .sort()
         .join("|");
     };
@@ -908,13 +923,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const normalizeCheckoutPayload = (payload) => {
       return {
         name: String(payload.name || "").trim(),
-        email: String(payload.email || "").trim().toLowerCase(),
+        email: String(payload.email || "")
+          .trim()
+          .toLowerCase(),
         phone: String(payload.phone || "").trim(),
         country: String(payload.country || "").trim(),
         address: String(payload.address || "").trim(),
         city: String(payload.city || "").trim(),
         postalCode: String(payload.postalCode || "").trim(),
         notes: String(payload.notes || "").trim(),
+        billingSameAsShipping: String(
+          payload.billingSameAsShipping || "on",
+        ).trim(),
+        billingCompany: String(payload.billingCompany || "").trim(),
+        billingVat: String(payload.billingVat || "").trim(),
+        billingAddress: String(payload.billingAddress || "").trim(),
+        billingCity: String(payload.billingCity || "").trim(),
+        billingPostalCode: String(payload.billingPostalCode || "").trim(),
+        billingCountry: String(payload.billingCountry || "").trim(),
       };
     };
 
@@ -947,7 +973,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "city",
         "postalCode",
       ];
-      const missingField = requiredFields.find((field) => !String(payload[field] || "").trim());
+      const missingField = requiredFields.find(
+        (field) => !String(payload[field] || "").trim(),
+      );
 
       if (missingField) {
         return {
@@ -966,7 +994,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!isValidInternationalPhone(payload.phone)) {
         return {
           field: "phone",
-          message: "Introdueix un telefon valid amb extensio internacional si cal.",
+          message:
+            "Introdueix un telefon valid amb extensio internacional si cal.",
         };
       }
 
@@ -1006,7 +1035,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = await response.json().catch(() => ({}));
 
       if (!response.ok || !data?.success || !data?.order?.id) {
-        throw new Error(data?.details || data?.error || "No hem pogut crear la comanda.");
+        throw new Error(
+          data?.details || data?.error || "No hem pogut crear la comanda.",
+        );
       }
 
       return data.order;
@@ -1051,17 +1082,26 @@ document.addEventListener("DOMContentLoaded", () => {
       addButtons.forEach((button) => {
         const productDetail = button.closest(".product-detail__purchase");
         const formatSelect = productDetail?.querySelector("#product-format");
-        const priceNode = document.querySelector("[data-product-price-display]");
-        const feedbackNode = productDetail?.querySelector("[data-add-to-cart-feedback]");
+        const priceNode = document.querySelector(
+          "[data-product-price-display]",
+        );
+        const feedbackNode = productDetail?.querySelector(
+          "[data-add-to-cart-feedback]",
+        );
 
         const syncSelectedFormat = () => {
           if (!formatSelect) {
             return;
           }
 
-          const selectedOption = formatSelect.options[formatSelect.selectedIndex];
-          const selectedPrice = Number(selectedOption.dataset.price || button.dataset.productPrice || 0);
-          const selectedSku = String(selectedOption.dataset.sku || button.dataset.productSku || "").trim();
+          const selectedOption =
+            formatSelect.options[formatSelect.selectedIndex];
+          const selectedPrice = Number(
+            selectedOption.dataset.price || button.dataset.productPrice || 0,
+          );
+          const selectedSku = String(
+            selectedOption.dataset.sku || button.dataset.productSku || "",
+          ).trim();
 
           button.dataset.productVariantLabel =
             selectedOption.dataset.variantLabel ||
@@ -1081,21 +1121,32 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         button.addEventListener("click", () => {
-          const selectedOption = formatSelect?.options[formatSelect.selectedIndex];
+          const selectedOption =
+            formatSelect?.options[formatSelect.selectedIndex];
           const variantLabel = selectedOption?.value || "Format general";
           const productSlug = button.dataset.productSlug;
           const normalizedVariantLabel =
             selectedOption?.dataset.variantLabel ||
             button.dataset.productVariantLabel ||
             variantLabel;
-          const unitPrice = Number(selectedOption?.dataset.price || button.dataset.productPrice || 0);
-          const sku = String(selectedOption?.dataset.sku || button.dataset.productSku || "").trim();
+          const unitPrice = Number(
+            selectedOption?.dataset.price || button.dataset.productPrice || 0,
+          );
+          const sku = String(
+            selectedOption?.dataset.sku || button.dataset.productSku || "",
+          ).trim();
 
-          if (!sku || !productSlug || !normalizedVariantLabel || unitPrice <= 0) {
+          if (
+            !sku ||
+            !productSlug ||
+            !normalizedVariantLabel ||
+            unitPrice <= 0
+          ) {
             if (feedbackNode) {
               feedbackNode.hidden = false;
               feedbackNode.dataset.state = "error";
-              feedbackNode.textContent = "Aquest producte encara no te un format o preu valid per comprar-lo.";
+              feedbackNode.textContent =
+                "Aquest producte encara no te un format o preu valid per comprar-lo.";
             }
             return;
           }
@@ -1120,7 +1171,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     };
 
-      const bindCartPage = () => {
+    const bindCartPage = () => {
       const cartRoot = document.querySelector("[data-cart-items]");
       if (!cartRoot) {
         return;
@@ -1137,7 +1188,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const checkoutSection = document.querySelector("[data-checkout-section]");
       const checkoutForm = document.querySelector("[data-checkout-form]");
       const checkoutMessage = document.querySelector("[data-checkout-message]");
-      const checkoutSubmitButton = checkoutForm?.querySelector('button[type="submit"]');
+      const checkoutSubmitButton = checkoutForm?.querySelector(
+        'button[type="submit"]',
+      );
 
       const fillCheckoutDraft = () => {
         if (!checkoutForm) {
@@ -1146,15 +1199,113 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const draft = readCheckoutDraft();
         Array.from(checkoutForm.elements).forEach((field) => {
-          if (field.name && draft[field.name]) {
-            field.value = draft[field.name];
+          if (field.name && draft[field.name] !== undefined) {
+            if (field.type === "checkbox") {
+              field.checked = draft[field.name] === "on";
+            } else {
+              field.value = draft[field.name];
+            }
+          }
+        });
+
+        applyBillingState();
+      };
+
+      const billingSameCheckbox = checkoutForm?.querySelector(
+        "[data-billing-same-checkbox]",
+      );
+      const billingFieldsContainer = checkoutForm?.querySelector(
+        "[data-billing-fields]",
+      );
+
+      const getBillingFieldNames = () => [
+        "billingCompany",
+        "billingVat",
+        "billingAddress",
+        "billingCity",
+        "billingPostalCode",
+        "billingCountry",
+      ];
+
+      const getShippingToBillingMap = () => ({
+        billingAddress: "address",
+        billingCity: "city",
+        billingPostalCode: "postalCode",
+        billingCountry: "country",
+      });
+
+      const setBillingInputsDisabled = (disabled) => {
+        if (!billingFieldsContainer) {
+          return;
+        }
+
+        const inputs = billingFieldsContainer.querySelectorAll("input");
+        inputs.forEach((input) => {
+          input.disabled = disabled;
+        });
+      };
+
+      const clearBillingFields = () => {
+        if (!checkoutForm) {
+          return;
+        }
+
+        getBillingFieldNames().forEach((name) => {
+          const input = checkoutForm.elements.namedItem(name);
+          if (input) {
+            input.value = "";
           }
         });
       };
 
+      const syncBillingFields = () => {
+        if (!checkoutForm || !billingSameCheckbox?.checked) {
+          return;
+        }
+
+        const formData = new FormData(checkoutForm);
+        const shipping = Object.fromEntries(formData.entries());
+        const map = getShippingToBillingMap();
+
+        Object.entries(map).forEach(([billingField, shippingField]) => {
+          const input = checkoutForm.elements.namedItem(billingField);
+          if (input) {
+            input.value = shipping[shippingField] || "";
+          }
+        });
+      };
+
+      const applyBillingState = () => {
+        if (!billingFieldsContainer) {
+          return;
+        }
+
+        const isChecked = billingSameCheckbox?.checked;
+
+        if (isChecked) {
+          setBillingInputsDisabled(true);
+          billingFieldsContainer.dataset.state = "readonly";
+        } else {
+          setBillingInputsDisabled(false);
+          billingFieldsContainer.dataset.state = "editable";
+        }
+      };
+
+      billingSameCheckbox?.addEventListener("change", () => {
+        if (billingSameCheckbox.checked) {
+          syncBillingFields();
+        } else {
+          clearBillingFields();
+        }
+        applyBillingState();
+      });
+
       // On successful return from payment, clear client-side cart/session.
       // The order is already persisted server-side.
-      const normalizedPath = String(window.location?.pathname || "").replace(/\/+$/, "");
+      const normalizedPath = String(window.location?.pathname || "").replace(
+        /\/+$/,
+        "",
+      );
       if (normalizedPath === "/payment/success") {
         clearCart();
         clearCheckoutDraft();
@@ -1204,7 +1355,9 @@ document.addEventListener("DOMContentLoaded", () => {
             : "La cistella es guarda en aquest navegador fins que finalitzis la compra.";
         }
         if (summaryLink) {
-          summaryLink.textContent = hasItems ? "TORNAR A LA BOTIGA" : "SEGUIR COMPRANT";
+          summaryLink.textContent = hasItems
+            ? "TORNAR A LA BOTIGA"
+            : "SEGUIR COMPRANT";
         }
 
         if (!hasItems) {
@@ -1213,7 +1366,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const itemsMarkup = cart.items
           .map((item) => {
-            const lineTotal = Number(item.unitPrice || 0) * Number(item.quantity || 0);
+            const lineTotal =
+              Number(item.unitPrice || 0) * Number(item.quantity || 0);
 
             return `
               <article class="shop-cart-item" data-cart-item data-sku="${item.sku}" data-slug="${item.productSlug}" data-variant="${item.variantLabel}">
@@ -1294,9 +1448,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
       checkoutForm?.addEventListener("input", (event) => {
         const target = event.target;
-        if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement || target instanceof HTMLSelectElement) {
+        if (
+          target instanceof HTMLInputElement ||
+          target instanceof HTMLTextAreaElement ||
+          target instanceof HTMLSelectElement
+        ) {
           target.setCustomValidity("");
         }
+
+        const shippingFields = new Set([
+          "name",
+          "email",
+          "phone",
+          "country",
+          "address",
+          "city",
+          "postalCode",
+        ]);
+        if (shippingFields.has(target.name)) {
+          syncBillingFields();
+        }
+
         const formData = new FormData(checkoutForm);
         saveCheckoutDraft(Object.fromEntries(formData.entries()));
       });
@@ -1304,16 +1476,20 @@ document.addEventListener("DOMContentLoaded", () => {
       checkoutForm?.addEventListener("submit", async (event) => {
         event.preventDefault();
 
-          const cart = readCart();
-          const formData = new FormData(checkoutForm);
-          const payload = normalizeCheckoutPayload(Object.fromEntries(formData.entries()));
+        const cart = readCart();
+        const formData = new FormData(checkoutForm);
+        const payload = normalizeCheckoutPayload(
+          Object.fromEntries(formData.entries()),
+        );
         if (checkoutMessage) {
           checkoutMessage.hidden = false;
         }
 
         const validationError = getCheckoutValidationError(payload);
         if (validationError) {
-          const invalidField = checkoutForm?.elements.namedItem(validationError.field);
+          const invalidField = checkoutForm?.elements.namedItem(
+            validationError.field,
+          );
           if (
             invalidField instanceof HTMLInputElement ||
             invalidField instanceof HTMLTextAreaElement ||
@@ -1331,40 +1507,45 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
-          if (!cart.items.length) {
-            if (checkoutMessage) {
-              checkoutMessage.dataset.state = "error";
-              checkoutMessage.textContent = "La cistella esta buida. Afegeix-hi algun producte abans de continuar.";
-            }
-            return;
+        if (!cart.items.length) {
+          if (checkoutMessage) {
+            checkoutMessage.dataset.state = "error";
+            checkoutMessage.textContent =
+              "La cistella esta buida. Afegeix-hi algun producte abans de continuar.";
           }
+          return;
+        }
 
-          const invalidItem = cart.items.find((item) => !String(item.sku || "").trim());
-          if (invalidItem) {
-            if (checkoutMessage) {
-              checkoutMessage.dataset.state = "error";
-              checkoutMessage.textContent = "Hi ha un producte a la cistella sense SKU. Torna a afegir els productes a la cistella.";
-            }
-            return;
+        const invalidItem = cart.items.find(
+          (item) => !String(item.sku || "").trim(),
+        );
+        if (invalidItem) {
+          if (checkoutMessage) {
+            checkoutMessage.dataset.state = "error";
+            checkoutMessage.textContent =
+              "Hi ha un producte a la cistella sense SKU. Torna a afegir els productes a la cistella.";
           }
+          return;
+        }
 
-          saveCheckoutDraft(payload);
+        saveCheckoutDraft(payload);
 
-          const cartFingerprint = buildCartFingerprint(cart);
-          const existingSession = readCheckoutSession();
+        const cartFingerprint = buildCartFingerprint(cart);
+        const existingSession = readCheckoutSession();
 
         if (checkoutSubmitButton) {
           checkoutSubmitButton.disabled = true;
           checkoutSubmitButton.textContent = "PREPARANT LA COMANDA...";
         }
 
-          try {
+        try {
           if (checkoutMessage) {
             checkoutMessage.dataset.state = "success";
-            checkoutMessage.textContent = "Creant la comanda i preparant el pas de pagament...";
+            checkoutMessage.textContent =
+              "Creant la comanda i preparant el pas de pagament...";
           }
 
-            let order = null;
+          let order = null;
           if (
             existingSession?.orderId &&
             existingSession?.publicOrderCode &&
@@ -1379,7 +1560,10 @@ document.addEventListener("DOMContentLoaded", () => {
             clearCheckoutSession();
             // Server-side pricing is authoritative; we only send sku + quantity.
             order = await createOrder({
-              items: cart.items.map((item) => ({ sku: item.sku, quantity: item.quantity })),
+              items: cart.items.map((item) => ({
+                sku: item.sku,
+                quantity: item.quantity,
+              })),
               customer: payload,
             });
             saveCheckoutSession({
@@ -1396,7 +1580,11 @@ document.addEventListener("DOMContentLoaded", () => {
             publicOrderCode: order.publicOrderCode,
           });
 
-          if (paymentResult.ok && paymentResult.data?.success && paymentResult.data?.payment) {
+          if (
+            paymentResult.ok &&
+            paymentResult.data?.success &&
+            paymentResult.data?.payment
+          ) {
             if (checkoutMessage) {
               checkoutMessage.dataset.state = "success";
               checkoutMessage.textContent = `Comanda ${order.publicOrderCode} creada. Redirigint cap al pagament...`;
@@ -1408,7 +1596,8 @@ document.addEventListener("DOMContentLoaded", () => {
           if (paymentResult.status === 503) {
             if (checkoutMessage) {
               checkoutMessage.dataset.state = "error";
-              checkoutMessage.textContent = "No hem pogut iniciar el pagament ara mateix. Torna-ho a provar en uns minuts o contacta amb nosaltres.";
+              checkoutMessage.textContent =
+                "No hem pogut iniciar el pagament ara mateix. Torna-ho a provar en uns minuts o contacta amb nosaltres.";
             }
             return;
           }
@@ -1421,7 +1610,8 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (error) {
           if (checkoutMessage) {
             checkoutMessage.dataset.state = "error";
-            checkoutMessage.textContent = error.message || "Hi ha hagut un error en preparar la comanda.";
+            checkoutMessage.textContent =
+              error.message || "Hi ha hagut un error en preparar la comanda.";
           }
         } finally {
           if (checkoutSubmitButton) {
@@ -1435,10 +1625,10 @@ document.addEventListener("DOMContentLoaded", () => {
       renderCartPage();
     };
 
-      updateCartCount();
-      bindProductActions();
-      bindCartPage();
-    };
+    updateCartCount();
+    bindProductActions();
+    bindCartPage();
+  };
 
   setupProfessionalsValueFeature();
   setupProjecteFireTextSlider();

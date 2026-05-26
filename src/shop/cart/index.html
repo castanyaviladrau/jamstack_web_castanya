@@ -16,9 +16,12 @@ footerVariant: projecte-newsletter
   <div class="shop-cart-hero__overlay"></div>
   <div class="shop-cart-hero__content">
     <span class="shop-cart-hero__kicker">CISTELLA</span>
-    <h1 class="shop-cart-hero__title">ELS TEUS PRODUCTES, A PUNT PER SORTIR DEL MONTSENY</h1>
+    <h1 class="shop-cart-hero__title">
+      ELS TEUS PRODUCTES, A PUNT PER SORTIR DEL MONTSENY
+    </h1>
     <p class="shop-cart-hero__text">
-      Aqui podras revisar la teva seleccio abans de confirmar la compra i continuar amb el pagament.
+      Aqui podras revisar la teva seleccio abans de confirmar la compra i
+      continuar amb el pagament.
     </p>
   </div>
 </section>
@@ -28,9 +31,12 @@ footerVariant: projecte-newsletter
     <div class="shop-cart__main">
       <div class="shop-cart__heading">
         <span class="shop-cart__eyebrow">CISTELLA ACTUAL</span>
-        <h2 id="shop-cart-title" class="shop-cart__title" data-cart-title>ENCARA NO HI HA CAP PRODUCTE A LA TEVA CISTELLA</h2>
+        <h2 id="shop-cart-title" class="shop-cart__title" data-cart-title>
+          ENCARA NO HI HA CAP PRODUCTE A LA TEVA CISTELLA
+        </h2>
         <p class="shop-cart__intro" data-cart-intro>
-          Quan afegeixis productes des de la botiga, els trobaras aqui per revisar formats, quantitats i el resum de la comanda.
+          Quan afegeixis productes des de la botiga, els trobaras aqui per
+          revisar formats, quantitats i el resum de la comanda.
         </p>
       </div>
 
@@ -45,27 +51,37 @@ footerVariant: projecte-newsletter
 
         <div class="shop-cart-empty-card__body">
           <p class="shop-cart-empty-card__kicker">BOTIGA ARTESANA</p>
-          <h3 class="shop-cart-empty-card__title">OMPLE LA CISTELLA AMB EL GUST DE LA CASTANYA 365 DIES L'ANY</h3>
+          <h3 class="shop-cart-empty-card__title">
+            OMPLE LA CISTELLA AMB EL GUST DE LA CASTANYA 365 DIES L'ANY
+          </h3>
           <p class="shop-cart-empty-card__text">
-            Descobreix els nostres productes artesans i afegeix-hi el que vulguis comprar. Aquesta pagina ja esta preparada per rebre la futura logica de cistella i pagament.
+            Descobreix els nostres productes artesans i afegeix-hi el que
+            vulguis comprar. Aquesta pagina ja esta preparada per rebre la
+            futura logica de cistella i pagament.
           </p>
 
           <div class="shop-cart-empty-card__actions">
             <a href="/shop/products/" class="btn-olive">ANAR A LA BOTIGA</a>
-            <a href="/contact/" class="shop-cart-empty-card__link">NECESSITES AJUDA AMB LA COMANDA?</a>
+            <a href="/contact/" class="shop-cart-empty-card__link"
+              >NECESSITES AJUDA AMB LA COMANDA?</a
+            >
           </div>
         </div>
       </article>
 
       <div class="shop-cart-items" data-cart-items hidden></div>
 
-      <section class="shop-cart-checkout" aria-labelledby="shop-cart-checkout-title" data-checkout-section hidden>
+      <section
+        class="shop-cart-checkout"
+        aria-labelledby="shop-cart-checkout-title"
+        data-checkout-section
+        hidden
+      >
         <div class="shop-cart-checkout__heading">
           <p class="shop-cart__eyebrow">DADES D'ENVIAMENT</p>
-          <h3 id="shop-cart-checkout-title" class="shop-cart-checkout__title">PREPARA LA TEVA COMANDA</h3>
-          <p class="shop-cart-checkout__intro">
-            Aquest formulari sera el punt de sortida per connectar la creacio de comandes amb Supabase al proxim pas.
-          </p>
+          <h3 id="shop-cart-checkout-title" class="shop-cart-checkout__title">
+            PREPARA LA TEVA COMANDA
+          </h3>
         </div>
 
         <form class="shop-cart-checkout__form" data-checkout-form novalidate>
@@ -80,9 +96,18 @@ footerVariant: projecte-newsletter
             </label>
             <label class="shop-cart-checkout__field">
               <span>Telefon</span>
-              <input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+34 600 123 123" required />
+              <input
+                type="tel"
+                name="phone"
+                autocomplete="tel"
+                inputmode="tel"
+                placeholder="+34 600 123 123"
+                required
+              />
             </label>
-            <label class="shop-cart-checkout__field shop-cart-checkout__field--select">
+            <label
+              class="shop-cart-checkout__field shop-cart-checkout__field--select"
+            >
               <span>Pais</span>
               <select name="country" autocomplete="country-name" required>
                 <option value="Espanya" selected>Espanya</option>
@@ -112,34 +137,142 @@ footerVariant: projecte-newsletter
                 <option value="Bulgaria">Bulgaria</option>
               </select>
             </label>
-            <label class="shop-cart-checkout__field shop-cart-checkout__field--full">
+            <label
+              class="shop-cart-checkout__field shop-cart-checkout__field--full"
+            >
               <span>Adreca</span>
-              <input type="text" name="address" autocomplete="street-address" required />
+              <input
+                type="text"
+                name="address"
+                autocomplete="street-address"
+                required
+              />
             </label>
             <label class="shop-cart-checkout__field">
               <span>Ciutat</span>
-              <input type="text" name="city" autocomplete="address-level2" required />
+              <input
+                type="text"
+                name="city"
+                autocomplete="address-level2"
+                required
+              />
             </label>
             <label class="shop-cart-checkout__field">
               <span>Codi postal</span>
-              <input type="text" name="postalCode" autocomplete="postal-code" required />
+              <input
+                type="text"
+                name="postalCode"
+                autocomplete="postal-code"
+                required
+              />
             </label>
-            <label class="shop-cart-checkout__field shop-cart-checkout__field--full">
+            <label
+              class="shop-cart-checkout__field shop-cart-checkout__field--full"
+            >
               <span>Notes de la comanda</span>
               <textarea name="notes" rows="4"></textarea>
             </label>
           </div>
 
-          <p class="shop-cart-checkout__message" data-checkout-message hidden></p>
+          <div class="shop-cart-checkout__billing" data-billing-section>
+            <div class="shop-cart-checkout__divider">
+              <span class="shop-cart__eyebrow">DADES DE FACTURACIÓ</span>
+            </div>
 
-          <button type="submit" class="shop-cart-summary__cta">CONTINUAR CAP AL PAGAMENT</button>
+            <p class="shop-cart-checkout__intro">
+              Si la compra la realitza una empresa o necessites una factura amb
+              dades diferents, omple aquest apartat.
+            </p>
+
+            <label class="shop-cart-checkout__checkbox">
+              <input
+                type="checkbox"
+                name="billingSameAsShipping"
+                data-billing-same-checkbox
+                checked
+              />
+              <span
+                class="shop-cart-checkout__checkbox-mark"
+                aria-hidden="true"
+              ></span>
+              <span class="shop-cart-checkout__checkbox-label"
+                >Les dades de facturació són les mateixes que les
+                d'enviament</span
+              >
+            </label>
+
+            <div
+              class="shop-cart-checkout__grid"
+              data-billing-fields
+              data-state="readonly"
+            >
+              <label class="shop-cart-checkout__field">
+                <span>Nom de l'empresa / Raó social</span>
+                <input
+                  type="text"
+                  name="billingCompany"
+                  autocomplete="organization"
+                />
+              </label>
+              <label class="shop-cart-checkout__field">
+                <span>NIF / VAT</span>
+                <input type="text" name="billingVat" />
+              </label>
+              <label
+                class="shop-cart-checkout__field shop-cart-checkout__field--full"
+              >
+                <span>Adreça</span>
+                <input
+                  type="text"
+                  name="billingAddress"
+                  autocomplete="billing street-address"
+                />
+              </label>
+              <label class="shop-cart-checkout__field">
+                <span>Ciutat</span>
+                <input
+                  type="text"
+                  name="billingCity"
+                  autocomplete="billing address-level2"
+                />
+              </label>
+              <label class="shop-cart-checkout__field">
+                <span>Codi postal</span>
+                <input
+                  type="text"
+                  name="billingPostalCode"
+                  autocomplete="billing postal-code"
+                />
+              </label>
+              <label class="shop-cart-checkout__field">
+                <span>País</span>
+                <input
+                  type="text"
+                  name="billingCountry"
+                  autocomplete="billing country-name"
+                />
+              </label>
+            </div>
+          </div>
+
+          <p
+            class="shop-cart-checkout__message"
+            data-checkout-message
+            hidden
+          ></p>
+
+          <button type="submit" class="shop-cart-summary__cta">
+            CONTINUAR CAP AL PAGAMENT
+          </button>
         </form>
       </section>
     </div>
 
     <aside class="shop-cart-summary" aria-labelledby="shop-cart-summary-title">
       <p class="shop-cart-summary__kicker">RESUM</p>
-      <h2 id="shop-cart-summary-title" class="shop-cart-summary__title">LA TEVA COMANDA</h2>
+      <h2 id="shop-cart-summary-title" class="shop-cart-summary__title">
+        LA TEVA COMANDA
+      </h2>
 
       <div class="shop-cart-summary__rows">
         <div class="shop-cart-summary__row">
@@ -162,27 +295,16 @@ footerVariant: projecte-newsletter
       </div>
 
       <p class="shop-cart-summary__note" data-cart-summary-note>
-        La cistella es guarda en aquest navegador. Quan confirmis, al proxim pas connectarem aquestes dades amb la creacio de comandes real a Supabase.
+        La cistella es guarda en aquest navegador. Quan confirmis, al proxim pas
+        connectarem aquestes dades amb la creacio de comandes real a Supabase.
       </p>
 
-      <a href="/shop/products/" class="shop-cart-summary__cta" data-cart-summary-link>SEGUIR COMPRANT</a>
+      <a
+        href="/shop/products/"
+        class="shop-cart-summary__cta"
+        data-cart-summary-link
+        >SEGUIR COMPRANT</a
+      >
     </aside>
-  </div>
-</section>
-
-<section class="shop-cart-reassurance" aria-label="Avantatges de compra">
-  <div class="shop-cart-reassurance__inner">
-    <article class="shop-cart-reassurance__item">
-      <p class="shop-cart-reassurance__label">PRODUCTE LOCAL</p>
-      <p class="shop-cart-reassurance__text">Castanya i elaborats vinculats al territori i al Montseny.</p>
-    </article>
-    <article class="shop-cart-reassurance__item">
-      <p class="shop-cart-reassurance__label">PREPARAT PER AL PAGAMENT</p>
-      <p class="shop-cart-reassurance__text">La interfície ja queda llesta per connectar el futur flux amb RedSys.</p>
-    </article>
-    <article class="shop-cart-reassurance__item">
-      <p class="shop-cart-reassurance__label">COMPRA CLARA</p>
-      <p class="shop-cart-reassurance__text">Resum visible, passos simples i una experiencia responsive des del primer moment.</p>
-    </article>
   </div>
 </section>

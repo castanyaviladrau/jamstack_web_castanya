@@ -8151,6 +8151,96 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   color: #5b6f35;
 }
 
+.shop-cart-checkout__billing {
+  margin-top: 26px;
+}
+
+.shop-cart-checkout__divider {
+  padding-top: 24px;
+  border-top: 1px solid rgba(139, 116, 69, 0.2);
+}
+
+.shop-cart-checkout__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+  cursor: pointer;
+}
+
+.shop-cart-checkout__checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.shop-cart-checkout__checkbox-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border: 2px solid rgba(139, 116, 69, 0.4);
+  border-radius: 6px;
+  background: #fffdf8;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.shop-cart-checkout__checkbox input[type="checkbox"]:checked + .shop-cart-checkout__checkbox-mark {
+  background: #8b7445;
+  border-color: #8b7445;
+}
+
+.shop-cart-checkout__checkbox input[type="checkbox"]:checked + .shop-cart-checkout__checkbox-mark::after {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 10px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.shop-cart-checkout__checkbox input[type="checkbox"]:focus-visible + .shop-cart-checkout__checkbox-mark {
+  outline: 2px solid rgba(139, 116, 69, 0.3);
+  outline-offset: 2px;
+}
+
+.shop-cart-checkout__checkbox-label {
+  color: #8b7445;
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  user-select: none;
+}
+
+[data-billing-fields] {
+  margin-top: 20px;
+}
+
+[data-billing-fields][data-state="readonly"] {
+  filter: grayscale(75%);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+[data-billing-fields][data-state="readonly"] .shop-cart-checkout__field input {
+  background: #e8e2d4;
+  border-color: rgba(139, 116, 69, 0.12);
+  color: #9e988a;
+}
+
+[data-billing-fields][data-state="editable"] {
+  filter: none;
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .header-icon-button--cart {
   position: relative;
 }

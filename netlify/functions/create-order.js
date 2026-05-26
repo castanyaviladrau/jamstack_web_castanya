@@ -1,7 +1,7 @@
-require('dotenv').config();
+require("dotenv").config();
 
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -10,18 +10,18 @@ function jsonResponse(statusCode, body) {
   return {
     statusCode,
     headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
     },
     body: JSON.stringify(body),
   };
 }
 
-function getSupabaseHeaders(prefer = 'return=minimal') {
+function getSupabaseHeaders(prefer = "return=minimal") {
   return {
     apikey: SUPABASE_SERVICE_ROLE_KEY,
     Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
     Prefer: prefer,
   };
 }
@@ -33,7 +33,7 @@ function createOrderCode() {
 }
 
 function normalizeText(value) {
-  return String(value || '').trim();
+  return String(value || "").trim();
 }
 
 function isValidEmail(value) {
@@ -46,18 +46,18 @@ function isValidInternationalPhone(value) {
     return false;
   }
 
-  const digits = phone.replace(/\D/g, '');
+  const digits = phone.replace(/\D/g, "");
   if (digits.length < 7 || digits.length > 15) {
     return false;
   }
 
   const plusCount = (phone.match(/\+/g) || []).length;
-  return plusCount === 0 || (plusCount === 1 && phone.startsWith('+'));
+  return plusCount === 0 || (plusCount === 1 && phone.startsWith("+"));
 }
 
 function loadProductsIndex() {
-  const filePath = path.join(process.cwd(), 'src', '_data', 'products.json');
-  const raw = fs.readFileSync(filePath, 'utf8');
+  const filePath = path.join(process.cwd(), "src", "_data", "products.json");
+  const raw = fs.readFileSync(filePath, "utf8");
   const parsed = JSON.parse(raw);
   const list = Array.isArray(parsed?.list) ? parsed.list : [];
 
@@ -85,19 +85,29 @@ function loadProductsIndex() {
 
 function validateCustomer(customer) {
   const payload = customer || {};
-  const requiredFields = ['name', 'email', 'phone', 'country', 'address', 'city', 'postalCode'];
-  const missingField = requiredFields.find((field) => !normalizeText(payload[field]));
+  const requiredFields = [
+    "name",
+    "email",
+    "phone",
+    "country",
+    "address",
+    "city",
+    "postalCode",
+  ];
+  const missingField = requiredFields.find(
+    (field) => !normalizeText(payload[field]),
+  );
 
   if (missingField) {
     throw new Error(`Missing customer field: ${missingField}`);
   }
 
   if (!isValidEmail(payload.email)) {
-    throw new Error('Invalid customer email');
+    throw new Error("Invalid customer email");
   }
 
   if (!isValidInternationalPhone(payload.phone)) {
-    throw new Error('Invalid customer phone');
+    throw new Error("Invalid customer phone");
   }
 
   return {
@@ -109,18 +119,25 @@ function validateCustomer(customer) {
     city: normalizeText(payload.city),
     postalCode: normalizeText(payload.postalCode),
     notes: normalizeText(payload.notes),
+    billingSameAsShipping: normalizeText(payload.billingSameAsShipping),
+    billingCompany: normalizeText(payload.billingCompany),
+    billingVat: normalizeText(payload.billingVat),
+    billingAddress: normalizeText(payload.billingAddress),
+    billingCity: normalizeText(payload.billingCity),
+    billingPostalCode: normalizeText(payload.billingPostalCode),
+    billingCountry: normalizeText(payload.billingCountry),
   };
 }
 
 function buildValidatedItems(rawItems) {
   if (!Array.isArray(rawItems) || rawItems.length === 0) {
-    throw new Error('Cart is empty');
+    throw new Error("Cart is empty");
   }
 
   const productsIndex = loadProductsIndex();
 
   return rawItems.map((item, index) => {
-    const safeItem = item && typeof item === 'object' ? item : {};
+    const safeItem = item && typeof item === "object" ? item : {};
     const sku = normalizeText(safeItem.sku);
     const quantity = Number(safeItem.quantity);
 
@@ -131,7 +148,7 @@ function buildValidatedItems(rawItems) {
     }
 
     if (!Number.isInteger(quantity) || quantity <= 0) {
-      throw new Error('Invalid cart item quantity');
+      throw new Error("Invalid cart item quantity");
     }
 
     const resolved = productsIndex.get(sku);
@@ -144,7 +161,9 @@ function buildValidatedItems(rawItems) {
     }
 
     if (!resolved.product_slug || !resolved.variant_label) {
-      throw new Error(`Product index entry is missing slug/label for SKU ${sku}`);
+      throw new Error(
+        `Product index entry is missing slug/label for SKU ${sku}`,
+      );
     }
 
     const lineTotal = Number((resolved.unit_price * quantity).toFixed(2));
@@ -163,11 +182,15 @@ function buildValidatedItems(rawItems) {
 }
 
 async function insertSupabaseRow(table, payload, options = {}) {
-  const query = options.returnRepresentation ? '?select=*' : '';
+  const query = options.returnRepresentation ? "?select=*" : "";
   const response = await fetch(`${SUPABASE_URL}/rest/v1/${table}${query}`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      ...getSupabaseHeaders(options.returnRepresentation ? 'return=representation' : 'return=minimal'),
+      ...getSupabaseHeaders(
+        options.returnRepresentation
+          ? "return=representation"
+          : "return=minimal",
+      ),
     },
     body: JSON.stringify(payload),
   });
@@ -185,20 +208,22 @@ async function insertSupabaseRow(table, payload, options = {}) {
 }
 
 exports.handler = async (event) => {
-  if (event.httpMethod === 'OPTIONS') {
+  if (event.httpMethod === "OPTIONS") {
     return jsonResponse(200, { ok: true });
   }
 
-  if (event.httpMethod !== 'POST') {
-    return jsonResponse(405, { error: 'Method not allowed' });
+  if (event.httpMethod !== "POST") {
+    return jsonResponse(405, { error: "Method not allowed" });
   }
 
   if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
-    return jsonResponse(500, { error: 'Supabase environment is not configured' });
+    return jsonResponse(500, {
+      error: "Supabase environment is not configured",
+    });
   }
 
   try {
-    const { items, customer } = JSON.parse(event.body || '{}');
+    const { items, customer } = JSON.parse(event.body || "{}");
     const validatedCustomer = validateCustomer(customer);
     const validatedItems = buildValidatedItems(items);
     const subtotalAmount = Number(
@@ -210,10 +235,10 @@ exports.handler = async (event) => {
 
     const orderPayload = {
       public_order_code: publicOrderCode,
-      status: 'pending_payment',
-      payment_status: 'pending',
-      fulfillment_status: 'unfulfilled',
-      currency: 'EUR',
+      status: "pending_payment",
+      payment_status: "pending",
+      fulfillment_status: "unfulfilled",
+      currency: "EUR",
       subtotal_amount: subtotalAmount,
       shipping_amount: shippingAmount,
       total_amount: totalAmount,
@@ -226,17 +251,32 @@ exports.handler = async (event) => {
         postal_code: validatedCustomer.postalCode,
         country: validatedCustomer.country,
       },
+      billing_address_json:
+        validatedCustomer.billingCompany ||
+        validatedCustomer.billingVat ||
+        validatedCustomer.billingAddress
+          ? {
+              company_name: validatedCustomer.billingCompany || null,
+              vat_number: validatedCustomer.billingVat || null,
+              address_line_1: validatedCustomer.billingAddress || null,
+              city: validatedCustomer.billingCity || null,
+              postal_code: validatedCustomer.billingPostalCode || null,
+              country: validatedCustomer.billingCountry || null,
+            }
+          : null,
       notes: validatedCustomer.notes || null,
-      payment_provider: 'redsys',
+      payment_provider: "redsys",
     };
 
-    const insertedOrders = await insertSupabaseRow('orders', orderPayload, {
+    const insertedOrders = await insertSupabaseRow("orders", orderPayload, {
       returnRepresentation: true,
     });
-    const insertedOrder = Array.isArray(insertedOrders) ? insertedOrders[0] : null;
+    const insertedOrder = Array.isArray(insertedOrders)
+      ? insertedOrders[0]
+      : null;
 
     if (!insertedOrder || !insertedOrder.id) {
-      throw new Error('Supabase did not return the created order');
+      throw new Error("Supabase did not return the created order");
     }
 
     const orderItemsPayload = validatedItems.map((item) => ({
@@ -250,7 +290,7 @@ exports.handler = async (event) => {
       product_image: item.product_image,
     }));
 
-    await insertSupabaseRow('order_items', orderItemsPayload);
+    await insertSupabaseRow("order_items", orderItemsPayload);
 
     return jsonResponse(200, {
       success: true,
@@ -262,34 +302,34 @@ exports.handler = async (event) => {
         subtotalAmount,
         shippingAmount,
         totalAmount,
-          currency: insertedOrder.currency,
-          items: validatedItems.map((item) => ({
-            sku: item.sku,
-            name: item.product_name,
-            variantLabel: item.variant_label,
-            quantity: item.quantity,
-            unitPrice: item.unit_price,
-            lineTotal: item.line_total,
-          })),
-        },
-      });
+        currency: insertedOrder.currency,
+        items: validatedItems.map((item) => ({
+          sku: item.sku,
+          name: item.product_name,
+          variantLabel: item.variant_label,
+          quantity: item.quantity,
+          unitPrice: item.unit_price,
+          lineTotal: item.line_total,
+        })),
+      },
+    });
   } catch (error) {
-    console.error('Create order error:', error);
+    console.error("Create order error:", error);
     const statusCode =
       /^Missing customer field:/.test(error.message) ||
-      error.message === 'Invalid customer email' ||
-      error.message === 'Invalid customer phone' ||
-      error.message === 'Cart is empty' ||
-      error.message.startsWith('Invalid cart item') ||
-      error.message.startsWith('Unknown SKU') ||
-      error.message.startsWith('Invalid price') ||
-      error.message.startsWith('Product index entry is missing')
+      error.message === "Invalid customer email" ||
+      error.message === "Invalid customer phone" ||
+      error.message === "Cart is empty" ||
+      error.message.startsWith("Invalid cart item") ||
+      error.message.startsWith("Unknown SKU") ||
+      error.message.startsWith("Invalid price") ||
+      error.message.startsWith("Product index entry is missing")
         ? 400
         : 500;
 
     return jsonResponse(statusCode, {
       success: false,
-      error: 'Order creation failed',
+      error: "Order creation failed",
       details: error.message,
     });
   }
