@@ -71,6 +71,9 @@ test("create-order handler stores pickup fulfillment fields", async () => {
       postal_code: "17406",
       country: "Espanya",
     });
+
+    const orderItemsPayload = JSON.parse(fetchCalls[1].options.body);
+    assert.equal(orderItemsPayload[0].sku, "castanya-viladrau-torrada-250");
   } finally {
     global.fetch = originalFetch;
   }

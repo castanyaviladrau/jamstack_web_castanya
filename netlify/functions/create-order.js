@@ -303,6 +303,7 @@ exports.handler = async (event) => {
 
     const orderItemsPayload = validatedItems.map((item) => ({
       order_id: insertedOrder.id,
+      sku: item.sku,
       product_slug: item.product_slug,
       product_name: item.product_name,
       variant_label: item.variant_label,
