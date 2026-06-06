@@ -432,6 +432,7 @@ SKILLS.md
 .agents/
 .junie/
 skills-lock.json
+.pi
 
 # Local Netlify folder
 .netlify

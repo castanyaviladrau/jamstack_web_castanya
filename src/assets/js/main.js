@@ -29,8 +29,16 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.contains("page-fusta") ||
     document.body.classList.contains("page-visits");
 
+  const mobileMenuBreakpoint = 980;
+
   const handleScroll = () => {
     if (!header) {
+      return;
+    }
+
+    if (window.innerWidth <= mobileMenuBreakpoint) {
+      header.classList.add("is-scrolled");
+      document.documentElement.style.setProperty("--climb-progress", "1");
       return;
     }
 
@@ -257,13 +265,18 @@ document.addEventListener("DOMContentLoaded", () => {
     "gastronomicRemediesNext",
   );
   const setupHeaderDropdown = () => {
+    const nav = document.querySelector(".header-nav");
+    const menuToggle = document.querySelector(".header-menu-toggle");
+    const navLinks = document.querySelectorAll(".header-nav a");
     const dropdownItems = Array.from(
       document.querySelectorAll(".nav-item--dropdown"),
     );
 
-    if (!dropdownItems.length) {
+    if (!nav || !menuToggle || !dropdownItems.length) {
       return;
     }
+
+    const isMobileNavigation = () => window.innerWidth <= mobileMenuBreakpoint;
 
     const closeDropdown = (item) => {
       const button = item.querySelector(".nav-link-button");
@@ -272,6 +285,35 @@ document.addEventListener("DOMContentLoaded", () => {
       if (button) {
         button.setAttribute("aria-expanded", "false");
       }
+    };
+
+    const closeAllDropdowns = () => {
+      dropdownItems.forEach(closeDropdown);
+    };
+
+    const closeMenu = () => {
+      if (!isMobileNavigation()) {
+        return;
+      }
+
+      header?.classList.remove("is-menu-open");
+      nav.hidden = true;
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Obrir menu principal");
+      document.body.classList.remove("has-mobile-menu-open");
+      closeAllDropdowns();
+    };
+
+    const openMenu = () => {
+      if (!isMobileNavigation()) {
+        return;
+      }
+
+      nav.hidden = false;
+      header?.classList.add("is-menu-open");
+      menuToggle.setAttribute("aria-expanded", "true");
+      menuToggle.setAttribute("aria-label", "Tancar menu principal");
+      document.body.classList.add("has-mobile-menu-open");
     };
 
     const openDropdown = (item) => {
@@ -288,6 +330,24 @@ document.addEventListener("DOMContentLoaded", () => {
         button.setAttribute("aria-expanded", "true");
       }
     };
+
+    if (isMobileNavigation()) {
+      nav.hidden = true;
+    }
+
+    menuToggle.addEventListener("click", () => {
+      if (!isMobileNavigation()) {
+        return;
+      }
+
+      const isOpen = header?.classList.contains("is-menu-open");
+
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
 
     dropdownItems.forEach((dropdownItem) => {
       const trigger = dropdownItem.querySelector(".nav-link-button");
@@ -308,18 +368,51 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (isMobileNavigation()) {
+          closeMenu();
+        }
+      });
+    });
+
     document.addEventListener("click", (event) => {
       dropdownItems.forEach((dropdownItem) => {
         if (!dropdownItem.contains(event.target)) {
           closeDropdown(dropdownItem);
         }
       });
+
+      if (
+        isMobileNavigation() &&
+        header?.classList.contains("is-menu-open") &&
+        !header.contains(event.target)
+      ) {
+        closeMenu();
+      }
     });
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
-        dropdownItems.forEach(closeDropdown);
+        closeAllDropdowns();
+        closeMenu();
       }
+    });
+
+    window.addEventListener("resize", () => {
+      if (isMobileNavigation()) {
+        if (!header?.classList.contains("is-menu-open")) {
+          nav.hidden = true;
+        }
+        return;
+      }
+
+      nav.hidden = false;
+      header?.classList.remove("is-menu-open");
+      document.body.classList.remove("has-mobile-menu-open");
+      closeAllDropdowns();
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Obrir menu principal");
     });
   };
 

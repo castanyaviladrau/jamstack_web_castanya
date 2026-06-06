@@ -35,6 +35,24 @@
           "price": 18
         }
       ]
+    },
+    {
+      "slug": "Producte-nou",
+      "name": "Producte nou",
+      "currency": "EUR",
+      "image": "/assets/images/gallery/botiga/botiga_formatge.png",
+      "variants": [
+        {
+          "sku": "castanya-viladrau-torrada-250",
+          "label": "Pot 250 g",
+          "price": 8.5
+        },
+        {
+          "sku": "castanya-viladrau-torrada-500",
+          "label": "Pot 500 g",
+          "price": 15.9
+        }
+      ]
     }
   ]
 }

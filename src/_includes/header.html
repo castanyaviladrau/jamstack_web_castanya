@@ -57,11 +57,35 @@
           aria-hidden="true"
         />
       </a>
+      <button
+        type="button"
+        class="header-menu-toggle"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+        aria-label="Obrir menu principal"
+      >
+        <span class="header-menu-toggle__line"></span>
+        <span class="header-menu-toggle__line"></span>
+        <span class="header-menu-toggle__line"></span>
+      </button>
     </div>
   </div>
 
-  <nav class="header-nav">
+  <nav class="header-nav" id="primary-navigation">
     <div class="nav-flex-container">
+      <div class="header-mobile-panel">
+        <a href="/" class="header-mobile-brand">
+          <img
+            src="/assets/images/logo.png"
+            alt="Castanya de Viladrau"
+            class="header-mobile-brand__logo"
+          />
+          <span class="header-mobile-brand__title">Castanya de Viladrau</span>
+        </a>
+        <div class="header-mobile-actions">
+          <a class="header-mobile-actions__link" href="/contact">CONTACTE</a>
+        </div>
+      </div>
       <ul class="nav-list">
         <li
           class="nav-item {% if '/visits' in page.url %}active{% endif %} has-dropdown nav-item--dropdown"
@@ -75,16 +99,18 @@
             VISITES GUIADES
           </button>
           <div class="nav-dropdown" id="visits-submenu">
-            <a
-              href="/visits/"
-              class="nav-dropdown__link {% if page.url == '/visits/' %}is-active{% endif %}"
-              >Visites guiades</a
-            >
-            <a
-              href="/visits/parc-natural-del-montseny/"
-              class="nav-dropdown__link {% if '/visits/parc-natural-del-montseny/' in page.url %}is-active{% endif %}"
-              >Parc natural del Montseny</a
-            >
+            <div class="nav-dropdown__inner">
+              <a
+                href="/visits/"
+                class="nav-dropdown__link {% if page.url == '/visits/' %}is-active{% endif %}"
+                >Visites guiades</a
+              >
+              <a
+                href="/visits/parc-natural-del-montseny/"
+                class="nav-dropdown__link {% if '/visits/parc-natural-del-montseny/' in page.url %}is-active{% endif %}"
+                >Parc natural del Montseny</a
+              >
+            </div>
           </div>
         </li>
         <li class="nav-item {% if '/fusta' in page.url %}active{% endif %}">
@@ -107,21 +133,23 @@
             ESPAI GASTRONÒMIC
           </button>
           <div class="nav-dropdown" id="gastronomic-submenu">
-            <a
-              href="/gastronomic"
-              class="nav-dropdown__link {% if page.url == '/gastronomic/' %}is-active{% endif %}"
-              >On menjar la castanya de Viladrau</a
-            >
-            <a
-              href="/gastronomic/valor-nutricionals"
-              class="nav-dropdown__link {% if '/gastronomic/valor-nutricionals' in page.url %}is-active{% endif %}"
-              >Valors nutricionals</a
-            >
-            <a
-              href="/gastronomic/receptes"
-              class="nav-dropdown__link {% if '/gastronomic/receptes' in page.url %}is-active{% endif %}"
-              >Receptes</a
-            >
+            <div class="nav-dropdown__inner">
+              <a
+                href="/gastronomic"
+                class="nav-dropdown__link {% if page.url == '/gastronomic/' %}is-active{% endif %}"
+                >On menjar la castanya de Viladrau</a
+              >
+              <a
+                href="/gastronomic/valor-nutricionals"
+                class="nav-dropdown__link {% if '/gastronomic/valor-nutricionals' in page.url %}is-active{% endif %}"
+                >Valors nutricionals</a
+              >
+              <a
+                href="/gastronomic/receptes"
+                class="nav-dropdown__link {% if '/gastronomic/receptes' in page.url %}is-active{% endif %}"
+                >Receptes</a
+              >
+            </div>
           </div>
         </li>
         <li class="nav-item {% if '/projecte' in page.url %}active{% endif %}">
@@ -135,7 +163,7 @@
         <li class="nav-item {% if '/blog' in page.url %}active{% endif %}">
           <a href="/blog">ACTUALITAT</a>
         </li>
-        <li class="nav-item {% if '/shop' in page.url %}active{% endif %}">
+        <li class="nav-item nav-item--shop {% if '/shop' in page.url %}active{% endif %}">
           <a href="/shop/products">BOTIGA</a>
         </li>
       </ul>

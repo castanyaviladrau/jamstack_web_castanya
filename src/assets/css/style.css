@@ -2213,6 +2213,12 @@ body:not(.home) .header-logo img {
   height: 100%;
 }
 
+.header-mobile-panel,
+.header-mobile-brand,
+.header-mobile-actions {
+  display: none;
+}
+
 .nav-list {
   display: flex;
   width: 100%;
@@ -2465,6 +2471,53 @@ body:not(.home):not(.page-fusta):not(.page-visits) main {
   transform: translateY(-1px);
 }
 
+.header-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.header-menu-toggle:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.header-menu-toggle__line {
+  display: block;
+  width: 20px;
+  height: 2px;
+  margin: 0 auto;
+  border-radius: 999px;
+  background: #ffffff;
+  transition:
+    transform var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+.site-header.is-menu-open .header-menu-toggle__line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.site-header.is-menu-open .header-menu-toggle__line:nth-child(2) {
+  opacity: 0;
+}
+
+.site-header.is-menu-open .header-menu-toggle__line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 .header-icon-image {
   display: block;
   width: 100%;
@@ -2602,6 +2655,347 @@ body.page-visits .site-header.is-scrolled .header-top {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
+}
+
+@media (max-width: 980px) {
+  body:not(.home):not(.page-fusta):not(.page-visits) {
+    padding-top: 92px !important;
+  }
+
+  body.home .site-header,
+  body.page-fusta .site-header,
+  body.page-visits .site-header {
+    top: 0 !important;
+    bottom: auto !important;
+    transform: translateY(0) !important;
+    background-color: transparent !important;
+  }
+
+  body.home .header-nav,
+  body.page-fusta .header-nav,
+  body.page-visits .header-nav {
+    background-color: transparent !important;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .site-header,
+  .site-header.is-scrolled,
+  .site-header.is-menu-open {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: transparent !important;
+  }
+
+  .header-top {
+    position: relative;
+    z-index: 2201;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 92px;
+    padding: 14px 20px;
+    background: transparent;
+  }
+
+  .utility-left,
+  .header-contact-button,
+  .header-icon-button--whatsapp {
+    display: none !important;
+  }
+
+  .header-logo,
+  .header-logo .header-logo {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    flex: 0 1 auto;
+  }
+
+  .header-logo .logo-link {
+    min-width: 0;
+    gap: 10px;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .header-logo img,
+  .logo-img {
+    height: 48px;
+    width: auto;
+  }
+
+  .logo-title {
+    font-size: 20px;
+    line-height: 1;
+    text-align: center;
+  }
+
+  body.home .site-header:not(.is-scrolled) .logo-img--color,
+  body.page-fusta .site-header:not(.is-scrolled) .logo-img--color,
+  body.page-visits .site-header:not(.is-scrolled) .logo-img--color {
+    display: none;
+  }
+
+  body.home .site-header:not(.is-scrolled) .logo-img--white,
+  body.page-fusta .site-header:not(.is-scrolled) .logo-img--white,
+  body.page-visits .site-header:not(.is-scrolled) .logo-img--white {
+    display: block;
+  }
+
+  body.home .site-header.is-scrolled .logo-img--white,
+  body.page-fusta .site-header.is-scrolled .logo-img--white,
+  body.page-visits .site-header.is-scrolled .logo-img--white {
+    display: none;
+  }
+
+  body.home .site-header.is-scrolled .logo-img--color,
+  body.page-fusta .site-header.is-scrolled .logo-img--color,
+  body.page-visits .site-header.is-scrolled .logo-img--color {
+    display: block;
+  }
+
+  .utility-right {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    right: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+    flex: none;
+  }
+
+  .header-icon-button--cart {
+    width: 34px;
+    height: 34px;
+  }
+
+  .header-menu-toggle {
+    display: inline-flex;
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .header-menu-toggle:hover {
+    transform: none;
+    background: transparent;
+  }
+
+  .header-menu-toggle__line {
+    width: 18px;
+    margin: 0;
+  }
+
+  .header-nav {
+    position: fixed;
+    inset: 0;
+    z-index: 2100;
+    display: none;
+    height: 100dvh;
+    overflow-y: auto;
+    padding: 110px 22px 24px;
+    background: #8d7748 !important;
+    border-top: 0 !important;
+    box-shadow: none;
+  }
+
+  .site-header.is-menu-open .header-nav {
+    display: block;
+  }
+
+  .nav-flex-container {
+    display: flex;
+    min-height: calc(100dvh - 134px);
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .header-mobile-panel {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    margin: 0 0 22px;
+  }
+
+  .header-mobile-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #ffffff;
+  }
+
+  .header-mobile-brand__logo {
+    width: 86px;
+    height: auto;
+  }
+
+  .header-mobile-brand__title {
+    font-family: var(--font-title);
+    font-size: clamp(21px, 5.2vw, 28px);
+    line-height: 1.1;
+    text-align: center;
+    text-transform: uppercase;
+    color: #f7f1e3;
+  }
+
+  .header-mobile-actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .header-mobile-actions__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 126px;
+    min-height: 30px;
+    padding: 7px 18px;
+    border-radius: 999px;
+    background: #bea166;
+    color: #fff8ea !important;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .nav-list {
+    display: flex;
+    width: 100%;
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-item,
+  .nav-item:first-child {
+    display: flex;
+    width: 100%;
+    max-width: 320px;
+    min-height: auto;
+    border: 0;
+  }
+
+  .nav-item a,
+  .nav-link-button,
+  .nav-item:first-child .nav-link-button,
+  body.home .header-nav a,
+  body.home .header-nav .nav-link-button,
+  body.page-fusta .header-nav a,
+  body.page-fusta .header-nav .nav-link-button,
+  body.page-visits .header-nav a,
+  body.page-visits .header-nav .nav-link-button {
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 10px;
+    color: #f7f1e3 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: transparent;
+  }
+
+  .nav-link-button {
+    position: relative;
+    flex-direction: row;
+    border: 0;
+  }
+
+  .has-dropdown > .nav-link-button::after {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1;
+    transform: translateY(-50%);
+    transition: transform 0.2s ease;
+  }
+
+  .has-dropdown > .nav-link-button[aria-expanded="true"]::after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  .nav-item.active,
+  .nav-item.active a,
+  .nav-item.active .nav-link-button {
+    background: transparent;
+    color: #ffffff !important;
+  }
+
+  .nav-item--shop {
+    margin-top: auto;
+    padding-top: 18px;
+    padding-bottom: 12px;
+  }
+
+  .nav-item--shop a {
+    min-height: 48px;
+    border: 1px solid rgba(255, 248, 234, 0.55);
+    background: #efe5d3;
+    color: #8d7748 !important;
+    letter-spacing: 0.06em;
+  }
+}
+
+@media (max-width: 560px) {
+  .header-top {
+    padding: 14px 16px;
+  }
+
+  .utility-right {
+    left: 16px;
+    right: 16px;
+  }
+
+  .logo-title {
+    font-size: 17px;
+  }
+
+  .header-nav {
+    padding: 104px 16px 20px;
+  }
+
+  .header-mobile-brand__logo {
+    width: 78px;
+  }
+
+  .nav-item,
+  .nav-item:first-child {
+    max-width: 100%;
+  }
 }
 
 .outer-wrap,
@@ -8712,43 +9106,6 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
     font-size: clamp(28px, 8vw, 42px);
   }
 
-  .nav-list {
-    flex-wrap: wrap;
-  }
-
-  .nav-item {
-    min-height: 64px;
-  }
-
-  .nav-item--dropdown {
-    flex-wrap: wrap;
-  }
-
-  .nav-dropdown {
-    position: static;
-    left: auto;
-    top: auto;
-    width: 100%;
-    min-width: 0;
-    margin: 0;
-    border-top: 1px solid rgba(123, 107, 67, 0.12);
-    box-shadow: none;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    pointer-events: auto;
-    display: none;
-    background: #f5f2e8;
-  }
-
-  .nav-item--dropdown.is-open .nav-dropdown {
-    display: grid;
-  }
-
-  .nav-dropdown__link {
-    font-size: 11px;
-  }
-
   .professionals-inspiration-hero,
   .professionals-inspiration-hero .hero-bg-img,
   .professionals-inspiration-hero .hero-dark-overlay,
@@ -11062,5 +11419,152 @@ body.internal.page-gastronomic-recipes {
 
   .shop-page-featured-product__actions {
     top: 30%;
+  }
+}
+
+body.has-mobile-menu-open {
+  overflow: hidden;
+}
+
+@media (max-width: 980px) {
+  .nav-list {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .nav-item,
+  .nav-item:first-child {
+    border-right: 0;
+    border-left: 0;
+    border-top: 1px solid rgba(247, 241, 227, 0.18);
+    min-height: auto;
+  }
+
+  .nav-item a,
+  .nav-link-button,
+  .nav-item:first-child .nav-link-button,
+  body.home .header-nav a,
+  body.home .header-nav .nav-link-button,
+  body.page-fusta .header-nav a,
+  body.page-fusta .header-nav .nav-link-button,
+  body.page-visits .header-nav a,
+  body.page-visits .header-nav .nav-link-button {
+    align-items: center;
+    justify-content: center;
+    padding: 18px 20px;
+    color: #f7f1e3 !important;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .header-mobile-actions__link,
+  body.home .header-nav .header-mobile-actions__link,
+  body.page-fusta .header-nav .header-mobile-actions__link,
+  body.page-visits .header-nav .header-mobile-actions__link {
+    justify-content: center;
+    padding: 12px 10px;
+    color: #fff8ea !important;
+  }
+
+  .nav-item--dropdown {
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .nav-item--dropdown > .nav-link-button {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+    text-align: center;
+  }
+
+  .nav-dropdown {
+    position: static;
+    left: auto;
+    top: auto;
+    z-index: auto;
+    display: none;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0 auto;
+    padding: 0 0 8px;
+    border: 0;
+    background: transparent !important;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    text-align: center;
+    transform: none;
+    pointer-events: auto;
+    transition: none;
+  }
+
+  .nav-dropdown__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto;
+    gap: 6px;
+  }
+
+  .nav-item--dropdown.is-open .nav-dropdown {
+    display: block;
+  }
+
+  /* The desktop open-state rule applies `transform: translate(-50%, 0)` to
+     centre an absolutely-positioned panel. On mobile the panel is static and
+     full-width, so that translate just shoves it off the left edge. Re-assert
+     the reset here at matching (0,3,0) specificity so the open submenu stays
+     centred. */
+  .nav-item--dropdown:hover .nav-dropdown,
+  .nav-item--dropdown:focus-within .nav-dropdown,
+  .nav-item--dropdown.is-open .nav-dropdown {
+    left: auto;
+    transform: none;
+  }
+
+  .nav-dropdown .nav-dropdown__link,
+  body.home .header-nav .nav-dropdown .nav-dropdown__link,
+  body.page-fusta .header-nav .nav-dropdown .nav-dropdown__link,
+  body.page-visits .header-nav .nav-dropdown .nav-dropdown__link {
+    display: block;
+    width: max-content;
+    max-width: min(100%, 280px);
+    margin: 0 auto;
+    padding: 10px 12px;
+    color: #f7f1e3 !important;
+    text-align: center;
+    line-height: 1.35;
+    white-space: normal;
+    background: transparent !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .nav-dropdown__link:hover,
+  .nav-dropdown__link:focus-visible,
+  .nav-dropdown__link.is-active,
+  body.home .header-nav .nav-dropdown__link:hover,
+  body.home .header-nav .nav-dropdown__link:focus-visible,
+  body.home .header-nav .nav-dropdown__link.is-active,
+  body.page-fusta .header-nav .nav-dropdown__link:hover,
+  body.page-fusta .header-nav .nav-dropdown__link:focus-visible,
+  body.page-fusta .header-nav .nav-dropdown__link.is-active,
+  body.page-visits .header-nav .nav-dropdown__link:hover,
+  body.page-visits .header-nav .nav-dropdown__link:focus-visible,
+  body.page-visits .header-nav .nav-dropdown__link.is-active {
+    color: #ffffff !important;
+    background: transparent !important;
+  }
+
+  .site-header:not(.is-menu-open) .nav-dropdown {
+    display: none !important;
   }
 }
