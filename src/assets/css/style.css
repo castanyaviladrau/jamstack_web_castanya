@@ -2536,6 +2536,45 @@ body.home .header-icon-button--whatsapp {
   height: 64px;
 }
 
+/* Fixed top-right overlay: shown on pages where the header sits at the bottom */
+.utility-top-overlay {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2001;
+  align-items: center;
+  gap: 16px;
+}
+
+body.home .utility-top-overlay,
+body.page-fusta .utility-top-overlay,
+body.page-visits .utility-top-overlay {
+  display: flex;
+}
+
+/* WhatsApp in the overlay shows only on home */
+.utility-top-overlay .header-icon-button--whatsapp {
+  display: none;
+}
+
+body.home .utility-top-overlay .header-icon-button--whatsapp {
+  display: inline-flex;
+  width: 64px;
+  height: 64px;
+}
+
+/* Hide the duplicated buttons from the header's utility-right on these pages */
+body.home .utility-right .header-contact-button,
+body.home .utility-right .header-icon-button--cart,
+body.home .utility-right .header-icon-button--whatsapp,
+body.page-fusta .utility-right .header-contact-button,
+body.page-fusta .utility-right .header-icon-button--cart,
+body.page-visits .utility-right .header-contact-button,
+body.page-visits .utility-right .header-icon-button--cart {
+  display: none !important;
+}
+
 body.internal:not(.page-fusta):not(.page-visits) .site-header {
   position: sticky; /* Or fixed, if you want it to follow the scroll */
   top: 0;
