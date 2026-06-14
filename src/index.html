@@ -110,51 +110,41 @@ name: home
 
     {% set latestPosts = collections.posts | head(3) %}
 
-    <div class="actualitat-home-carousel-wrap" aria-label="Últimes publicacions">
-      <button class="nav-arrow-inline left" id="homeActualitatPrev" aria-label="Previous">
-        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
-      </button>
+    <div class="actualitat-home-grid" aria-label="Últimes publicacions">
+      {% for post in latestPosts %}
+      <a class="actualitat-card actualitat-card--home" href="{{ post.url }}">
+        <div class="actualitat-card-image">
+          <span class="featured-news-chip">Actualitat</span>
+          <img
+            src="{{ post.data.image or site.defaultOgImage }}"
+            alt="{{ post.data.imageAlt or post.data.title }}"
+            class="fit-img"
+          />
+        </div>
 
-      <div class="actualitat-home-carousel" id="homeActualitatCarousel">
-        {% for post in latestPosts %}
-        <a class="actualitat-card actualitat-card--home" href="{{ post.url }}">
-          <div class="actualitat-card-image">
-            <span class="featured-news-chip">Actualitat</span>
-            <img
-              src="{{ post.data.image or site.defaultOgImage }}"
-              alt="{{ post.data.imageAlt or post.data.title }}"
-              class="fit-img"
-            />
+        <div class="actualitat-card-content">
+          <p class="actualitat-card-date">{% if post.data.displayDate %}{{ post.data.displayDate }}{% else %}{{ post.date | readableDate }}{% endif %}</p>
+          <h3 class="actualitat-card-title">
+            {{ post.data.title | replace("\n", "<br />") | safe }}
+          </h3>
+          <p class="actualitat-card-excerpt">{{ post.data.description }}</p>
+          <div class="actualitat-card-meta">
+            <p>
+              <strong>Temps de lectura</strong><br />
+              {% if post.data.readingTimeValue %}{{ post.data.readingTimeValue }}{% else %}{{ post.templateContent | readingTime }} minuts{% endif %}
+            </p>
+            <p>
+              <strong>Etiquetes</strong><br />
+              {% if post.data.tags %}
+                {% for tag in post.data.tags %}{% if tag != 'posts' %}{{ tag }} {% endif %}{% endfor %}
+              {% else %}
+                Actualitat
+              {% endif %}
+            </p>
           </div>
-
-          <div class="actualitat-card-content">
-            <p class="actualitat-card-date">{% if post.data.displayDate %}{{ post.data.displayDate }}{% else %}{{ post.date | readableDate }}{% endif %}</p>
-            <h3 class="actualitat-card-title">
-              {{ post.data.title | replace("\n", "<br />") | safe }}
-            </h3>
-            <p class="actualitat-card-excerpt">{{ post.data.description }}</p>
-            <div class="actualitat-card-meta">
-              <p>
-                <strong>Temps de lectura</strong><br />
-                {% if post.data.readingTimeValue %}{{ post.data.readingTimeValue }}{% else %}{{ post.templateContent | readingTime }} minuts{% endif %}
-              </p>
-              <p>
-                <strong>Etiquetes</strong><br />
-                {% if post.data.tags %}
-                  {% for tag in post.data.tags %}{% if tag != 'posts' %}{{ tag }} {% endif %}{% endfor %}
-                {% else %}
-                  Actualitat
-                {% endif %}
-              </p>
-            </div>
-          </div>
-        </a>
-        {% endfor %}
-      </div>
-
-      <button class="nav-arrow-inline right" id="homeActualitatNext" aria-label="Next">
-        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </button>
+        </div>
+      </a>
+      {% endfor %}
     </div>
 
     <a href="/blog" class="btn-olive">VEURE L'ACTUALITAT</a>

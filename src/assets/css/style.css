@@ -55,6 +55,8 @@
   --type-banner-title-size: clamp(28px, 3.4vw, 52px);
   --type-banner-title-line-height: 0.98;
   --type-banner-text-size: clamp(17px, 1.3vw, 22px);
+  --section-banner-min-height: 360px;
+  --section-banner-min-height-mobile: 300px;
   --transition-fast: 0.2s ease;
   --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --header-bg: #7b6b43; /* The specific olive-brown from your screenshot */
@@ -3794,14 +3796,14 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .fusta-cta-banner {
   position: relative;
-  min-height: 330px;
+  min-height: var(--section-banner-min-height);
   overflow: hidden;
 }
 
 .fusta-cta-banner__image {
   display: block;
   width: 100%;
-  min-height: 330px;
+  min-height: var(--section-banner-min-height);
   object-fit: cover;
 }
 
@@ -4012,11 +4014,15 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
   .fusta-cta-banner,
   .fusta-cta-banner__image {
-    min-height: 300px;
+    min-height: var(--section-banner-min-height-mobile);
   }
 
   .fusta-cta-banner__content {
     padding: 40px 20px;
+  }
+
+  .visites-guiades-hero {
+    min-height: var(--section-banner-min-height-mobile);
   }
 }
 
@@ -4243,14 +4249,14 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .professionals-inspiration-banner {
   position: relative;
-  min-height: 300px;
+  min-height: var(--section-banner-min-height);
   overflow: hidden;
 }
 
 .professionals-inspiration-banner__image,
 .professionals-inspiration-banner__overlay,
 .professionals-inspiration-banner__content {
-  min-height: 300px;
+  min-height: var(--section-banner-min-height);
 }
 
 .professionals-inspiration-banner__image {
@@ -4438,7 +4444,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   font-size: 18px;
   line-height: 1.6;
   color: #7b6b43;
-  max-width: 750px;
+  max-width: 950px;
   margin: 0 auto 40px auto;
 }
 
@@ -4502,13 +4508,22 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 .hero-title-elegant,
 .info-text-body-centered p,
 .item-name {
-  color: #7b6b43 !important; /* Forces the brown color */
+  color: #7b6b43 !important;
+}
+
+.info-text-body-centered p {
+  font-family: 'Gotham Medium', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: 0;
+  text-align: center;
 }
 
 .visites-guiades-hero {
   position: relative;
   width: 100%;
-  min-height: 600px; /* Adjust height as needed */
+  min-height: var(--section-banner-min-height);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -5334,7 +5349,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   position: relative;
   width: calc(100% + 24px);
   margin: 0 -12px;
-  min-height: 340px;
+  min-height: var(--section-banner-min-height);
   overflow: hidden;
 }
 
@@ -5358,7 +5373,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   position: relative;
   z-index: 1;
   display: flex;
-  min-height: 340px;
+  min-height: var(--section-banner-min-height);
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -5748,33 +5763,54 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   font-size: 18px;
 }
 
-.actualitat-home-carousel-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.actualitat-home-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 34px;
-  width: 100%;
-  margin: 34px auto 42px;
-}
-
-.actualitat-home-carousel {
-  display: flex;
-  gap: 34px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding: 8px 4px;
   width: min(1180px, 100%);
-}
-
-.actualitat-home-carousel::-webkit-scrollbar {
-  display: none;
+  margin: 34px auto 42px;
+  align-items: start;
 }
 
 .actualitat-card--home {
-  flex: 0 0 auto;
-  width: min(360px, 78vw);
-  scroll-snap-align: start;
+  width: 100%;
+  min-width: 0;
+}
+
+.actualitat-card--home .actualitat-card-content {
+  padding: 20px 18px 18px;
+}
+
+.actualitat-card--home .actualitat-card-date {
+  margin-bottom: 12px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.actualitat-card--home .actualitat-card-title {
+  margin-bottom: 16px;
+  font-size: clamp(20px, 2.15vw, 30px);
+  line-height: 1.04;
+}
+
+.actualitat-card--home .actualitat-card-excerpt {
+  max-width: 30ch;
+  margin-bottom: 18px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.actualitat-card--home .actualitat-card-meta {
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.actualitat-card--home .actualitat-card-meta p {
+  margin-bottom: 12px;
+}
+
+.actualitat-card--home .actualitat-card-meta strong {
+  font-weight: 700;
 }
 
 /* Home Inline Carousels (Testimonials / Partners) */
@@ -5913,7 +5949,8 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .footer-cta-section {
   position: relative;
-  height: 350px;
+  min-height: var(--section-banner-min-height);
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5977,7 +6014,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 }
 
 .footer-cta-section--professionals {
-  min-height: 360px;
+  min-height: var(--section-banner-min-height);
   height: auto;
 }
 
@@ -6017,7 +6054,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 }
 
 .footer-cta-section--gastronomic {
-  min-height: 420px;
+  min-height: var(--section-banner-min-height);
   height: auto;
 }
 
@@ -8995,7 +9032,17 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   pointer-events: auto;
 }
 
+@media (max-width: 980px) {
+  .actualitat-home-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 700px) {
+  .actualitat-home-grid {
+    grid-template-columns: 1fr;
+  }
+
   .shop-cart-checkout__pickup {
     padding: 20px 18px;
     border-radius: 22px;
@@ -9384,6 +9431,12 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
     padding: 0 12px 80px;
   }
 
+  .gastronomic-sensory__banner,
+  .gastronomic-sensory__banner-content,
+  .footer-cta-section {
+    min-height: var(--section-banner-min-height-mobile);
+  }
+
   .gastronomic-sensory__inner {
     padding: 56px 0 0;
   }
@@ -9475,7 +9528,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   .professionals-inspiration-banner__image,
   .professionals-inspiration-banner__overlay,
   .professionals-inspiration-banner__content {
-    min-height: 320px;
+    min-height: var(--section-banner-min-height-mobile);
   }
 
   .professionals-inspiration-banner__content {
@@ -9527,12 +9580,12 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   }
 
   .footer-cta-section--professionals {
-    min-height: 320px;
+    min-height: var(--section-banner-min-height-mobile);
     height: auto;
   }
 
   .footer-cta-section--gastronomic {
-    min-height: 340px;
+    min-height: var(--section-banner-min-height-mobile);
     height: auto;
   }
 
@@ -9715,12 +9768,12 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   }
 
   .footer-cta-section--professionals {
-    min-height: 300px;
+    min-height: var(--section-banner-min-height-mobile);
     height: auto;
   }
 
   .footer-cta-section--gastronomic {
-    min-height: 320px;
+    min-height: var(--section-banner-min-height-mobile);
     height: auto;
   }
 
@@ -10105,7 +10158,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 
 .footer-cta-section--visits {
-  min-height: 300px;
+  min-height: var(--section-banner-min-height);
   height: auto;
 }
 
@@ -10133,6 +10186,12 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   margin-top: 22px;
   padding: 14px 30px;
   background: rgba(160, 136, 90, 0.92);
+}
+
+@media screen and (max-width: 768px) {
+  .footer-cta-section--visits {
+    min-height: var(--section-banner-min-height-mobile);
+  }
 }
 
 .visit-activity-hero {

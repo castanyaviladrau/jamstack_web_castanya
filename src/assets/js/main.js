@@ -209,12 +209,6 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   setupCarousel("partnerScroll", "prevPartner", "nextPartner", ".partner-card");
   setupCarousel(
-    "homeActualitatCarousel",
-    "homeActualitatPrev",
-    "homeActualitatNext",
-    ".actualitat-card",
-  );
-  setupCarousel(
     "visitActivityReviewsScroll",
     "visitActivityReviewsPrev",
     "visitActivityReviewsNext",
