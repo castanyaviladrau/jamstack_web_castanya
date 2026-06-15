@@ -5970,7 +5970,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(90, 55, 20, 0.35);
   z-index: 2;
 }
 
