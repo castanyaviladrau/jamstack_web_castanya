@@ -94,6 +94,19 @@ function createMerchantOrderCode(order) {
   return padded.slice(0, 12);
 }
 
+function shouldRefreshMerchantOrderCode(order) {
+  const callbackResponseCode = order?.payment_raw_response?.callback_response_code;
+  return order?.payment_status === 'failed' || callbackResponseCode != null;
+}
+
+function resolveMerchantOrderCode(order) {
+  if (!order?.payment_reference || shouldRefreshMerchantOrderCode(order)) {
+    return createMerchantOrderCode(order);
+  }
+
+  return order.payment_reference;
+}
+
 function normalizePaymentMethod(value) {
   return String(value || 'card').trim().toLowerCase() === 'bizum' ? 'bizum' : 'card';
 }
@@ -141,6 +154,8 @@ exports._test = {
   createMerchantOrderCode,
   generateSignature,
   normalizePaymentMethod,
+  resolveMerchantOrderCode,
+  shouldRefreshMerchantOrderCode,
 };
 
 exports.handler = async (event) => {
@@ -205,7 +220,7 @@ exports.handler = async (event) => {
       return jsonResponse(400, { error: 'Order total is not valid for payment' });
     }
 
-    const merchantOrderCode = order.payment_reference || createMerchantOrderCode(order);
+    const merchantOrderCode = resolveMerchantOrderCode(order);
     const parameters = buildMerchantParameters({
       amountInCents,
       merchantOrderCode,

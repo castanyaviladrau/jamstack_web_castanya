@@ -33,3 +33,12 @@ permalink: /payment/error/
     </div>
   </div>
 </section>
+
+<script>
+  // Keep cart contents, but force a fresh checkout/order on payment retry.
+  try {
+    window.localStorage.removeItem("castanya-checkout-session");
+  } catch (e) {
+    // ignore
+  }
+</script>

@@ -95,6 +95,35 @@ test('payment-process._test.normalizePaymentMethod defaults to card', () => {
   assert.equal(mod._test.normalizePaymentMethod('anything-else'), 'card');
 });
 
+test('payment-process._test.resolveMerchantOrderCode refreshes failed attempts', () => {
+  const mod = freshRequire('../netlify/functions/payment-process.js');
+  const originalNow = Date.now;
+  Date.now = () => 1712345678901;
+
+  try {
+    const refreshedCode = mod._test.resolveMerchantOrderCode({
+      id: 'order-1',
+      public_order_code: 'CV-12345678-ABCD',
+      payment_status: 'failed',
+      payment_reference: '123456789012',
+    });
+
+    assert.match(refreshedCode, /^\d{12}$/);
+    assert.notEqual(refreshedCode, '123456789012');
+    assert.equal(
+      mod._test.resolveMerchantOrderCode({
+        id: 'order-1',
+        public_order_code: 'CV-12345678-ABCD',
+        payment_status: 'pending',
+        payment_reference: '123456789012',
+      }),
+      '123456789012',
+    );
+  } finally {
+    Date.now = originalNow;
+  }
+});
+
 test('payment-process handler returns 404 when order is missing', async () => {
   process.env.SUPABASE_URL = 'https://example.supabase.co';
   process.env.SUPABASE_SERVICE_ROLE_KEY = 'service-role';
@@ -295,6 +324,86 @@ test('payment-process handler includes Bizum pay method when requested', async (
     assert.equal(merchantParameters.DS_MERCHANT_PAYMETHODS, 'z');
   } finally {
     global.fetch = originalFetch;
+    delete process.env.REDSYS_SECRET_KEY_DEV;
+  }
+});
+
+test('payment-process handler regenerates payment reference after failed callback', async () => {
+  process.env.SUPABASE_URL = 'https://example.supabase.co';
+  process.env.SUPABASE_SERVICE_ROLE_KEY = 'service-role';
+  process.env.REDSYS_MERCHANT_CODE = 'merchant';
+  process.env.REDSYS_SECRET_KEY = testKey('d');
+  process.env.URL = 'https://example.com';
+  process.env.PAYMENT_PROVIDER = 'mock';
+  process.env.REDSYS_SECRET_KEY_DEV = testKey('d');
+
+  const originalFetch = global.fetch;
+  const originalNow = Date.now;
+  const fetchCalls = [];
+  Date.now = () => 1712345678901;
+
+  global.fetch = async (url, options = {}) => {
+    fetchCalls.push({ url, options });
+    if (String(url).includes('/rest/v1/orders?select=')) {
+      return {
+        ok: true,
+        json: async () => [
+          {
+            id: 'order-failed',
+            public_order_code: 'CV-12345678-ABCD',
+            total_amount: 12.5,
+            currency: 'EUR',
+            payment_status: 'failed',
+            payment_reference: '123456789012',
+            payment_raw_response: {
+              callback_response_code: '101',
+            },
+          },
+        ],
+      };
+    }
+
+    if (String(url).includes('/rest/v1/orders?id=eq.order-failed')) {
+      return {
+        ok: true,
+        json: async () => [
+          {
+            id: 'order-failed',
+            public_order_code: 'CV-12345678-ABCD',
+            total_amount: 12.5,
+            currency: 'EUR',
+            status: 'pending_payment',
+            payment_status: 'pending',
+            payment_reference: '117123456789',
+          },
+        ],
+      };
+    }
+
+    throw new Error(`Unexpected fetch call: ${url}`);
+  };
+
+  try {
+    const mod = freshRequire('../netlify/functions/payment-process.js');
+    const response = await mod.handler({
+      httpMethod: 'POST',
+      body: JSON.stringify({ orderId: 'order-failed' }),
+    });
+    const payload = JSON.parse(response.body);
+
+    assert.equal(response.statusCode, 200);
+    assert.equal(payload.order.paymentReference, '117123456789');
+    assert.notEqual(payload.order.paymentReference, '123456789012');
+
+    const updateCall = fetchCalls.find(({ url }) =>
+      String(url).includes('/rest/v1/orders?id=eq.order-failed'),
+    );
+    const updatePayload = JSON.parse(updateCall.options.body);
+    assert.notEqual(updatePayload.payment_reference, '123456789012');
+    assert.match(updatePayload.payment_reference, /^\d{12}$/);
+  } finally {
+    global.fetch = originalFetch;
+    Date.now = originalNow;
     delete process.env.REDSYS_SECRET_KEY_DEV;
   }
 });
