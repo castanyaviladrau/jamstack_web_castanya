@@ -51,8 +51,11 @@ function deriveOperationKey(order, secretKey) {
   const keyBytes = Buffer.from(normalizeTerminalSecretKey(secretKey), 'utf8');
   const iv = Buffer.alloc(16, 0);
   const cipher = crypto.createCipheriv('aes-128-cbc', keyBytes, iv);
+  const encrypted = Buffer.concat([cipher.update(String(order || ''), 'utf8'), cipher.final()]);
 
-  return Buffer.concat([cipher.update(String(order || ''), 'utf8'), cipher.final()]);
+  // Match the official Java SDK: AES-CBC encrypt the order, Base64-encode the
+  // encrypted bytes, then use the UTF-8 bytes of that Base64 string as the HMAC key.
+  return Buffer.from(encrypted.toString('base64'), 'utf8');
 }
 
 function createSignature(merchantParameters, order, secretKey) {

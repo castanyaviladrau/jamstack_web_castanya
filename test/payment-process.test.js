@@ -2,6 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const {
   decodeMerchantParameters,
+  encodeMerchantParameters,
   verifyMerchantParametersSignature,
 } = require('../netlify/functions/redsys-signature.js');
 
@@ -32,6 +33,45 @@ test('payment-process._test.generateSignature produces stable signature', () => 
   const sig2 = mod._test.generateSignature(params, secretKey);
   assert.equal(typeof sig1, 'string');
   assert.equal(sig1, sig2);
+});
+
+test('payment-process._test.debug Redsys docs example payload', () => {
+  const secretKey = 'sq7HjrUOBfKmC576ILgskD5srU870gJ7';
+  const mod = freshRequire('../netlify/functions/payment-process.js');
+  const params = {
+    DS_MERCHANT_AMOUNT: '999',
+    DS_MERCHANT_ORDER: '1234567890',
+    DS_MERCHANT_MERCHANTCODE: '999008881',
+    DS_MERCHANT_CURRENCY: '978',
+    DS_MERCHANT_TRANSACTIONTYPE: '0',
+    DS_MERCHANT_TERMINAL: '1',
+    DS_MERCHANT_MERCHANTURL: 'http://www.prueba.com/urlNotificacion.php',
+    DS_MERCHANT_URLOK: 'http://www.prueba.com/urlOK.php',
+    DS_MERCHANT_URLKO: 'http://www.prueba.com/urlKO.php',
+  };
+
+  const expected = {
+    Ds_MerchantParameters:
+      'eyJEU19NRVJDSEFOVF9BTU9VTlQiOiI5OTkiLCJEU19NRVJDSEFOVF9PUkRFUiI6IjEyMzQ1Njc4OTAiLCJEU19NRVJDSEFOVF9NRVJDSEFOVENPREUiOiI5OTkwMDg4ODEiLCJEU19NRVJDSEFOVF9DVVJSRU5DWSI6Ijk3OCIsIkRTX01FUkNIQU5UX1RSQU5TQUNUSU9OVFlQRSI6IjAiLCJEU19NRVJDSEFOVF9URVJNSU5BTCI6IjEiLCJEU19NRVJDSEFOVF9NRVJDSEFOVFVSTCI6Imh0dHA6XC9cL3d3dy5wcnVlYmEuY29tXC91cmxOb3RpZmljYWNpb24ucGhwIiwiRFNfTUVSQ0hBTlRfVVJMT0siOiJodHRwOlwvXC93d3cucHJ1ZWJhLmNvbVwvdXJsT0sucGhwIiwiRFNfTUVSQ0hBTlRfVVJMS08iOiJodHRwOlwvXC93d3cucHJ1ZWJhLmNvbVwvdXJsS08ucGhwIn0',
+    Ds_Signature:
+      'Vjo02eSWq249IeZZp3R-ArFnGLhKY0OuzDDlx1BuVtZDC2yhczA7_11uZhsYzLZBCMFAz8u8uzGDX3AErHKmmw',
+    Ds_SignatureVersion: 'HMAC_SHA512_V2',
+  };
+
+  const actual = {
+    Ds_MerchantParameters: encodeMerchantParameters(params),
+    Ds_Signature: mod._test.generateSignature(params, secretKey),
+    Ds_SignatureVersion: 'HMAC_SHA512_V2',
+  };
+
+  if (process.env.DEBUG_REDSYS === '1') {
+    console.log('Expected Redsys sample:', JSON.stringify(expected, null, 2));
+    console.log('Generated payload:', JSON.stringify(actual, null, 2));
+  }
+
+  assert.equal(actual.Ds_SignatureVersion, expected.Ds_SignatureVersion);
+  assert.equal(typeof actual.Ds_MerchantParameters, 'string');
+  assert.equal(typeof actual.Ds_Signature, 'string');
 });
 
 test('payment-process._test.createMerchantOrderCode returns 12 digits', () => {
