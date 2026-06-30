@@ -164,34 +164,46 @@ name: home
 
       {% set testimonials = [
         {
-          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
-          "name": "Maria Sheferd",
-          "date": "19/04/2024",
-          "initials": "MS"
+          "text": "Una experiencia fantástica, un lugar para relajarte y aprender. Los productos a base de castañas, buenísimos. Padre e hija transmiten su fascinación por todo el bosque, yo desde ayer miro los arboles de otra manera, gracias........",
+          "name": "Pilar Coderch Negra",
+          "initials": "PC",
+          "link": "https://www.google.com/maps/contrib/110053115233318064539/reviews?hl=ca-ES"
         },
         {
-          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
-          "name": "Jordi Vila",
-          "date": "02/03/2024",
-          "initials": "JV"
+          "text": "He comprado en su tienda los productos y seguro que volveré, son de gran calidad y muy naturales, las castañas naturales y el licor de castañas lo mejor, pero les sigue de cerca todos los demás.",
+          "name": "Maria Angels Civil Bargallo",
+          "initials": "MA",
+          "link": "https://www.google.com/maps/contrib/112331947256621114497/reviews?hl=ca-ES"
         },
         {
-          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
-          "name": "Anna Puig",
-          "date": "27/02/2024",
-          "initials": "AP"
+          "text": "Sorprendente. Transmiten la pasión por la naturaleza. Realmente increíble todo lo que rodea a un producto tan \"corriente\" como es la castaña. Un mundo entero. Una experiencia con degustación incluida que no te dejarán indiferente. Recomendable.",
+          "name": "Claudia Magela",
+          "initials": "CM",
+          "link": "https://www.google.com/maps/contrib/106538847581198166744/reviews?hl=ca-ES"
         },
         {
-          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
-          "name": "Pau Martí",
-          "date": "10/02/2024",
-          "initials": "PM"
+          "text": "Ens ha encantat la visita que ens han fet. Hem après molt sobre el món de la castanya i tot el que l'envolta. En Joaquim un home que viu la seva feina amb molta intensitat i es nota que ho fa de gust. I hem fet una sortida molt maca per la montanya envoltats d'alzines, roures, castanyes... Tots, grans i petits hem disfrutat. Gràcies família!",
+          "name": "Laura Espinosa",
+          "initials": "LE",
+          "link": "https://www.google.com/maps/contrib/117734609603352656660/reviews?hl=ca-ES"
         },
         {
-          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
-          "name": "Clàudia Serra",
-          "date": "19/01/2024",
-          "initials": "CS"
+          "text": "Gent emprenadora. De la Castanya, elaboren productes tradicionals. Com la cervesa, el licor o el formatge. Del formatge, puc dir, que és una veritable joia. No només per la presentació. També per la seva exquisitesa.",
+          "name": "Carles Sancho Sales",
+          "initials": "CS",
+          "link": "https://www.google.com/maps/contrib/110374509453266244852/reviews?hl=ca-ES"
+        },
+        {
+          "text": "Una visita guiada per la Merce, molt interesant, ideal per nens!!! Despres ens hem kedat a dinar i hem tastat un deliciosa botifarra de carxofa.",
+          "name": "Mercè Balletbó",
+          "initials": "MB",
+          "link": "https://www.google.com/maps/contrib/113020132556096350540/reviews?hl=ca-ES"
+        },
+        {
+          "text": "Hay productos que desconocía que su ingrediente sea la castaña, y que la mayor parte de la que consumimos es de Galicia. Hay miel de castaña, cerveza, queso... ahora se está potenciando el producto de Catalunya.",
+          "name": "Miquel Teruel",
+          "initials": "MT",
+          "link": "https://www.google.com/maps/contrib/111928591362084004724/reviews?hl=ca-ES"
         }
       ] %}
 
@@ -203,8 +215,7 @@ name: home
             <div class="stars" aria-label="5 estrelles">★★★★★</div>
             <p class="review-text">{{ item.text }}</p>
             <div class="reviewer-info">
-              <div class="reviewer-name">{{ item.name }}</div>
-              <div class="review-date">{{ item.date }}</div>
+              <div class="reviewer-name"><a href="{{ item.link }}" target="_blank" rel="noopener noreferrer">{{ item.name }}</a></div>
               <div class="reviewer-avatar-placeholder" aria-hidden="true">{{ item.initials }}</div>
             </div>
           </article>

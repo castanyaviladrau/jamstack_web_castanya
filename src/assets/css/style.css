@@ -5839,6 +5839,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 }
 
 .home-carousel-section {
+  width: 100%;
   padding-top: 40px;
   padding-bottom: 60px;
 }
