@@ -15,108 +15,81 @@
     "searchLabel": "BUSCA RECEPTA"
   },
   "foundationsSection": {
-    "title": "FONAMENTS GASTRONOMICS DE LA CASTANYA DE VILADRAU",
-    "intro": "Tecniques basiques i consells del Joaquim de com tractar la nostra Castanya",
+    "title": "ENTRANTS AMB CASTANYA DE VILADRAU",
+    "intro": "Entrants elegants i plens de sabor per iniciar qualsevol àpat de tardor. La castanya de Viladrau com a protagonista de primer plat.",
     "ctaLabel": "VEURE TOTES",
     "ctaHref": "/contact/",
     "slides": [
       {
-        "title": "COM HIDRATAR LA SECALLONA",
-        "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
-        "imageAlt": "Grup a l'entorn del bosc de castanyers",
-        "time": "20 minuts",
-        "difficulty": "facil",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya torrada", "Farina de castanya"]
-      },
-      {
-        "title": "COM HIDRATAR LA SECALLONA",
-        "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
-        "imageAlt": "Sessio practica amb castanya al Montseny",
-        "time": "20 minuts",
-        "difficulty": "facil",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya torrada", "Farina de castanya"]
-      },
-      {
-        "title": "BASE PER A CREMA FINA",
-        "image": "/assets/images/gallery/espai-gastronomic/castanya_plat.jpg",
-        "imageAlt": "Plat amb elaboracio de castanya",
-        "time": "25 minuts",
+        "title": "CREMA DE CASTANYES",
+        "image": "/assets/images/gallery/receptes/crema-de-castanyes.png",
+        "imageAlt": "Crema de castanyes servida calenta amb guarnicio",
+        "time": "120 minuts",
         "difficulty": "mitja",
         "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya bullida", "Brou vegetal"]
+        "ingredients": ["Castanyes de Viladrau", "Brou de pollastre", "Nata liquida"]
       },
       {
-        "title": "CREMA SUAU DE TARDOR",
-        "image": "/assets/images/gallery/espai-gastronomic/cake.jpg",
-        "imageAlt": "Preparacio casolana amb castanya",
-        "time": "35 minuts",
+        "title": "RISOTTO DE CASTANYES I BOLETS",
+        "image": "/assets/images/gallery/receptes/risotto-castanyes-bolets.png",
+        "imageAlt": "Risotto cremos de castanyes i bolets de temporada",
+        "time": "40 minuts",
         "difficulty": "mitja",
         "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Farina de castanya", "Llet"]
+        "ingredients": ["Castanyes cuites", "Bolets variats", "Arros per a risotto"]
       },
       {
-        "title": "CASTANYA PER A GUARNICIO",
-        "image": "/assets/images/gallery/espai-gastronomic/castanya_camp.jpg",
-        "imageAlt": "Castanya al paisatge del Montseny",
-        "time": "15 minuts",
+        "title": "PASTÍS SALAT DE CEBA AMB CASTANYES I HERBES AROMÀTIQUES",
+        "image": "/assets/images/gallery/receptes/pastis-salat-ceba-castanyes.png",
+        "imageAlt": "Pastis salat de ceba vermella amb castanyes i herbes",
+        "time": "40 minuts",
         "difficulty": "facil",
         "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya fresca", "Sal fina"]
+        "ingredients": ["Castanyes de Viladrau", "Ceba vermella", "Pasta de full"]
+      },
+      {
+        "title": "NIU DE CASTANYES AMB OU DE CARABASSA I SALSES DE MONIATO",
+        "image": "/assets/images/gallery/receptes/niu-castanyes-ou-carabassa.png",
+        "imageAlt": "Niu de pure de castanyes amb ou de carabassa i salses de moniato",
+        "time": "90 minuts",
+        "difficulty": "mitja",
+        "ingredientsLabel": "INGREDIENTS",
+        "ingredients": ["Castanyes de Viladrau", "Carabassa", "Moniato"]
       }
     ]
   },
   "homeTraditionsSection": {
-    "title": "L'ART DE LA CASTANYADA: TRUCS I TRADICIONS DE CASA NOSTRA",
-    "intro": "Recupera el gust d'abans amb els consells del Joaquim per aconseguir unes castanyes dolces, tendres i facils de pelar.",
+    "title": "PLATS PRINCIPALS AMB CASTANYA DE VILADRAU",
+    "intro": "Plats de resistencia i cuina de mercat que converteixen la castanya en l'anima de cada apat. Del camp a la taula, amb tot el sabor del Montseny.",
     "ctaLabel": "VEURE TOTES",
     "ctaHref": "/contact/",
     "slides": [
       {
-        "title": "CASTANYA AL FORN",
-        "image": "/assets/images/gallery/espai-gastronomic/baixa_en_greixos.jpg",
-        "imageAlt": "Castanya preparada per a recepta saludable",
-        "time": "30 minuts",
-        "difficulty": "facil",
+        "title": "CARN AMB SALSA DE CASTANYES",
+        "image": "/assets/images/gallery/receptes/carn-salsa-castanyes.png",
+        "imageAlt": "Filet de bou amb salsa intensa de castanyes i Pedro Ximenez",
+        "time": "45 minuts",
+        "difficulty": "dificil",
         "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya", "Oli d'oliva"]
+        "ingredients": ["Filet de bou", "Castanyes cuites", "Pedro Ximenez"]
       },
       {
-        "title": "TEXTURA PER A POSTRES",
-        "image": "/assets/images/gallery/espai-gastronomic/cake.jpg",
-        "imageAlt": "Postres amb castanya",
-        "time": "35 minuts",
+        "title": "POLLASTRE ROSTIT AMB CASTANYES",
+        "image": "/assets/images/gallery/receptes/pollastre-rostit-castanyes.png",
+        "imageAlt": "Pollastre rostit al forn amb castanyes i herbes aromàtiques",
+        "time": "75 minuts",
         "difficulty": "mitja",
         "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Farina de castanya", "Xocolata"]
+        "ingredients": ["Pollastre", "Castanyes de Viladrau", "Vi blanc"]
       },
       {
-        "title": "CASTANYA DE TEMPORADA",
-        "image": "/assets/images/gallery/espai-gastronomic/castanya_camp.jpg",
-        "imageAlt": "Castanya al paisatge del Montseny",
-        "time": "15 minuts",
-        "difficulty": "facil",
+        "title": "MANDONGUILLES AMB CASTANYES I BOLETS",
+        "image": "/assets/images/gallery/receptes/mandonguilles-castanyes-bolets.png",
+        "imageAlt": "Mandonguilles en salsa de vi ranci amb castanyes i bolets",
+        "time": "75 minuts",
+        "difficulty": "mitja",
         "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya fresca", "Sal fina"]
-      },
-      {
-        "title": "TRIATGE I PREPARACIO",
-        "image": "/assets/images/gallery/espai-gastronomic/recollida.jpg",
-        "imageAlt": "Recollida i triatge manual",
-        "time": "20 minuts",
-        "difficulty": "facil",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya seleccionada", "Aigua"]
-      },
-      {
-        "title": "IDEES PER A GUARNICIO",
-        "image": "/assets/images/gallery/espai-gastronomic/castanya.jpg",
-        "imageAlt": "Castanya encara a l'arbre",
-        "time": "18 minuts",
-        "difficulty": "facil",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya torrada", "Herbes fresques"]
+        "ingredients": ["Carn de porc i vedella", "Castanyes cuites", "Bolets variats"]
       }
     ]
   },
@@ -251,49 +224,40 @@
     "ctaHref": "/contact/",
     "slides": [
       {
-        "title": "COM HIDRATAR LA SECALLONA",
-        "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
-        "imageAlt": "Grup a l'entorn del bosc de castanyers",
-        "time": "20 minuts",
+        "title": "CASTANYES CARAMEL·LITZADES",
+        "image": "/assets/images/gallery/receptes/castanyes-caramelitzades.png",
+        "imageAlt": "Castanyes caramel·litzades daurades amb mel i canyella",
+        "time": "30 minuts",
         "difficulty": "facil",
         "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya torrada", "Farina de castanya"]
+        "ingredients": ["Castanyes de Viladrau", "Mel artesana", "Canyella en branca"]
       },
       {
-        "title": "COM HIDRATAR LA SECALLONA",
-        "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
-        "imageAlt": "Sessio practica amb castanya al Montseny",
-        "time": "20 minuts",
+        "title": "PANELLETS DE CASTANYA",
+        "image": "/assets/images/gallery/receptes/panellets-de-castanya.png",
+        "imageAlt": "Panellets de castanya amb pinyons daurats al forn",
+        "time": "45 minuts",
         "difficulty": "facil",
         "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya torrada", "Farina de castanya"]
+        "ingredients": ["Castanyes de Viladrau", "Pinyons", "Sucre"]
       },
       {
-        "title": "COM HIDRATAR LA SECALLONA",
-        "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
-        "imageAlt": "Taller gastronomic amb castanya",
-        "time": "20 minuts",
-        "difficulty": "facil",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya torrada", "Farina de castanya"]
-      },
-      {
-        "title": "POSTRES DE TARDOR",
-        "image": "/assets/images/gallery/espai-gastronomic/cake.jpg",
-        "imageAlt": "Postres amb castanya",
-        "time": "35 minuts",
+        "title": "CÓC DE CREMA DE CASTANYES",
+        "image": "/assets/images/gallery/receptes/pastis-castanya.png",
+        "imageAlt": "Coc esponjós de crema de castanyes amb sucre llustre",
+        "time": "60 minuts",
         "difficulty": "mitja",
         "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Farina de castanya", "Xocolata"]
+        "ingredients": ["Crema de castanya", "Farina d'espelta", "Oli d'oliva verge extra"]
       },
       {
-        "title": "CREMA DOLCA",
-        "image": "/assets/images/gallery/espai-gastronomic/castanya_plat.jpg",
-        "imageAlt": "Plat amb elaboracio de castanya",
-        "time": "25 minuts",
+        "title": "MOUSSE DE CASTANYES I XOCOLATA",
+        "image": "/assets/images/gallery/receptes/mousse-castanyes-xocolata.png",
+        "imageAlt": "Mousse de castanyes i xocolata negra servida en copes",
+        "time": "40 minuts",
         "difficulty": "mitja",
         "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya bullida", "Llet"]
+        "ingredients": ["Castanyes de Viladrau", "Xocolata negra", "Clares d'ou"]
       }
     ]
   },
