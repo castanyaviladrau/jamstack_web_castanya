@@ -1,56 +1,362 @@
 {
   "list": [
     {
-      "slug": "castanya_formatge",
-      "name": "CASTANYA DE VILADRAU TORRADA",
+      "slug": "castanya-al-brandi-extra",
+      "name": "\"Castanya al brandi extra\"",
       "currency": "EUR",
-      "image": "/assets/images/gallery/botiga/botiga_formatge.png",
+      "image": "\"/assets/images/products/pending-product-image.svg\"",
       "variants": [
         {
-          "sku": "castanya-viladrau-torrada-250",
-          "label": "Pot 250 g",
-          "price": 8.5
-        },
-        {
-          "sku": "castanya-viladrau-torrada-500",
-          "label": "Pot 500 g",
-          "price": 15.9
+          "sku": "\"br010\"",
+          "label": "\"Pot de 300 g\"",
+          "price": 8.09
         }
       ]
     },
     {
-      "slug": "llonganisa",
-      "name": "LLONGANISSA AMB CASTANYA",
+      "slug": "castanya-en-almivar",
+      "name": "\"Castanya en almívar\"",
       "currency": "EUR",
-      "image": "/assets/images/gallery/botiga/botiga_productes.png",
+      "image": "\"/assets/images/products/pending-product-image.svg\"",
       "variants": [
         {
-          "sku": "llonganissa-castanya-250",
-          "label": "Peça 250 g",
-          "price": 10
-        },
-        {
-          "sku": "llonganissa-castanya-500",
-          "label": "Peça 500 g",
-          "price": 18
+          "sku": "\"ca010\"",
+          "label": "\"Pot de 350 g\"",
+          "price": 7.6
         }
       ]
     },
     {
-      "slug": "Producte-nou",
-      "name": "Producte nou",
+      "slug": "castanya-pilonga-deshidratada",
+      "name": "\"Castanya pilonga deshidratada\"",
       "currency": "EUR",
-      "image": "/assets/images/gallery/botiga/botiga_formatge.png",
+      "image": "\"/assets/images/products/pending-product-image.svg\"",
       "variants": [
         {
-          "sku": "castanya-viladrau-torrada-250",
-          "label": "Pot 250 g",
-          "price": 8.5
+          "sku": "\"se010\"",
+          "label": "\"Bossa de 200 g\"",
+          "price": 4.2
         },
         {
-          "sku": "castanya-viladrau-torrada-500",
-          "label": "Pot 500 g",
-          "price": 15.9
+          "sku": "\"se0101\"",
+          "label": "\"Bossa d’1 kg\"",
+          "price": 19
+        }
+      ]
+    },
+    {
+      "slug": "castanya-torrada",
+      "name": "\"Castanya torrada\"",
+      "currency": "EUR",
+      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "variants": [
+        {
+          "sku": "\"ct010\"",
+          "label": "\"Bossa de 150 g\"",
+          "price": 5.7
+        }
+      ]
+    },
+    {
+      "slug": "cervesa-de-castanya",
+      "name": "\"Cervesa de castanya\"",
+      "currency": "EUR",
+      "image": "\"/assets/images/products/cervesa-de-castanya.jpeg\"",
+      "variants": [
+        {
+          "sku": "\"ce013\"",
+          "label": "\"Ampolla de 33 cl · 5,1% vol.\"",
+          "price": 4.01
+        }
+      ]
+    },
+    {
+      "slug": "cervesa-de-castanya-sense-alcohol",
+      "name": "\"Cervesa de castanya sense alcohol\"",
+      "currency": "EUR",
+      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "variants": [
+        {
+          "sku": "\"ce014\"",
+          "label": "\"Ampolla de 33 cl · 0,6% vol.\"",
+          "price": 4.1
+        }
+      ]
+    },
+    {
+      "slug": "cervesa-torrent-sureda",
+      "name": "\"Cervesa Torrent “Sureda”\"",
+      "currency": "EUR",
+      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "variants": [
+        {
+          "sku": "\"ce010\"",
+          "label": "\"Cervesa Torrent “Sureda”\"",
+          "price": 16.5
+        }
+      ]
+    },
+    {
+      "slug": "crema-de-castanya",
+      "name": "\"Crema de castanya\"",
+      "currency": "EUR",
+      "image": "\"/assets/images/products/crema-de-castanya.jpeg\"",
+      "variants": [
+        {
+          "sku": "\"cc010\"",
+          "label": "\"Pot de 230 g\"",
+          "price": 6
+        }
+      ]
+    },
+    {
+      "slug": "crema-de-castanya-i-carbassa",
+      "name": "\"Crema de castanya i carbassa\"",
+      "currency": "EUR",
+      "image": "\"/assets/images/products/crema-de-castanya-i-carbassa.jpeg\"",
+      "variants": [
+        {
+          "sku": "\"cb010\"",
+          "label": "\"Pot de vidre de 500 ml · dues racions\"",
+          "price": 7.1
+        }
+      ]
+    },
+    {
+      "slug": "farina-de-castanya",
+      "name": "\"Farina de castanya\"",
+      "currency": "EUR",
+      "image": "\"/assets/images/products/farina-de-castanya.jpeg\"",
+      "variants": [
+        {
+          "sku": "\"fa010\"",
+          "label": "\"Bosseta de 200 g\"",
+          "price": 4.2
+        },
+        {
+          "sku": "\"fa012\"",
+          "label": "\"Bossa d’1 kg\"",
+          "price": 19
+        }
+      ]
+    },
+    {
+      "slug": "flocs-de-castanya",
+      "name": "\"Flocs de castanya\"",
+      "currency": "EUR",
+      "image": "\"/assets/images/products/flocs-de-castanya.jpeg\"",
+      "variants": [
+        {
+          "sku": "\"888fc010\"",
+          "label": "\"Bossa de 150 g\"",
+          "price": 4.3
+        },
+        {
+          "sku": "\"888fc011\"",
+          "label": "\"Bossa de 500 g\"",
+          "price": 16
+        }
+      ]
+    },
+    {
+      "slug": "formatge-cremos-de-castanya",
+      "name": "\"Formatge cremós de castanya\"",
+      "currency": "EUR",
+      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "variants": [
+        {
+          "sku": "\"fc010\"",
+          "label": "\"Formatge sencer\"",
+          "price": 21
+        }
+      ]
+    },
+    {
+      "slug": "formatge-curat-amb-castanya",
+      "name": "\"Formatge curat amb castanya\"",
+      "currency": "EUR",
+      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "variants": [
+        {
+          "sku": "\"fq010\"",
+          "label": "\"Formatge sencer\"",
+          "price": 20.5
+        }
+      ]
+    },
+    {
+      "slug": "licor-de-castanya",
+      "name": "\"Licor de castanya\"",
+      "currency": "EUR",
+      "image": "\"/assets/images/products/licor-de-castanya.jpeg\"",
+      "variants": [
+        {
+          "sku": "\"li010\"",
+          "label": "\"Ampolla de 50 cl · 20% vol.\"",
+          "price": 21.01
+        }
+      ]
+    },
+    {
+      "slug": "lot-essencia-crema-infusio-i-melmelada",
+      "name": "\"Lot Essència: crema, infusió i melmelada\"",
+      "currency": "EUR",
+      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "variants": [
+        {
+          "sku": "\"lot-5\"",
+          "label": "\"Lot de 3 productes\"",
+          "price": 19
+        }
+      ]
+    },
+    {
+      "slug": "lot-que-castanyazo",
+      "name": "\"Lot “Que Castanyazo!”\"",
+      "currency": "EUR",
+      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "variants": [
+        {
+          "sku": "\"lot-1\"",
+          "label": "\"Lot de 5 productes\"",
+          "price": 22
+        }
+      ]
+    },
+    {
+      "slug": "marron-glace",
+      "name": "\"Marron glacé\"",
+      "currency": "EUR",
+      "image": "\"/assets/images/products/marron-glace.jpeg\"",
+      "variants": [
+        {
+          "sku": "\"mg010\"",
+          "label": "\"2 unitats\"",
+          "price": 3.6
+        },
+        {
+          "sku": "\"mg011\"",
+          "label": "\"7 unitats · 200 g\"",
+          "price": 12.5
+        },
+        {
+          "sku": "\"mg012\"",
+          "label": "\"Pot de 42 unitats · 1 kg\"",
+          "price": 65
+        }
+      ]
+    },
+    {
+      "slug": "mel-de-bruc",
+      "name": "\"Mel de bruc\"",
+      "currency": "EUR",
+      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "variants": [
+        {
+          "sku": "\"me020\"",
+          "label": "\"Pot de 500 g\"",
+          "price": 8.9
+        }
+      ]
+    },
+    {
+      "slug": "mel-de-castanyer",
+      "name": "\"Mel de castanyer\"",
+      "currency": "EUR",
+      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "variants": [
+        {
+          "sku": "\"me011\"",
+          "label": "\"Pot de 50 g\"",
+          "price": 1.9
+        },
+        {
+          "sku": "\"me010\"",
+          "label": "\"Pot de 500 g\"",
+          "price": 8.9
+        }
+      ]
+    },
+    {
+      "slug": "mel-de-mil-flors",
+      "name": "\"Mel de mil flors\"",
+      "currency": "EUR",
+      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "variants": [
+        {
+          "sku": "\"me040\"",
+          "label": "\"Pot de 500 g\"",
+          "price": 8.9
+        }
+      ]
+    },
+    {
+      "slug": "mel-de-romani",
+      "name": "\"Mel de romaní\"",
+      "currency": "EUR",
+      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "variants": [
+        {
+          "sku": "\"me030\"",
+          "label": "\"Pot de 500 g\"",
+          "price": 8.9
+        }
+      ]
+    },
+    {
+      "slug": "melmelada-de-castanya",
+      "name": "\"Melmelada de castanya\"",
+      "currency": "EUR",
+      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "variants": [
+        {
+          "sku": "\"ml010\"",
+          "label": "\"Pot de 120 g\"",
+          "price": 6.11
+        },
+        {
+          "sku": "\"ml011\"",
+          "label": "\"Pot de 275 g\"",
+          "price": 6.11
+        }
+      ]
+    },
+    {
+      "slug": "melmelada-de-castanya-i-gerds",
+      "name": "\"Melmelada de castanya i gerds\"",
+      "currency": "EUR",
+      "image": "\"/assets/images/products/melmelada-de-castanya-i-gerds.jpeg\"",
+      "variants": [
+        {
+          "sku": "\"melgerds22\"",
+          "label": "\"Mida gran · 275 g\"",
+          "price": 9.8
+        }
+      ]
+    },
+    {
+      "slug": "moscatell",
+      "name": "\"Moscatell\"",
+      "currency": "EUR",
+      "image": "\"/assets/images/products/moscatell.jpeg\"",
+      "variants": [
+        {
+          "sku": "\"mo010\"",
+          "label": "\"Ampolla de 75 cl · 15% vol.\"",
+          "price": 9
+        }
+      ]
+    },
+    {
+      "slug": "oli-de-castanya",
+      "name": "\"Oli de castanya\"",
+      "currency": "EUR",
+      "image": "\"/assets/images/products/oli-de-castanya.jpeg\"",
+      "variants": [
+        {
+          "sku": "\"ol010\"",
+          "label": "\"Ampolla de 100 ml\"",
+          "price": 7
         }
       ]
     }

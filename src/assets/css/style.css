@@ -5173,33 +5173,10 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   text-transform: uppercase;
 }
 
-.gastronomic-page-restaurants__filters {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 28px;
-  color: #8b7445;
-}
-
-.gastronomic-page-restaurants__filter {
-  color: inherit;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-.gastronomic-page-restaurants__filter.is-active {
-  border-bottom: 2px solid currentColor;
-  padding-bottom: 3px;
-}
-
 .gastronomic-page-restaurants__grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
   gap: 14px;
 }
 
@@ -5638,6 +5615,11 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 .gastronomic-page-restaurant-card {
   color: #8b7445;
   text-align: center;
+  transition: transform 220ms ease;
+}
+
+.gastronomic-page-restaurant-card:hover {
+  transform: translateY(-4px);
 }
 
 .gastronomic-page-restaurant-card__image {
@@ -5649,6 +5631,14 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .gastronomic-page-restaurant-card__content {
   padding: 18px 18px 0;
+}
+
+.gastronomic-page-restaurant-card__city {
+  margin: 0 0 12px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .gastronomic-page-restaurant-card__title {
@@ -5678,6 +5668,16 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .gastronomic-page-restaurant-card__details p + p {
   margin-top: 8px;
+}
+
+.gastronomic-page-restaurant-card__actions {
+  margin-top: 22px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gastronomic-page-restaurant-card {
+    transition: none;
+  }
 }
 
 .gastronomic-split {
@@ -9414,6 +9414,10 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
   .gastronomic-page-restaurants__header {
     margin-bottom: 34px;
+  }
+
+  .gastronomic-page-restaurant-card:hover {
+    transform: none;
   }
 
   .gastronomic-page-restaurant-card__content {

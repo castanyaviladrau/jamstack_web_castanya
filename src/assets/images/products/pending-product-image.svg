@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Imatge pendent</title>
+  <desc id="desc">Marcador temporal per a un producte sense imatge definitiva.</desc>
+  <rect width="1200" height="1200" fill="#f4efe6"/>
+  <rect x="80" y="80" width="1040" height="1040" rx="32" fill="none" stroke="#c8b8a4" stroke-width="12" stroke-dasharray="28 20"/>
+  <g fill="#6f5c4b" font-family="Arial, sans-serif" text-anchor="middle">
+    <text x="600" y="565" font-size="66" font-weight="700">IMATGE PENDENT</text>
+    <text x="600" y="640" font-size="34">Pendent de pujar a la botiga</text>
+  </g>
+</svg>

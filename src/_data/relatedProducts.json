@@ -1,39 +1,39 @@
 {
   "list": [
     {
-      "title": "CASTANYA TORRADA",
-      "image": "/assets/images/gallery/chestnuts_hexagon.png",
-      "availability": "Disponible 365 l'any",
-      "price": "24€",
-      "url": "/shop/products/castanya_formatge/"
+      "title": "Castanya torrada",
+      "image": "/assets/images/products/pending-product-image.svg",
+      "availability": "Disponible a la botiga online",
+      "price": "5,70 EUR",
+      "url": "/shop/products/castanya-torrada/"
     },
     {
-      "title": "CASTANYA SECA",
-      "image": "/assets/images/gallery/product_castanya_seca.png",
-      "availability": "Disponible 365 l'any",
-      "price": "24€",
-      "url": "/shop/products/castanya_formatge/"
+      "title": "Crema de castanya",
+      "image": "/assets/images/products/crema-de-castanya.jpeg",
+      "availability": "Disponible a la botiga online",
+      "price": "6,00 EUR",
+      "url": "/shop/products/crema-de-castanya/"
     },
     {
-      "title": "CREMA DE CASTANYA",
-      "image": "/assets/images/gallery/elaborats.jpg",
-      "availability": "Disponible 365 l'any",
-      "price": "24€",
-      "url": "/shop/products/castanya_formatge/"
+      "title": "Farina de castanya",
+      "image": "/assets/images/products/farina-de-castanya.jpeg",
+      "availability": "Disponible a la botiga online",
+      "price": "4,20 EUR",
+      "url": "/shop/products/farina-de-castanya/"
     },
     {
-      "title": "FARINA DE CASTANYA",
-      "image": "/assets/images/gallery/product_castanya_farina.png",
-      "availability": "Disponible 365 l'any",
-      "price": "24€",
-      "url": "/shop/products/castanya_formatge/"
+      "title": "Flocs de castanya",
+      "image": "/assets/images/products/flocs-de-castanya.jpeg",
+      "availability": "Disponible a la botiga online",
+      "price": "4,30 EUR",
+      "url": "/shop/products/flocs-de-castanya/"
     },
     {
-      "title": "FLOCS DE CASTANYA",
-      "image": "/assets/images/gallery/product_castanya_flocs.png",
-      "availability": "Disponible 365 l'any",
-      "price": "24€",
-      "url": "/shop/products/castanya_formatge/"
+      "title": "Marron glacé",
+      "image": "/assets/images/products/marron-glace.jpeg",
+      "availability": "Disponible a la botiga online",
+      "price": "3,60 EUR",
+      "url": "/shop/products/marron-glace/"
     }
   ]
 }
