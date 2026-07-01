@@ -54,14 +54,6 @@ footerVariant: projecte-newsletter
 
 <section class="shop-page-products" aria-labelledby="shop-products-title">
   <div class="shop-page-products__header">
-    <button
-      type="button"
-      class="shop-page-products__arrow"
-      id="prevBtn"
-      aria-label="Productes anteriors"
-    >
-      &lsaquo;
-    </button>
     <div class="shop-page-products__heading">
       <p class="shop-page-products__kicker">BOTIGA</p>
       <h2 id="shop-products-title" class="shop-page-products__title">
@@ -71,17 +63,9 @@ footerVariant: projecte-newsletter
         Castanyes pels 365 dies de l'any
       </p>
     </div>
-    <button
-      type="button"
-      class="shop-page-products__arrow"
-      id="nextBtn"
-      aria-label="Productes seguents"
-    >
-      &rsaquo;
-    </button>
   </div>
 
-  <div class="shop-page-products__scroller" id="galleryScroll">
+  <div class="shop-page-products__grid">
     {% for product in productsList %}
     <a href="{{ product.url }}" class="shop-page-product gallery-item">
       <img

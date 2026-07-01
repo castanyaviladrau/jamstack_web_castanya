@@ -7775,10 +7775,6 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 .shop-page-products__header {
   width: min(1040px, calc(100% - 40px));
   margin: 0 auto 42px;
-  display: grid;
-  grid-template-columns: 44px minmax(0, 1fr) 44px;
-  align-items: center;
-  gap: 28px;
   text-align: center;
 }
 
@@ -7830,23 +7826,16 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   cursor: pointer;
 }
 
-.shop-page-products__scroller {
-  display: flex;
-  gap: 38px;
-  justify-content: center;
-  width: 100%;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  padding: 0 max(24px, calc((100vw - 1040px) / 2)) 8px;
-}
-
-.shop-page-products__scroller::-webkit-scrollbar {
-  display: none;
+.shop-page-products__grid {
+  width: min(1040px, calc(100% - 40px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 38px 28px;
 }
 
 .shop-page-product {
-  flex: 0 0 220px;
+  display: block;
   text-align: center;
   color: #7b6b43;
   text-decoration: none;
@@ -7876,6 +7865,21 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   font-weight: 700;
   letter-spacing: 1.6px;
   text-transform: uppercase;
+}
+
+@media (max-width: 980px) {
+  .shop-page-products__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px 22px;
+  }
+}
+
+@media (max-width: 680px) {
+  .shop-page-products__grid {
+    width: calc(100% - 32px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 16px;
+  }
 }
 
 .shop-page-seasonal {
@@ -11724,8 +11728,6 @@ body.internal.page-gastronomic-recipes {
   }
 
   .shop-page-products__header {
-    grid-template-columns: 38px minmax(0, 1fr) 38px;
-    gap: 14px;
     margin-bottom: 30px;
   }
 
@@ -11733,15 +11735,6 @@ body.internal.page-gastronomic-recipes {
     width: 38px;
     height: 38px;
     font-size: 27px;
-  }
-
-  .shop-page-products__scroller {
-    gap: 22px;
-    padding: 0 20px 8px;
-  }
-
-  .shop-page-product {
-    flex-basis: 176px;
   }
 
   .shop-page-seasonal {
