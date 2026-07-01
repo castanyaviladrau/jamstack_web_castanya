@@ -5180,6 +5180,17 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   gap: 14px;
 }
 
+.gastronomic-page-restaurants__grid--partner-list {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+@media (max-width: 1180px) {
+  .gastronomic-page-restaurants__grid--partner-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .gastronomic-nutrition-hero {
   position: relative;
   min-height: 360px;
@@ -5671,6 +5682,45 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .gastronomic-page-restaurant-card__actions {
   margin-top: 22px;
+}
+
+.gastronomic-page-restaurant-card--compact .gastronomic-page-restaurant-card__image {
+  aspect-ratio: 0.82;
+}
+
+.gastronomic-page-restaurant-card--compact .gastronomic-page-restaurant-card__content {
+  padding: 14px 10px 0;
+}
+
+.gastronomic-page-restaurant-card--compact .gastronomic-page-restaurant-card__title {
+  font-size: clamp(22px, 1.8vw, 30px);
+}
+
+.gastronomic-page-restaurant-card--compact .gastronomic-page-restaurant-card__subtitle {
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+.gastronomic-page-restaurant-card--compact .gastronomic-page-restaurant-card__text {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.gastronomic-page-restaurant-card--compact .gastronomic-page-restaurant-card__details {
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.gastronomic-page-restaurant-card--compact .gastronomic-page-restaurant-card__actions {
+  margin-top: 16px;
+}
+
+.gastronomic-page-restaurant-card--compact .btn-olive {
+  min-width: 0;
+  padding: 12px 18px;
+  font-size: 11px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -6624,6 +6674,53 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   object-fit: cover;
 }
 
+.where-card__coming-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 36px 28px;
+  text-align: center;
+  color: #f8f2e8;
+  background:
+    linear-gradient(rgba(55, 34, 12, 0.58), rgba(55, 34, 12, 0.58)),
+    url("/assets/images/gallery/botiga/botiga_productes.png") center/cover no-repeat;
+}
+
+.where-card__coming-soon--media {
+  min-height: 560px;
+}
+
+.where-card__coming-soon--status {
+  min-height: 100%;
+}
+
+.where-card__coming-soon-kicker {
+  margin: 0;
+  font-family: var(--font-secondary);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.where-card__coming-soon-title {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.where-card__coming-soon-text {
+  max-width: 26rem;
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
 .where-card__map-frame {
   overflow: hidden;
   background: #dfe9d5;
@@ -6712,6 +6809,10 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
+}
+
+.where-card__details--two-up {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .where-card__title {
@@ -6947,6 +7048,10 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   }
 
   .where-card__image {
+    min-height: 320px;
+  }
+
+  .where-card__coming-soon--media {
     min-height: 320px;
   }
 
@@ -7758,7 +7863,8 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   display: block;
   width: 100%;
   aspect-ratio: 1 / 1.08;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
   background: #f5f0e4;
 }
 
@@ -8007,7 +8113,8 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   display: block;
   width: 100%;
   aspect-ratio: 1 / 1.28;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
   background: #f7f0e5;
 }
 
@@ -8321,7 +8428,8 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   display: block;
   width: 100%;
   aspect-ratio: 1 / 1.08;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
   background: #f5f0e4;
 }
 
@@ -8659,7 +8767,8 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 .shop-cart-item__image {
   width: 100%;
   aspect-ratio: 1;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
   border-radius: 18px;
   background: #f6f0e2;
 }

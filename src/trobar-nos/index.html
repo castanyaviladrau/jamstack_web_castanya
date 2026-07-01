@@ -85,11 +85,17 @@ footerVariant: projecte-newsletter
 
       <article class="where-card">
         <div class="where-card__media">
-          <img
-            src="/assets/images/gallery/botiga/botiga_productes.png"
-            alt="Productes artesans de castanya a la botiga"
-            class="where-card__image"
-          />
+          <div
+            class="where-card__coming-soon where-card__coming-soon--media"
+            role="img"
+            aria-label="Botiga de Barcelona de Castanya de Viladrau, pròximament"
+          >
+            <p class="where-card__coming-soon-kicker">A Barcelona</p>
+            <p class="where-card__coming-soon-title">Pròximament</p>
+            <p class="where-card__coming-soon-text">
+              La nostra botiga arribarà ben aviat.
+            </p>
+          </div>
         </div>
 
         <div class="where-card__content">
@@ -103,12 +109,7 @@ footerVariant: projecte-newsletter
             </p>
           </div>
 
-          <div class="where-card__details">
-            <div class="where-card__block where-card__block--address">
-              <p>Carrer de la Encarnació 159</p>
-              <p>Guinardo 08025 Barcelona</p>
-            </div>
-
+          <div class="where-card__details where-card__details--two-up">
             <div class="where-card__block">
               <h3 class="where-card__block-title">Què hi trobaràs</h3>
               <p>Tots els productes</p>
@@ -122,27 +123,13 @@ footerVariant: projecte-newsletter
             </div>
           </div>
 
-          <div class="where-card__map-frame">
-            <div
-              class="where-card__map-consent"
-              data-map-embed
-              data-map-title="Castanya de Viladrau a Barcelona"
-              data-map-src="https://www.google.com/maps?q=Carrer%20de%20la%20Encarnaci%C3%B3%20159%2C%2008025%20Barcelona&z=16&output=embed"
-            >
-              <p class="where-card__map-label">
-                Mapa protegit per consentiment
+          <div class="where-card__map-frame where-card__map-frame--coming-soon">
+            <div class="where-card__coming-soon where-card__coming-soon--status">
+              <p class="where-card__coming-soon-kicker">Nova obertura</p>
+              <p class="where-card__coming-soon-title">Pròximament</p>
+              <p class="where-card__coming-soon-text">
+                Aviat compartirem tots els detalls.
               </p>
-              <p class="where-card__map-text">
-                Per carregar aquest mapa de Google cal acceptar les cookies i
-                les peticions de tercers.
-              </p>
-              <button
-                type="button"
-                class="where-card__map-button"
-                data-map-action="accept"
-              >
-                Acceptar i veure mapa
-              </button>
             </div>
           </div>
         </div>
@@ -150,84 +137,172 @@ footerVariant: projecte-newsletter
     </div>
 
     <section class="where-stockists" aria-labelledby="where-stockists-title">
-      <h2 id="where-stockists-title" class="where-stockists__title">
-        ALTRES BOTIGUES ON TROBAR ELS NOSTRES PRODUCTES
-      </h2>
+      <div class="gastronomic-page-restaurants__inner">
+        <div class="gastronomic-page-restaurants__header">
+          <h2 id="where-stockists-title" class="gastronomic-page-restaurants__title">
+            ALTRES BOTIGUES ON TROBAR ELS NOSTRES PRODUCTES
+          </h2>
+        </div>
 
-      <div class="where-stockists__links" aria-label="Altres ubicacions">
-        <span>BARCELONA</span>
-        <span>/</span>
-        <span>TARRAGONA</span>
-        <span>/</span>
-        <span>GIRONA</span>
-        <span>/</span>
-        <span>LLEIDA</span>
-        <span>/</span>
-        <span>VEURE TOTS</span>
-      </div>
-
-      <div class="where-stockists__grid">
-        <article class="stockist-card">
-          <img
-            src="/assets/images/gallery/recollida.jpeg"
-            alt="Castanya al bosc"
-            class="stockist-card__image"
-          />
-          <div class="stockist-card__content">
-            <h3 class="stockist-card__title">LOREM IPSUM</h3>
-            <p class="stockist-card__text">
-              Lorem ipsum dolor sit amet consectetur adipiscing, elit nascetur
-              natoque mollis tellus eros, convallis tristique taciti sociosqu
-              consequat.
-            </p>
-            <p class="stockist-card__meta">Plat destacat</p>
-            <p class="stockist-card__meta">Caneló de ragyu amb castanya</p>
-            <p class="stockist-card__meta">On trobar-los:</p>
-            <p class="stockist-card__meta">GI-520, 1, 17406 Viladrau, Girona</p>
-          </div>
-        </article>
-
-        <article class="stockist-card">
-          <div class="stockist-card__visual stockist-card__visual--composite">
+        <div class="gastronomic-page-restaurants__grid gastronomic-page-restaurants__grid--partner-list">
+          <article class="gastronomic-page-restaurant-card gastronomic-page-restaurant-card--compact">
             <img
-              src="/assets/images/gallery/espai-gastronomic/cotxe.jpg"
-              alt="Vehicle de Castanya de Viladrau"
-              class="stockist-card__image"
+              src="/assets/images/gallery/espai-gastronomic/espai_gastronomic_chef.png"
+              alt="Retrat de l'ambaixador oficial de l'espai gastronomic"
+              class="gastronomic-page-restaurant-card__image"
             />
-          </div>
-          <div class="stockist-card__content">
-            <h3 class="stockist-card__title">LOREM IPSUM</h3>
-            <p class="stockist-card__text">
-              Lorem ipsum dolor sit amet consectetur adipiscing, elit nascetur
-              natoque mollis tellus eros, convallis tristique taciti sociosqu
-              consequat.
-            </p>
-            <p class="stockist-card__meta">Plat destacat</p>
-            <p class="stockist-card__meta">Caneló de ragyu amb castanya</p>
-            <p class="stockist-card__meta">On trobar-los:</p>
-            <p class="stockist-card__meta">GI-520, 1, 17406 Viladrau, Girona</p>
-          </div>
-        </article>
+            <div class="gastronomic-page-restaurant-card__content">
+              <h3 class="gastronomic-page-restaurant-card__title">Xalet La Coromina</h3>
+              <p class="gastronomic-page-restaurant-card__subtitle">
+                L’essència de Viladrau a la taula
+              </p>
+              <p class="gastronomic-page-restaurant-card__text">
+                El Xalet La Coromina és el restaurant del xef oficial de la Castanya de
+                Viladrau, i això es nota en cada plat. La nostra castanya hi té un paper
+                protagonista, treballada amb coneixement, respecte pel producte i estima
+                pel territori.
+              </p>
+              <p class="gastronomic-page-restaurant-card__text">
+                És una cuina arrelada al Montseny, però amb una mirada actual, que sap
+                portar la castanya més enllà de la tradició sense perdre’n l’essència.
+              </p>
+              <div class="gastronomic-page-restaurant-card__details">
+                <p><strong>On trobar-los:</strong></p>
+                <p>GI-520, 1, 17406 Viladrau, Girona</p>
+              </div>
+              <div class="gastronomic-page-restaurant-card__actions">
+                <a
+                  href="https://xaletcoromina.com/index"
+                  class="btn-olive"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  VISITAR WEB
+                </a>
+              </div>
+            </div>
+          </article>
 
-        <article class="stockist-card">
-          <img
-            src="/assets/images/gallery/projects/project_hands.jpg"
-            alt="Mans treballant al bosc"
-            class="stockist-card__image"
-          />
-          <div class="stockist-card__content">
-            <h3 class="stockist-card__title">LOREM IPSUM</h3>
-            <p class="stockist-card__text">
-              Lorem ipsum dolor sit amet consectetur adipiscing, elit nascetur
-              natoque mollis tellus eros, convallis tristique taciti sociosqu
-              consequat.
-            </p>
-            <p class="stockist-card__meta">Plat destacat</p>
-            <p class="stockist-card__meta">Caneló de ragyu amb castanya</p>
-            <p class="stockist-card__meta">On trobar-los:</p>
-            <p class="stockist-card__meta">GI-520, 1, 17406 Viladrau, Girona</p>
-          </div>
-        </article>
+          <article class="gastronomic-page-restaurant-card gastronomic-page-restaurant-card--compact">
+            <img
+              src="/assets/images/gallery/espai-gastronomic/xavier-pellicer.jpg"
+              alt="Xavier Pellicer al restaurant de Barcelona"
+              class="gastronomic-page-restaurant-card__image"
+            />
+            <div class="gastronomic-page-restaurant-card__content">
+              <h3 class="gastronomic-page-restaurant-card__title">
+                Xavier Pellicer
+              </h3>
+              <p class="gastronomic-page-restaurant-card__subtitle">
+                Una mirada contemporània a la castanya
+              </p>
+              <p class="gastronomic-page-restaurant-card__text">
+                Xavier Pellicer és un dels grans noms de la cuina vegetal
+                contemporània. La seva manera d’entendre la gastronomia parteix del
+                producte, de la terra i del respecte pel ritme natural de cada
+                temporada.
+              </p>
+              <p class="gastronomic-page-restaurant-card__text">
+                En aquest camí, la Castanya de Viladrau hi troba un lloc molt
+                especial: un producte de bosc, de territori i amb una identitat
+                pròpia, que encaixa amb una cuina sensible, precisa i arrelada a la
+                natura.
+              </p>
+              <div class="gastronomic-page-restaurant-card__details">
+                <p><strong>On trobar-los:</strong></p>
+                <p>Carrer de Provença, 310, 08037 Barcelona</p>
+              </div>
+              <div class="gastronomic-page-restaurant-card__actions">
+                <a
+                  href="https://www.xavierpellicer.com/"
+                  class="btn-olive"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  VISITAR WEB
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="gastronomic-page-restaurant-card gastronomic-page-restaurant-card--compact">
+            <img
+              src="/assets/images/gallery/espai-gastronomic/les-moles.jpg"
+              alt="Equip del restaurant Les Moles a Tarragona"
+              class="gastronomic-page-restaurant-card__image"
+            />
+            <div class="gastronomic-page-restaurant-card__content">
+              <h3 class="gastronomic-page-restaurant-card__title">Les Moles</h3>
+              <p class="gastronomic-page-restaurant-card__subtitle">
+                La castanya entre arrels i creativitat
+              </p>
+              <p class="gastronomic-page-restaurant-card__text">
+                Les Moles és un projecte familiar d’Ulldecona, amb Jeroni Castell a
+                la cuina, que ha fet del producte, la tècnica i el territori una
+                manera molt pròpia d’entendre la gastronomia.
+              </p>
+              <p class="gastronomic-page-restaurant-card__text">
+                En aquesta cuina, la Castanya de Viladrau hi pot trobar un espai ple
+                de matisos: un producte de bosc, de temporada i amb identitat,
+                capaç de dialogar amb una cuina creativa, arrelada i alhora
+                atrevida.
+              </p>
+              <div class="gastronomic-page-restaurant-card__details">
+                <p><strong>On trobar-los:</strong></p>
+                <p>Carretera de la Sénia, km 2, 43550 Ulldecona, Tarragona</p>
+              </div>
+              <div class="gastronomic-page-restaurant-card__actions">
+                <a
+                  href="https://lesmoles.com/en/restaurant/lequip/"
+                  class="btn-olive"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  VISITAR WEB
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="gastronomic-page-restaurant-card gastronomic-page-restaurant-card--compact">
+            <img
+              src="/assets/images/gallery/espai-gastronomic/gonzalo-ferreruela.jpeg"
+              alt="Restaurant Ferreruela a Lleida"
+              class="gastronomic-page-restaurant-card__image"
+            />
+            <div class="gastronomic-page-restaurant-card__content">
+              <h3 class="gastronomic-page-restaurant-card__title">Ferreruela</h3>
+              <p class="gastronomic-page-restaurant-card__subtitle">
+                Gonzalo Ferreruela i la cuina de la terra
+              </p>
+              <p class="gastronomic-page-restaurant-card__text">
+                Ferreruela és el projecte del cuiner Gonzalo Ferreruela, una cuina
+                arrelada al territori, al producte fresc i al ritme de cada
+                temporada. Un restaurant on la tradició i la mirada actual conviuen
+                amb naturalitat, sempre amb el producte com a punt de partida.
+              </p>
+              <p class="gastronomic-page-restaurant-card__text">
+                La brasa, el mercat i el respecte pel territori fan de Ferreruela
+                un lloc ideal per descobrir la castanya des d’una cuina sincera,
+                directa i plena de caràcter.
+              </p>
+              <div class="gastronomic-page-restaurant-card__details">
+                <p><strong>On trobar-los:</strong></p>
+                <p>Carrer Bobalà, 8, 25004 Lleida</p>
+              </div>
+              <div class="gastronomic-page-restaurant-card__actions">
+                <a
+                  href="https://ferreruela.com/"
+                  class="btn-olive"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  VISITAR WEB
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
