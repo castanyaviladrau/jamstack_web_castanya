@@ -112,6 +112,8 @@ export default defineConfig({
             ctaLabel: "AFEGIR A LA CISTELLA",
             ctaHref: "/shop/cart/",
             category: "elaborats-de-castanyes",
+            consumptionMoments: ["cuinar"],
+            dietTags: [],
             featured: false,
           }),
         },
@@ -151,6 +153,29 @@ export default defineConfig({
               { label: "Begudes", value: "begudes" },
               { label: "Mels", value: "mels" },
               { label: "Packs", value: "packs" },
+            ],
+          },
+          {
+            type: "string",
+            name: "consumptionMoments",
+            label: "Moment de consum",
+            list: true,
+            options: [
+              { label: "Per picar i compartir", value: "picar-compartir" },
+              { label: "Per cuinar", value: "cuinar" },
+              { label: "Moments dolços", value: "moments-dolcos" },
+              { label: "Regals i detalls", value: "regals-detalls" },
+            ],
+          },
+          {
+            type: "string",
+            name: "dietTags",
+            label: "Dietes i intoleràncies",
+            list: true,
+            options: [
+              { label: "Vegà", value: "vega" },
+              { label: "Sense gluten", value: "sense-gluten" },
+              { label: "Sense sucres afegits", value: "sense-sucres-afegits" },
             ],
           },
           {

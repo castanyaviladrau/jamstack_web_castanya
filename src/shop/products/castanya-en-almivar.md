@@ -5,6 +5,11 @@ title: "Castanya en almívar"
 description: "Castanyes conservades en almívar. Ideals per a postres, per acompanyar flams, iogurt, nata, etc. També es poden utilitzar en l’elaboració de pastissos."
 tagline: "Castanya de Viladrau transformada amb cura artesanal."
 category: dolcos
+consumptionMoments:
+  - moments-dolcos
+  - regals-detalls
+dietTags:
+  - sense-gluten
 sku: ca010
 currency: EUR
 price: 7.6

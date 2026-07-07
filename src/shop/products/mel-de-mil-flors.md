@@ -5,6 +5,12 @@ title: "Mel de mil flors"
 description: "Mel de color suau."
 tagline: "Mel de caràcter intens vinculada al paisatge del Montseny."
 category: mels
+consumptionMoments:
+  - moments-dolcos
+  - regals-detalls
+dietTags:
+  - sense-gluten
+  - sense-sucres-afegits
 sku: me040
 currency: EUR
 price: 8.9

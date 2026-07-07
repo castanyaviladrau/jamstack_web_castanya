@@ -5,6 +5,12 @@ title: "Oli de castanya"
 description: "És un oli d’oliva arbequina macerat amb la nostra castanya, de calibre mini, durant mig any."
 tagline: "Selecció artesana de productes locals amb castanya."
 category: elaborats-de-castanyes
+consumptionMoments:
+  - cuinar
+dietTags:
+  - vega
+  - sense-gluten
+  - sense-sucres-afegits
 sku: ol010
 currency: EUR
 price: 7.0

@@ -5,6 +5,10 @@ title: "Formatge curat amb castanya"
 description: "Ideal per acompanyar amanides, aperitius i torrades."
 tagline: "Selecció artesana de productes locals amb castanya."
 category: elaborats-de-castanyes
+consumptionMoments:
+  - picar-compartir
+dietTags:
+  - sense-gluten
 sku: fq010
 currency: EUR
 price: 20.5

@@ -5,6 +5,12 @@ title: "Mel de romaní"
 description: "Mel de color clar. Tonificant i estimulant natural per a tot l’aparell digestiu."
 tagline: "Mel de caràcter intens vinculada al paisatge del Montseny."
 category: mels
+consumptionMoments:
+  - moments-dolcos
+  - regals-detalls
+dietTags:
+  - sense-gluten
+  - sense-sucres-afegits
 sku: me030
 currency: EUR
 price: 8.9

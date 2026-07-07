@@ -6,12 +6,6 @@
     "backgroundAlt": "Ingredients i castanyes sobre la taula"
   },
   "filtersBar": {
-    "items": [
-      "Nivell de dificultat",
-      "Temps de preparacio",
-      "Tipus de plat",
-      "Remeis amb la castanya"
-    ],
     "searchLabel": "BUSCA RECEPTA"
   },
   "foundationsSection": {

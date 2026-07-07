@@ -5,6 +5,11 @@ title: "Cervesa Torrent “Sureda”"
 description: "La cervesa “Sureda” és més que una cervesa. Recollint els ingredients del paisatge mediterrani d’un bosc de suredes, no hem volgut fer una cervesa més, sinó trobar l’umami de la nostra cervesa."
 tagline: "Beguda artesana amb castanya i gust de territori."
 category: begudes
+consumptionMoments:
+  - picar-compartir
+  - regals-detalls
+dietTags:
+  - vega
 sku: ce010
 currency: EUR
 price: 16.5

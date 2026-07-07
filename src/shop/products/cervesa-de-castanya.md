@@ -5,6 +5,12 @@ title: "Cervesa de castanya"
 description: "Cervesa d’alta fermentació. Sense pasteuritzar. Pot fer sediments per la presència de llevat. Cervesa refermentada en ampolla."
 tagline: "Beguda artesana amb castanya i gust de territori."
 category: begudes
+consumptionMoments:
+  - picar-compartir
+  - regals-detalls
+dietTags:
+  - vega
+  - sense-gluten
 sku: ce013
 currency: EUR
 price: 4.01

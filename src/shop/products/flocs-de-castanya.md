@@ -5,6 +5,13 @@ title: "Flocs de castanya"
 description: "Castanya deshidratada i laminada molt fina. Ideal per esmorzars, per barrejar amb iogurts, per elaborar porridge o com a topping per a cremes i sopes."
 tagline: "Castanya de Viladrau transformada amb cura artesanal."
 category: elaborats-de-castanyes
+consumptionMoments:
+  - cuinar
+  - moments-dolcos
+dietTags:
+  - vega
+  - sense-gluten
+  - sense-sucres-afegits
 sku: 888fc010
 currency: EUR
 price: 4.3

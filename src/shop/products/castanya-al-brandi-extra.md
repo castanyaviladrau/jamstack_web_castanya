@@ -5,6 +5,11 @@ title: "Castanya al brandi extra"
 description: "Castanyes de mida gran."
 tagline: "Elaboració dolça i artesana per gaudir la castanya tot l’any."
 category: dolcos
+consumptionMoments:
+  - moments-dolcos
+  - regals-detalls
+dietTags:
+  - sense-gluten
 sku: br010
 currency: EUR
 price: 8.09

@@ -5,7 +5,11 @@ name: gastronomic-recipes
 footerVariant: visits-newsletter
 ---
 
-{% set pageContent = gastronomicRecipes.page %} {% macro recipeCard(slide,
+{% from "partials/recipe-filters.njk" import recipeFiltersBar %}
+{% set pageContent = gastronomicRecipes.page %}
+{% set difficultyOptions = collections.recipes | uniqueByField("difficulty", ["facil", "mitja", "dificil"]) %}
+{% set dishTypeOptions = collections.recipes | uniqueByField("listingSections", ["foundations", "sweet", "homeTraditions", "classics", "healthy"]) %}
+{% macro recipeCard(slide,
 dishType, remedyFlag) %} {% set href = '#' %} {% for recipe in
 collections.recipes %} {% if recipe.data.title == slide.title and recipe.url %}
 {% set href = recipe.url %} {% endif %} {% endfor %} {% set prepMinutes =
@@ -75,24 +79,7 @@ collections.recipes %} {% if recipe.data.title == slide.title and recipe.url %}
 </section>
 
 <section class="gastronomic-recipes-filters">
-  <div class="gastronomic-recipes-filters__inner">
-    <div
-      class="gastronomic-recipes-filters__list"
-      aria-label="Filtres de receptes"
-    >
-      {% for item in pageContent.filtersBar.items %}
-      <span class="gastronomic-recipes-filters__item">{{ item }}</span>
-      {% endfor %}
-    </div>
-    <div class="gastronomic-recipes-filters__actions">
-      <a
-        href="#fonaments-gastronomics"
-        class="gastronomic-recipes-filters__search"
-      >
-        {{ pageContent.filtersBar.searchLabel }}
-      </a>
-    </div>
-  </div>
+  {{ recipeFiltersBar("/gastronomic/receptes/resultats/", difficultyOptions, dishTypeOptions, pageContent.filtersBar.searchLabel, false) }}
 </section>
 
 <section

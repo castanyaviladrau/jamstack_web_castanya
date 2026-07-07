@@ -5,6 +5,12 @@ title: "Mel de bruc"
 description: "Mel de color caoba."
 tagline: "Mel de caràcter intens vinculada al paisatge del Montseny."
 category: mels
+consumptionMoments:
+  - moments-dolcos
+  - regals-detalls
+dietTags:
+  - sense-gluten
+  - sense-sucres-afegits
 sku: me020
 currency: EUR
 price: 8.9

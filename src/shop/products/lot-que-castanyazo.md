@@ -5,6 +5,10 @@ title: "Lot “Que Castanyazo!”"
 description: "Lot format per cinc productes, tots ells amb la castanya com a ingredient principal. Elaborats de manera artesanal i sense sucres afegits."
 tagline: "Selecció artesana de productes locals amb castanya."
 category: packs
+consumptionMoments:
+  - regals-detalls
+dietTags:
+  - sense-gluten
 sku: lot-1
 currency: EUR
 price: 22.0

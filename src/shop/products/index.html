@@ -8,8 +8,6 @@ name: botiga
 footerVariant: projecte-newsletter
 ---
 
-{% set productsList = collections.products %}
-
 <section class="shop-page-hero">
   <img
     src="/assets/images/gallery/elaborats.jpg"
@@ -30,27 +28,7 @@ footerVariant: projecte-newsletter
   </div>
 </section>
 
-<nav class="shop-page-filters" aria-label="Filtres de producte">
-  <div class="shop-page-filters__inner">
-    <button type="button" class="shop-page-filter">
-      Per categoria
-      <span aria-hidden="true">&#8964;</span>
-    </button>
-    <button type="button" class="shop-page-filter">
-      Moment de consum
-      <span aria-hidden="true">&#8964;</span>
-    </button>
-    <button type="button" class="shop-page-filter">
-      Dietes e intolerancies
-      <span aria-hidden="true">&#8964;</span>
-    </button>
-    <a href="/gastronomic/receptes" class="shop-page-filter">Arbres</a>
-    <a href="/contact/" class="shop-page-search">
-      Busca producte
-      <span aria-hidden="true">&rsaquo;</span>
-    </a>
-  </div>
-</nav>
+{% include "shop-filter-bar.njk" %}
 
 <section class="shop-page-categories" aria-labelledby="shop-categories-title">
   <div class="shop-page-categories__header">
@@ -85,13 +63,9 @@ footerVariant: projecte-newsletter
 
   <div class="shop-page-categories__scroller" id="shopCategoriesCarousel">
     {% for category in shopCategories %}
-    <button
-      type="button"
+    <a
+      href="/shop/products/catalog/?category={{ category.slug }}"
       class="shop-page-category-card gallery-item"
-      data-shop-category-trigger="{{ category.slug }}"
-      data-shop-category-title="{{ category.title }}"
-      aria-pressed="false"
-      aria-controls="shopProductCatalog"
     >
       <span class="shop-page-category-card__media">
         <img
@@ -105,61 +79,6 @@ footerVariant: projecte-newsletter
         <span class="shop-page-category-card__description">{{ category.description }}</span>
         <span class="shop-page-category-card__cta">Veure productes</span>
       </span>
-    </button>
-    {% endfor %}
-  </div>
-</section>
-
-<section class="shop-page-catalog" id="shopProductCatalog" aria-labelledby="shop-catalog-title">
-  <div class="shop-page-catalog__header">
-    <div class="shop-page-products__heading">
-      <p class="shop-page-products__kicker">CATÀLEG</p>
-      <h2 id="shop-catalog-title" class="shop-page-products__title" data-shop-catalog-title>
-        TOTS ELS PRODUCTES
-      </h2>
-      <p class="shop-page-products__subtitle" data-shop-catalog-status>
-        Explora tota la col·lecció o tria una categoria per filtrar-la.
-      </p>
-    </div>
-
-    <button type="button" class="shop-page-catalog__reset" data-shop-category-reset hidden>
-      Tots els productes
-    </button>
-  </div>
-
-  <div class="shop-page-products__grid" data-shop-product-grid>
-    {% for product in productsList %}
-      {% set productCategory = product.data.category or 'elaborats-de-castanyes' %}
-      {% set productImage = product.data.image or '' %}
-      {% if not productImage or 'pending-product-image.svg' in productImage %}
-        {% if productCategory == 'castanyes' %}
-          {% set productImage = '/assets/images/gallery/castanyes.jpg' %}
-        {% elif productCategory == 'cremes' %}
-          {% set productImage = '/assets/images/gallery/cremes.jpg' %}
-        {% elif productCategory == 'dolcos' %}
-          {% set productImage = '/assets/images/gallery/dolcos.jpg' %}
-        {% elif productCategory == 'begudes' %}
-          {% set productImage = '/assets/images/products/cervesa-de-castanya.jpeg' %}
-        {% elif productCategory == 'mels' %}
-          {% set productImage = '/assets/images/gallery/espai-gastronomic/bosc.jpg' %}
-        {% elif productCategory == 'packs' %}
-          {% set productImage = '/assets/images/gallery/botiga/botiga_productes.png' %}
-        {% else %}
-          {% set productImage = '/assets/images/gallery/elaborats.jpg' %}
-        {% endif %}
-      {% endif %}
-    <a
-      href="{{ product.url }}"
-      class="shop-page-product gallery-item"
-      data-shop-product
-      data-shop-product-category="{{ productCategory }}"
-    >
-      <img
-        src="{{ productImage }}"
-        alt="{{ product.data.title }}"
-        class="shop-page-product__image"
-      />
-      <h3 class="shop-page-product__title">{{ product.data.title }}</h3>
     </a>
     {% endfor %}
   </div>

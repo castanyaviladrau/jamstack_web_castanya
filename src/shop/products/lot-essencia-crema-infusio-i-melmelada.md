@@ -5,6 +5,10 @@ title: "Lot Essència: crema, infusió i melmelada"
 description: "Lot format per tres productes: crema de castanya, infusió de castanya i melmelada de castanya."
 tagline: "Selecció artesana de productes locals amb castanya."
 category: packs
+consumptionMoments:
+  - regals-detalls
+dietTags:
+  - sense-gluten
 sku: lot-5
 currency: EUR
 price: 19.0

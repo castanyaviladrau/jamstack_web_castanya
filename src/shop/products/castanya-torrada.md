@@ -5,6 +5,13 @@ title: "Castanya torrada"
 description: "Castanyes de Viladrau recollides a mà als boscos del Parc Natural del Montseny. Torrades artesanalment amb llenya de castanyer. Certificades amb el CCPAE. Sense gluten."
 tagline: "Castanya de Viladrau transformada amb cura artesanal."
 category: castanyes
+consumptionMoments:
+  - picar-compartir
+  - cuinar
+dietTags:
+  - vega
+  - sense-gluten
+  - sense-sucres-afegits
 sku: ct010
 currency: EUR
 price: 5.7

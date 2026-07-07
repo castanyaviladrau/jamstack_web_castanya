@@ -1,0 +1,22 @@
+{
+  "categories": [
+    { "label": "Castanyes", "value": "castanyes" },
+    { "label": "Elaborats de castanyes", "value": "elaborats-de-castanyes" },
+    { "label": "Cremes", "value": "cremes" },
+    { "label": "Dolços", "value": "dolcos" },
+    { "label": "Begudes", "value": "begudes" },
+    { "label": "Mels", "value": "mels" },
+    { "label": "Packs", "value": "packs" }
+  ],
+  "moments": [
+    { "label": "Per picar i compartir", "value": "picar-compartir" },
+    { "label": "Per cuinar", "value": "cuinar" },
+    { "label": "Moments dolços", "value": "moments-dolcos" },
+    { "label": "Regals i detalls", "value": "regals-detalls" }
+  ],
+  "diets": [
+    { "label": "Vegà", "value": "vega" },
+    { "label": "Sense gluten", "value": "sense-gluten" },
+    { "label": "Sense sucres afegits", "value": "sense-sucres-afegits" }
+  ]
+}

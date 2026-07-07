@@ -1,0 +1,66 @@
+<nav class="shop-page-filters" aria-label="Filtres de producte">
+  <div class="shop-page-filters__inner">
+    <details class="shop-page-filter-menu">
+      <summary class="shop-page-filter">
+        Per categoria
+        <span aria-hidden="true">&#8964;</span>
+      </summary>
+      <div class="shop-page-filter-menu__list">
+        {% for item in shopFilters.categories %}
+        <a
+          href="/shop/products/catalog/?category={{ item.value }}"
+          class="shop-page-filter-menu__item"
+          data-shop-filter-link
+          data-shop-filter-type="category"
+          data-shop-filter-value="{{ item.value }}"
+          data-shop-filter-label="{{ item.label }}"
+        >{{ item.label }}</a>
+        {% endfor %}
+      </div>
+    </details>
+
+    <details class="shop-page-filter-menu">
+      <summary class="shop-page-filter">
+        Moment de consum
+        <span aria-hidden="true">&#8964;</span>
+      </summary>
+      <div class="shop-page-filter-menu__list">
+        {% for item in shopFilters.moments %}
+        <a
+          href="/shop/products/catalog/?moment={{ item.value }}"
+          class="shop-page-filter-menu__item"
+          data-shop-filter-link
+          data-shop-filter-type="moment"
+          data-shop-filter-value="{{ item.value }}"
+          data-shop-filter-label="{{ item.label }}"
+        >{{ item.label }}</a>
+        {% endfor %}
+      </div>
+    </details>
+
+    <details class="shop-page-filter-menu">
+      <summary class="shop-page-filter">
+        Dietes i intoleràncies
+        <span aria-hidden="true">&#8964;</span>
+      </summary>
+      <div class="shop-page-filter-menu__list">
+        {% for item in shopFilters.diets %}
+        <a
+          href="/shop/products/catalog/?diet={{ item.value }}"
+          class="shop-page-filter-menu__item"
+          data-shop-filter-link
+          data-shop-filter-type="diet"
+          data-shop-filter-value="{{ item.value }}"
+          data-shop-filter-label="{{ item.label }}"
+        >{{ item.label }}</a>
+        {% endfor %}
+      </div>
+    </details>
+
+    <a href="/gastronomic/receptes" class="shop-page-filter">Arbres</a>
+    <a href="/shop/products/catalog/" class="shop-page-search">
+      Busca producte
+      <span aria-hidden="true">&rsaquo;</span>
+    </a>
+  </div>
+</nav>

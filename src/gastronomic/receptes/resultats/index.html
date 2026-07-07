@@ -1,0 +1,83 @@
+---
+layout: base
+title: Resultats de la cerca de receptes
+name: gastronomic-recipes-results
+footerVariant: visits-newsletter
+robots: noindex
+---
+
+{% from "partials/recipe-filters.njk" import recipeFiltersBar %}
+{% set difficultyOptions = collections.recipes | uniqueByField("difficulty", ["facil", "mitja", "dificil"]) %}
+{% set dishTypeOptions = collections.recipes | uniqueByField("listingSections", ["foundations", "sweet", "homeTraditions", "classics", "healthy"]) %}
+
+<section class="gastronomic-recipes-filters gastronomic-recipes-filters--results">
+  {{ recipeFiltersBar("/gastronomic/receptes/resultats/", difficultyOptions, dishTypeOptions, "CERCAR", true) }}
+</section>
+
+<section class="shop-page-catalog gastronomic-recipes-results" id="recipeResultsCatalog">
+  <div class="shop-page-catalog__header">
+    <div class="shop-page-products__heading">
+      <p class="shop-page-products__kicker">RECEPTES AMB CASTANYA</p>
+      <h1 class="shop-page-products__title">TOTES LES RECEPTES</h1>
+      <p
+        class="shop-page-products__subtitle"
+        data-recipe-results-status
+      >
+        Explora totes les receptes o afina la cerca amb els filtres.
+      </p>
+    </div>
+  </div>
+
+  <div class="professionals-inspiration-recipes__inner gastronomic-recipes-results__inner">
+  <div
+    class="professionals-inspiration-recipes__grid gastronomic-recipes-results__grid"
+    data-recipe-results-grid
+  >
+    {% for recipe in collections.recipes %}
+    <a
+      href="{{ recipe.url }}"
+      class="professionals-inspiration-card gastronomic-recipes-card gastronomic-recipes-card--link"
+      data-recipe-card
+      data-difficulty="{{ recipe.data.difficulty | lower }}"
+      data-time="{{ recipe.data.time | timeBucket }}"
+      data-dish-type="{{ recipe.data.listingSections | join(' ') }}"
+    >
+      <h3 class="professionals-inspiration-card__title">{{ recipe.data.title }}</h3>
+      <img
+        src="{{ recipe.data.image }}"
+        alt="{{ recipe.data.imageAlt }}"
+        class="professionals-inspiration-card__image"
+      />
+      <div class="professionals-inspiration-card__meta">
+        <span class="professionals-inspiration-card__meta-item"
+          ><svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="8"></circle>
+            <path d="M12 7v5l3 2"></path></svg
+          >{{ recipe.data.time }}</span
+        >
+        <span class="professionals-inspiration-card__meta-item"
+          ><img
+            src="/assets/images/gallery/espai-gastronomic/espai_grade.png"
+            alt=""
+            aria-hidden="true"
+          />
+          {{ recipe.data.difficulty | difficultyLabel }}</span
+        >
+      </div>
+      <p class="professionals-inspiration-card__label">
+        {{ recipe.data.ingredientsLabel }}
+      </p>
+      <ul class="professionals-inspiration-card__ingredients">
+        {% for ingredient in recipe.data.ingredients %}
+        <li>{{ ingredient }}</li>
+        {% endfor %}
+      </ul>
+    </a>
+    {% endfor %}
+  </div>
+
+  <p class="gastronomic-recipes-results__empty" data-recipe-results-empty hidden>
+    No hem trobat cap recepta amb aquests filtres. Prova de canviar-ne algun.
+  </p>
+  </div>
+</section>

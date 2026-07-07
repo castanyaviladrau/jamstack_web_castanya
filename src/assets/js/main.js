@@ -198,103 +198,226 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleButtons();
   };
 
-  const setupShopCategoryFiltering = () => {
-    const triggers = Array.from(
-      document.querySelectorAll("[data-shop-category-trigger]"),
-    );
+  const setupShopCatalogFiltering = () => {
     const products = Array.from(document.querySelectorAll("[data-shop-product]"));
-    const catalog = document.getElementById("shopProductCatalog");
+    const filterLinks = Array.from(
+      document.querySelectorAll("[data-shop-filter-link]"),
+    );
     const title = document.querySelector("[data-shop-catalog-title]");
     const status = document.querySelector("[data-shop-catalog-status]");
-    const reset = document.querySelector("[data-shop-category-reset]");
+    const reset = document.querySelector("[data-shop-filter-reset]");
 
-    if (!triggers.length || !products.length) {
+    if (!products.length) {
       return;
     }
 
-    const categoryLabels = new Map(
-      triggers.map((trigger) => [
-        trigger.dataset.shopCategoryTrigger,
-        trigger.dataset.shopCategoryTitle,
+    const params = new URLSearchParams(window.location.search);
+    const activeFilters = {
+      category: params.get("category"),
+      moment: params.get("moment"),
+      diet: params.get("diet"),
+    };
+    const activeEntries = Object.entries(activeFilters).filter(
+      ([, value]) => Boolean(value),
+    );
+    const labelsByTypeAndValue = new Map(
+      filterLinks.map((link) => [
+        `${link.dataset.shopFilterType}:${link.dataset.shopFilterValue}`,
+        link.dataset.shopFilterLabel,
       ]),
     );
 
-    const updateUrl = (category) => {
-      const url = new URL(window.location.href);
+    const getTokens = (value = "") => value.split(/\s+/).filter(Boolean);
 
-      if (category) {
-        url.searchParams.set("category", category);
-      } else {
-        url.searchParams.delete("category");
+    const productMatches = (product) => {
+      const productMoments = getTokens(product.dataset.shopProductMoments);
+      const productDiets = getTokens(product.dataset.shopProductDiets);
+
+      return activeEntries.every(([type, value]) => {
+        if (type === "category") {
+          return product.dataset.shopProductCategory === value;
+        }
+
+        if (type === "moment") {
+          return productMoments.includes(value);
+        }
+
+        if (type === "diet") {
+          return productDiets.includes(value);
+        }
+
+        return true;
+      });
+    };
+
+    let visibleCount = 0;
+    products.forEach((product) => {
+      const isVisible = productMatches(product);
+      product.hidden = !isVisible;
+
+      if (isVisible) {
+        visibleCount += 1;
       }
+    });
 
+    filterLinks.forEach((link) => {
+      const isActive = activeEntries.some(
+        ([type, value]) =>
+          link.dataset.shopFilterType === type &&
+          link.dataset.shopFilterValue === value,
+      );
+
+      if (isActive) {
+        link.setAttribute("aria-current", "true");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+
+    const activeLabels = activeEntries
+      .map(([type, value]) => labelsByTypeAndValue.get(`${type}:${value}`))
+      .filter(Boolean);
+
+    if (title) {
+      title.textContent = activeLabels.length
+        ? activeLabels.join(" · ").toLocaleUpperCase("ca-ES")
+        : "TOTS ELS PRODUCTES";
+    }
+
+    if (status) {
+      const productLabel = visibleCount === 1 ? "producte" : "productes";
+      status.textContent = activeLabels.length
+        ? `${visibleCount} ${productLabel} trobats per ${activeLabels.join(" · ")}.`
+        : "Explora tota la col·lecció o tria un filtre.";
+    }
+
+    if (reset) {
+      reset.hidden = !activeLabels.length;
+    }
+  };
+
+  const setupRecipeResultsFilter = () => {
+    const grid = document.querySelector("[data-recipe-results-grid]");
+    const form = document.querySelector("[data-recipe-filter-form]");
+
+    if (!grid || !form) {
+      // Only the results page carries a results grid; other pages that
+      // reuse the same filter form (e.g. the recipes index) should keep
+      // the form's default GET navigation instead of being intercepted here.
+      return;
+    }
+
+    const cards = Array.from(grid.querySelectorAll("[data-recipe-card]"));
+    const status = document.querySelector("[data-recipe-results-status]");
+    const resetBtn = document.querySelector("[data-recipe-results-reset]");
+    const emptyMessage = document.querySelector("[data-recipe-results-empty]");
+
+    if (!cards.length) {
+      return;
+    }
+
+    const selects = Array.from(form.querySelectorAll("[data-recipe-filter]"));
+    const filterKeys = selects.map((select) => select.dataset.recipeFilter);
+
+    const getFilters = () => {
+      const filters = {};
+      selects.forEach((select) => {
+        if (select.value) {
+          filters[select.dataset.recipeFilter] = select.value;
+        }
+      });
+      return filters;
+    };
+
+    const cardMatches = (card, filters) => {
+      if (filters.difficulty && card.dataset.difficulty !== filters.difficulty) {
+        return false;
+      }
+      if (filters.time && card.dataset.time !== filters.time) {
+        return false;
+      }
+      if (filters.dishType) {
+        const dishTypes = (card.dataset.dishType || "").split(" ");
+        if (!dishTypes.includes(filters.dishType)) {
+          return false;
+        }
+      }
+      return true;
+    };
+
+    const updateUrl = (filters) => {
+      const url = new URL(window.location.href);
+      filterKeys.forEach((key) => {
+        if (filters[key]) {
+          url.searchParams.set(key, filters[key]);
+        } else {
+          url.searchParams.delete(key);
+        }
+      });
       window.history.replaceState({}, "", url);
     };
 
-    const applyFilter = (category, options = {}) => {
-      const label = categoryLabels.get(category);
-      const shouldFilter = Boolean(category && label);
+    const applyFilters = (options = {}) => {
+      const filters = getFilters();
+      const hasFilters = Object.keys(filters).length > 0;
       let visibleCount = 0;
 
-      triggers.forEach((trigger) => {
-        const isActive =
-          shouldFilter && trigger.dataset.shopCategoryTrigger === category;
-        trigger.setAttribute("aria-pressed", isActive ? "true" : "false");
-      });
-
-      products.forEach((product) => {
-        const isVisible =
-          !shouldFilter || product.dataset.shopProductCategory === category;
-        product.hidden = !isVisible;
-
+      cards.forEach((card) => {
+        const isVisible = cardMatches(card, filters);
+        card.hidden = !isVisible;
         if (isVisible) {
           visibleCount += 1;
         }
       });
 
-      if (title) {
-        title.textContent = shouldFilter
-          ? label.toLocaleUpperCase("ca-ES")
-          : "TOTS ELS PRODUCTES";
-      }
-
       if (status) {
-        const productLabel = visibleCount === 1 ? "producte" : "productes";
-        status.textContent = shouldFilter
-          ? `${visibleCount} ${productLabel} dins de ${label}.`
-          : "Explora tota la col·lecció o tria una categoria per filtrar-la.";
+        const recipeLabel = visibleCount === 1 ? "recepta" : "receptes";
+        status.textContent = hasFilters
+          ? `${visibleCount} ${recipeLabel} trobades amb aquests filtres.`
+          : "Explora totes les receptes o afina la cerca amb els filtres.";
       }
 
-      if (reset) {
-        reset.hidden = !shouldFilter;
+      if (resetBtn) {
+        resetBtn.hidden = !hasFilters;
+      }
+
+      if (emptyMessage) {
+        emptyMessage.hidden = visibleCount !== 0;
       }
 
       if (options.updateUrl) {
-        updateUrl(shouldFilter ? category : null);
-      }
-
-      if (options.scroll && catalog) {
-        catalog.scrollIntoView({ behavior: "smooth", block: "start" });
+        updateUrl(filters);
       }
     };
 
-    triggers.forEach((trigger) => {
-      trigger.addEventListener("click", () => {
-        applyFilter(trigger.dataset.shopCategoryTrigger, {
-          updateUrl: true,
-          scroll: true,
-        });
+    selects.forEach((select) => {
+      select.addEventListener("change", () => applyFilters({ updateUrl: true }));
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      applyFilters({ updateUrl: true });
+    });
+
+    resetBtn?.addEventListener("click", () => {
+      selects.forEach((select) => {
+        select.value = "";
       });
+      applyFilters({ updateUrl: true });
     });
 
-    reset?.addEventListener("click", () => {
-      applyFilter(null, { updateUrl: true, scroll: true });
+    const params = new URLSearchParams(window.location.search);
+    selects.forEach((select) => {
+      const value = params.get(select.dataset.recipeFilter);
+      const optionExists = Array.from(select.options).some(
+        (option) => option.value === value,
+      );
+      if (value && optionExists) {
+        select.value = value;
+      }
     });
 
-    const initialCategory = new URLSearchParams(window.location.search).get(
-      "category",
-    );
-    applyFilter(categoryLabels.has(initialCategory) ? initialCategory : null);
+    applyFilters();
   };
 
   // Initialize all carousels
@@ -305,7 +428,8 @@ document.addEventListener("DOMContentLoaded", () => {
     "shopCategoriesNext",
   );
   setupCarousel("shopFeaturedCarousel", "shopFeaturedPrev", "shopFeaturedNext");
-  setupShopCategoryFiltering();
+  setupShopCatalogFiltering();
+  setupRecipeResultsFilter();
   setupCarousel(
     "testimonialScroll",
     "prevTestimonial",

@@ -1,0 +1,68 @@
+{% macro recipeFiltersBar(actionUrl, difficultyOptions, dishTypeOptions, searchLabel, showReset) %}
+<form
+  class="gastronomic-recipes-filters__inner"
+  action="{{ actionUrl }}"
+  method="get"
+  data-recipe-filter-form
+>
+  <div
+    class="gastronomic-recipes-filters__list"
+    aria-label="Filtres de receptes"
+  >
+    <span class="gastronomic-recipes-filters__item">
+      <select
+        name="difficulty"
+        class="gastronomic-recipes-filters__select"
+        aria-label="Nivell de dificultat"
+        data-recipe-filter="difficulty"
+      >
+        <option value="">Nivell de dificultat</option>
+        {% for value in difficultyOptions %}
+        <option value="{{ value }}">{{ value | difficultyLabel }}</option>
+        {% endfor %}
+      </select>
+    </span>
+    <span class="gastronomic-recipes-filters__item">
+      <select
+        name="time"
+        class="gastronomic-recipes-filters__select"
+        aria-label="Temps de preparacio"
+        data-recipe-filter="time"
+      >
+        <option value="">Temps de preparacio</option>
+        <option value="short">Menys de 20 minuts</option>
+        <option value="medium">Entre 20 i 30 minuts</option>
+        <option value="long">Mes de 30 minuts</option>
+      </select>
+    </span>
+    <span class="gastronomic-recipes-filters__item">
+      <select
+        name="dishType"
+        class="gastronomic-recipes-filters__select"
+        aria-label="Tipus de plat"
+        data-recipe-filter="dishType"
+      >
+        <option value="">Tipus de plat</option>
+        {% for value in dishTypeOptions %}
+        <option value="{{ value }}">{{ value | dishTypeLabel }}</option>
+        {% endfor %}
+      </select>
+    </span>
+  </div>
+  <div class="gastronomic-recipes-filters__actions">
+    {% if showReset %}
+    <button
+      type="button"
+      class="gastronomic-recipes-filters__reset"
+      data-recipe-results-reset
+      hidden
+    >
+      Esborra filtres
+    </button>
+    {% endif %}
+    <button type="submit" class="gastronomic-recipes-filters__search">
+      {{ searchLabel }}
+    </button>
+  </div>
+</form>
+{% endmacro %}

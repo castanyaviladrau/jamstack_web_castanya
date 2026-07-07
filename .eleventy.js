@@ -117,6 +117,69 @@ module.exports = function (eleventyConfig) {
     return md.render(content);
   });
 
+  eleventyConfig.addFilter("uniqueByField", (items = [], field, sortOrder) => {
+    const values = [];
+
+    items.forEach((item) => {
+      const raw = item.data ? item.data[field] : undefined;
+      const list = Array.isArray(raw) ? raw : raw ? [raw] : [];
+      list.forEach((value) => {
+        if (!values.includes(value)) {
+          values.push(value);
+        }
+      });
+    });
+
+    if (Array.isArray(sortOrder)) {
+      values.sort((a, b) => {
+        const indexA = sortOrder.indexOf(a);
+        const indexB = sortOrder.indexOf(b);
+        return (
+          (indexA === -1 ? sortOrder.length : indexA) -
+          (indexB === -1 ? sortOrder.length : indexB)
+        );
+      });
+    }
+
+    return values;
+  });
+
+  eleventyConfig.addFilter("timeBucket", (timeValue = "") => {
+    const minutes = parseInt(String(timeValue), 10);
+    if (!minutes) {
+      return "medium";
+    }
+    if (minutes <= 20) {
+      return "short";
+    }
+    if (minutes > 30) {
+      return "long";
+    }
+    return "medium";
+  });
+
+  const difficultyLabels = {
+    facil: "Facil",
+    mitja: "Mitja",
+    dificil: "Dificil",
+  };
+  eleventyConfig.addFilter(
+    "difficultyLabel",
+    (value) => difficultyLabels[value] || value,
+  );
+
+  const dishTypeLabels = {
+    foundations: "Entrants",
+    sweet: "Dolc",
+    homeTraditions: "Plats principals",
+    classics: "Classics",
+    healthy: "Saludable",
+  };
+  eleventyConfig.addFilter(
+    "dishTypeLabel",
+    (value) => dishTypeLabels[value] || value,
+  );
+
   eleventyConfig.addCollection("visitActivities", (collectionApi) => {
     return collectionApi
       .getFilteredByGlob("./src/visits/activities/*.md")

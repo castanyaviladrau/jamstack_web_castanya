@@ -5591,22 +5591,64 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 }
 
 .gastronomic-recipes-filters__item {
+  position: relative;
   border: 0;
   background: transparent;
   color: #f5f0e8;
   font-size: 13px;
-  cursor: default;
 }
 
 .gastronomic-recipes-filters__item::after {
   content: "⌄";
   margin-left: 6px;
+  pointer-events: none;
+}
+
+.gastronomic-recipes-filters__select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 0;
+  background: transparent;
+  color: #f5f0e8;
+  font-family: var(--font-main);
+  font-size: 13px;
+  padding-right: 4px;
+  cursor: pointer;
+}
+
+.gastronomic-recipes-filters__select option {
+  color: #3a2f16;
+  background: #fffaf1;
+}
+
+.gastronomic-recipes-filters__select:focus-visible {
+  outline: 2px solid #f5f0e8;
+  outline-offset: 3px;
+}
+
+.gastronomic-recipes-filters__reset {
+  border: 0;
+  background: transparent;
+  color: #f5f0e8;
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.gastronomic-recipes-filters--results {
+  margin-top: 24px;
 }
 
 .gastronomic-recipes-filters__search {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  border: 0;
+  font-family: var(--font-main);
+  cursor: pointer;
   min-height: 30px;
   padding: 6px 16px;
   border-radius: 999px;
@@ -5655,6 +5697,22 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 .gastronomic-recipes-card--link {
   display: block;
   text-decoration: none;
+}
+
+.gastronomic-recipes-card--link[hidden] {
+  display: none;
+}
+
+.gastronomic-recipes-results {
+  padding-top: 48px;
+}
+
+.gastronomic-recipes-results__empty {
+  padding: 48px 20px;
+  text-align: center;
+  color: #7b6b43;
+  font-family: var(--font-main);
+  font-size: 16px;
 }
 
 .gastronomic-recipes-card--link:hover .professionals-inspiration-card__title,
@@ -7717,6 +7775,10 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   text-align: center;
 }
 
+.shop-page-hero--compact {
+  min-height: 260px;
+}
+
 .shop-page-hero__image,
 .shop-page-hero__overlay {
   position: absolute;
@@ -7775,14 +7837,15 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 }
 
 .shop-page-filters__inner {
-  max-width: 1040px;
+  max-width: 1120px;
   min-height: 56px;
   margin: 0 auto;
   padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 28px;
+  flex-wrap: wrap;
+  gap: 16px 28px;
 }
 
 .shop-page-filter,
@@ -7810,6 +7873,49 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   background: #8b7445;
   text-transform: uppercase;
   font-size: 11px;
+}
+
+.shop-page-filter-menu {
+  position: relative;
+}
+
+.shop-page-filter-menu summary {
+  list-style: none;
+}
+
+.shop-page-filter-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.shop-page-filter-menu__list {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  z-index: 20;
+  min-width: 220px;
+  padding: 12px 0;
+  background: #b6a06e;
+  box-shadow: 0 18px 35px rgba(47, 39, 22, 0.2);
+  transform: translateX(-50%);
+}
+
+.shop-page-filter-menu__item {
+  display: block;
+  padding: 10px 22px;
+  color: #241f17;
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+}
+
+.shop-page-filter-menu__item:hover,
+.shop-page-filter-menu__item:focus-visible,
+.shop-page-filter-menu__item[aria-current="true"] {
+  background: rgba(139, 116, 69, 0.24);
+  color: #241f17;
 }
 
 .shop-page-categories {
@@ -7855,10 +7961,15 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   background: #fffaf1;
   color: #7b6b43;
   text-align: left;
+  text-decoration: none;
   cursor: pointer;
   overflow: hidden;
   box-shadow: 0 12px 30px rgba(62, 49, 25, 0.08);
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.shop-page-category-card:visited {
+  color: #7b6b43;
 }
 
 .shop-page-category-card:hover,
@@ -8102,6 +8213,25 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 }
 
 @media (max-width: 680px) {
+  .shop-page-filters__inner {
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .shop-page-filter-menu,
+  .shop-page-filter,
+  .shop-page-search {
+    width: 100%;
+    text-align: center;
+  }
+
+  .shop-page-filter-menu__list {
+    position: static;
+    min-width: 0;
+    margin-top: 10px;
+    transform: none;
+  }
+
   .shop-page-categories {
     padding: 48px 0 34px;
   }
