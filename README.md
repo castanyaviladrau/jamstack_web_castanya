@@ -2,7 +2,7 @@
 
 A modern JAMStack website built with Eleventy, featuring a landing page, blog, and e-commerce functionality with integrated payment processing and email services.
 
-## Architecture Overview
+## Architecture Overview 
 
 This project follows the JAMStack (JavaScript, APIs, Markup) architecture pattern:
 - **JavaScript**: Client-side functionality and API integrations

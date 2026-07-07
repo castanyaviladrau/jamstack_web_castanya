@@ -14,7 +14,7 @@
       {% for value in difficultyOptions %}
       <button
         type="button"
-        class="shop-page-filter-menu__item"
+        class="shop-page-filter-menu__item recipe-filter-menu__item"
         data-recipe-filter-option
         data-recipe-filter-value="{{ value }}"
         data-recipe-filter-label="{{ value | difficultyLabel }}"
@@ -30,9 +30,9 @@
       <span aria-hidden="true">&#8964;</span>
     </summary>
     <div class="shop-page-filter-menu__list">
-      <button type="button" class="shop-page-filter-menu__item" data-recipe-filter-option data-recipe-filter-value="short" data-recipe-filter-label="Menys de 20 minuts">Menys de 20 minuts</button>
-      <button type="button" class="shop-page-filter-menu__item" data-recipe-filter-option data-recipe-filter-value="medium" data-recipe-filter-label="Entre 20 i 30 minuts">Entre 20 i 30 minuts</button>
-      <button type="button" class="shop-page-filter-menu__item" data-recipe-filter-option data-recipe-filter-value="long" data-recipe-filter-label="Mes de 30 minuts">Mes de 30 minuts</button>
+      <button type="button" class="shop-page-filter-menu__item recipe-filter-menu__item" data-recipe-filter-option data-recipe-filter-value="short" data-recipe-filter-label="Menys de 20 minuts">Menys de 20 minuts</button>
+      <button type="button" class="shop-page-filter-menu__item recipe-filter-menu__item" data-recipe-filter-option data-recipe-filter-value="medium" data-recipe-filter-label="Entre 20 i 30 minuts">Entre 20 i 30 minuts</button>
+      <button type="button" class="shop-page-filter-menu__item recipe-filter-menu__item" data-recipe-filter-option data-recipe-filter-value="long" data-recipe-filter-label="Mes de 30 minuts">Mes de 30 minuts</button>
     </div>
     <input type="hidden" name="time" data-recipe-filter-input value="" />
   </details>
@@ -46,7 +46,7 @@
       {% for value in dishTypeOptions %}
       <button
         type="button"
-        class="shop-page-filter-menu__item"
+        class="shop-page-filter-menu__item recipe-filter-menu__item"
         data-recipe-filter-option
         data-recipe-filter-value="{{ value }}"
         data-recipe-filter-label="{{ value | dishTypeLabel }}"

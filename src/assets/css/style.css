@@ -1326,7 +1326,8 @@ body.page-blog .content-wrap {
   gap: 16px 28px;
 }
 
-.blog-sort-menu__item {
+.blog-sort-menu__item,
+.recipe-filter-menu__item {
   width: 100%;
   border: 0;
   background: transparent;
