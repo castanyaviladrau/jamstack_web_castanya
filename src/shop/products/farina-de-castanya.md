@@ -4,6 +4,7 @@ permalink: /shop/products/farina-de-castanya/
 title: "Farina de castanya"
 description: "Prové de la castanya deshidratada i està elaborada amb molí de pedra. Apta per a celíacs. Ideal per elaborar pa, galetes, pastissos, creps, beixamel, flams i salses, així com per espessir o elaborar cremes i sopes."
 tagline: "Castanya de Viladrau transformada amb cura artesanal."
+category: elaborats-de-castanyes
 sku: fa010
 currency: EUR
 price: 4.2

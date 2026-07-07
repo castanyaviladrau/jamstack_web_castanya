@@ -4,6 +4,7 @@ permalink: /shop/products/formatge-cremos-de-castanya/
 title: "Formatge cremós de castanya"
 description: "Formatge embolcallat amb fulles de castanyer assecades i posteriorment macerades amb licor de castanya. Ideal per menjar sol. Textura cremosa amb un toc dolç al final. La pell es pot consumir perquè està sembrada amb bacteris sans."
 tagline: "Selecció artesana de productes locals amb castanya."
+category: elaborats-de-castanyes
 sku: fc010
 currency: EUR
 price: 21.0

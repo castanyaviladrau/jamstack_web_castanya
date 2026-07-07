@@ -4,6 +4,7 @@ permalink: /shop/products/licor-de-castanya/
 title: "Licor de castanya"
 description: "Ideal per acompanyar postres, fruits secs, castanyes, etc."
 tagline: "Beguda artesana amb castanya i gust de territori."
+category: begudes
 sku: li010
 currency: EUR
 price: 21.01

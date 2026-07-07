@@ -4,6 +4,7 @@ permalink: /shop/products/mel-de-castanyer/
 title: "Mel de castanyer"
 description: "Mel de color fosc. Rica en minerals, afavoreix la circulació de la sang."
 tagline: "Mel de caràcter intens vinculada al paisatge del Montseny."
+category: mels
 sku: me010
 currency: EUR
 price: 1.9

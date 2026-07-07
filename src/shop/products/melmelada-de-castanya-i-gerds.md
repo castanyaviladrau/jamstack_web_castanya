@@ -4,6 +4,7 @@ permalink: /shop/products/melmelada-de-castanya-i-gerds/
 title: "Melmelada de castanya i gerds"
 description: "L’olor recorda una melmelada de fruits del bosc. La textura lleugerament granulada fa evident el gerd i la castanya. Té un sabor dolç amb un toc afruitat i colors marrons i rosats. Combina molt bé amb formatges."
 tagline: "Elaboració dolça i artesana per gaudir la castanya tot l’any."
+category: dolcos
 sku: melgerds22
 currency: EUR
 price: 9.8

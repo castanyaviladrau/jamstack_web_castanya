@@ -4,6 +4,7 @@ permalink: /shop/products/lot-essencia-crema-infusio-i-melmelada/
 title: "Lot Essència: crema, infusió i melmelada"
 description: "Lot format per tres productes: crema de castanya, infusió de castanya i melmelada de castanya."
 tagline: "Selecció artesana de productes locals amb castanya."
+category: packs
 sku: lot-5
 currency: EUR
 price: 19.0

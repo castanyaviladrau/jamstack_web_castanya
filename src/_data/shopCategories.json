@@ -1,0 +1,51 @@
+[
+  {
+    "slug": "castanyes",
+    "title": "Castanyes",
+    "description": "La castanya en estat pur: torrada, seca o preparada per gaudir-la tot l'any.",
+    "image": "/assets/images/gallery/castanyes.jpg",
+    "imageAlt": "Castanyes del Montseny dins del pelló"
+  },
+  {
+    "slug": "elaborats-de-castanyes",
+    "title": "Elaborats de castanyes",
+    "description": "Farines, flocs, olis i altres formats per portar el bosc a la cuina.",
+    "image": "/assets/images/gallery/elaborats.jpg",
+    "imageAlt": "Producte elaborat artesanal amb castanya"
+  },
+  {
+    "slug": "cremes",
+    "title": "Cremes",
+    "description": "Cremes suaus i receptes de temporada fetes amb castanya del Montseny.",
+    "image": "/assets/images/gallery/cremes.jpg",
+    "imageAlt": "Crema de castanya servida en una cassola"
+  },
+  {
+    "slug": "dolcos",
+    "title": "Dolços",
+    "description": "Marron glacé, melmelades i capricis dolços amb gust de castanya.",
+    "image": "/assets/images/gallery/dolcos.jpg",
+    "imageAlt": "Dolços artesans de castanya sobre fusta"
+  },
+  {
+    "slug": "begudes",
+    "title": "Begudes",
+    "description": "Cerveses, licors i propostes líquides amb identitat de castanya.",
+    "image": "/assets/images/products/cervesa-de-castanya.jpeg",
+    "imageAlt": "Ampolla de cervesa artesana de castanya"
+  },
+  {
+    "slug": "mels",
+    "title": "Mels",
+    "description": "Mels de castanyer, romaní, bruc i mil flors amb caràcter de territori.",
+    "image": "/assets/images/gallery/espai-gastronomic/bosc.jpg",
+    "imageAlt": "Bosc del Montseny d'on neixen les mels del territori"
+  },
+  {
+    "slug": "packs",
+    "title": "Packs",
+    "description": "Lots i regals per descobrir la col·lecció de Castanya de Viladrau.",
+    "image": "/assets/images/gallery/botiga/botiga_productes.png",
+    "imageAlt": "Selecció de productes de Castanya de Viladrau"
+  }
+]

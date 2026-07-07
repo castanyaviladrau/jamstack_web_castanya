@@ -4,6 +4,7 @@ permalink: /shop/products/mel-de-mil-flors/
 title: "Mel de mil flors"
 description: "Mel de color suau."
 tagline: "Mel de caràcter intens vinculada al paisatge del Montseny."
+category: mels
 sku: me040
 currency: EUR
 price: 8.9

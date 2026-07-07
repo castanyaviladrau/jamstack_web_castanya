@@ -198,9 +198,114 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleButtons();
   };
 
-  // Initialize all three carousels
+  const setupShopCategoryFiltering = () => {
+    const triggers = Array.from(
+      document.querySelectorAll("[data-shop-category-trigger]"),
+    );
+    const products = Array.from(document.querySelectorAll("[data-shop-product]"));
+    const catalog = document.getElementById("shopProductCatalog");
+    const title = document.querySelector("[data-shop-catalog-title]");
+    const status = document.querySelector("[data-shop-catalog-status]");
+    const reset = document.querySelector("[data-shop-category-reset]");
+
+    if (!triggers.length || !products.length) {
+      return;
+    }
+
+    const categoryLabels = new Map(
+      triggers.map((trigger) => [
+        trigger.dataset.shopCategoryTrigger,
+        trigger.dataset.shopCategoryTitle,
+      ]),
+    );
+
+    const updateUrl = (category) => {
+      const url = new URL(window.location.href);
+
+      if (category) {
+        url.searchParams.set("category", category);
+      } else {
+        url.searchParams.delete("category");
+      }
+
+      window.history.replaceState({}, "", url);
+    };
+
+    const applyFilter = (category, options = {}) => {
+      const label = categoryLabels.get(category);
+      const shouldFilter = Boolean(category && label);
+      let visibleCount = 0;
+
+      triggers.forEach((trigger) => {
+        const isActive =
+          shouldFilter && trigger.dataset.shopCategoryTrigger === category;
+        trigger.setAttribute("aria-pressed", isActive ? "true" : "false");
+      });
+
+      products.forEach((product) => {
+        const isVisible =
+          !shouldFilter || product.dataset.shopProductCategory === category;
+        product.hidden = !isVisible;
+
+        if (isVisible) {
+          visibleCount += 1;
+        }
+      });
+
+      if (title) {
+        title.textContent = shouldFilter
+          ? label.toLocaleUpperCase("ca-ES")
+          : "TOTS ELS PRODUCTES";
+      }
+
+      if (status) {
+        const productLabel = visibleCount === 1 ? "producte" : "productes";
+        status.textContent = shouldFilter
+          ? `${visibleCount} ${productLabel} dins de ${label}.`
+          : "Explora tota la col·lecció o tria una categoria per filtrar-la.";
+      }
+
+      if (reset) {
+        reset.hidden = !shouldFilter;
+      }
+
+      if (options.updateUrl) {
+        updateUrl(shouldFilter ? category : null);
+      }
+
+      if (options.scroll && catalog) {
+        catalog.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    };
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        applyFilter(trigger.dataset.shopCategoryTrigger, {
+          updateUrl: true,
+          scroll: true,
+        });
+      });
+    });
+
+    reset?.addEventListener("click", () => {
+      applyFilter(null, { updateUrl: true, scroll: true });
+    });
+
+    const initialCategory = new URLSearchParams(window.location.search).get(
+      "category",
+    );
+    applyFilter(categoryLabels.has(initialCategory) ? initialCategory : null);
+  };
+
+  // Initialize all carousels
   setupCarousel("galleryScroll", "prevBtn", "nextBtn");
+  setupCarousel(
+    "shopCategoriesCarousel",
+    "shopCategoriesPrev",
+    "shopCategoriesNext",
+  );
   setupCarousel("shopFeaturedCarousel", "shopFeaturedPrev", "shopFeaturedNext");
+  setupShopCategoryFiltering();
   setupCarousel(
     "testimonialScroll",
     "prevTestimonial",

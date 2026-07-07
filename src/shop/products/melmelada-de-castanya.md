@@ -4,6 +4,7 @@ permalink: /shop/products/melmelada-de-castanya/
 title: "Melmelada de castanya"
 description: "De sabor dolç, amb la textura dels trossets de castanya. Ideal per acompanyar torrades i formatges, i també per elaborar pastisseria."
 tagline: "Elaboració dolça i artesana per gaudir la castanya tot l’any."
+category: dolcos
 sku: ml010
 currency: EUR
 price: 6.11

@@ -4,6 +4,7 @@ permalink: /shop/products/castanya-pilonga-deshidratada/
 title: "Castanya pilonga deshidratada"
 description: "Castanya seca coneguda també com a “pilonga”. Cal hidratar-la prèviament un mínim de 8 hores. Un cop hidratada, es pot menjar directament, afegir-la a amanides, elaborar beguda vegetal, fer cremes, guisats, arrossos o sopes."
 tagline: "Castanya de Viladrau transformada amb cura artesanal."
+category: castanyes
 sku: se010
 currency: EUR
 price: 4.2

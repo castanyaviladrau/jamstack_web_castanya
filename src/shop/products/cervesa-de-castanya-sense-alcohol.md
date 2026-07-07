@@ -4,6 +4,7 @@ permalink: /shop/products/cervesa-de-castanya-sense-alcohol/
 title: "Cervesa de castanya sense alcohol"
 description: "Cervesa d’alta fermentació. Sense pasteuritzar. Pot fer sediments per la presència de llevat. Cervesa refermentada en ampolla. Sense alcohol."
 tagline: "Beguda artesana amb castanya i gust de territori."
+category: begudes
 sku: ce014
 currency: EUR
 price: 4.1

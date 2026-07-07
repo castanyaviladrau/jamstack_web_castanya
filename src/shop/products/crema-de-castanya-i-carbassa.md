@@ -4,6 +4,7 @@ permalink: /shop/products/crema-de-castanya-i-carbassa/
 title: "Crema de castanya i carbassa"
 description: "Nova crema de tardor elaborada amb carbassa, castanya, moniato, pastanaga, ceba, oli d’oliva verge extra i sal marina. Tots els productes són de procedència ecològica. Apta per a vegans, sense gluten, sense ou ni làctics."
 tagline: "Elaboració dolça i artesana per gaudir la castanya tot l’any."
+category: cremes
 sku: cb010
 currency: EUR
 price: 7.1
