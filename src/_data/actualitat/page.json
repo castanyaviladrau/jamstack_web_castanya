@@ -24,39 +24,83 @@
     "items": [
       {
         "label": "Més nou primer",
+        "type": "sort",
         "options": [
-          "Més nou primer",
-          "Més antic primer"
+          {
+            "label": "Més nou primer",
+            "value": "newest"
+          },
+          {
+            "label": "Més antic primer",
+            "value": "oldest"
+          }
         ]
       },
       {
         "label": "Per temàtica",
+        "type": "topic",
         "options": [
-          "Gastronomia",
-          "Patrimoni",
-          "Natura",
-          "Territori",
-          "Tradició"
+          {
+            "label": "Gastronomia",
+            "value": "gastronomia"
+          },
+          {
+            "label": "Patrimoni",
+            "value": "patrimoni"
+          },
+          {
+            "label": "Natura",
+            "value": "natura"
+          },
+          {
+            "label": "Territori",
+            "value": "territori"
+          },
+          {
+            "label": "Tradició",
+            "value": "tradicio"
+          }
         ]
       },
       {
-        "label": "Tipus de plat",
+        "label": "Tipus de notícia",
+        "type": "type",
         "options": [
-          "Entrants",
-          "Plats principals",
-          "Postres",
-          "Tècniques"
+          {
+            "label": "Producte",
+            "value": "producte"
+          },
+          {
+            "label": "Projecte",
+            "value": "projecte"
+          },
+          {
+            "label": "Patrimoni",
+            "value": "patrimoni"
+          }
         ]
       },
       {
         "label": "Per temps de lectura",
+        "type": "readingTime",
         "options": [
-          "Menys de 3 minuts",
-          "3-5 minuts",
-          "Més de 5 minuts"
+          {
+            "label": "Menys de 3 minuts",
+            "value": "short"
+          },
+          {
+            "label": "3-5 minuts",
+            "value": "medium"
+          },
+          {
+            "label": "Més de 5 minuts",
+            "value": "long"
+          }
         ]
       }
-    ]
+    ],
+    "resetLabel": "Restableix filtres",
+    "emptyLabel": "No hem trobat cap notícia amb aquests filtres. Prova una altra combinació."
   },
   "loadMoreLabel": "CARREGAR MÉS",
   "newsletter": {

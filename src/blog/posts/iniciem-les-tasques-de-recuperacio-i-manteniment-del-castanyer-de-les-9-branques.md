@@ -4,6 +4,7 @@ description: "Hem iniciat un proces de cura, respecte i compromis per preservar 
 date: 2026-04-21T14:12:00.000Z
 displayDate: "21 ABR 2026"
 readingTimeValue: "4 minuts"
+newsType: patrimoni
 image: "/assets/images/blog/2026/castanyer-9-branques/featured.jpeg"
 imageAlt: "Castanyer de les 9 branques"
 tags:

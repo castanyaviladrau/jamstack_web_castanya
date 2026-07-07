@@ -4,6 +4,7 @@ description: "La Castanya impulsa la Ruta Gastronomica de la Castanya per connec
 date: 2026-04-21T13:25:00.000Z
 displayDate: "21 ABR 2026"
 readingTimeValue: "4 minuts"
+newsType: projecte
 image: "/assets/images/blog/2026/neix-la-ruta-gastronomica/featured-optimized-1536.jpg"
 imageAlt: "Xef Oficial de la Castanya"
 tags:

@@ -41,18 +41,25 @@ footerVariant: home-newsletter
     </div>
   </div>
 
-  <nav class="blog-sort-bar shop-page-filters" aria-label="Filtres d'actualitat">
+  <nav class="blog-sort-bar shop-page-filters" aria-label="Filtres d'actualitat" data-news-filter-bar>
     <div class="container blog-sort-list shop-page-filters__inner">
       {% for item in pageContent.filtersBar.items %}
-      <details class="shop-page-filter-menu blog-sort-menu">
-        <summary class="shop-page-filter">
-          {{ item.label }}
+      <details class="shop-page-filter-menu blog-sort-menu" data-news-filter-menu data-news-filter-type="{{ item.type }}">
+        <summary class="shop-page-filter" data-news-filter-summary data-default-label="{{ item.label }}">
+          <span data-news-filter-summary-label>{{ item.label }}</span>
           <span aria-hidden="true">&#8964;</span>
         </summary>
         <div class="shop-page-filter-menu__list">
           {% for option in item.options %}
-          <button type="button" class="shop-page-filter-menu__item blog-sort-menu__item">
-            {{ option }}
+          <button
+            type="button"
+            class="shop-page-filter-menu__item blog-sort-menu__item"
+            data-news-filter-option
+            data-news-filter-type="{{ item.type }}"
+            data-news-filter-value="{{ option.value }}"
+            data-news-filter-label="{{ option.label }}"
+          >
+            {{ option.label }}
           </button>
           {% endfor %}
         </div>
@@ -64,7 +71,15 @@ footerVariant: home-newsletter
 
 <div class="container">
   {% if featuredPost %}
-  <a class="featured-news-card" href="{{ featuredPost.url }}">
+  <a
+    class="featured-news-card"
+    href="{{ featuredPost.url }}"
+    data-news-featured
+    data-news-date="{{ featuredPost.data.date }}"
+    data-news-type="{{ featuredPost.data.newsType or 'actualitat' }}"
+    data-news-reading-time="{% if featuredPost.data.readingTimeValue %}{{ featuredPost.data.readingTimeValue }}{% else %}{{ featuredPost.templateContent | readingTime }}{% endif %}"
+    data-news-topics="{% if featuredPost.data.tags %}{% for tag in featuredPost.data.tags %}{% if tag != 'posts' %}{{ tag | slugify }} {% endif %}{% endfor %}{% endif %}"
+  >
     <div class="featured-news-copy">
       <p class="featured-news-date">{% if featuredPost.data.displayDate %}{{ featuredPost.data.displayDate }}{% else %}{{ featuredPost.date | readableDate }}{% endif %}</p>
       <h2 class="featured-news-title">
@@ -100,10 +115,24 @@ footerVariant: home-newsletter
   </a>
   {% endif %}
 
-  <section class="actualitat-grid" aria-label="Més articles">
+  <div class="actualitat-filter-feedback" data-news-filter-feedback>
+    <p data-news-filter-status>Explora totes les notícies o tria un filtre.</p>
+    <button type="button" data-news-filter-reset hidden>{{ pageContent.filtersBar.resetLabel }}</button>
+  </div>
+  <p class="actualitat-filter-empty" data-news-filter-empty hidden>{{ pageContent.filtersBar.emptyLabel }}</p>
+
+  <section class="actualitat-grid" aria-label="Més articles" data-news-grid>
     {% for post in posts %}
-    {% if not loop.first %}
-    <a class="actualitat-card" href="{{ post.url }}">
+    <a
+      class="actualitat-card"
+      href="{{ post.url }}"
+      data-news-card
+      {% if loop.first %}data-news-featured-duplicate hidden{% endif %}
+      data-news-date="{{ post.data.date }}"
+      data-news-type="{{ post.data.newsType or 'actualitat' }}"
+      data-news-reading-time="{% if post.data.readingTimeValue %}{{ post.data.readingTimeValue }}{% else %}{{ post.templateContent | readingTime }}{% endif %}"
+      data-news-topics="{% if post.data.tags %}{% for tag in post.data.tags %}{% if tag != 'posts' %}{{ tag | slugify }} {% endif %}{% endfor %}{% endif %}"
+    >
       <div class="actualitat-card-image">
         <span class="featured-news-chip">Actualitat</span>
         <img src="{{ post.data.image or site.defaultOgImage }}" alt="{{ post.data.imageAlt or post.data.title }}" class="fit-img" />
@@ -131,7 +160,6 @@ footerVariant: home-newsletter
         </div>
       </div>
     </a>
-    {% endif %}
     {% endfor %}
   </section>
 

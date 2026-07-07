@@ -296,6 +296,218 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  const setupNewsFiltering = () => {
+    const filterBar = document.querySelector("[data-news-filter-bar]");
+    const grid = document.querySelector("[data-news-grid]");
+
+    if (!filterBar || !grid) {
+      return;
+    }
+
+    const cards = Array.from(grid.querySelectorAll("[data-news-card]"));
+    const featured = document.querySelector("[data-news-featured]");
+    const status = document.querySelector("[data-news-filter-status]");
+    const reset = document.querySelector("[data-news-filter-reset]");
+    const emptyMessage = document.querySelector("[data-news-filter-empty]");
+
+    if (!cards.length) {
+      return;
+    }
+
+    const groups = Array.from(
+      filterBar.querySelectorAll("[data-news-filter-menu]"),
+    ).map((menu) => ({
+      menu,
+      type: menu.dataset.newsFilterType,
+      summaryLabel: menu.querySelector("[data-news-filter-summary-label]"),
+      defaultLabel:
+        menu.querySelector("[data-news-filter-summary]")?.dataset.defaultLabel ||
+        "",
+      options: Array.from(menu.querySelectorAll("[data-news-filter-option]")),
+    }));
+
+    const defaultFilters = {
+      sort: "newest",
+      topic: "",
+      type: "",
+      readingTime: "",
+    };
+    const filters = { ...defaultFilters };
+    const labelsByType = new Map();
+
+    groups.forEach((group) => {
+      const labels = new Map(
+        group.options.map((option) => [
+          option.dataset.newsFilterValue,
+          option.dataset.newsFilterLabel || option.textContent.trim(),
+        ]),
+      );
+      labelsByType.set(group.type, labels);
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    groups.forEach((group) => {
+      const value = params.get(group.type);
+      if (value && labelsByType.get(group.type)?.has(value)) {
+        filters[group.type] = value;
+      }
+    });
+
+    const getTokens = (value = "") => value.split(/\s+/).filter(Boolean);
+    const getMinutes = (value = "") => Number.parseInt(value, 10) || 0;
+    const getDateValue = (card) => {
+      const value = new Date(card.dataset.newsDate || "").getTime();
+      return Number.isFinite(value) ? value : 0;
+    };
+
+    const readingTimeMatches = (minutes, range) => {
+      if (!range) {
+        return true;
+      }
+      if (range === "short") {
+        return minutes < 3;
+      }
+      if (range === "medium") {
+        return minutes >= 3 && minutes <= 5;
+      }
+      if (range === "long") {
+        return minutes > 5;
+      }
+      return true;
+    };
+
+    const cardMatches = (card) => {
+      if (filters.topic) {
+        const topics = getTokens(card.dataset.newsTopics);
+        if (!topics.includes(filters.topic)) {
+          return false;
+        }
+      }
+
+      if (filters.type && card.dataset.newsType !== filters.type) {
+        return false;
+      }
+
+      return readingTimeMatches(
+        getMinutes(card.dataset.newsReadingTime),
+        filters.readingTime,
+      );
+    };
+
+    const hasActiveFilters = () =>
+      Boolean(filters.topic || filters.type || filters.readingTime) ||
+      filters.sort !== defaultFilters.sort;
+
+    const updateUrl = () => {
+      const url = new URL(window.location.href);
+      Object.entries(filters).forEach(([type, value]) => {
+        if (value && value !== defaultFilters[type]) {
+          url.searchParams.set(type, value);
+        } else {
+          url.searchParams.delete(type);
+        }
+      });
+      window.history.replaceState({}, "", url);
+    };
+
+    const updateControls = () => {
+      groups.forEach((group) => {
+        const value = filters[group.type] || "";
+        const label = labelsByType.get(group.type)?.get(value);
+        const isDefaultSort = group.type === "sort" && value === defaultFilters.sort;
+
+        if (group.summaryLabel) {
+          group.summaryLabel.textContent = label && !isDefaultSort ? label : group.defaultLabel;
+        }
+
+        group.options.forEach((option) => {
+          const isActive = option.dataset.newsFilterValue === value;
+          if (isActive) {
+            option.setAttribute("aria-current", "true");
+          } else {
+            option.removeAttribute("aria-current");
+          }
+        });
+      });
+    };
+
+    const getActiveLabels = () =>
+      groups
+        .map((group) => {
+          const value = filters[group.type];
+          if (!value || (group.type === "sort" && value === defaultFilters.sort)) {
+            return null;
+          }
+          return labelsByType.get(group.type)?.get(value);
+        })
+        .filter(Boolean);
+
+    const render = (options = {}) => {
+      const defaultView = !hasActiveFilters();
+      const matchedCards = cards.filter(cardMatches).sort((a, b) => {
+        const direction = filters.sort === "oldest" ? 1 : -1;
+        return (getDateValue(a) - getDateValue(b)) * direction;
+      });
+
+      if (featured) {
+        featured.hidden = !defaultView;
+      }
+
+      cards.forEach((card) => {
+        card.hidden = true;
+      });
+
+      matchedCards.forEach((card) => {
+        const isFeaturedDuplicate = card.hasAttribute(
+          "data-news-featured-duplicate",
+        );
+        card.hidden = defaultView && isFeaturedDuplicate;
+        grid.appendChild(card);
+      });
+
+      const activeLabels = getActiveLabels();
+      const newsLabel = matchedCards.length === 1 ? "notícia" : "notícies";
+      const foundLabel = matchedCards.length === 1 ? "trobada" : "trobades";
+
+      if (status) {
+        status.textContent = activeLabels.length
+          ? `${matchedCards.length} ${newsLabel} ${foundLabel} per ${activeLabels.join(" · ")}.`
+          : "Explora totes les notícies o tria un filtre.";
+      }
+
+      if (reset) {
+        reset.hidden = !hasActiveFilters();
+      }
+
+      if (emptyMessage) {
+        emptyMessage.hidden = matchedCards.length !== 0;
+      }
+
+      updateControls();
+
+      if (options.updateUrl) {
+        updateUrl();
+      }
+    };
+
+    groups.forEach((group) => {
+      group.options.forEach((option) => {
+        option.addEventListener("click", () => {
+          filters[group.type] = option.dataset.newsFilterValue || "";
+          group.menu.removeAttribute("open");
+          render({ updateUrl: true });
+        });
+      });
+    });
+
+    reset?.addEventListener("click", () => {
+      Object.assign(filters, defaultFilters);
+      render({ updateUrl: true });
+    });
+
+    render();
+  };
+
   const setupRecipeResultsFilter = () => {
     const form = document.querySelector("[data-recipe-filter-form]");
 
@@ -471,6 +683,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   setupCarousel("shopFeaturedCarousel", "shopFeaturedPrev", "shopFeaturedNext");
   setupShopCatalogFiltering();
+  setupNewsFiltering();
   setupRecipeResultsFilter();
   setupCarousel(
     "testimonialScroll",

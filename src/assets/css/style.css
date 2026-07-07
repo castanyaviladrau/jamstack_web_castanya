@@ -1333,6 +1333,42 @@ body.page-blog .content-wrap {
   cursor: pointer;
 }
 
+.actualitat-filter-feedback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px 18px;
+  flex-wrap: wrap;
+  margin: 24px 0 4px;
+  color: #7f6f4b;
+  font-size: 13px;
+  text-align: center;
+}
+
+.actualitat-filter-feedback p {
+  margin: 0;
+}
+
+.actualitat-filter-feedback button {
+  border: 0;
+  border-radius: 999px;
+  padding: 7px 14px;
+  background: #8b7445;
+  color: #f5f0e8;
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.actualitat-filter-empty {
+  margin: 28px auto 40px;
+  color: #7f6f4b;
+  font-size: 14px;
+  text-align: center;
+}
+
 .featured-news-card {
   display: grid;
   grid-template-columns: minmax(230px, 330px) minmax(0, 1fr);

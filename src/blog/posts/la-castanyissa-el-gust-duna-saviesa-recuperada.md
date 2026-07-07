@@ -4,6 +4,7 @@ description: "Hi ha productes que no nomes es mengen: expliquen un paisatge, una
 date: 2026-04-21T16:51:00.000Z
 displayDate: "21 ABR 2026"
 readingTimeValue: "3 minuts"
+newsType: producte
 image: "/assets/images/blog/2026/la-castanyissa/featured.jpg"
 imageAlt: "La Castanyissa"
 tags:
