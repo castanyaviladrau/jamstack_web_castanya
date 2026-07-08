@@ -2425,7 +2425,15 @@ body:not(.home) .header-logo img {
     visibility 0.18s ease;
 }
 
-.nav-dropdown .nav-dropdown__link {
+/* The body-scoped selectors below must be listed explicitly: the generic
+   `body.home .header-nav a` rule (specificity 0,2,2) sets `padding: 0 15px`
+   and would otherwise flatten these dropdown links on the home/fusta/visits
+   pages, since those <a>s live inside .header-nav. Matching the body + page
+   classes here (0,4,1) lets the intended padding win on every page. */
+.nav-dropdown .nav-dropdown__link,
+body.home .header-nav .nav-dropdown .nav-dropdown__link,
+body.page-fusta .header-nav .nav-dropdown .nav-dropdown__link,
+body.page-visits .header-nav .nav-dropdown .nav-dropdown__link {
   display: block;
   padding: 20px 28px;
   color: #f5f0e8 !important;
