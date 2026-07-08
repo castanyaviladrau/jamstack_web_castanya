@@ -1083,10 +1083,58 @@ export default defineConfig({
             label: "Filters Bar",
             fields: [
               {
-                type: "string",
+                type: "object",
                 name: "items",
-                label: "Filter Labels",
+                label: "Filter Items",
                 list: true,
+                required: true,
+                fields: [
+                  {
+                    type: "string",
+                    name: "label",
+                    label: "Label",
+                    required: true,
+                  },
+                  {
+                    type: "string",
+                    name: "type",
+                    label: "Type",
+                    required: true,
+                  },
+                  {
+                    type: "object",
+                    name: "options",
+                    label: "Options",
+                    list: true,
+                    required: true,
+                    fields: [
+                      {
+                        type: "string",
+                        name: "label",
+                        label: "Label",
+                        required: true,
+                      },
+                      {
+                        type: "string",
+                        name: "value",
+                        label: "Value",
+                        required: true,
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                type: "string",
+                name: "resetLabel",
+                label: "Reset Label",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "emptyLabel",
+                label: "Empty Results Label",
+                ui: { component: "textarea" },
                 required: true,
               },
             ],

@@ -10,7 +10,7 @@
     "build": "pnpm tina:build && pnpm products:generate && pnpm exec eleventy",
     "test": "node --test",
     "tina:dev": "tinacms dev -c \"pnpm dev\"",
-    "tina:build": "tinacms build",
+    "tina:build": "tinacms build --skip-cloud-checks --skip-search-index",
     "format": "prettier --write .",
     "deploy": "pnpm build && netlify deploy --prod --dir=_site",
     "clean": "rm -rf _site"
