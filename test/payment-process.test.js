@@ -130,7 +130,6 @@ test('payment-process handler returns 404 when order is missing', async () => {
   process.env.REDSYS_MERCHANT_CODE = 'merchant';
   process.env.REDSYS_SECRET_KEY = testKey('5');
   process.env.URL = 'https://example.com';
-  process.env.PAYMENT_PROVIDER = '';
 
   const originalFetch = global.fetch;
   global.fetch = async () => ({
@@ -158,7 +157,6 @@ test('payment-process handler returns 400 when order total is invalid', async ()
   process.env.REDSYS_MERCHANT_CODE = 'merchant';
   process.env.REDSYS_SECRET_KEY = testKey('5');
   process.env.URL = 'https://example.com';
-  process.env.PAYMENT_PROVIDER = '';
 
   const originalFetch = global.fetch;
   global.fetch = async () => ({
@@ -186,8 +184,6 @@ test('payment-process handler returns payment payload for valid order', async ()
   process.env.REDSYS_MERCHANT_CODE = 'merchant';
   process.env.REDSYS_SECRET_KEY = testKey('6');
   process.env.URL = 'https://example.com';
-  process.env.PAYMENT_PROVIDER = 'mock';
-  process.env.REDSYS_SECRET_KEY_DEV = testKey('6');
 
   const originalFetch = global.fetch;
   const fetchCalls = [];
@@ -242,7 +238,7 @@ test('payment-process handler returns payment payload for valid order', async ()
     assert.equal(payload.order.id, 'order-1');
     assert.equal(payload.order.paymentStatus, 'pending');
     assert.equal(payload.order.paymentMethod, 'card');
-    assert.equal(payload.payment.redsysUrl, 'https://example.com/.netlify/functions/redsys-mock');
+    assert.equal(payload.payment.redsysUrl, 'https://sis-t.redsys.es:25443/sis/realizarPago');
     assert.equal(payload.payment.signatureVersion, 'HMAC_SHA512_V2');
     assert.equal(typeof payload.payment.parameters, 'string');
     assert.equal(typeof payload.payment.signature, 'string');
@@ -254,13 +250,12 @@ test('payment-process handler returns payment payload for valid order', async ()
     const verification = verifyMerchantParametersSignature(
       payload.payment.parameters,
       payload.payment.signature,
-      process.env.REDSYS_SECRET_KEY_DEV,
+      process.env.REDSYS_SECRET_KEY,
     );
     assert.equal(verification.isValid, true);
     assert.equal(fetchCalls.length, 2);
   } finally {
     global.fetch = originalFetch;
-    delete process.env.REDSYS_SECRET_KEY_DEV;
   }
 });
 
@@ -270,8 +265,6 @@ test('payment-process handler ignores Bizum requests and falls back to card', as
   process.env.REDSYS_MERCHANT_CODE = 'merchant';
   process.env.REDSYS_SECRET_KEY = testKey('b');
   process.env.URL = 'https://example.com';
-  process.env.PAYMENT_PROVIDER = 'mock';
-  process.env.REDSYS_SECRET_KEY_DEV = testKey('b');
 
   const originalFetch = global.fetch;
   global.fetch = async (url) => {
@@ -324,7 +317,6 @@ test('payment-process handler ignores Bizum requests and falls back to card', as
     assert.equal(merchantParameters.DS_MERCHANT_PAYMETHODS, undefined);
   } finally {
     global.fetch = originalFetch;
-    delete process.env.REDSYS_SECRET_KEY_DEV;
   }
 });
 
@@ -334,8 +326,6 @@ test('payment-process handler regenerates payment reference after failed callbac
   process.env.REDSYS_MERCHANT_CODE = 'merchant';
   process.env.REDSYS_SECRET_KEY = testKey('d');
   process.env.URL = 'https://example.com';
-  process.env.PAYMENT_PROVIDER = 'mock';
-  process.env.REDSYS_SECRET_KEY_DEV = testKey('d');
 
   const originalFetch = global.fetch;
   const originalNow = Date.now;
@@ -404,7 +394,6 @@ test('payment-process handler regenerates payment reference after failed callbac
   } finally {
     global.fetch = originalFetch;
     Date.now = originalNow;
-    delete process.env.REDSYS_SECRET_KEY_DEV;
   }
 });
 
@@ -414,7 +403,6 @@ test('payment-process handler returns 409 when order is already paid', async () 
   process.env.REDSYS_MERCHANT_CODE = 'merchant';
   process.env.REDSYS_SECRET_KEY = testKey('c');
   process.env.URL = 'https://example.com';
-  process.env.PAYMENT_PROVIDER = '';
 
   const originalFetch = global.fetch;
   global.fetch = async () => ({
@@ -450,7 +438,6 @@ test('payment-process handler returns 503 when payment provider env is missing',
   process.env.REDSYS_MERCHANT_CODE = '';
   process.env.REDSYS_SECRET_KEY = '';
   process.env.URL = 'https://example.com';
-  process.env.PAYMENT_PROVIDER = '';
 
   const mod = freshRequire('../netlify/functions/payment-process.js');
   const response = await mod.handler({

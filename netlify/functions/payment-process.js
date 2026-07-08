@@ -11,7 +11,6 @@ const MERCHANT_CODE = process.env.REDSYS_MERCHANT_CODE;
 const SECRET_KEY = process.env.REDSYS_SECRET_KEY;
 const REDSYS_URL = process.env.REDSYS_URL || 'https://sis-t.redsys.es:25443/sis/realizarPago';
 const SITE_URL = process.env.URL;
-const PAYMENT_PROVIDER = String(process.env.PAYMENT_PROVIDER || '').trim().toLowerCase();
 const TERMINAL = '001';
 const CURRENCY = '978'; // EUR
 const SIGNATURE_VERSION = 'HMAC_SHA512_V2';
@@ -172,15 +171,7 @@ exports.handler = async (event) => {
     });
   }
 
-  const isMockProvider = PAYMENT_PROVIDER === 'mock';
-  if (isMockProvider) {
-    if (!process.env.REDSYS_SECRET_KEY_DEV && !SECRET_KEY) {
-      return jsonResponse(503, {
-        error: 'Payment provider not configured',
-        details: 'Missing REDSYS_SECRET_KEY (or REDSYS_SECRET_KEY_DEV) for mock signing',
-      });
-    }
-  } else if (!MERCHANT_CODE || !SECRET_KEY) {
+  if (!MERCHANT_CODE || !SECRET_KEY) {
     return jsonResponse(503, {
       error: 'Payment provider not configured',
       details: 'Missing RedSys merchant environment variables',
@@ -222,8 +213,7 @@ exports.handler = async (event) => {
     });
 
     const parametersBase64Url = encodeMerchantParameters(parameters);
-    const signingKey = process.env.REDSYS_SECRET_KEY_DEV || SECRET_KEY;
-    const signature = createSignature(parametersBase64Url, merchantOrderCode, signingKey);
+    const signature = createSignature(parametersBase64Url, merchantOrderCode, SECRET_KEY);
     const updatedOrder = await updateSupabaseOrder(order.id, {
       status: 'pending_payment',
       payment_status: 'pending',
@@ -240,7 +230,7 @@ exports.handler = async (event) => {
     return jsonResponse(200, {
       success: true,
       payment: {
-        redsysUrl: isMockProvider ? `${SITE_URL}/.netlify/functions/redsys-mock` : REDSYS_URL,
+        redsysUrl: REDSYS_URL,
         parameters: parametersBase64Url,
         signature,
         signatureVersion: SIGNATURE_VERSION,

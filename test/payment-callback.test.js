@@ -85,7 +85,6 @@ test('payment-callback handler returns 400 for invalid signature', async () => {
   process.env.SUPABASE_URL = 'https://example.supabase.co';
   process.env.SUPABASE_SERVICE_ROLE_KEY = 'service-role';
   process.env.REDSYS_SECRET_KEY = testKey('8');
-  process.env.PAYMENT_PROVIDER = '';
 
   const mod = freshRequire('../netlify/functions/payment-callback.js');
   const payload = encodeMerchantParameters({ Ds_Order: '123456789012', Ds_Response: '0000' });
@@ -104,7 +103,6 @@ test('payment-callback handler marks order as paid on successful response', asyn
   process.env.SUPABASE_URL = 'https://example.supabase.co';
   process.env.SUPABASE_SERVICE_ROLE_KEY = 'service-role';
   process.env.REDSYS_SECRET_KEY = testKey('9');
-  process.env.PAYMENT_PROVIDER = '';
   process.env.BREVO_API_KEY = '';
   process.env.FROM_EMAIL = '';
 
@@ -192,7 +190,6 @@ test('payment-callback handler marks order as failed on unsuccessful response', 
   process.env.SUPABASE_URL = 'https://example.supabase.co';
   process.env.SUPABASE_SERVICE_ROLE_KEY = 'service-role';
   process.env.REDSYS_SECRET_KEY = testKey('f');
-  process.env.PAYMENT_PROVIDER = '';
 
   const originalFetch = global.fetch;
   const fetchCalls = [];
@@ -261,7 +258,6 @@ test('payment-callback handler returns 400 when callback payload is missing', as
   process.env.SUPABASE_URL = 'https://example.supabase.co';
   process.env.SUPABASE_SERVICE_ROLE_KEY = 'service-role';
   process.env.REDSYS_SECRET_KEY = testKey('g');
-  process.env.PAYMENT_PROVIDER = '';
 
   const mod = freshRequire('../netlify/functions/payment-callback.js');
   const response = await mod.handler({
@@ -278,8 +274,6 @@ test('payment-callback handler returns 503 when secret key is missing', async ()
   process.env.SUPABASE_URL = 'https://example.supabase.co';
   process.env.SUPABASE_SERVICE_ROLE_KEY = 'service-role';
   process.env.REDSYS_SECRET_KEY = '';
-  process.env.REDSYS_SECRET_KEY_DEV = '';
-  process.env.PAYMENT_PROVIDER = '';
 
   const mod = freshRequire('../netlify/functions/payment-callback.js');
   const response = await mod.handler({
@@ -296,7 +290,6 @@ test('payment-callback handler is idempotent when order is already paid', async 
   process.env.SUPABASE_URL = 'https://example.supabase.co';
   process.env.SUPABASE_SERVICE_ROLE_KEY = 'service-role';
   process.env.REDSYS_SECRET_KEY = testKey('h');
-  process.env.PAYMENT_PROVIDER = '';
 
   const originalFetch = global.fetch;
   const fetchCalls = [];
@@ -348,7 +341,6 @@ test('payment-callback handler sends customer and provider emails when Brevo is 
   process.env.SUPABASE_URL = 'https://example.supabase.co';
   process.env.SUPABASE_SERVICE_ROLE_KEY = 'service-role';
   process.env.REDSYS_SECRET_KEY = testKey('i');
-  process.env.PAYMENT_PROVIDER = '';
   process.env.BREVO_API_KEY = 'brevo-key';
   process.env.FROM_EMAIL = 'no-reply@example.com';
   process.env.ORDER_NOTIFICATION_EMAIL = 'orders@example.com';
@@ -481,7 +473,6 @@ test('payment-callback handler ignores EMAIL_SENDING_ENABLED and still sends ord
   process.env.SUPABASE_URL = 'https://example.supabase.co';
   process.env.SUPABASE_SERVICE_ROLE_KEY = 'service-role';
   process.env.REDSYS_SECRET_KEY = testKey('j');
-  process.env.PAYMENT_PROVIDER = '';
   process.env.BREVO_API_KEY = 'brevo-key';
   process.env.FROM_EMAIL = 'no-reply@example.com';
   process.env.ORDER_NOTIFICATION_EMAIL = 'orders@example.com';

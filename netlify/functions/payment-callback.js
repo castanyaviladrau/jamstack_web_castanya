@@ -9,13 +9,7 @@ const { sendEmail, isBrevoConfigured } = require('./send-email');
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
-const PAYMENT_PROVIDER = String(process.env.PAYMENT_PROVIDER || '')
-  .trim()
-  .toLowerCase();
-const SECRET_KEY =
-  PAYMENT_PROVIDER === 'mock'
-    ? process.env.REDSYS_SECRET_KEY_DEV || process.env.REDSYS_SECRET_KEY
-    : process.env.REDSYS_SECRET_KEY;
+const SECRET_KEY = process.env.REDSYS_SECRET_KEY;
 
 function response(statusCode, body, contentType = 'text/plain') {
   return {
