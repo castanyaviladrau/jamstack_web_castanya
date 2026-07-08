@@ -7,10 +7,10 @@ tags:
 order: 4
 title: TASTET
 permalink: /visits/tastet/
-cardImage: /assets/images/gallery/visites/visites_guiades_1.jpg
+cardImage: /assets/images/gallery/visites/visita-guiada.jpg
 cardImageAlt: Tastet de productes de castanya
 cardDescription: Experimenta en un tast tot el mon gourmet que te la castanya. A traves de 5 productes locals, tots amb castanya.
-heroImage: /assets/images/gallery/visites/visites_guiades_1.jpg
+heroImage: /assets/images/gallery/visites/visita-guiada.jpg
 heroImageAlt: Taula de tast de productes de castanya
 galleryButtonLabel: VEURE GALERIA DE FOTOS
 reservationPrompt: ENVIA UNA SOL.LICITUD DE RESERVA
@@ -101,7 +101,7 @@ reviewsSection:
       avatar: /assets/images/logo-maria.png
       avatarAlt: Maria Sheferd
 gallery:
-  - image: /assets/images/gallery/visites/visites_guiades_3.jpg
+  - image: /assets/images/gallery/visites/visita-guiada.jpg
     alt: Productes artesans amb castanya
   - image: /assets/images/gallery/visites/visites_guiades_1.jpg
     alt: Espai de tast a la finca

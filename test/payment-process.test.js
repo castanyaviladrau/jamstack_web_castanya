@@ -85,13 +85,13 @@ test('payment-process._test.createMerchantOrderCode returns 12 digits', () => {
   assert.match(code, /^\d{12}$/);
 });
 
-test('payment-process._test.normalizePaymentMethod defaults to card', () => {
+test('payment-process._test.normalizePaymentMethod always returns card', () => {
   const mod = freshRequire('../netlify/functions/payment-process.js');
 
   assert.equal(mod._test.normalizePaymentMethod(), 'card');
   assert.equal(mod._test.normalizePaymentMethod('card'), 'card');
   assert.equal(mod._test.normalizePaymentMethod('CARD'), 'card');
-  assert.equal(mod._test.normalizePaymentMethod('bizum'), 'bizum');
+  assert.equal(mod._test.normalizePaymentMethod('bizum'), 'card');
   assert.equal(mod._test.normalizePaymentMethod('anything-else'), 'card');
 });
 
@@ -264,7 +264,7 @@ test('payment-process handler returns payment payload for valid order', async ()
   }
 });
 
-test('payment-process handler includes Bizum pay method when requested', async () => {
+test('payment-process handler ignores Bizum requests and falls back to card', async () => {
   process.env.SUPABASE_URL = 'https://example.supabase.co';
   process.env.SUPABASE_SERVICE_ROLE_KEY = 'service-role';
   process.env.REDSYS_MERCHANT_CODE = 'merchant';
@@ -320,8 +320,8 @@ test('payment-process handler includes Bizum pay method when requested', async (
     const merchantParameters = decodeMerchantParameters(payload.payment.parameters);
 
     assert.equal(response.statusCode, 200);
-    assert.equal(payload.order.paymentMethod, 'bizum');
-    assert.equal(merchantParameters.DS_MERCHANT_PAYMETHODS, 'z');
+    assert.equal(payload.order.paymentMethod, 'card');
+    assert.equal(merchantParameters.DS_MERCHANT_PAYMETHODS, undefined);
   } finally {
     global.fetch = originalFetch;
     delete process.env.REDSYS_SECRET_KEY_DEV;

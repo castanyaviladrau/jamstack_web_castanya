@@ -12,20 +12,15 @@ Tots els preus del web s'expressen en **euros (EUR)**. L'import final de la coma
 
 ## Metodes de pagament disponibles
 
-Actualment, la botiga preveu els seguents metodes de pagament:
+Actualment, la botiga ofereix el seguent metode de pagament:
 
 - **Targeta bancaria**
-- **Bizum**
 
-Aquests pagaments es tramiten a traves d'un **TPV segur de Redsys** o del proveidor de pagament que correspongui en cada moment.
+Aquest pagament es tramita a traves d'un **TPV segur de Redsys**.
 
 ## Pagament amb targeta
 
 Quan la persona clienta tria el pagament amb targeta, el cobrament es realitza a traves d'una passarel-la segura. Castanya de Viladrau no emmagatzema ni te acces complet a les dades bancaries introduides durant l'operacio.
-
-## Pagament amb Bizum
-
-Quan s'ofereix l'opcio de Bizum, el proces es completa igualment a traves de la passarel-la segura habilitada per al cobrament. La validacio del pagament es fa segons les normes i controls del proveidor financer.
 
 ## Confirmacio de la comanda
 

@@ -2412,7 +2412,7 @@ body:not(.home) .header-logo img {
   z-index: 30;
   display: grid;
   gap: 0;
-  padding: 16px 0;
+  padding: 12px 0;
   background: #7b6b43;
   box-shadow: 0 8px 20px rgba(52, 40, 18, 0.2);
   opacity: 0;
@@ -2425,9 +2425,9 @@ body:not(.home) .header-logo img {
     visibility 0.18s ease;
 }
 
-.nav-dropdown__link {
+.nav-dropdown .nav-dropdown__link {
   display: block;
-  padding: 14px 24px;
+  padding: 20px 28px;
   color: #f5f0e8 !important;
   text-decoration: none;
   font-family: "Gotham-Medium", var(--font-main);

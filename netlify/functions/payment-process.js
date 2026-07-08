@@ -107,14 +107,13 @@ function resolveMerchantOrderCode(order) {
   return order.payment_reference;
 }
 
-function normalizePaymentMethod(value) {
-  return String(value || 'card').trim().toLowerCase() === 'bizum' ? 'bizum' : 'card';
+function normalizePaymentMethod() {
+  return 'card';
 }
 
 function buildMerchantParameters({
   amountInCents,
   merchantOrderCode,
-  normalizedPaymentMethod,
   order,
 }) {
   return {
@@ -130,11 +129,6 @@ function buildMerchantParameters({
     DS_MERCHANT_CONSUMERLANGUAGE: '001',
     DS_MERCHANT_PRODUCTDESCRIPTION: `Pedido ${order.public_order_code}`,
     DS_MERCHANT_MERCHANTNAME: 'Castanya de Viladrau',
-    ...(normalizedPaymentMethod === 'bizum'
-      ? {
-          DS_MERCHANT_PAYMETHODS: 'z',
-        }
-      : {}),
   };
 }
 
@@ -224,7 +218,6 @@ exports.handler = async (event) => {
     const parameters = buildMerchantParameters({
       amountInCents,
       merchantOrderCode,
-      normalizedPaymentMethod,
       order,
     });
 

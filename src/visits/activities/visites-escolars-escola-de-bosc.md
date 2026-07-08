@@ -7,10 +7,10 @@ tags:
 order: 5
 title: VISITES ESCOLARS ESCOLA DE BOSC
 permalink: /visits/visites-escolars-escola-de-bosc/
-cardImage: /assets/images/gallery/visites/visites_guiades_2.jpg
+cardImage: /assets/images/gallery/visites/aventura-4x4-castanyers-centenaris-20260511.jpg
 cardImageAlt: Visites escolars escola de bosc
 cardDescription: Gaudeix d'una immersio educativa en una finca privada on el joc de pistes i els tallers de fusta connecten totes les edats amb el valor del bosc.
-heroImage: /assets/images/gallery/visites/visites_guiades_2.jpg
+heroImage: /assets/images/gallery/visites/aventura-4x4-castanyers-centenaris-20260511.jpg
 heroImageAlt: Grup escolar en un entorn natural del Montseny
 galleryButtonLabel: VEURE GALERIA DE FOTOS
 reservationPrompt: ENVIA UNA SOL.LICITUD DE RESERVA
@@ -106,7 +106,7 @@ reviewsSection:
       avatar: /assets/images/logo-maria.png
       avatarAlt: Maria Sheferd
 gallery:
-  - image: /assets/images/gallery/visites/visites_guiades_2.jpg
+  - image: /assets/images/gallery/visites/aventura-4x4-castanyers-centenaris-20260511.jpg
     alt: Acces al bosc per a grups escolars
   - image: /assets/images/gallery/visites/visites_guiades_1.jpg
     alt: Entorn natural del Montseny

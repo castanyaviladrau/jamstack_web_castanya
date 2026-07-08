@@ -1626,12 +1626,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const normalizeCheckoutPayload = (payload) => {
-      const normalizedPaymentMethod = String(
-        payload.paymentMethod || "card",
-      )
-        .trim()
-        .toLowerCase();
-
       return {
         name: String(payload.name || "").trim(),
         email: String(payload.email || "")
@@ -1645,8 +1639,7 @@ document.addEventListener("DOMContentLoaded", () => {
         notes: String(payload.notes || "").trim(),
         isPickup: String(payload.isPickup || "").trim(),
         pickupStore: String(payload.pickupStore || "").trim(),
-        paymentMethod:
-          normalizedPaymentMethod === "bizum" ? "bizum" : "card",
+        paymentMethod: "card",
         acceptLegal: String(payload.acceptLegal || "").trim(),
         acceptPrivacy: String(payload.acceptPrivacy || "").trim(),
         acceptFulfillmentTerms: String(
