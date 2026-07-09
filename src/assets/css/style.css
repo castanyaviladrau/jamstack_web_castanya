@@ -108,6 +108,10 @@ table {
   --type-banner-title-size: clamp(28px, 3.4vw, 52px);
   --type-banner-title-line-height: 0.98;
   --type-banner-text-size: clamp(17px, 1.3vw, 22px);
+  --type-page-title-size: clamp(30px, 3.6vw, 46px);
+  --type-page-title-size-compact: clamp(28px, 3vw, 38px);
+  --type-page-copy-size: clamp(16px, 1.35vw, 18px);
+  --type-page-copy-line-height: 1.55;
   --section-banner-min-height: 360px;
   --section-banner-min-height-mobile: 300px;
   --home-banner-min-height: clamp(420px, 36vw, 520px);
@@ -12067,159 +12071,86 @@ body.internal.page-gastronomic-recipes {
 }
 
 
+/* Align inner-page hero and intro typography with the homepage title/copy balance. */
+.projecte-page__hero-title,
+.projecte-page__heading,
+.fusta-hero__title,
+.visits-hero__title,
+.visits-montseny-hero__title,
+.visits-montseny-intro__title,
+.visits-montseny-story__title,
+.professionals-hero__title,
+.professionals-intro__heading,
+.gastronomic-page-hero__title,
+.gastronomic-page-ambassador__title,
+.gastronomic-nutrition-hero__title,
+.shop-page-hero__title,
+.shop-cart-hero__title,
+.contact-page-split__title,
+.where-page__title,
+.recipe-detail__title,
+.product-detail__title,
+.actualitat-post__title {
+  line-height: 1.04;
+}
 
-  .professionals-inspiration-hero__cta {
-    width: 100%;
-    min-width: 0;
-    max-width: 280px;
-  }
+.projecte-page__hero-title,
+.projecte-page__heading,
+.fusta-hero__title,
+.visits-hero__title,
+.visits-montseny-hero__title,
+.visits-montseny-intro__title,
+.visits-montseny-story__title,
+.professionals-hero__title,
+.professionals-intro__heading,
+.gastronomic-page-hero__title,
+.gastronomic-page-ambassador__title,
+.gastronomic-nutrition-hero__title,
+.shop-page-hero__title,
+.shop-cart-hero__title,
+.contact-page-split__title,
+.where-page__title,
+.recipe-detail__title {
+  font-size: var(--type-page-title-size);
+}
 
-  .professionals-inspiration-recipes__header {
-    padding: 46px 0 0;
-  }
+.blog-hero-title,
+.professionals-inspiration-hero__title,
+.gastronomic-recipes-hero__title,
+.fusta-projects__title,
+.product-detail__title,
+.actualitat-post__title {
+  font-size: var(--type-page-title-size-compact);
+  line-height: 1.04;
+}
 
-  .professionals-inspiration-recipes__nav {
-    top: 0;
-  }
-
-  .professionals-inspiration-recipes__grid {
-    grid-auto-columns: 100%;
-  }
-
-  .professionals-inspiration-banner__content {
-    padding: 34px 20px;
-  }
-
-  .professionals-inspiration-banner__cta {
-    align-self: center;
-    width: 100%;
-    max-width: 290px;
-  }
-
-  .contact-form__submit {
-    width: 100%;
-    min-width: 0;
-    max-width: 320px;
-  }
-
-  .contact-page-split__title {
-    font-size: clamp(34px, 9vw, 48px);
-  }
-
-  .contact-page-split__text {
-    margin-top: 24px;
-  }
-
-  .footer-cta-section--professionals {
-    min-height: 300px;
-    height: auto;
-  }
-
-  .cta-title--professionals {
-    font-size: clamp(28px, 8vw, 40px);
-  }
-
-  .btn-olive-transparent--professionals {
-    width: 100%;
-    max-width: 290px;
-    margin-top: 24px;
-  }
-
-  .newsletter-form,
-  .newsletter-form--professionals {
-    flex-direction: column;
-  }
-
-  .btn-newsletter-submit,
-  .btn-newsletter-submit--professionals {
-    width: 100%;
-  }
-
-  .professionals-value-feature__image {
-    height: 520px;
-  }
-
-  .professionals-value-feature__content {
-    padding: 50px 38px;
-  }
-
-  .shop-page-hero {
-    min-height: 300px;
-  }
-
-  .shop-page-filters__inner {
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 14px;
-    overflow: visible;
-  }
-
-  .shop-page-products {
-    padding: 54px 0 46px;
-  }
-
-  .shop-page-products__header {
-    margin-bottom: 30px;
-  }
-
-  .shop-page-products__arrow {
-    width: 38px;
-    height: 38px;
-    font-size: 27px;
-  }
-
-  .shop-page-seasonal {
-    width: calc(100% - 32px);
-    min-height: 430px;
-    margin-bottom: 68px;
-    align-items: flex-end;
-  }
-
-  .shop-page-seasonal__overlay {
-    background: linear-gradient(0deg, rgba(24, 22, 17, 0.82), rgba(24, 22, 17, 0.18));
-  }
-
-  .shop-page-seasonal__content {
-    padding: 34px 24px;
-  }
-
-  .shop-page-commitment__inner {
-    padding: 54px 0 60px;
-  }
-
-  .shop-page-commitment__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 32px;
-    margin-top: 42px;
-  }
-
-  .shop-page-featured {
-    padding: 54px 0 60px;
-  }
-
-  .shop-page-featured__header {
-    grid-template-columns: 38px minmax(0, 1fr) 38px;
-    gap: 14px;
-    margin-bottom: 32px;
-  }
-
-  .shop-page-featured__scroller {
-    width: calc(100% - 40px);
-    padding: 0 0 14px;
-  }
-
-  .shop-page-featured-product {
-    flex-basis: 188px;
-    min-width: 188px;
-  }
-
-  .shop-page-featured-product + .shop-page-featured-product {
-    border-left-width: 6px;
-  }
-
-  .shop-page-featured-product__actions {
-    top: 30%;
-  }
+.projecte-page__hero-copy,
+.projecte-page__panel--text p,
+.fusta-hero__text,
+.visits-hero__text,
+.visits-montseny-hero__text,
+.visits-montseny-intro__text,
+.visits-montseny-story__text p,
+.blog-hero-subtitle,
+.where-page__subtitle,
+.where-card__description,
+.professionals-hero__subtitle,
+.professionals-intro__lead,
+.professionals-intro__body,
+.professionals-inspiration-hero__text,
+.gastronomic-page-hero__text,
+.gastronomic-page-ambassador__text,
+.gastronomic-nutrition-hero__text,
+.gastronomic-recipes-hero__text,
+.shop-page-hero__text,
+.shop-cart-hero__text,
+.contact-page-split__text,
+.recipe-detail__description,
+.product-detail__tagline,
+.actualitat-post__subtitle,
+.fusta-projects__text {
+  font-size: var(--type-page-copy-size);
+  line-height: var(--type-page-copy-line-height);
 }
 
 body.has-mobile-menu-open {
