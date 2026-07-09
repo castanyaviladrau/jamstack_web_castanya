@@ -56,14 +56,14 @@ name: home
         <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
       </button>
 
-      <h2 class="section-title-main section-title-main--products">ELS NOSTRES PRODUCTES</h2>
+      <h2 class="section-title-main section-title-main--products home-section-title">ELS NOSTRES PRODUCTES</h2>
 
       <button class="nav-arrow-inline right" id="nextBtn" aria-label="Next">
         <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
       </button>
     </div>
 
-    <p class="section-subtitle-italic">Castanyes pels 365 díes de l’any</p>
+    <p class="section-subtitle-italic home-section-description">Castanyes pels 365 díes de l’any</p>
   </div>
 
   <div class="gallery-container">
@@ -90,12 +90,12 @@ name: home
   <div class="project-content-centered">
     <span class="label-small">SOBRE EL PROJECTE</span>
     
-    <h2 class="hero-title-elegant">
+    <h2 class="hero-title-elegant home-section-title">
       L'ÚNICA CASTANYA 100% CATALANA<br>I ARTESANA, ELS 365 DIES DE L'ANY
     </h2>
     
     <div class="info-text-body-centered">
-      <p>Som l’única castanya 100% catalana i artesana disponible tot l’any. Des del cor del Parc Natural del Montseny, Reserva de la biosfera, t’apropem el bosc al plat mentre tu ens ajudes a cuidar-lo: cada producte impulsa la gestió forestal sostenible i l’economia local d’aquesta Reserva de la Biosfera.</p>
+      <p class="home-section-description">Som l’única castanya 100% catalana i artesana disponible tot l’any. Des del cor del Parc Natural del Montseny, Reserva de la biosfera, t’apropem el bosc al plat mentre tu ens ajudes a cuidar-lo: cada producte impulsa la gestió forestal sostenible i l’economia local d’aquesta Reserva de la Biosfera.</p>
     </div>
     
     <!-- This button will now be perfectly centered -->
@@ -103,7 +103,7 @@ name: home
   </div>
 </section>
 
-<section class="visites-guiades-hero">
+<section class="visites-guiades-hero home-banner-section">
   <picture>
     <source
       type="image/webp"
@@ -127,14 +127,14 @@ name: home
   <div class="hero-dark-overlay"></div>
   <div class="hero-overlay-content">
     <span class="label-small light">VISITES GUIADES</span>
-    <h2 class="hero-title-elegant light">CONNECTA AMB L'ÀNIMA DEL PARC NATURAL<br>DEL MONTSENY – RESERVA DE LA BIOSFERA</h2>
-    <p class="hero-text-body light">Vine a conèixer els guardians centenaris del Montseny. Una experiència de turisme conscient on gaudeixes de la natura mentre col·laboras activament a preservar-la. El bosc et dona aire pur, tu li dones vida.</p>
+    <h2 class="hero-title-elegant light home-section-title">CONNECTA AMB L'ÀNIMA DEL PARC NATURAL<br>DEL MONTSENY – RESERVA DE LA BIOSFERA</h2>
+    <p class="hero-text-body light home-section-description">Vine a conèixer els guardians centenaris del Montseny. Una experiència de turisme conscient on gaudeixes de la natura mentre col·laboras activament a preservar-la. El bosc et dona aire pur, tu li dones vida.</p>
     <a href="/visits/" class="btn-olive">EXPLORAR VISITES GUIADES</a>
   </div>
 </section>
 
-<section class="gastronomic-split unified-bg">
-  <div class="split-image">
+<section class="gastronomic-split unified-bg home-banner-section home-banner-section--split">
+  <div class="split-image home-banner-section__pane">
     <img
       src="/assets/images/gallery/chalet_coromina_dish.jpg"
       alt="Plat de risotto amb castanyes"
@@ -144,10 +144,10 @@ name: home
       decoding="async"
     >
   </div>
-  <div class="split-text-content">
+  <div class="split-text-content home-banner-section__pane">
     <span class="label-small">ESPAI GASTRONÒMIC</span>
-    <h2 class="hero-title-elegant">EL XALET LA COROMINA:<br>L’AMBAIXADOR DE LA<br>NOSTRA CASTANYA</h2>
-    <p class="info-text-body-centered">Descobreix com la joia històrica de Viladrau eleva la castanya 100% catalana a la categoria de gastronomia d'autor. El punt de partida de la nostra ruta.</p>
+    <h2 class="hero-title-elegant home-section-title">EL XALET LA COROMINA:<br>L’AMBAIXADOR DE LA<br>NOSTRA CASTANYA</h2>
+    <p class="info-text-body-centered home-section-description">Descobreix com la joia històrica de Viladrau eleva la castanya 100% catalana a la categoria de gastronomia d'autor. El punt de partida de la nostra ruta.</p>
     <a href="/gastronomic/" class="btn-olive">EXPLORA LA NOSTRA RUTA GASTRONOMICA</a>
   </div>
 </section>
@@ -155,8 +155,8 @@ name: home
 <section class="actualitat-section-updated unified-bg">
   <div class="actualitat-content-centered">
     <span class="label-small">ACTUALITAT</span>
-    <h2 class="section-title-main">L’ÚLTIM A LA CASTANYA DE VILADRAU</h2>
-    <p class="section-subtitle-italic">Receptes, nous productes i històries de la vida al Montseny.</p>
+    <h2 class="section-title-main home-section-title">L’ÚLTIM A LA CASTANYA DE VILADRAU</h2>
+    <p class="section-subtitle-italic home-section-description">Receptes, nous productes i històries de la vida al Montseny.</p>
 
     {% set latestPosts = collections.posts | head(3) %}
 
@@ -207,7 +207,7 @@ name: home
           <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
         </button>
 
-        <h2 class="section-title-main">NO NOMÉS HO DIEM NOSALTRES</h2>
+        <h2 class="section-title-main home-section-title">NO NOMÉS HO DIEM NOSALTRES</h2>
 
         <button class="nav-arrow-inline right" id="nextTestimonial" aria-label="Next">
           <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>

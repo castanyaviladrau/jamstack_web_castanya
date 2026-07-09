@@ -71,6 +71,14 @@ table {
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Gotham-Book";
+  src: url("/assets/fonts/gotham-book.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 * {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
@@ -90,6 +98,7 @@ table {
   --color-cream: #fefdf9;
   --font-main: "Gotham-Medium", "Gotham Medium", sans-serif;
   --font-secondary: "Gotham-Medium", "Gotham Medium", sans-serif;
+  --font-button: "Gotham-Book", "Gotham Book", var(--font-main);
   --font-title: "PP Neue World", serif;
   --font-slider-title: "Copperplate Castanya", "Copperplate", serif;
   --font-subtitle: "Gotham-Medium", "Gotham Medium", var(--font-main);
@@ -101,6 +110,8 @@ table {
   --type-banner-text-size: clamp(17px, 1.3vw, 22px);
   --section-banner-min-height: 360px;
   --section-banner-min-height-mobile: 300px;
+  --home-banner-min-height: clamp(420px, 36vw, 520px);
+  --home-banner-min-height-mobile: 340px;
   --transition-fast: 0.2s ease;
   --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --header-bg: #7b6b43; /* The specific olive-brown from your screenshot */
@@ -159,6 +170,18 @@ table {
 .projecte-feature__slide h2,
 .visit-activity-experience__card h3 {
   font-family: var(--font-title) !important;
+}
+
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+summary,
+.shop-page-filter,
+a[class*="btn"],
+a[class*="button"],
+a[class$="__button"] {
+  font-family: var(--font-button);
 }
 
 body.has-cookie-banner {
@@ -4697,6 +4720,18 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   margin-bottom: 30px;
 }
 
+body.home .home-section-title {
+  font-size: clamp(30px, 3vw, 40px);
+  line-height: 1.08;
+}
+
+body.home .home-section-description {
+  max-width: 760px;
+  margin-inline: auto;
+  font-size: clamp(16px, 1.35vw, 18px);
+  line-height: 1.55;
+}
+
 .page-projecte .content-wrap {
   width: 100%;
   max-width: none;
@@ -5819,6 +5854,55 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.visites-guiades-hero.home-banner-section,
+.gastronomic-split.home-banner-section,
+.footer-cta-section.home-banner-section {
+  min-height: var(--home-banner-min-height);
+}
+
+.gastronomic-split.home-banner-section {
+  align-items: stretch;
+}
+
+.gastronomic-split.home-banner-section .home-banner-section__pane {
+  min-height: inherit;
+}
+
+.visites-guiades-hero.home-banner-section {
+  padding: clamp(56px, 7vw, 88px) 20px;
+}
+
+.footer-cta-section.home-banner-section .cta-content {
+  padding: clamp(48px, 6vw, 72px) 20px;
+}
+
+@media (max-width: 768px) {
+  .visites-guiades-hero.home-banner-section,
+  .footer-cta-section.home-banner-section {
+    min-height: var(--home-banner-min-height-mobile);
+  }
+
+  .gastronomic-split.home-banner-section {
+    min-height: auto;
+  }
+
+  .gastronomic-split.home-banner-section .home-banner-section__pane {
+    min-height: var(--home-banner-min-height-mobile);
+  }
+
+  .split-text-content.home-banner-section__pane {
+    padding: 48px 24px;
+  }
+
+  .visites-guiades-hero.home-banner-section {
+    padding: 48px 20px;
+  }
+
+  .footer-cta-section.home-banner-section .cta-content {
+    padding: 40px 20px;
+  }
 }
 
 .hero-title-elegant {
