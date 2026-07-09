@@ -112,10 +112,10 @@ table {
   --type-page-title-size-compact: clamp(28px, 3vw, 38px);
   --type-page-copy-size: clamp(16px, 1.35vw, 18px);
   --type-page-copy-line-height: 1.55;
-  --section-banner-min-height: 360px;
-  --section-banner-min-height-mobile: 300px;
-  --home-banner-min-height: clamp(420px, 36vw, 520px);
-  --home-banner-min-height-mobile: 340px;
+  --section-banner-min-height: clamp(420px, 36vw, 520px);
+  --section-banner-min-height-mobile: 340px;
+  --home-banner-min-height: var(--section-banner-min-height);
+  --home-banner-min-height-mobile: var(--section-banner-min-height-mobile);
   --transition-fast: 0.2s ease;
   --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --header-bg: #7b6b43; /* The specific olive-brown from your screenshot */
@@ -4174,14 +4174,14 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .professionals-inspiration-hero {
   position: relative;
-  min-height: 420px;
+  min-height: var(--section-banner-min-height);
   overflow: hidden;
 }
 
 .professionals-inspiration-hero .hero-bg-img,
 .professionals-inspiration-hero .hero-dark-overlay,
 .professionals-inspiration-hero__overlay {
-  min-height: 420px;
+  min-height: var(--section-banner-min-height);
 }
 
 .professionals-inspiration-hero__overlay {
@@ -4190,7 +4190,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 420px;
+  min-height: var(--section-banner-min-height);
   padding: 48px 24px;
   text-align: center;
 }
@@ -5184,14 +5184,14 @@ body.home .home-section-description {
 
 .gastronomic-page-hero {
   position: relative;
-  min-height: 420px;
+  min-height: var(--section-banner-min-height);
   overflow: hidden;
 }
 
 .gastronomic-page-hero .hero-bg-img,
 .gastronomic-page-hero .hero-dark-overlay,
 .gastronomic-page-hero__overlay {
-  min-height: 420px;
+  min-height: var(--section-banner-min-height);
 }
 
 .gastronomic-page-hero__overlay {
@@ -5200,7 +5200,7 @@ body.home .home-section-description {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 420px;
+  min-height: var(--section-banner-min-height);
   padding: 52px 24px;
   text-align: center;
 }
@@ -5351,14 +5351,14 @@ body.home .home-section-description {
 
 .gastronomic-nutrition-hero {
   position: relative;
-  min-height: 360px;
+  min-height: var(--section-banner-min-height);
   overflow: hidden;
 }
 
 .gastronomic-nutrition-hero .hero-bg-img,
 .gastronomic-nutrition-hero .hero-dark-overlay,
 .gastronomic-nutrition-hero__overlay {
-  min-height: 360px;
+  min-height: var(--section-banner-min-height);
 }
 
 .gastronomic-nutrition-hero__overlay {
@@ -5367,7 +5367,7 @@ body.home .home-section-description {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 360px;
+  min-height: var(--section-banner-min-height);
   padding: 48px 24px;
   text-align: center;
 }
@@ -5639,14 +5639,14 @@ body.home .home-section-description {
 
 .gastronomic-recipes-hero {
   position: relative;
-  min-height: 320px;
+  min-height: var(--section-banner-min-height);
   overflow: hidden;
 }
 
 .gastronomic-recipes-hero .hero-bg-img,
 .gastronomic-recipes-hero .hero-dark-overlay,
 .gastronomic-recipes-hero__overlay {
-  min-height: 320px;
+  min-height: var(--section-banner-min-height);
 }
 
 .gastronomic-recipes-hero__overlay {
@@ -5655,7 +5655,7 @@ body.home .home-section-description {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 320px;
+  min-height: var(--section-banner-min-height);
   padding: 42px 24px;
   text-align: center;
 }
@@ -6362,15 +6362,18 @@ body.home .home-section-description {
 
 .newsletter-form--home {
   flex: 0 0 38%;
-  align-items: center;
+  align-items: stretch;
   flex-direction: row;
   flex-wrap: nowrap;
+  gap: 0;
   max-width: none;
 }
 
 .newsletter-input-field--home {
   min-width: 0;
   width: 100%;
+  text-align: center;
+  border-radius: 50px 0 0 50px;
 }
 
 .btn-newsletter-submit--home {
@@ -6378,14 +6381,16 @@ body.home .home-section-description {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  align-self: center;
+  align-self: stretch;
   white-space: nowrap;
   width: fit-content;
   min-width: 0;
   max-width: max-content;
   font-size: 16px;
   line-height: 1.2;
-  padding: 10px 18px;
+  padding: 12px 18px;
+  border-radius: 0 50px 50px 0;
+  margin-left: -1px;
 }
 
 .newsletter-input-field {
@@ -6521,6 +6526,10 @@ body.home .home-section-description {
 .main-footer :where(h1, h2, h3, h4, h5, h6, p, a, button, span, label, input, textarea, li) {
   font-family: var(--font-main) !important;
   font-weight: 500 !important;
+}
+
+.newsletter-bar .newsletter-heading {
+  font-family: var(--font-title) !important;
 }
 
 .contact-page-shell {
@@ -7126,7 +7135,7 @@ body.home .home-section-description {
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  min-height: 430px;
+  min-height: var(--section-banner-min-height);
   overflow: hidden;
 }
 
@@ -7147,7 +7156,7 @@ body.home .home-section-description {
 .where-sales-cta__content {
   position: relative;
   z-index: 1;
-  min-height: 430px;
+  min-height: var(--section-banner-min-height);
   max-width: 860px;
   margin: 0 auto;
   padding: 56px 20px;
@@ -7271,11 +7280,11 @@ body.home .home-section-description {
 
   .where-sales-cta {
     margin-top: 64px;
-    min-height: 380px;
+    min-height: var(--section-banner-min-height-mobile);
   }
 
   .where-sales-cta__content {
-    min-height: 380px;
+    min-height: var(--section-banner-min-height-mobile);
     padding: 48px 22px;
   }
 
@@ -9928,28 +9937,28 @@ body.home .home-section-description {
   .professionals-inspiration-hero .hero-bg-img,
   .professionals-inspiration-hero .hero-dark-overlay,
   .professionals-inspiration-hero__overlay {
-    min-height: 360px;
+    min-height: var(--section-banner-min-height-mobile);
   }
 
   .gastronomic-page-hero,
   .gastronomic-page-hero .hero-bg-img,
   .gastronomic-page-hero .hero-dark-overlay,
   .gastronomic-page-hero__overlay {
-    min-height: 360px;
+    min-height: var(--section-banner-min-height-mobile);
   }
 
   .gastronomic-nutrition-hero,
   .gastronomic-nutrition-hero .hero-bg-img,
   .gastronomic-nutrition-hero .hero-dark-overlay,
   .gastronomic-nutrition-hero__overlay {
-    min-height: 320px;
+    min-height: var(--section-banner-min-height-mobile);
   }
 
   .gastronomic-recipes-hero,
   .gastronomic-recipes-hero .hero-bg-img,
   .gastronomic-recipes-hero .hero-dark-overlay,
   .gastronomic-recipes-hero__overlay {
-    min-height: 300px;
+    min-height: var(--section-banner-min-height-mobile);
   }
 
   .gastronomic-page-ambassador {
