@@ -165,8 +165,6 @@ table {
 .cta-title,
 .newsletter-heading,
 .visit-activity-section-title,
-.footer-col h3,
-.footer-grid h3,
 .projecte-feature__slide h2,
 .visit-activity-experience__card h3 {
   font-family: var(--font-title) !important;
@@ -6420,9 +6418,10 @@ body.home .home-section-description {
 
 .footer-grid h3 {
   color: #f5f0e8;
+  font-family: var(--font-main) !important;
   font-size: 18px;
   margin-bottom: 20px;
-  font-weight: 700;
+  font-weight: 500 !important;
 }
 
 .footer-grid ul li a {
@@ -6510,6 +6509,14 @@ body.home .home-section-description {
   background: white;
   padding: 5px;
   border-radius: 2px;
+}
+
+/* Keep all footer text in Gotham Medium */
+.footer-cta-section :where(h1, h2, h3, h4, h5, h6, p, a, button, span, label, input, textarea, li),
+.newsletter-bar :where(h1, h2, h3, h4, h5, h6, p, a, button, span, label, input, textarea, li),
+.main-footer :where(h1, h2, h3, h4, h5, h6, p, a, button, span, label, input, textarea, li) {
+  font-family: var(--font-main) !important;
+  font-weight: 500 !important;
 }
 
 .contact-page-shell {
