@@ -14,7 +14,7 @@ homepageTags:
 sku: lot-cremes-01
 currency: EUR
 price: 21.0
-priceLabel: "21,00 EUR"
+priceLabel: "21,00 €"
 availability: "Disponible per encàrrec"
 ingredientsLabel: INGREDIENTS
 ingredients: "Consulta la fitxa de cada crema per conèixer-ne els ingredients i els al·lèrgens."

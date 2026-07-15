@@ -15,7 +15,7 @@ homepageTags:
 sku: lot-mels-01
 currency: EUR
 price: 24.0
-priceLabel: "24,00 EUR"
+priceLabel: "24,00 €"
 availability: "Disponible per encàrrec"
 ingredientsLabel: INGREDIENTS
 ingredients: "Mels monoflorals i de bosc. Consulta la fitxa de cada producte per obtenir la informació completa."

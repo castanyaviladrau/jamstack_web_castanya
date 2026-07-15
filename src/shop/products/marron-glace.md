@@ -14,7 +14,7 @@ dietTags:
 sku: mg010
 currency: EUR
 price: 3.6
-priceLabel: "Des de 3,60 EUR"
+priceLabel: "Des de 3,60 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Castanyes, sucre, xarop de glucosa, aroma de vainilla i conservant E223 —sulfits—. Sense gluten."
@@ -50,8 +50,8 @@ Castanya confitada de textura suau i ensucrada. Un dels productes més gurmet de
 
 ### Formats disponibles
 
-- **MG010** · 2 unitats · 3,60 EUR
+- **MG010** · 2 unitats · 3,60 €
 
-- **MG011** · 7 unitats · 200 g · 12,50 EUR
+- **MG011** · 7 unitats · 200 g · 12,50 €
 
-- **MG012** · Pot de 42 unitats · 1 kg · 65,00 EUR
+- **MG012** · Pot de 42 unitats · 1 kg · 65,00 €

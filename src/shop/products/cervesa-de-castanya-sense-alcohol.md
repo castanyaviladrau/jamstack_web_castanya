@@ -13,7 +13,7 @@ dietTags:
 sku: ce014
 currency: EUR
 price: 4.1
-priceLabel: "4,10 EUR"
+priceLabel: "4,10 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Castanya del Montseny, llevat, llúpols ecològics i maltes d’ordi."

@@ -14,7 +14,7 @@ dietTags:
 sku: ol010
 currency: EUR
 price: 7.0
-priceLabel: "7,00 EUR"
+priceLabel: "7,00 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Oli d’oliva verge extra de la varietat arbequina i castanya de Viladrau de producció ecològica."

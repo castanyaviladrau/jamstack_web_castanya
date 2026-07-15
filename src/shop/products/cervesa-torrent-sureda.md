@@ -13,7 +13,7 @@ dietTags:
 sku: ce010
 currency: EUR
 price: 16.5
-priceLabel: "16,50 EUR"
+priceLabel: "16,50 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Malta d’ordi, blat, xeixa de Menorca, mill de l’Anoia, castanya del Parc Natural del Montseny, gla d’alzina surera, ceps del Bages, pa de pagès català IGP, llúpol aromàtic “Eureka”, mel de bruc del Parc Natural de les Gavarres i massa mare de llevat."

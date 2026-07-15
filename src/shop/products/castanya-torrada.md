@@ -15,7 +15,7 @@ dietTags:
 sku: ct010
 currency: EUR
 price: 5.7
-priceLabel: "5,70 EUR"
+priceLabel: "5,70 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Castanya torrada procedent de producció ecològica."

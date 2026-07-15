@@ -165,29 +165,33 @@
         <section class="visit-activity-body unified-bg">
           <div class="visit-activity-body__inner">
             <div class="visit-activity-body__main">
-              <div class="visit-activity-section-title">DESCRIPCIO GENERAL</div>
-              {% if overviewIntro %}
-              <p class="visit-activity-body__intro">{{ overviewIntro }}</p>
-              {% endif %}
-              <div class="visit-activity-body__copy prose">{{ content | safe }}</div>
+              <details class="visit-activity-accordion" open>
+                <summary class="block_heavy_content_style">DESCRIPCIO GENERAL</summary>
+                <div class="visit-activity-accordion__content block_heavy_content_style">
+                  {% if overviewIntro %}
+                  <p class="visit-activity-body__intro">{{ overviewIntro }}</p>
+                  {% endif %}
+                  <div class="visit-activity-body__copy prose">{{ content | safe }}</div>
+                </div>
+              </details>
 
               <details class="visit-activity-accordion" open>
-                <summary>SERVEIS INCLOSOS</summary>
-                <div class="visit-activity-accordion__content prose">
+                <summary class="block_heavy_content_style">SERVEIS INCLOSOS</summary>
+                <div class="visit-activity-accordion__content prose block_heavy_content_style">
                   {{ includedServices | markdownify | safe }}
                 </div>
               </details>
 
               <details class="visit-activity-accordion">
-                <summary>TROBADA I PUNT DE RECOLLIDA</summary>
-                <div class="visit-activity-accordion__content prose">
+                <summary class="block_heavy_content_style">TROBADA I PUNT DE RECOLLIDA</summary>
+                <div class="visit-activity-accordion__content prose block_heavy_content_style">
                   {{ meetingPoint | markdownify | safe }}
                 </div>
               </details>
 
               <details class="visit-activity-accordion">
-                <summary>INFORMACIO ADDICIONAL</summary>
-                <div class="visit-activity-accordion__content prose">
+                <summary class="block_heavy_content_style">INFORMACIO ADDICIONAL</summary>
+                <div class="visit-activity-accordion__content prose block_heavy_content_style">
                   {{ additionalInfo | markdownify | safe }}
                 </div>
               </details>
@@ -217,12 +221,12 @@
 
             <aside class="visit-activity-sidebar">
               <section class="visit-activity-sidebar__section">
-                <h2 class="visit-activity-sidebar__title">ITINERARI</h2>
+                <h2 class="visit-activity-sidebar__title block_title_style">ITINERARI</h2>
                 <div class="visit-activity-timeline">
                   {% for item in itinerary %}
                   <div class="visit-activity-timeline__item">
                     <div class="visit-activity-timeline__time">{{ item.time }}</div>
-                    <div class="visit-activity-timeline__text">
+                    <div class="visit-activity-timeline__text block_heavy_content_style">
                       <strong>{{ item.title }}</strong>
                       <p>{{ item.description }}</p>
                     </div>
@@ -232,12 +236,12 @@
               </section>
 
               <section class="visit-activity-sidebar__section">
-                <h2 class="visit-activity-sidebar__title">PREUS X PERSONA</h2>
+                <h2 class="visit-activity-sidebar__title block_title_style">PREUS X PERSONA</h2>
                 <div class="visit-activity-pricing">
                   {% for item in pricing %}
                   <div class="visit-activity-pricing__row">
-                    <span>{{ item.group }}</span>
-                    <strong>{{ item.price }}</strong>
+                    <span class="block_heavy_content_style">{{ item.group }}</span>
+                    <strong class="block_title_style">{{ item.price }}</strong>
                   </div>
                   {% endfor %}
                 </div>
@@ -344,71 +348,15 @@
         </section>
         {% endif %}
 
-        {% if reviewsSection and reviewsSection.reviews and reviewsSection.reviews.length %}
-        <section class="visit-activity-reviews unified-bg" aria-label="Ressenyes de la visita">
-          <div class="visit-activity-reviews__inner">
-            <div class="visit-activity-reviews__header">
-              <div class="visit-activity-reviews__heading">
-                {% if reviewsSection.eyebrow %}
-                <p class="visit-activity-reviews__eyebrow">{{ reviewsSection.eyebrow }}</p>
-                {% endif %}
-                {% if reviewsSection.title %}
-                <h2 class="visit-activity-reviews__title">{{ reviewsSection.title }}</h2>
-                {% endif %}
-              </div>
-
-              <div class="visit-activity-reviews__meta">
-                <p class="visit-activity-reviews__rating-line">{{ reviewsSection.ratingLabel }}</p>
-              </div>
-
-              <button
-                class="nav-arrow-inline left visit-activity-reviews__nav-button"
-                id="visitActivityReviewsPrev"
-                aria-label="Ressenya anterior"
-              >
-                <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
-              </button>
-
-              <button
-                class="nav-arrow-inline right visit-activity-reviews__nav-button"
-                id="visitActivityReviewsNext"
-                aria-label="Ressenya següent"
-              >
-                <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </button>
-            </div>
-
-            <div class="gallery-container visit-activity-reviews__carousel-wrap">
-              <div class="gallery-scroll visit-activity-reviews__carousel" id="visitActivityReviewsScroll">
-                {% for review in reviewsSection.reviews %}
-                <article class="review-card visit-activity-reviews__card">
-                  <img src="/assets/images/logo-google.png" alt="Google" class="google-logo" />
-                  <div class="stars">★★★★★</div>
-                  <p class="review-text">&ldquo;{{ review.quote }}&rdquo;</p>
-                  <div class="reviewer-info">
-                    <span class="reviewer-name">{{ review.author }}</span>
-                    <span class="review-date">{{ review.date }}</span>
-                    {% if review.avatar %}
-                    <img src="{{ review.avatar }}" alt="{{ review.avatarAlt or review.author }}" class="reviewer-avatar" />
-                    {% endif %}
-                  </div>
-                </article>
-                {% endfor %}
-              </div>
-            </div>
-          </div>
-        </section>
-        {% endif %}
-
         <section class="visit-activity-more unified-bg" aria-label="Altres activitats">
           <div class="visit-activity-more__inner">
             <div class="visit-activity-more__header">
-              <h2 class="visit-activity-more__title">O MIRA'T AQUESTES ALTRES VISITES</h2>
+              <h2 class="visit-activity-more__title block_title_style">O MIRA'T AQUESTES ALTRES VISITES</h2>
               <a href="/visits/" class="visit-activity-more__button">MIRAR TOTES ></a>
             </div>
             <div class="visit-activity-more__track">
               {% for activity in collections.visitActivities %}
-              {% if activity.url != page.url %}
+              {% if activity.url != page.url and loop.index0 < 3 %}
               <a href="{{ activity.url }}" class="visits-card-link visit-activity-more__link">
                 <article class="visits-card visit-activity-more__card">
                   <img

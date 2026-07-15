@@ -14,7 +14,7 @@ homepageTags:
 sku: lot-1
 currency: EUR
 price: 22.0
-priceLabel: "22,00 EUR"
+priceLabel: "22,00 €"
 availability: "Disponibilitat segons temporada"
 ingredientsLabel: INGREDIENTS
 ingredients: "Consulta la fitxa del producte per als ingredients."

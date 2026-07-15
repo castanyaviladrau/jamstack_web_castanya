@@ -47,7 +47,7 @@ La recepcio d'una sollicitud de compra no implica l'acceptacio automatica de la 
 
 ## Preus
 
-Els preus publicats al web s'expressen en **euros (EUR)** i, llevat que s'indiqui el contrari, inclouen els impostos aplicables.
+Els preus publicats al web s'expressen en **euros (€)** i, llevat que s'indiqui el contrari, inclouen els impostos aplicables.
 
 Les despeses addicionals que puguin correspondre, com ara enviament o serveis associats, s'informaran durant el proces de compra abans de la confirmacio final.
 

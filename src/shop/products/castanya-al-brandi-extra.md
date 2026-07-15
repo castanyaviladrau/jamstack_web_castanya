@@ -13,7 +13,7 @@ dietTags:
 sku: br010
 currency: EUR
 price: 8.09
-priceLabel: "8,09 EUR"
+priceLabel: "8,09 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Castanyes, aigua, sucre, canyella, brandi i àcid cítric. Sense llet, sense ous. Sense gluten."

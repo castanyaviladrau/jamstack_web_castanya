@@ -14,7 +14,7 @@ dietTags:
 sku: me040
 currency: EUR
 price: 8.9
-priceLabel: "8,90 EUR"
+priceLabel: "8,90 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Mel."

@@ -12,7 +12,7 @@ dietTags:
 sku: fc010
 currency: EUR
 price: 21.0
-priceLabel: "21,00 EUR"
+priceLabel: "21,00 €"
 availability: "Disponible amb preparació artesana"
 ingredientsLabel: INGREDIENTS
 ingredients: "Castanya, llet de cabra i licor de castanya."

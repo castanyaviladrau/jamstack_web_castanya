@@ -14,7 +14,7 @@ homepageTags:
 sku: lot-begudes-01
 currency: EUR
 price: 29.0
-priceLabel: "29,00 EUR"
+priceLabel: "29,00 €"
 availability: "Disponible per encàrrec"
 ingredientsLabel: INGREDIENTS
 ingredients: "Consulta la fitxa de cada beguda per conèixer-ne els ingredients i els al·lèrgens."

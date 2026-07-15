@@ -14,7 +14,7 @@ homepageTags:
 sku: lot-sabors-01
 currency: EUR
 price: 34.0
-priceLabel: "34,00 EUR"
+priceLabel: "34,00 €"
 availability: "Disponible per encàrrec"
 ingredientsLabel: INGREDIENTS
 ingredients: "Consulta la fitxa de cada producte per conèixer-ne els ingredients, els al·lèrgens i les condicions de conservació."

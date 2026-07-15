@@ -14,7 +14,7 @@ dietTags:
 sku: cb010
 currency: EUR
 price: 7.1
-priceLabel: "7,10 EUR"
+priceLabel: "7,10 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Aigua, carbassa, moniato, pastanaga, castanya torrada, ceba, sal i oli d’oliva verge extra. Ingredients de procedència ecològica."

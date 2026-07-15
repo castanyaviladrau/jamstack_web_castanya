@@ -14,7 +14,7 @@ dietTags:
 sku: ml010
 currency: EUR
 price: 6.11
-priceLabel: "Des de 6,11 EUR"
+priceLabel: "Des de 6,11 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Castanya, sucre i llimona. Sense llet, sense ous. Sense gluten."
@@ -46,6 +46,6 @@ De sabor dolç, amb la textura dels trossets de castanya. Ideal per acompanyar t
 
 ### Formats disponibles
 
-- **ML010** · Pot de 120 g · 6,11 EUR
+- **ML010** · Pot de 120 g · 6,11 €
 
-- **ML011** · Pot de 275 g · 6,11 EUR
+- **ML011** · Pot de 275 g · 6,11 €

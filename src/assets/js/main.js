@@ -2103,7 +2103,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         shippingWarningNode.hidden = false;
         shippingWarningNode.textContent =
-          "Per fer un enviament, la comanda ha d'arribar a 50,00 EUR. Pots afegir mes productes o seleccionar recollida a botiga.";
+          "Per fer un enviament, la comanda ha d'arribar a 50,00 €. Pots afegir mes productes o seleccionar recollida a botiga.";
       };
 
       billingSameCheckbox?.addEventListener("change", () => {
@@ -2344,7 +2344,7 @@ document.addEventListener("DOMContentLoaded", () => {
           if (checkoutMessage) {
             checkoutMessage.dataset.state = "error";
             checkoutMessage.textContent =
-              "L'import minim per a enviaments es de 50,00 EUR. Pots continuar amb recollida a botiga o afegir mes productes.";
+              "L'import minim per a enviaments es de 50,00 €. Pots continuar amb recollida a botiga o afegir mes productes.";
           }
           return;
         }

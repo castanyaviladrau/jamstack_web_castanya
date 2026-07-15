@@ -8,7 +8,7 @@ Aquesta pagina resumeix els metodes de pagament disponibles a la botiga online d
 
 ## Moneda i import final
 
-Tots els preus del web s'expressen en **euros (EUR)**. L'import final de la comanda es mostra abans de completar el pagament i pot incloure, si escau, les despeses d'enviament o altres conceptes informats durant el proces de compra.
+Tots els preus del web s'expressen en **euros (€)**. L'import final de la comanda es mostra abans de completar el pagament i pot incloure, si escau, les despeses d'enviament o altres conceptes informats durant el proces de compra.
 
 ## Metodes de pagament disponibles
 

@@ -25,7 +25,7 @@ bookingHighlights:
 personsMin: 2
 personsMax: 8
 duration: 1 hora amb degustacio
-priceFrom: 18EUR
+priceFrom: 18€
 priceNote: segons nombre de persones
 difficulty: Nivell facil
 kidFriendly: Apte per nens
@@ -43,13 +43,13 @@ itinerary:
     description: Tancament amb degustacio de productes elaborats amb castanya i espai per preguntes.
 pricing:
   - group: 2
-    price: 55EUR
+    price: 55€
   - group: 4
-    price: 42EUR
+    price: 42€
   - group: 6
-    price: 34EUR
+    price: 34€
   - group: 8
-    price: 30EUR
+    price: 30€
 includedServices: |
   - Guia interpretativa durant tota l'experiencia.
   - Degustacio final de productes de castanya.

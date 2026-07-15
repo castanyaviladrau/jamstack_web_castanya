@@ -246,7 +246,7 @@ exports.handler = async (event) => {
       validatedCustomer.fulfillmentMethod === "shipping" &&
       subtotalAmount < MINIMUM_SHIPPING_ORDER_AMOUNT
     ) {
-      throw new Error("Minimum shipping order amount is 50 EUR");
+      throw new Error("Minimum shipping order amount is 50 €");
     }
 
     const shippingAmount = 0;
@@ -343,7 +343,7 @@ exports.handler = async (event) => {
       error.message === "Invalid customer email" ||
       error.message === "Invalid customer phone" ||
       error.message === "Invalid pickup store" ||
-      error.message === "Minimum shipping order amount is 50 EUR" ||
+      error.message === "Minimum shipping order amount is 50 €" ||
       error.message === "Cart is empty" ||
       error.message.startsWith("Invalid cart item") ||
       error.message.startsWith("Unknown SKU") ||

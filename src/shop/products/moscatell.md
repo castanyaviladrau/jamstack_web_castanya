@@ -14,7 +14,7 @@ dietTags:
 sku: mo010
 currency: EUR
 price: 9.0
-priceLabel: "9,00 EUR"
+priceLabel: "9,00 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Consulta la fitxa del producte per als ingredients."

@@ -4,35 +4,35 @@
       "title": "Castanya torrada",
       "image": "/assets/images/products/pending-product-image.svg",
       "availability": "Disponible a la botiga online",
-      "price": "5,70 EUR",
+      "price": "5,70 €",
       "url": "/shop/products/castanya-torrada/"
     },
     {
       "title": "Crema de castanya",
       "image": "/assets/images/products/crema-de-castanya.jpeg",
       "availability": "Disponible a la botiga online",
-      "price": "6,00 EUR",
+      "price": "6,00 €",
       "url": "/shop/products/crema-de-castanya/"
     },
     {
       "title": "Farina de castanya",
       "image": "/assets/images/products/farina-de-castanya.jpeg",
       "availability": "Disponible a la botiga online",
-      "price": "4,20 EUR",
+      "price": "4,20 €",
       "url": "/shop/products/farina-de-castanya/"
     },
     {
       "title": "Flocs de castanya",
       "image": "/assets/images/products/flocs-de-castanya.jpeg",
       "availability": "Disponible a la botiga online",
-      "price": "4,30 EUR",
+      "price": "4,30 €",
       "url": "/shop/products/flocs-de-castanya/"
     },
     {
       "title": "Marron glacé",
       "image": "/assets/images/products/marron-glace.jpeg",
       "availability": "Disponible a la botiga online",
-      "price": "3,60 EUR",
+      "price": "3,60 €",
       "url": "/shop/products/marron-glace/"
     }
   ]

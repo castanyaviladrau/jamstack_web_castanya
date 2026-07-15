@@ -13,7 +13,7 @@ dietTags:
 sku: ca010
 currency: EUR
 price: 7.6
-priceLabel: "7,60 EUR"
+priceLabel: "7,60 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Castanyes, aigua, sucre, canyella i àcid cítric. Sense llet, sense ous. Sense gluten."

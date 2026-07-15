@@ -101,7 +101,7 @@ export default defineConfig({
           defaultItem: () => ({
             layout: "product",
             currency: "EUR",
-            priceLabel: "Des de 0,00 EUR",
+            priceLabel: "Des de 0,00 €",
             ingredientsLabel: "INGREDIENTS",
             gallery: [],
             formatLabel: "Selecciona format",

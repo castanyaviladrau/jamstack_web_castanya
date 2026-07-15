@@ -70,7 +70,7 @@ function buildOrderConfirmationEmail({ to, data }) {
   const itemsList = data.items
     .map(
       (item) =>
-        `<li>${escapeHtml(item.name)} (${escapeHtml(item.variantLabel)}) x${item.quantity} - EUR ${item.lineTotal.toFixed(2)}</li>`,
+        `<li>${escapeHtml(item.name)} (${escapeHtml(item.variantLabel)}) x${item.quantity} - € ${item.lineTotal.toFixed(2)}</li>`,
     )
     .join("");
 
@@ -113,7 +113,7 @@ function buildOrderConfirmationEmail({ to, data }) {
       <h3>Detalls de la comanda</h3>
       <ul>${itemsList}</ul>
 
-      <p><strong>Total: EUR ${orderTotal.toFixed(2)}</strong></p>
+      <p><strong>Total: € ${orderTotal.toFixed(2)}</strong></p>
 
       ${fulfillmentBlock}
       ${billingBlock}
@@ -129,7 +129,7 @@ function buildOrderNotificationEmail({ data }) {
   const itemsList = data.items
     .map(
       (item) =>
-        `<li>${escapeHtml(item.name)} (${escapeHtml(item.variantLabel)}) x${item.quantity} - EUR ${item.lineTotal.toFixed(2)}</li>`,
+        `<li>${escapeHtml(item.name)} (${escapeHtml(item.variantLabel)}) x${item.quantity} - € ${item.lineTotal.toFixed(2)}</li>`,
     )
     .join("");
 
@@ -181,7 +181,7 @@ function buildOrderNotificationEmail({ data }) {
       <h3>Detalls de la comanda</h3>
       <ul>${itemsList}</ul>
 
-      <p><strong>Total: EUR ${orderTotal.toFixed(2)}</strong></p>
+      <p><strong>Total: € ${orderTotal.toFixed(2)}</strong></p>
       ${data.customer.notes ? `<p><strong>Notes:</strong> ${escapeHtml(data.customer.notes)}</p>` : ""}
     `,
   };

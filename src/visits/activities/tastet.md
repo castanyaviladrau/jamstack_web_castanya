@@ -25,7 +25,7 @@ bookingHighlights:
 personsMin: 2
 personsMax: 8
 duration: 45 min
-priceFrom: 20EUR
+priceFrom: 20€
 priceNote: segons nombre de persones
 difficulty: Nivell facil
 kidFriendly: Apte per nens
@@ -43,13 +43,13 @@ itinerary:
     description: Espai per resoldre dubtes i descobrir idees per integrar la castanya en el dia a dia.
 pricing:
   - group: 2
-    price: 25EUR
+    price: 25€
   - group: 4
-    price: 22EUR
+    price: 22€
   - group: 6
-    price: 20EUR
+    price: 20€
   - group: 8
-    price: 18EUR
+    price: 18€
 includedServices: |
   - Tast guiat de cinc productes amb castanya.
   - Explicacio de processos, ingredients i aplicacions.

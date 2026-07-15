@@ -14,7 +14,7 @@ homepageTags:
 sku: lot-dolcos-01
 currency: EUR
 price: 27.0
-priceLabel: "27,00 EUR"
+priceLabel: "27,00 €"
 availability: "Disponible per encàrrec"
 ingredientsLabel: INGREDIENTS
 ingredients: "Consulta la fitxa de cada producte per conèixer-ne els ingredients i els al·lèrgens."

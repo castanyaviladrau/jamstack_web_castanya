@@ -14,7 +14,7 @@ dietTags:
 sku: melgerds22
 currency: EUR
 price: 9.8
-priceLabel: "9,80 EUR"
+priceLabel: "9,80 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Castanya torrada, gerds, sucre i llimona. Sense llet, sense ous. Sense gluten. Apta per a vegans."

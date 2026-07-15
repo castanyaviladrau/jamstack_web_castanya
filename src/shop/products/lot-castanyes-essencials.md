@@ -16,7 +16,7 @@ homepageTags:
 sku: lot-castanyes-01
 currency: EUR
 price: 18.0
-priceLabel: "18,00 EUR"
+priceLabel: "18,00 €"
 availability: "Disponible per encàrrec"
 ingredientsLabel: INGREDIENTS
 ingredients: "Castanya del Montseny en diferents formats. Consulta la fitxa de cada producte per obtenir la informació completa."

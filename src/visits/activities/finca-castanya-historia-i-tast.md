@@ -25,7 +25,7 @@ bookingHighlights:
 personsMin: 2
 personsMax: 8
 duration: 1 hora amb degustacio
-priceFrom: 18EUR
+priceFrom: 18€
 priceNote: segons format i mida del grup
 difficulty: Nivell facil
 kidFriendly: Apte per nens
@@ -43,13 +43,13 @@ itinerary:
     description: Degustacio guiada de diferents elaboracions amb castanya.
 pricing:
   - group: 2
-    price: 42EUR
+    price: 42€
   - group: 4
-    price: 34EUR
+    price: 34€
   - group: 6
-    price: 28EUR
+    price: 28€
   - group: 8
-    price: 24EUR
+    price: 24€
 includedServices: |
   - Visita guiada per la finca i els espais de treball.
   - Tast de productes artesans.

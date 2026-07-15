@@ -15,7 +15,7 @@ dietTags:
 sku: 888fc010
 currency: EUR
 price: 4.3
-priceLabel: "Des de 4,30 EUR"
+priceLabel: "Des de 4,30 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Castanya ecològica. Pot contenir traces de blat, sègol, civada, espelta, kamut, llavors de sèsam i soja."
@@ -54,6 +54,6 @@ Mantenir el producte en un lloc fresc, sec i protegit d’olors i de la llum sol
 
 ### Formats disponibles
 
-- **888FC010** · Bossa de 150 g · 4,30 EUR
+- **888FC010** · Bossa de 150 g · 4,30 €
 
-- **888FC011** · Bossa de 500 g · 16,00 EUR
+- **888FC011** · Bossa de 500 g · 16,00 €

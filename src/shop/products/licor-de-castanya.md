@@ -14,7 +14,7 @@ dietTags:
 sku: li010
 currency: EUR
 price: 21.01
-priceLabel: "21,01 EUR"
+priceLabel: "21,01 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Alcohol 96%, aigua, sucre, aroma de castanya, aroma de canyella i castanyes."

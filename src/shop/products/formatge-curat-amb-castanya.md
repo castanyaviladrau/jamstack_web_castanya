@@ -12,7 +12,7 @@ dietTags:
 sku: fq010
 currency: EUR
 price: 20.5
-priceLabel: "20,50 EUR"
+priceLabel: "20,50 €"
 availability: "Disponible amb preparació artesana"
 ingredientsLabel: INGREDIENTS
 ingredients: "Castanya i llet de cabra pasteuritzada."

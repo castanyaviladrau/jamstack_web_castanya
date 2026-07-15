@@ -14,7 +14,7 @@ dietTags:
 sku: me010
 currency: EUR
 price: 1.9
-priceLabel: "Des de 1,90 EUR"
+priceLabel: "Des de 1,90 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Mel."
@@ -52,6 +52,6 @@ Mel de color fosc. Rica en minerals, afavoreix la circulació de la sang. Ideal 
 
 ### Formats disponibles
 
-- **ME011** · Pot de 50 g · 1,90 EUR
+- **ME011** · Pot de 50 g · 1,90 €
 
-- **ME010** · Pot de 500 g · 8,90 EUR
+- **ME010** · Pot de 500 g · 8,90 €

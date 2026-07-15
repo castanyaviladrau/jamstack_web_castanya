@@ -14,7 +14,7 @@ dietTags:
 sku: fa010
 currency: EUR
 price: 4.2
-priceLabel: "Des de 4,20 EUR"
+priceLabel: "Des de 4,20 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Castanyes ecològiques deshidratades. Sense gluten."
@@ -51,6 +51,6 @@ Prové de la castanya deshidratada i està elaborada amb molí de pedra. Apta pe
 
 ### Formats disponibles
 
-- **FA010** · Bosseta de 200 g · 4,20 EUR
+- **FA010** · Bosseta de 200 g · 4,20 €
 
-- **FA012** · Bossa d’1 kg · 19,00 EUR
+- **FA012** · Bossa d’1 kg · 19,00 €

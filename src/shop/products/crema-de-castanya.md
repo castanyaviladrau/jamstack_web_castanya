@@ -14,7 +14,7 @@ dietTags:
 sku: cc010
 currency: EUR
 price: 6.0
-priceLabel: "6,00 EUR"
+priceLabel: "6,00 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Castanya de Viladrau, aigua i sal. Pot contenir traces d’ou."

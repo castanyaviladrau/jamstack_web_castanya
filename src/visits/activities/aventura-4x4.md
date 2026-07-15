@@ -25,7 +25,7 @@ bookingHighlights:
 personsMin: 2
 personsMax: 8
 duration: 1 hora amb degustacio
-priceFrom: 20EUR
+priceFrom: 20€
 priceNote: segons nombre de persones
 difficulty: Nivell facil
 kidFriendly: Apte per nens
@@ -43,13 +43,13 @@ itinerary:
     description: Degustacio de productes locals i espai final per compartir impressions i preguntes.
 pricing:
   - group: 2
-    price: 65EUR
+    price: 65€
   - group: 4
-    price: 50EUR
+    price: 50€
   - group: 6
-    price: 40EUR
+    price: 40€
   - group: 8
-    price: 35EUR
+    price: 35€
 includedServices: |
   - Recorregut guiat en vehicle 4x4 per pistes forestals autoritzades.
   - Interpretacio del paisatge i del patrimoni natural del castanyer.

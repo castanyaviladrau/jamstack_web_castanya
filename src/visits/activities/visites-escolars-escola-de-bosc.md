@@ -25,7 +25,7 @@ bookingHighlights:
 personsMin: 10
 personsMax: 30
 duration: 2,5 hores
-priceFrom: 14EUR
+priceFrom: 14€
 priceNote: preu orientatiu per alumne segons grup i format
 difficulty: Nivell facil
 kidFriendly: Pensada per escoles
@@ -43,13 +43,13 @@ itinerary:
     description: Taller manual, posada en comu i espai final per berenar o dinar segons el format triat.
 pricing:
   - group: 10
-    price: 18EUR
+    price: 18€
   - group: 15
-    price: 16EUR
+    price: 16€
   - group: 20
-    price: 15EUR
+    price: 15€
   - group: 30
-    price: 14EUR
+    price: 14€
 includedServices: |
   - Dinamitzacio educativa adaptada al grup.
   - Materials basics per al joc de pistes i el taller.

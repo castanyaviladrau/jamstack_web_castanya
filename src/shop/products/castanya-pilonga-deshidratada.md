@@ -14,7 +14,7 @@ dietTags:
 sku: se010
 currency: EUR
 price: 4.2
-priceLabel: "Des de 4,20 EUR"
+priceLabel: "Des de 4,20 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Castanya pelada i deshidratada. Sense gluten."
@@ -49,6 +49,6 @@ Es pot menjar crua, llepant-la com un caramel. Excel·lent per acompanyar esfor�
 
 ### Formats disponibles
 
-- **SE010** · Bossa de 200 g · 4,20 EUR
+- **SE010** · Bossa de 200 g · 4,20 €
 
-- **SE0101** · Bossa d’1 kg · 19,00 EUR
+- **SE0101** · Bossa d’1 kg · 19,00 €
