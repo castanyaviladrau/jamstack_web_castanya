@@ -833,6 +833,11 @@ button:focus-visible {
   scrollbar-width: none; /* Hide scrollbar for clean look */
 }
 
+.botiga-section-updated .gallery-container {
+  max-width: none;
+  padding-inline: 0;
+}
+
 .botiga-section-updated .gallery-scroll {
   justify-content: flex-start;
   gap: 8px;
@@ -2129,6 +2134,15 @@ body.page-blog .content-wrap {
   margin-bottom: 40px;
 }
 
+body.home .hero-logo-group {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  z-index: 11;
+  margin-bottom: 0;
+  transform: translateX(-50%);
+}
+
 .hero-date {
   font-family: var(--font-main);
   font-size: 14px;
@@ -2213,6 +2227,10 @@ body.home .hero-title {
   color: #f5f0e8;
   width: 100%;
   padding: 0 20px;
+}
+
+body.home .hero-content-overlay {
+  transform: translateY(clamp(80px, 10vh, 120px));
 }
 
 .header-top {
@@ -2589,7 +2607,7 @@ body:not(.home):not(.page-fusta):not(.page-visits) main {
   justify-content: center;
   padding: 10px 22px;
   border-radius: 999px;
-  background: rgba(123, 107, 67, 0.95);
+  background: #7b6b43;
   border: 0;
   color: #f5f0e8;
   text-decoration: none;
@@ -2605,7 +2623,15 @@ body:not(.home):not(.page-fusta):not(.page-visits) main {
 
 .header-contact-button:hover {
   transform: translateY(-1px);
-  background: rgba(123, 107, 67, 1);
+  background: #5e5233;
+}
+
+.site-header.is-scrolled ~ .utility-top-overlay .header-contact-button {
+  background: #9a8453;
+}
+
+.site-header.is-scrolled ~ .utility-top-overlay .header-contact-button:hover {
+  background: #8b7445;
 }
 
 .header-icon-button {
@@ -2680,15 +2706,9 @@ body:not(.home):not(.page-fusta):not(.page-visits) main {
   object-fit: contain;
 }
 
-/* WhatsApp only on home */
+/* WhatsApp is provided by the fixed utility overlay. */
 .header-icon-button--whatsapp {
   display: none;
-}
-
-body.home .header-icon-button--whatsapp {
-  display: inline-flex;
-  width: 64px;
-  height: 64px;
 }
 
 /* Fixed top-left overlay: shown on pages where the header sits at the bottom */
@@ -2716,9 +2736,9 @@ body.page-visits .utility-left .idioma-selector {
   display: none !important;
 }
 
-/* Fixed top-right overlay: shown on pages where the header sits at the bottom */
+/* Fixed top-right utility actions, available throughout the site. */
 .utility-top-overlay {
-  display: none;
+  display: flex;
   position: fixed;
   top: 20px;
   right: 20px;
@@ -2727,31 +2747,16 @@ body.page-visits .utility-left .idioma-selector {
   gap: 16px;
 }
 
-body.home .utility-top-overlay,
-body.page-fusta .utility-top-overlay,
-body.page-visits .utility-top-overlay {
-  display: flex;
-}
-
-/* WhatsApp in the overlay shows only on home */
 .utility-top-overlay .header-icon-button--whatsapp {
-  display: none;
-}
-
-body.home .utility-top-overlay .header-icon-button--whatsapp {
   display: inline-flex;
   width: 64px;
   height: 64px;
 }
 
-/* Hide the duplicated buttons from the header's utility-right on these pages */
-body.home .utility-right .header-contact-button,
-body.home .utility-right .header-icon-button--cart,
-body.home .utility-right .header-icon-button--whatsapp,
-body.page-fusta .utility-right .header-contact-button,
-body.page-fusta .utility-right .header-icon-button--cart,
-body.page-visits .utility-right .header-contact-button,
-body.page-visits .utility-right .header-icon-button--cart {
+/* Use the fixed utility actions instead of duplicate header controls. */
+body .utility-right .header-contact-button,
+body .utility-right .header-icon-button--cart,
+body .utility-right .header-icon-button--whatsapp {
   display: none !important;
 }
 
@@ -2927,6 +2932,17 @@ body.page-visits .site-header.is-scrolled .header-top {
   .header-contact-button,
   .header-icon-button--whatsapp {
     display: none !important;
+  }
+
+  .utility-top-overlay {
+    top: 104px;
+    z-index: 2200;
+  }
+
+  .utility-top-overlay .header-icon-button--whatsapp {
+    display: inline-flex !important;
+    width: 48px;
+    height: 48px;
   }
 
   .header-logo,
@@ -4743,6 +4759,10 @@ body.home .home-section-title {
   font-size: clamp(30px, 3vw, 40px);
   font-weight: 400;
   line-height: 1.08;
+}
+
+body.home .project-highlight-section .home-section-title {
+  font-family: var(--font-title) !important;
 }
 
 body.home .home-section-description {
@@ -12378,5 +12398,38 @@ input[type="reset"] {
   font-family: var(--font-main) !important;
   font-size: 15px !important;
   font-weight: 500 !important;
+}
+
+@media (min-width: 981px) {
+  .header-nav .nav-item:hover,
+  .header-nav .nav-item:focus-within {
+    background-color: #f5f2e8;
+  }
+
+  .header-nav .nav-item:hover > a,
+  .header-nav .nav-item:hover > .nav-link-button,
+  .header-nav .nav-item:focus-within > a,
+  .header-nav .nav-item:focus-within > .nav-link-button,
+  .header-nav .nav-item--shop > a,
+  body.home .header-nav .nav-item:hover > a,
+  body.home .header-nav .nav-item:hover > .nav-link-button,
+  body.home .header-nav .nav-item:focus-within > a,
+  body.home .header-nav .nav-item:focus-within > .nav-link-button,
+  body.home .header-nav .nav-item--shop > a {
+    color: #7b6b43 !important;
+  }
+
+  .header-nav .nav-item--shop,
+  .header-nav .nav-item--shop:hover,
+  .header-nav .nav-item--shop:focus-within {
+    background-color: transparent;
+  }
+
+  .header-nav .nav-item--shop > a {
+    align-self: stretch;
+    width: auto;
+    padding: 10px 15px;
+    background-color: #f5f2e8;
+  }
 }
 

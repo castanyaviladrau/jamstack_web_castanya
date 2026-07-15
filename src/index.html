@@ -30,13 +30,13 @@ name: home
       decoding="async"
     >
   </picture>
-  
+
+  <div class="hero-logo-group">
+    <img src="/assets/images/castanya.svg" alt="Castanya de Viladrau - Des de 2009" class="hero-central-logo">
+  </div>
+
   <div class="hero-content-overlay">
     <div class="hero-center-branding">
-      <div class="hero-logo-group">
-        <img src="/assets/images/castanya.svg" alt="Castanya de Viladrau - Des de 2009" class="hero-central-logo">
-      </div>
-
       <h1 class="hero-title">EL LLEGAT DEL MONTSENY*</h1>
       <h2 class="hero-subtitle">A LA TEVA TAULA</h2>
       
@@ -45,7 +45,7 @@ name: home
   </div>
 </section>
 
-{% set homeProducts = collections.products | default([]) %}
+{% set homeCategories = shopCategories | default([]) %}
 
 <section class="botiga-section-updated unified-bg">
   <div class="botiga-header-centered">
@@ -68,18 +68,18 @@ name: home
 
   <div class="gallery-container">
     <div class="gallery-scroll" id="galleryScroll">
-      {% for product in homeProducts %}
-        <a href="{{ product.url }}" class="gallery-item">
+      {% for category in homeCategories %}
+        <a href="/shop/products/catalog/?category={{ category.slug }}" class="gallery-item">
           <img
-            src="{{ product.data.image }}"
-            alt="{{ product.data.imageAlt or product.data.title }}"
+            src="{{ category.image }}"
+            alt="{{ category.imageAlt or category.title }}"
             class="item-img"
             width="322"
             height="372"
             loading="lazy"
             decoding="async"
           >
-          <span class="item-name">{{ product.data.title }}</span>
+          <span class="item-name">{{ category.title }}</span>
         </a>
       {% endfor %}
     </div>
