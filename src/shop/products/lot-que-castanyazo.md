@@ -18,8 +18,8 @@ priceLabel: "22,00 EUR"
 availability: "Disponibilitat segons temporada"
 ingredientsLabel: INGREDIENTS
 ingredients: "Consulta la fitxa del producte per als ingredients."
-image: "/assets/images/products/pending-product-image.svg"
-imageAlt: "Imatge pendent per a Lot “Que Castanyazo!”"
+image: "/assets/images/gallery/packs.png"
+imageAlt: "Selecció de productes artesans de Castanya de Viladrau per regalar"
 gallery: []
 formatLabel: Selecciona format
 formats:

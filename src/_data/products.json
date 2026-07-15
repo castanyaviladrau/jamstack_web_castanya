@@ -201,7 +201,7 @@
       "slug": "lot-essencia-crema-infusio-i-melmelada",
       "name": "\"Lot Essència: crema, infusió i melmelada\"",
       "currency": "EUR",
-      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "image": "\"/assets/images/gallery/packs.png\"",
       "variants": [
         {
           "sku": "\"lot-5\"",
@@ -214,7 +214,7 @@
       "slug": "lot-que-castanyazo",
       "name": "\"Lot “Que Castanyazo!”\"",
       "currency": "EUR",
-      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "image": "\"/assets/images/gallery/packs.png\"",
       "variants": [
         {
           "sku": "\"lot-1\"",

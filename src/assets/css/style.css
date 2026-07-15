@@ -53,8 +53,8 @@ table {
 }
 
 @font-face {
-  font-family: "Copperplate Castanya";
-  src: url("/assets/fonts/Copperplate.ttc") format("truetype");
+  font-family: "Copperplate Gothic Castanya";
+  src: url("/assets/fonts/CopperplateGothicStd-33BC.otf") format("opentype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -63,6 +63,7 @@ table {
 @font-face {
   font-family: "Gotham-Medium";
   src:
+    url("/assets/fonts/Gotham-Medium.ttf") format("truetype"),
     local("Gotham Medium"),
     local("Gotham-Medium"),
     local("GothamMedium");
@@ -100,7 +101,7 @@ table {
   --font-secondary: "Gotham-Medium", "Gotham Medium", sans-serif;
   --font-button: "Gotham-Book", "Gotham Book", var(--font-main);
   --font-title: "PP Neue World", serif;
-  --font-slider-title: "Copperplate Castanya", "Copperplate", serif;
+  --font-slider-title: "Copperplate Gothic Castanya", "Copperplate Gothic", serif;
   --font-subtitle: "Gotham-Medium", "Gotham Medium", var(--font-main);
   --type-label-size: clamp(12px, 0.95vw, 14px);
   --type-label-weight: 700;
@@ -2167,8 +2168,9 @@ body.page-blog .content-wrap {
 
 body.home .hero-title,
 body.home .hero-subtitle {
-  font-family: "Copperplate Castanya", Copperplate, "Copperplate Gothic Light", "Copperplate Gothic Bold", serif !important;
-  font-weight: 580;
+  font-family: "Copperplate Gothic Castanya", "Copperplate Gothic", serif !important;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 400;
   letter-spacing: 0.02em;
   font-stretch: normal;
 }
@@ -2588,7 +2590,7 @@ body:not(.home):not(.page-fusta):not(.page-visits) main {
   padding: 10px 22px;
   border-radius: 999px;
   background: rgba(123, 107, 67, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 0;
   color: #f5f0e8;
   text-decoration: none;
   font-family: var(--font-main);
@@ -4517,8 +4519,8 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 
 .botiga-section-updated .label-small {
   margin-bottom: 12px;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 500;
   letter-spacing: 0.14em;
 }
 
@@ -4535,7 +4537,7 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   margin-top: 8px;
   font-size: 16px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.3;
 }
 
@@ -4636,6 +4638,11 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
   color: #7b6b43;
 }
 
+.botiga-section-updated .gallery-item .item-name {
+  font-family: var(--font-slider-title);
+  font-size: 20px;
+}
+
 .project-highlight-section {
   width: 100%;
   display: flex;
@@ -4732,7 +4739,9 @@ body.page-visits .site-header.is-scrolled .nav-item.active .nav-dropdown__link.i
 }
 
 body.home .home-section-title {
+  font-family: "Copperplate Gothic Castanya", "Copperplate Gothic", serif !important;
   font-size: clamp(30px, 3vw, 40px);
+  font-weight: 400;
   line-height: 1.08;
 }
 
@@ -5333,7 +5342,7 @@ body.home .home-section-description {
   margin: 0;
   color: #8b7445;
   font-size: clamp(28px, 2.4vw, 40px);
-  font-family: "Copperplate Castanya", Copperplate, "Copperplate Gothic Light", "Copperplate Gothic Bold", serif;
+  font-family: "Copperplate Gothic Castanya", "Copperplate Gothic", serif;
   font-weight: 700;
   line-height: 1.12;
   letter-spacing: 1.6px;
@@ -5570,7 +5579,7 @@ body.home .home-section-description {
 .gastronomic-sensory__title {
   margin: 0;
   font-size: clamp(28px, 2.4vw, 38px);
-  font-family: "Copperplate Castanya", Copperplate, "Copperplate Gothic Light", "Copperplate Gothic Bold", serif;
+  font-family: "Copperplate Gothic Castanya", "Copperplate Gothic", serif;
   font-weight: 700;
   line-height: 1.14;
   letter-spacing: 1.5px;
@@ -6246,7 +6255,7 @@ body.home .home-section-description {
   margin: 0;
   font-size: var(--type-banner-title-size);
   line-height: var(--type-banner-title-line-height);
-  font-family: "Copperplate Castanya", Copperplate, "Copperplate Gothic Light", "Copperplate Gothic Bold", serif;
+  font-family: "Copperplate Gothic Castanya", "Copperplate Gothic", serif;
 }
 
 .cta-text {
@@ -6258,7 +6267,7 @@ body.home .home-section-description {
 .cta-text--professionals {
   max-width: 700px;
   font-size: var(--type-banner-text-size);
-  font-family: "Copperplate Castanya", Copperplate, "Copperplate Gothic Light", "Copperplate Gothic Bold", serif;
+  font-family: "Copperplate Gothic Castanya", "Copperplate Gothic", serif;
 }
 
 .btn-olive-transparent--professionals {
@@ -8106,7 +8115,7 @@ body.home .home-section-description {
 
 .shop-page-category-card__title {
   color: #8b7445;
-  font-family: "Copperplate Castanya", Copperplate, "Copperplate Gothic Light", "Copperplate Gothic Bold", serif;
+  font-family: "Copperplate Gothic Castanya", "Copperplate Gothic", serif;
   font-size: clamp(18px, 1.55vw, 24px);
   font-weight: 400;
   line-height: 1.02;
@@ -8200,7 +8209,7 @@ body.home .home-section-description {
 .shop-page-products__title {
   margin: 0;
   color: #8b7445;
-  font-family: "Copperplate Castanya", Copperplate, "Copperplate Gothic Light", "Copperplate Gothic Bold", serif;
+  font-family: "Copperplate Gothic Castanya", "Copperplate Gothic", serif;
   font-size: clamp(24px, 2.2vw, 32px);
   font-weight: 400;
   line-height: 1.08;
@@ -11948,7 +11957,7 @@ body.internal.page-gastronomic-recipes {
 }
 
 .recipe-detail__related-products-title {
-  font-family: "Copperplate Castanya", Copperplate, "Copperplate Gothic Light", "Copperplate Gothic Bold", serif;
+  font-family: "Copperplate Gothic Castanya", "Copperplate Gothic", serif;
   font-size: clamp(28px, 2.8vw, 40px);
 }
 
@@ -12341,5 +12350,33 @@ body.has-mobile-menu-open {
     background: #efe5d3;
     color: #8d7748 !important;
   }
+}
+
+/* Keep call-to-action typography consistent across the site. */
+.header-contact-button,
+.header-mobile-actions__link,
+a[class*="btn"],
+a[class*="button"],
+a[class*="cta"],
+button:not(.nav-link-button):not(.header-menu-toggle):not(.nav-arrow-inline),
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  font-family: var(--font-button) !important;
+  font-weight: 400 !important;
+}
+
+/* Use one type scale for every textual header/menu control. */
+.site-header .idioma-selector,
+.utility-top-left-overlay .idioma-selector,
+.site-header .header-contact-button,
+.utility-top-overlay .header-contact-button,
+.site-header .header-mobile-actions__link,
+.site-header .nav-item > a,
+.site-header .nav-link-button,
+.site-header .nav-dropdown__link {
+  font-family: var(--font-main) !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
 }
 
