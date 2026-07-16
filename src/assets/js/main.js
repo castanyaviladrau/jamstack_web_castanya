@@ -1538,28 +1538,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const prev = document.getElementById("fustaShowcasePrev");
     const next = document.getElementById("fustaShowcaseNext");
     const heroImage = document.getElementById("fustaShowcaseHeroImage");
-    const eyebrow = document.getElementById("fustaShowcaseEyebrow");
     const title = document.getElementById("fustaShowcaseTitle");
     const text = document.getElementById("fustaShowcaseText");
-    const detailTitle = document.getElementById("fustaShowcaseDetailTitle");
-    const detailP1 = document.getElementById("fustaShowcaseDetailP1");
-    const detailP2 = document.getElementById("fustaShowcaseDetailP2");
-    const detailP3 = document.getElementById("fustaShowcaseDetailP3");
-    const detailImage = document.getElementById("fustaShowcaseDetailImage");
     const slideNodes = document.querySelectorAll(".fusta-showcase-slide-data");
+    const slideSelectors = document.querySelectorAll("[data-fusta-showcase-slide]");
 
     if (
       !prev ||
       !next ||
       !heroImage ||
-      !eyebrow ||
       !title ||
       !text ||
-      !detailTitle ||
-      !detailP1 ||
-      !detailP2 ||
-      !detailP3 ||
-      !detailImage ||
       !slideNodes.length
     ) {
       return;
@@ -1572,16 +1561,32 @@ document.addEventListener("DOMContentLoaded", () => {
       const slide = slides[index];
       heroImage.src = slide.heroImage;
       heroImage.alt = slide.heroAlt;
-      eyebrow.textContent = slide.eyebrow;
       title.textContent = slide.title;
+      slideSelectors.forEach((selector) => {
+        const selectorIndex = Number.parseInt(
+          selector.dataset.fustaShowcaseSlide,
+          10,
+        );
+        selector.setAttribute("aria-pressed", String(selectorIndex === index));
+      });
       text.textContent = slide.text;
-      detailTitle.textContent = slide.detailTitle;
-      detailP1.textContent = slide.detailP1;
-      detailP2.textContent = slide.detailP2;
-      detailP3.textContent = slide.detailP3;
-      detailImage.src = slide.detailImage;
-      detailImage.alt = slide.detailAlt;
     };
+
+    slideSelectors.forEach((selector) => {
+      selector.addEventListener("click", () => {
+        const selectorIndex = Number.parseInt(
+          selector.dataset.fustaShowcaseSlide,
+          10,
+        );
+
+        if (Number.isNaN(selectorIndex) || !slides[selectorIndex]) {
+          return;
+        }
+
+        index = selectorIndex;
+        renderSlide();
+      });
+    });
 
     prev.addEventListener("click", () => {
       index = (index - 1 + slides.length) % slides.length;

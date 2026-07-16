@@ -3557,7 +3557,7 @@ body.home .nav-item.highlight-shop a {
 }
 
 .project-highlight-section.fusta-intro {
-  padding: 46px 24px 70px;
+  padding: 46px 24px 40px;
 }
 
 .fusta-benefits__content {
@@ -3569,6 +3569,10 @@ body.home .nav-item.highlight-shop a {
   max-width: none;
   margin: 0;
   padding: 28px 30px 60px;
+}
+
+.fusta-benefits.unified-bg {
+  padding-bottom: 60px;
 }
 
 .fusta-benefits__inner {
@@ -3591,6 +3595,12 @@ body.home .nav-item.highlight-shop a {
 
 .fusta-benefits__inner .split-image img {
   width: 100%;
+  aspect-ratio: 1 / 1;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fusta-benefits .fusta-benefits__inner .split-image .fusta-benefits__image--square {
   aspect-ratio: 1 / 1;
   height: 100%;
   object-fit: cover;
@@ -3670,27 +3680,64 @@ body.home .nav-item.highlight-shop a {
 
 .fusta-showcase__eyebrow {
   margin: 0;
-  font-size: 16px;
+  font-family: var(--font-subtitle);
+  font-size: var(--type-label-size);
   font-weight: 700;
+  letter-spacing: var(--type-label-letter-spacing);
+  text-transform: uppercase;
+}
+
+.fusta-showcase__toggle {
+  display: flex;
+  gap: 8px;
+  font-family: "Copperplate Gothic Castanya", "Copperplate Gothic", serif;
+  align-items: center;
+  font-size: 16px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
 }
 
+.fusta-showcase__toggle-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+
+.fusta-showcase__toggle-button:hover,
+.fusta-showcase__toggle-button[aria-pressed="true"] {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.fusta-showcase__toggle-button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
 .fusta-showcase__title {
-  margin: 24px 0 0;
-  max-width: 820px;
-  font-family: var(--font-slider-title);
-  font-size: clamp(44px, 4vw, 68px);
-  line-height: 0.96;
+  margin: 32px 0 25px;
+  max-width: 900px;
+  font-family: var(--font-title);
+  font-size: clamp(30px, 3vw, 40px);
+  line-height: 1.08;
+  letter-spacing: 0;
   text-transform: uppercase;
+  -webkit-text-stroke: 0;
+  text-shadow: none;
 }
 
 .fusta-showcase__text {
-  margin: 18px 0 0;
-  max-width: 900px;
+  margin: 0;
+  max-width: 760px;
   font-family: var(--font-main);
-  font-size: clamp(18px, 1.5vw, 27px);
-  line-height: 1.45;
+  font-size: clamp(16px, 1.35vw, 18px);
+  line-height: 1.55;
+  letter-spacing: 0;
 }
 
 .fusta-showcase__arrow {
@@ -3720,10 +3767,13 @@ body.home .nav-item.highlight-shop a {
 
 .fusta-showcase__details {
   display: grid;
-  grid-template-columns: minmax(320px, 0.95fr) minmax(360px, 1.05fr);
-  gap: 48px;
+  width: 100%;
+  max-width: 1120px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
   align-items: center;
-  padding: 54px 28px 0;
+  margin: 0 auto;
+  padding: 54px 0 0;
 }
 
 .fusta-showcase__details-copy {
@@ -3753,8 +3803,25 @@ body.home .nav-item.highlight-shop a {
   line-height: 1.45;
 }
 
-.fusta-showcase__details-paragraph--strong {
-  font-weight: 700;
+.fusta-showcase__details-title.block_parc_content_style {
+  margin: 0 0 24px;
+  color: #8a7445;
+  font-family: "PP Neue World", serif !important;
+  font-size: 30px !important;
+  line-height: 1.04;
+}
+
+.fusta-showcase__details-paragraph.block_parc_content_style {
+  margin: 0 auto;
+  max-width: 480px;
+  color: #8a7445;
+  font-family: "Gotham-Medium", "Gotham Medium", sans-serif !important;
+  font-size: 17px !important;
+  line-height: 1.35;
+}
+
+.fusta-showcase__details-paragraph.block_parc_content_style + .fusta-showcase__details-paragraph.block_parc_content_style {
+  margin-top: 18px;
 }
 
 .fusta-showcase__details-image {
@@ -4020,7 +4087,7 @@ body.home .nav-item.highlight-shop a {
   }
 
   .project-highlight-section.fusta-intro {
-    padding: 38px 20px 58px;
+    padding: 38px 20px 40px;
   }
 
   .fusta-benefits {
