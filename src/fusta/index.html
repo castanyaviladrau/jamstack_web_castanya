@@ -153,8 +153,8 @@ footerVariant: home-newsletter
 
       <div class="fusta-showcase__details-media">
         <img
-          src="/assets/images/gallery/fusta_children_park.jpg"
-          alt="Mobles i peces de fusta pelada"
+          src="/assets/images/gallery/fusta-log-cross-section.jpg"
+          alt="Secció transversal d'un tronc de castanyer"
           class="fusta-showcase__details-image"
           id="fustaShowcaseDetailImage"
         />
@@ -174,14 +174,14 @@ footerVariant: home-newsletter
       data-detail-p1="Respectem la forma de l'arbre. Treballem la fusta pelada per conservar la seva essencia, textura i propietats mecaniques intactes."
       data-detail-p2="Benefici: Una estetica organica que connecta directament amb el bosc."
       data-detail-p3="Es la solucio ideal per a qui busca un disseny sostenible i durador que porti l'essencia mes pura i segura de la natura a casa seva."
-      data-detail-image="/assets/images/gallery/fusta_children_park.jpg"
-      data-detail-alt="Mobles i peces de fusta pelada"
+      data-detail-image="/assets/images/gallery/fusta-log-cross-section.jpg"
+      data-detail-alt="Secció transversal d'un tronc de castanyer"
     ></article>
 
     <article
       class="fusta-showcase-slide-data"
-      data-hero-image="/assets/images/gallery/fusta_ceiling.jpg"
-      data-hero-alt="Revestiment de sostre amb fusta de castanyer"
+      data-hero-image="/assets/images/gallery/fusta1.jpg"
+      data-hero-alt="Interior amb fusta de castanyer"
       data-eyebrow="INTERIOR CALID"
       data-title="Salut i Calidesa a casa."
       data-text="En no portar tractaments químics, és la fusta més saludable (lliure de tòxics) per conviure-hi. Aporta una estètica rústica, noble i acollidora."
@@ -197,37 +197,40 @@ footerVariant: home-newsletter
 </section>
 
 <section class="fusta-projects unified-bg" aria-label="Projectes de fusta">
-  <div class="fusta-projects__header">
-    <button
-      type="button"
-      class="nav-arrow-inline fusta-projects__arrow"
-      id="fustaProjectsPrev"
-      aria-label="Projecte anterior"
-    >
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <polyline points="15 18 9 12 15 6"></polyline>
-      </svg>
-    </button>
-
+  <div class="fusta-projects__header botiga-header-centered block-content-style">
     <div class="fusta-projects__intro">
-      <h2 class="fusta-projects__title block_title_style">PROJECTES QUE HEM FET</h2>
-      <p class="fusta-projects__text block_title_style block_title_style--copy">
+      <div class="title-nav-wrapper">
+        <button
+          type="button"
+          class="nav-arrow-inline left"
+          id="fustaProjectsPrev"
+          aria-label="Projecte anterior"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        <h2 class="fusta-projects__title section-title-main section-title-main--products home-section-title block_title_style">PROJECTES QUE HEM FET</h2>
+
+        <button
+          type="button"
+          class="nav-arrow-inline right"
+          id="fustaProjectsNext"
+          aria-label="Seguent projecte"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <p class="fusta-projects__text section-subtitle-italic home-section-description block_title_content">
         Descobreix les nostres realitzacions a mida per a interior i exterior:
         solucions sostenibles, sense toxics i amb la qualitat artesana de
         Viladrau.
       </p>
     </div>
-
-    <button
-      type="button"
-      class="nav-arrow-inline fusta-projects__arrow"
-      id="fustaProjectsNext"
-      aria-label="Seguent projecte"
-    >
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <polyline points="9 18 15 12 9 6"></polyline>
-      </svg>
-    </button>
   </div>
 
   <div class="fusta-projects__carousel" id="fustaProjectsCarousel">
@@ -238,14 +241,32 @@ footerVariant: home-newsletter
           alt="Cadira artesanal de castanyer"
           class="fusta-projects__image"
         />
+        <span class="fusta-projects__magnifier" aria-hidden="true">
+          <img src="/assets/images/fusta-projects-magnifier.png" alt="" />
+        </span>
+        <button
+          type="button"
+          class="fusta-projects__trigger"
+          data-fusta-project-trigger
+          aria-label="Ampliar imatge de cadira artesanal de castanyer"
+        ></button>
       </article>
 
-      <article class="fusta-projects__card fusta-projects__card--feature">
+      <article class="fusta-projects__card">
         <img
           src="/assets/images/gallery/fusta_boligrafo.jpg"
           alt="Detall d'acabat de fusta de castanyer"
           class="fusta-projects__image"
         />
+        <span class="fusta-projects__magnifier" aria-hidden="true">
+          <img src="/assets/images/fusta-projects-magnifier.png" alt="" />
+        </span>
+        <button
+          type="button"
+          class="fusta-projects__trigger"
+          data-fusta-project-trigger
+          aria-label="Ampliar imatge de detall d'acabat de fusta de castanyer"
+        ></button>
       </article>
 
       <article class="fusta-projects__card">
@@ -254,6 +275,15 @@ footerVariant: home-newsletter
           alt="Detall de veta i acabat en fusta"
           class="fusta-projects__image"
         />
+        <span class="fusta-projects__magnifier" aria-hidden="true">
+          <img src="/assets/images/fusta-projects-magnifier.png" alt="" />
+        </span>
+        <button
+          type="button"
+          class="fusta-projects__trigger"
+          data-fusta-project-trigger
+          aria-label="Ampliar imatge de detall de veta i acabat en fusta"
+        ></button>
       </article>
 
       <article class="fusta-projects__card">
@@ -262,9 +292,59 @@ footerVariant: home-newsletter
           alt="Banc exterior de fusta de castanyer"
           class="fusta-projects__image"
         />
+        <span class="fusta-projects__magnifier" aria-hidden="true">
+          <img src="/assets/images/fusta-projects-magnifier.png" alt="" />
+        </span>
+        <button
+          type="button"
+          class="fusta-projects__trigger"
+          data-fusta-project-trigger
+          aria-label="Ampliar imatge de banc exterior de fusta de castanyer"
+        ></button>
+      </article>
+
+      <article class="fusta-projects__card">
+        <img
+          src="/assets/images/gallery/fusta_children_park.jpg"
+          alt="Estructura de joc infantil de fusta"
+          class="fusta-projects__image"
+        />
+        <span class="fusta-projects__magnifier" aria-hidden="true">
+          <img src="/assets/images/fusta-projects-magnifier.png" alt="" />
+        </span>
+        <button
+          type="button"
+          class="fusta-projects__trigger"
+          data-fusta-project-trigger
+          aria-label="Ampliar imatge d'estructura de joc infantil de fusta"
+        ></button>
+      </article>
+
+      <article class="fusta-projects__card">
+        <img
+          src="/assets/images/gallery/fusta-log-cross-section.jpg"
+          alt="Secció transversal d'un tronc de castanyer"
+          class="fusta-projects__image"
+        />
+        <span class="fusta-projects__magnifier" aria-hidden="true">
+          <img src="/assets/images/fusta-projects-magnifier.png" alt="" />
+        </span>
+        <button
+          type="button"
+          class="fusta-projects__trigger"
+          data-fusta-project-trigger
+          aria-label="Ampliar imatge de secció transversal d'un tronc de castanyer"
+        ></button>
       </article>
     </div>
   </div>
+
+  <dialog class="fusta-projects__dialog" data-fusta-project-dialog aria-label="Imatge del projecte ampliada">
+    <button type="button" class="fusta-projects__dialog-close" data-fusta-project-close aria-label="Tancar imatge ampliada">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <img class="fusta-projects__dialog-image" data-fusta-project-dialog-image alt="" />
+  </dialog>
 </section>
 
 <section

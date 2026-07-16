@@ -680,6 +680,12 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   setupCarousel("shopFeaturedCarousel", "shopFeaturedPrev", "shopFeaturedNext");
   setupCarousel("shopGiftsCarousel", "shopGiftsPrev", "shopGiftsNext");
+  setupCarousel(
+    "fustaProjectsCarousel",
+    "fustaProjectsPrev",
+    "fustaProjectsNext",
+    ".fusta-projects__card",
+  );
   setupShopCatalogFiltering();
   setupNewsFiltering();
   setupRecipeResultsFilter();
@@ -1542,6 +1548,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const text = document.getElementById("fustaShowcaseText");
     const slideNodes = document.querySelectorAll(".fusta-showcase-slide-data");
     const slideSelectors = document.querySelectorAll("[data-fusta-showcase-slide]");
+    const showcaseHero = heroImage.closest(".fusta-showcase__hero");
 
     if (
       !prev ||
@@ -1556,6 +1563,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const slides = Array.from(slideNodes).map((slide) => slide.dataset);
     let index = 0;
+    let autoAdvanceTimer;
+    let transitionTimer;
 
     const renderSlide = () => {
       const slide = slides[index];
@@ -1572,6 +1581,39 @@ document.addEventListener("DOMContentLoaded", () => {
       text.textContent = slide.text;
     };
 
+    const changeSlide = (nextIndex) => {
+      if (nextIndex === index || !slides[nextIndex]) {
+        return;
+      }
+
+      const updateSlide = () => {
+        index = nextIndex;
+        renderSlide();
+
+        if (showcaseHero) {
+          window.requestAnimationFrame(() => {
+            showcaseHero.classList.remove("is-transitioning");
+          });
+        }
+      };
+
+      if (!showcaseHero) {
+        updateSlide();
+        return;
+      }
+
+      window.clearTimeout(transitionTimer);
+      showcaseHero.classList.add("is-transitioning");
+      transitionTimer = window.setTimeout(updateSlide, 180);
+    };
+
+    const restartAutoAdvance = () => {
+      window.clearInterval(autoAdvanceTimer);
+      autoAdvanceTimer = window.setInterval(() => {
+        changeSlide((index + 1) % slides.length);
+      }, 4000);
+    };
+
     slideSelectors.forEach((selector) => {
       selector.addEventListener("click", () => {
         const selectorIndex = Number.parseInt(
@@ -1583,22 +1625,72 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
-        index = selectorIndex;
-        renderSlide();
+        changeSlide(selectorIndex);
+        restartAutoAdvance();
       });
     });
 
     prev.addEventListener("click", () => {
-      index = (index - 1 + slides.length) % slides.length;
-      renderSlide();
+      changeSlide((index - 1 + slides.length) % slides.length);
+      restartAutoAdvance();
     });
 
     next.addEventListener("click", () => {
-      index = (index + 1) % slides.length;
-      renderSlide();
+      changeSlide((index + 1) % slides.length);
+      restartAutoAdvance();
     });
 
     renderSlide();
+    restartAutoAdvance();
+  };
+
+  const setupFustaProjectDialog = () => {
+    const dialog = document.querySelector("[data-fusta-project-dialog]");
+    const dialogImage = document.querySelector(
+      "[data-fusta-project-dialog-image]",
+    );
+    const closeButton = document.querySelector("[data-fusta-project-close]");
+    const triggers = document.querySelectorAll("[data-fusta-project-trigger]");
+
+    if (
+      !dialog ||
+      !dialogImage ||
+      !closeButton ||
+      !triggers.length ||
+      typeof dialog.showModal !== "function"
+    ) {
+      return;
+    }
+
+    const closeDialog = () => {
+      if (dialog.open) {
+        dialog.close();
+      }
+    };
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        const image = trigger
+          .closest(".fusta-projects__card")
+          ?.querySelector(".fusta-projects__image");
+
+        if (!image) {
+          return;
+        }
+
+        dialogImage.src = image.currentSrc || image.src;
+        dialogImage.alt = image.alt;
+        dialog.showModal();
+        closeButton.focus();
+      });
+    });
+
+    closeButton.addEventListener("click", closeDialog);
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) {
+        closeDialog();
+      }
+    });
   };
 
   const setupCart = () => {
@@ -2593,5 +2685,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupCookieBanner();
   setupConsentMaps();
   setupFustaShowcase();
+  setupFustaProjectDialog();
   setupCart();
 });
