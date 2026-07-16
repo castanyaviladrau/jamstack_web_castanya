@@ -70,19 +70,25 @@ experienceHighlightsSection:
     - title: LA CASTANYERA
       image: /assets/images/gallery/visites/visites_guiades_1.jpg
       imageAlt: Castanyera al Montseny
-      text: ""
+      text: |
+        Vols viure una experiencia immersiva i unica? Endinsa't al bosc i deixa't sorprendre per la presencia magica de la Castanyera, que t'acompanyara amb histories, tradicions i l'aroma de les castanyes acabades de torrar. Completa la teva visita amb un toc autentic i inoblidable. Viu un dia rodo ple de natura, llegenda i emocio!
     - title: EXPERIENCIA ANTIESTRES
       image: /assets/images/gallery/visites/visites_guiades_2.jpg
       imageAlt: Detall de castanyer al bosc
-      text: ""
+      text: |
+        Necessites alliberar-te de l'estres i reconnectar amb la natura?
+
+        Vine a viure una experiencia diferent als nostres boscos: apren a **tallar arbres** amb les teves propies mans, descobreix com es **calcula l'edat** d'aquests essers vius i deixa't guiar pels nostres experts, que et facilitaran totes les eines i coneixements. Gaudiras del silenci del bosc, de la forca de la natura i sortiras renovat, amb l'energia ben carregada!
     - title: APAT
       image: /assets/images/gallery/visites/visites_guiades_3.jpg
       imageAlt: Apat amb productes de castanya
-      text: ""
+      text: |
+        **Completa la teva visita amb un apat inoblidable.** Pots escollir entre un **esmorzar** per comencar el dia amb energia, o d'un **dinar** per assaborir la tradicio. Gaudiras d'una autentica experiencia 360 graus degustant els millors plats de la zona, elaborats amb castanya com a protagonista. **Una sorpresa de sabors que no oblidaras!**
     - title: ARBRE DE CASTANYER
       image: /assets/images/gallery/visites/visites_guiades_banner.jpg
       imageAlt: Arbre de castanyer
-      text: ""
+      text: |
+        **Endu-te un trosset de bosc a casa!** Amb la teva visita pots afegir aquest suplement i emportar-te un **castanyer petit** criat al nostre centre. Podras escollir el teu arbre i cuidar-lo perque creixi fort, contribuint aixi a preservar una especie tan especial i estimada. **Junts fem creixer el futur dels nostres boscos!**
 reviewsSection:
   eyebrow: ""
   title: ""

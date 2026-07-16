@@ -750,6 +750,7 @@ export default defineConfig({
                     label: "Card Text",
                     ui: { component: "textarea" },
                   },
+
                 ],
               },
             ],

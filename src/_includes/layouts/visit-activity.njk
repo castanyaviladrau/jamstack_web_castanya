@@ -5,6 +5,47 @@
 
   <body class="internal page-visit-activity{% if name %} page-{{ name }}{% endif %}">
     {% include "header.html" %}
+    <aside class="visit-reservation-banner" aria-label="Reserva la visita">
+      <div class="visit-reservation-banner__inner">
+        <p class="visit-reservation-banner__prompt">{{ reservationPrompt }}</p>
+        <div class="visit-reservation-banner__actions">
+          {% if whatsappLink %}
+          <a
+            href="{{ whatsappLink }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="visit-reservation-banner__icon visit-reservation-banner__icon--whatsapp"
+            aria-label="WhatsApp"
+          >
+            <img src="/assets/images/whatsapp_button.png" alt="" aria-hidden="true" />
+          </a>
+          {% endif %}
+
+          {% if emailAddress %}
+          <a href="mailto:{{ emailAddress }}" class="visit-reservation-banner__icon" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+              <path d="m4 7 8 6 8-6"></path>
+            </svg>
+          </a>
+          {% endif %}
+
+          {% if phoneNumber %}
+          <a
+            href="tel:{{ phoneNumber | replace(' ', '') }}"
+            class="visit-reservation-banner__icon"
+            aria-label="Telefon"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.1 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.8L7.6 9.8a16 16 0 0 0 6.6 6.6l1.3-1.3a2 2 0 0 1 1.8-.6l3 .5A2 2 0 0 1 22 16.9Z"
+              ></path>
+            </svg>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </aside>
     <div class="outer-wrap">
       <div class="content-wrap">
         <section class="visit-activity-hero hero-wrapper">
@@ -165,7 +206,7 @@
         <section class="visit-activity-body unified-bg">
           <div class="visit-activity-body__inner">
             <div class="visit-activity-body__main">
-              <details class="visit-activity-accordion">
+              <details class="visit-activity-accordion" open>
                 <summary class="block_heavy_content_style">DESCRIPCIO GENERAL</summary>
                 <div class="visit-activity-accordion__content block_heavy_content_style">
                   {% if overviewIntro %}
@@ -196,27 +237,6 @@
                 </div>
               </details>
 
-              <section class="visit-booking-cta" aria-labelledby="visitBookingTitle">
-                <div class="visit-booking-cta__copy">
-                  <p class="visit-booking-cta__eyebrow">RESERVA ARA</p>
-                  <h2 id="visitBookingTitle" class="visit-booking-cta__title">
-                    Sol.licita aquesta activitat
-                  </h2>
-                  <p class="visit-booking-cta__text">
-                    T'interessa <strong>{{ title }}</strong>? Envia una solicitud i et confirmarem la disponibilitat per correu.
-                  </p>
-                </div>
-
-                <button
-                  type="button"
-                  class="btn-olive visit-booking-cta__button"
-                  data-booking-trigger
-                  aria-haspopup="dialog"
-                  aria-controls="visitBookingModal"
-                >
-                  SOL.LICITAR RESERVA
-                </button>
-              </section>
             </div>
 
             <aside class="visit-activity-sidebar">
@@ -331,17 +351,55 @@
         <section class="visit-activity-experience">
           <div class="visit-activity-experience__inner">
             <div class="visit-activity-experience__header">
-              <h2 class="visit-activity-experience__title">{{ experienceHighlightsSection.title }}</h2>
-              <p class="visit-activity-experience__intro">{{ experienceHighlightsSection.intro }}</p>
+              <h2 class="visit-activity-experience__title block_title_style">{{ experienceHighlightsSection.title }}</h2>
+              <p class="visit-activity-experience__intro block_title_style block_title_style--copy">{{ experienceHighlightsSection.intro }}</p>
             </div>
             <div class="visit-activity-experience__grid">
               {% for item in experienceHighlightsSection.items %}
               <article class="visit-activity-experience__card">
                 <div class="visit-activity-experience__media">
                   <img src="{{ item.image }}" alt="{{ item.imageAlt }}" class="visit-activity-experience__image" />
+                  <span class="visit-activity-experience__arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M5 19 19 5M8 5h11v11" />
+                    </svg>
+                  </span>
                 </div>
                 <h3>{{ item.title }}</h3>
+                <button
+                  type="button"
+                  class="visit-activity-experience__trigger"
+                  data-experience-trigger
+                  aria-haspopup="dialog"
+                  aria-controls="visitExperienceModal{{ loop.index0 }}"
+                  aria-label="Mes informacio sobre {{ item.title }}"
+                ></button>
               </article>
+
+              <div class="visit-experience-modal" id="visitExperienceModal{{ loop.index0 }}" data-experience-modal hidden>
+                <div class="visit-experience-modal__backdrop" data-experience-close="backdrop"></div>
+                <div
+                  class="visit-experience-modal__dialog"
+                  role="dialog"
+                  aria-modal="true"
+                  aria-labelledby="visitExperienceModalTitle{{ loop.index0 }}"
+                  aria-describedby="visitExperienceModalDescription{{ loop.index0 }}"
+                >
+                  <button
+                    type="button"
+                    class="visit-experience-modal__close"
+                    data-experience-close="button"
+                    aria-label="Tancar informacio"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h2 id="visitExperienceModalTitle{{ loop.index0 }}">{{ item.title }}</h2>
+                  <div id="visitExperienceModalDescription{{ loop.index0 }}" class="visit-experience-modal__text prose block_heavy_content_style">
+                    {{ item.text | markdownify | safe }}
+                  </div>
+                  <p class="visit-experience-modal__prompt">Demana'ns mes informacio!</p>
+                </div>
+              </div>
               {% endfor %}
             </div>
           </div>
@@ -355,8 +413,9 @@
               <a href="/visits/" class="visit-activity-more__button">MIRAR TOTES ></a>
             </div>
             <div class="visit-activity-more__track">
+              {% set shownActivities = 0 %}
               {% for activity in collections.visitActivities %}
-              {% if activity.url != page.url and loop.index0 < 3 %}
+              {% if activity.url != page.url and shownActivities < 3 %}
               <a href="{{ activity.url }}" class="visits-card-link visit-activity-more__link">
                 <article class="visits-card visit-activity-more__card">
                   <img
@@ -410,6 +469,7 @@
                   </div>
                 </article>
               </a>
+              {% set shownActivities = shownActivities + 1 %}
               {% endif %}
               {% endfor %}
             </div>

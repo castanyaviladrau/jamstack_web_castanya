@@ -1284,6 +1284,118 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  const setupVisitExperienceModals = () => {
+    const triggers = Array.from(
+      document.querySelectorAll("[data-experience-trigger]"),
+    );
+    const modals = Array.from(
+      document.querySelectorAll("[data-experience-modal]"),
+    );
+
+    if (!triggers.length || !modals.length) {
+      return;
+    }
+
+    const focusableSelector =
+      'button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])';
+    let activeModal = null;
+    let previousActiveElement = null;
+
+    const getFocusableElements = (modal) => {
+      const dialog = modal.querySelector(".visit-experience-modal__dialog");
+
+      return Array.from(dialog.querySelectorAll(focusableSelector)).filter(
+        (element) => !element.disabled,
+      );
+    };
+
+    const closeModal = () => {
+      if (!activeModal) {
+        return;
+      }
+
+      const modal = activeModal;
+      activeModal = null;
+      modal.classList.remove("is-visible");
+      document.body.classList.remove("has-visit-experience-modal");
+
+      window.setTimeout(() => {
+        modal.hidden = true;
+        previousActiveElement?.focus?.();
+        previousActiveElement = null;
+      }, 180);
+    };
+
+    const openModal = (trigger) => {
+      const modalId = trigger.getAttribute("aria-controls");
+      const modal = modalId ? document.getElementById(modalId) : null;
+
+      if (!modal) {
+        return;
+      }
+
+      if (activeModal) {
+        closeModal();
+      }
+
+      previousActiveElement = trigger;
+      activeModal = modal;
+      modal.hidden = false;
+      document.body.classList.add("has-visit-experience-modal");
+
+      window.requestAnimationFrame(() => {
+        modal.classList.add("is-visible");
+        modal.querySelector("[data-experience-close]")?.focus();
+      });
+    };
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => openModal(trigger));
+    });
+
+    modals.forEach((modal) => {
+      modal.addEventListener("click", (event) => {
+        if (event.target.closest("[data-experience-close]")) {
+          closeModal();
+        }
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (!activeModal) {
+        return;
+      }
+
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeModal();
+        return;
+      }
+
+      if (event.key !== "Tab") {
+        return;
+      }
+
+      const focusableElements = getFocusableElements(activeModal);
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (!firstElement || !lastElement) {
+        return;
+      }
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      }
+
+      if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    });
+  };
+
   const setupCookieBanner = () => {
     const banner = document.getElementById("cookieBanner");
     const reopenControls = document.querySelectorAll(
@@ -2472,6 +2584,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupHeaderDropdown();
   setupContactForm();
   setupVisitBooking();
+  setupVisitExperienceModals();
   setupCookieBanner();
   setupConsentMaps();
   setupFustaShowcase();

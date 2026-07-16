@@ -10667,13 +10667,19 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
     min-height: 0;
   }
 
-  .visit-activity-experience__overlay {
-    min-height: 84px;
-    padding: 14px 10px;
+  .visit-experience-modal__dialog {
+    width: calc(100% - 24px);
+    max-height: calc(100vh - 24px);
+    margin: 12px auto;
+    padding: 58px 28px 48px;
+  }
+
+  .visit-experience-modal__dialog h2 {
+    font-size: clamp(24px, 8vw, 34px);
   }
 
   .visit-activity-experience__card h3 {
-    font-size: 18px;
+    font-size: clamp(24px, 8vw, 34px);
   }
 
   .visit-activity-more__title {
@@ -10774,6 +10780,127 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
   }
 }
 
+.visit-reservation-banner {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 1900;
+  width: min(620px, calc(100% - 56px));
+}
+
+.visit-reservation-banner__inner {
+  min-height: 68px;
+  padding: 11px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: #5f627b;
+  color: #f5f0e8;
+}
+
+.visit-reservation-banner__prompt {
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.6px;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.visit-reservation-banner__actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.visit-reservation-banner__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f2e8;
+  color: #7b6b43;
+  text-decoration: none;
+  transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.visit-reservation-banner__icon:hover,
+.visit-reservation-banner__icon:focus-visible {
+  transform: translateY(-2px);
+  background: #fffaf0;
+}
+
+.visit-reservation-banner__icon img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.visit-reservation-banner__icon--whatsapp {
+  background: transparent;
+}
+
+.visit-reservation-banner__icon--whatsapp img {
+  width: 52px;
+  height: 52px;
+  max-width: none;
+  transform: translateY(2px);
+}
+
+.visit-reservation-banner__icon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+}
+
+@media (max-width: 980px) {
+  .visit-reservation-banner {
+    right: 0;
+    bottom: 0;
+    width: min(620px, calc(100% - 20px));
+  }
+}
+
+@media (max-width: 620px) {
+  .visit-reservation-banner {
+    right: 0;
+    bottom: 0;
+    width: calc(100% - 10px);
+  }
+
+  .visit-reservation-banner__inner {
+    padding: 10px 16px;
+    gap: 12px;
+  }
+
+  .visit-reservation-banner__prompt {
+    font-size: 12px;
+  }
+
+  .visit-reservation-banner__actions {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 420px) {
+  .visit-reservation-banner__prompt {
+    display: none;
+  }
+
+  .visit-reservation-banner__actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
 .visit-activity-hero {
   position: relative;
   height: calc(100dvh - 170px);
@@ -10787,10 +10914,6 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
 
 .visit-activity-hero__image {
   object-position: center;
-}
-
-body.page-visit-activity .header-logo {
-  display: none;
 }
 
 .visit-activity-hero__overlay {
@@ -11528,13 +11651,13 @@ body.page-visit-activity .header-logo {
   display: grid;
   grid-template-columns: 76px minmax(0, 1fr);
   align-items: center;
-  gap: 18px;
+  gap: 16px;
   padding: 8px 0;
   font-size: 15px;
 }
 
 .visit-activity-pricing__row span {
-  justify-self: start;
+  justify-self: end;
   white-space: nowrap;
 }
 
@@ -11618,6 +11741,7 @@ body.page-visit-activity .header-logo {
 }
 
 .visit-activity-experience__card {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11626,8 +11750,8 @@ body.page-visit-activity .header-logo {
 
 .visit-activity-experience__card h3 {
   margin: 16px 0 0;
-  font-size: 22px;
-  font-weight: 700;
+  font-size: clamp(24px, 3.5vw, 40px);
+  font-weight: 400;
   line-height: 1.05;
   font-family: var(--font-secondary);
   text-transform: uppercase;
@@ -11640,6 +11764,16 @@ body.page-visit-activity .header-logo {
   overflow: hidden;
 }
 
+.visit-activity-experience__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(120, 97, 54, 0.28);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
 .visit-activity-experience__image {
   display: block;
   width: 100%;
@@ -11647,27 +11781,148 @@ body.page-visit-activity .header-logo {
   object-fit: cover;
 }
 
-.visit-activity-experience__overlay {
+.visit-activity-experience__arrow {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(72%, 126px);
-  min-height: 96px;
-  padding: 18px 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(232, 232, 232, 0.96);
-  color: #2d2b28;
-  text-align: center;
+  z-index: 1;
+  display: grid;
+  width: 72px;
+  height: 72px;
+  place-items: center;
+  border-radius: 50%;
+  background: #827043;
+  color: #f6f0e4;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.85);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.visit-activity-experience__overlay p {
+.visit-activity-experience__arrow svg {
+  width: 32px;
+  height: 32px;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.25;
+}
+
+.visit-activity-experience__trigger {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.visit-activity-experience__card:hover .visit-activity-experience__media::after,
+.visit-activity-experience__card:focus-within .visit-activity-experience__media::after {
+  opacity: 1;
+}
+
+.visit-activity-experience__card:hover .visit-activity-experience__arrow,
+.visit-activity-experience__card:focus-within .visit-activity-experience__arrow {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.visit-activity-experience__trigger:focus-visible {
+  outline: 2px solid #f8f2e5;
+  outline-offset: 4px;
+}
+
+.has-visit-experience-modal {
+  overflow: hidden;
+}
+
+.visit-experience-modal[hidden] {
+  display: none;
+}
+
+.visit-experience-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 3100;
+}
+
+.visit-experience-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(34, 25, 12, 0.56);
+  backdrop-filter: blur(4px);
+}
+
+.visit-experience-modal__dialog {
+  position: relative;
+  width: min(680px, calc(100% - 32px));
+  max-height: calc(100vh - 32px);
+  margin: 16px auto;
+  overflow-y: auto;
+  padding: 68px 86px 78px;
+  background: #fbf7ef;
+  box-shadow: 0 28px 60px rgba(42, 31, 16, 0.24);
+  color: #806a3d;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.visit-experience-modal.is-visible .visit-experience-modal__dialog {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.visit-experience-modal__close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  background: transparent;
+  color: #806a3d;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.visit-experience-modal__close:focus-visible {
+  outline: 2px solid #806a3d;
+  outline-offset: 2px;
+}
+
+.visit-experience-modal__dialog h2 {
+  margin: 0 44px 26px 0;
+  color: #806a3d;
+  font-family: var(--font-title);
+  font-size: clamp(24px, 3.5vw, 40px);
+  font-weight: 400;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.visit-experience-modal__text {
+  color: #806a3d;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.visit-experience-modal__text p {
   margin: 0;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.35;
+}
+
+.visit-experience-modal__text p + p {
+  margin-top: 18px;
+}
+
+.visit-experience-modal__prompt {
+  margin: 38px 0 0;
+  color: #806a3d;
+  font-family: var(--font-main);
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .visit-activity-reviews {
