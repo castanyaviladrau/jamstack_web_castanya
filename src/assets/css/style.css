@@ -3453,14 +3453,11 @@ body.home .nav-item.highlight-shop a {
   margin: 0 auto;
 }
 
-.visits-montseny-story__row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.86fr);
-  align-items: stretch;
-}
-
+.visits-montseny-story__row,
 .visits-montseny-story__row--reverse {
-  grid-template-columns: minmax(320px, 0.86fr) minmax(0, 1fr);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
 }
 
 .visits-montseny-story__media {
@@ -11529,7 +11526,7 @@ body.page-visit-activity .header-logo {
 
 .visit-activity-pricing__row {
   display: grid;
-  grid-template-columns: 24px minmax(0, 1fr);
+  grid-template-columns: 76px minmax(0, 1fr);
   align-items: center;
   gap: 18px;
   padding: 8px 0;
@@ -11538,6 +11535,7 @@ body.page-visit-activity .header-logo {
 
 .visit-activity-pricing__row span {
   justify-self: start;
+  white-space: nowrap;
 }
 
 .visit-activity-pricing__row strong {

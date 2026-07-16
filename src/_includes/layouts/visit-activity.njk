@@ -165,7 +165,7 @@
         <section class="visit-activity-body unified-bg">
           <div class="visit-activity-body__inner">
             <div class="visit-activity-body__main">
-              <details class="visit-activity-accordion" open>
+              <details class="visit-activity-accordion">
                 <summary class="block_heavy_content_style">DESCRIPCIO GENERAL</summary>
                 <div class="visit-activity-accordion__content block_heavy_content_style">
                   {% if overviewIntro %}
@@ -175,7 +175,7 @@
                 </div>
               </details>
 
-              <details class="visit-activity-accordion" open>
+              <details class="visit-activity-accordion">
                 <summary class="block_heavy_content_style">SERVEIS INCLOSOS</summary>
                 <div class="visit-activity-accordion__content prose block_heavy_content_style">
                   {{ includedServices | markdownify | safe }}
@@ -240,7 +240,7 @@
                 <div class="visit-activity-pricing">
                   {% for item in pricing %}
                   <div class="visit-activity-pricing__row">
-                    <span class="block_heavy_content_style">{{ item.group }}</span>
+                    <span class="block_heavy_content_style">{{ item.group }} persones</span>
                     <strong class="block_title_style">{{ item.price }}</strong>
                   </div>
                   {% endfor %}
