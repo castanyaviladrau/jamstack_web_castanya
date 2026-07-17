@@ -2,438 +2,438 @@
   "list": [
     {
       "slug": "castanya-al-brandi-extra",
-      "name": "\"Castanya al brandi extra\"",
+      "name": "Castanya al brandi extra",
       "currency": "EUR",
-      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "image": "/assets/images/products/pending-product-image.svg",
       "variants": [
         {
-          "sku": "\"br010\"",
-          "label": "\"Pot de 300 g\"",
+          "sku": "br010",
+          "label": "Pot de 300 g",
           "price": 8.09
         }
       ]
     },
     {
       "slug": "castanya-en-almivar",
-      "name": "\"Castanya en almívar\"",
+      "name": "Castanya en almívar",
       "currency": "EUR",
-      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "image": "/assets/images/products/pending-product-image.svg",
       "variants": [
         {
-          "sku": "\"ca010\"",
-          "label": "\"Pot de 350 g\"",
+          "sku": "ca010",
+          "label": "Pot de 350 g",
           "price": 7.6
         }
       ]
     },
     {
       "slug": "castanya-pilonga-deshidratada",
-      "name": "\"Castanya pilonga deshidratada\"",
+      "name": "Castanya pilonga deshidratada",
       "currency": "EUR",
-      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "image": "/assets/images/products/pending-product-image.svg",
       "variants": [
         {
-          "sku": "\"se010\"",
-          "label": "\"Bossa de 200 g\"",
+          "sku": "se010",
+          "label": "Bossa de 200 g",
           "price": 4.2
         },
         {
-          "sku": "\"se0101\"",
-          "label": "\"Bossa d’1 kg\"",
+          "sku": "se0101",
+          "label": "Bossa d’1 kg",
           "price": 19
         }
       ]
     },
     {
       "slug": "castanya-torrada",
-      "name": "\"Castanya torrada\"",
+      "name": "Castanya torrada",
       "currency": "EUR",
-      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "image": "/assets/images/products/pending-product-image.svg",
       "variants": [
         {
-          "sku": "\"ct010\"",
-          "label": "\"Bossa de 150 g\"",
+          "sku": "ct010",
+          "label": "Bossa de 150 g",
           "price": 5.7
         }
       ]
     },
     {
       "slug": "cervesa-de-castanya",
-      "name": "\"Cervesa de castanya\"",
+      "name": "Cervesa de castanya",
       "currency": "EUR",
-      "image": "\"/assets/images/products/cervesa-de-castanya.jpeg\"",
+      "image": "/assets/images/products/cervesa-de-castanya.jpeg",
       "variants": [
         {
-          "sku": "\"ce013\"",
-          "label": "\"Ampolla de 33 cl · 5,1% vol.\"",
+          "sku": "ce013",
+          "label": "Ampolla de 33 cl · 5,1% vol.",
           "price": 4.01
         }
       ]
     },
     {
       "slug": "cervesa-de-castanya-sense-alcohol",
-      "name": "\"Cervesa de castanya sense alcohol\"",
+      "name": "Cervesa de castanya sense alcohol",
       "currency": "EUR",
-      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "image": "/assets/images/products/pending-product-image.svg",
       "variants": [
         {
-          "sku": "\"ce014\"",
-          "label": "\"Ampolla de 33 cl · 0,6% vol.\"",
+          "sku": "ce014",
+          "label": "Ampolla de 33 cl · 0,6% vol.",
           "price": 4.1
         }
       ]
     },
     {
       "slug": "cervesa-torrent-sureda",
-      "name": "\"Cervesa Torrent “Sureda”\"",
+      "name": "Cervesa Torrent “Sureda”",
       "currency": "EUR",
-      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "image": "/assets/images/products/pending-product-image.svg",
       "variants": [
         {
-          "sku": "\"ce010\"",
-          "label": "\"Cervesa Torrent “Sureda”\"",
+          "sku": "ce010",
+          "label": "Cervesa Torrent “Sureda”",
           "price": 16.5
         }
       ]
     },
     {
       "slug": "crema-de-castanya",
-      "name": "\"Crema de castanya\"",
+      "name": "Crema de castanya",
       "currency": "EUR",
-      "image": "\"/assets/images/products/crema-de-castanya.jpeg\"",
+      "image": "/assets/images/products/crema-de-castanya.jpeg",
       "variants": [
         {
-          "sku": "\"cc010\"",
-          "label": "\"Pot de 230 g\"",
+          "sku": "cc010",
+          "label": "Pot de 230 g",
           "price": 6
         }
       ]
     },
     {
       "slug": "crema-de-castanya-i-carbassa",
-      "name": "\"Crema de castanya i carbassa\"",
+      "name": "Crema de castanya i carbassa",
       "currency": "EUR",
-      "image": "\"/assets/images/products/crema-de-castanya-i-carbassa.jpeg\"",
+      "image": "/assets/images/products/crema-de-castanya-i-carbassa.jpeg",
       "variants": [
         {
-          "sku": "\"cb010\"",
-          "label": "\"Pot de vidre de 500 ml · dues racions\"",
+          "sku": "cb010",
+          "label": "Pot de vidre de 500 ml · dues racions",
           "price": 7.1
         }
       ]
     },
     {
       "slug": "farina-de-castanya",
-      "name": "\"Farina de castanya\"",
+      "name": "Farina de castanya",
       "currency": "EUR",
-      "image": "\"/assets/images/products/farina-de-castanya.jpeg\"",
+      "image": "/assets/images/products/farina-de-castanya.jpeg",
       "variants": [
         {
-          "sku": "\"fa010\"",
-          "label": "\"Bosseta de 200 g\"",
+          "sku": "fa010",
+          "label": "Bosseta de 200 g",
           "price": 4.2
         },
         {
-          "sku": "\"fa012\"",
-          "label": "\"Bossa d’1 kg\"",
+          "sku": "fa012",
+          "label": "Bossa d’1 kg",
           "price": 19
         }
       ]
     },
     {
       "slug": "flocs-de-castanya",
-      "name": "\"Flocs de castanya\"",
+      "name": "Flocs de castanya",
       "currency": "EUR",
-      "image": "\"/assets/images/products/flocs-de-castanya.jpeg\"",
+      "image": "/assets/images/products/flocs-de-castanya.jpeg",
       "variants": [
         {
-          "sku": "\"888fc010\"",
-          "label": "\"Bossa de 150 g\"",
+          "sku": "888fc010",
+          "label": "Bossa de 150 g",
           "price": 4.3
         },
         {
-          "sku": "\"888fc011\"",
-          "label": "\"Bossa de 500 g\"",
+          "sku": "888fc011",
+          "label": "Bossa de 500 g",
           "price": 16
         }
       ]
     },
     {
       "slug": "formatge-cremos-de-castanya",
-      "name": "\"Formatge cremós de castanya\"",
+      "name": "Formatge cremós de castanya",
       "currency": "EUR",
-      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "image": "/assets/images/products/pending-product-image.svg",
       "variants": [
         {
-          "sku": "\"fc010\"",
-          "label": "\"Formatge sencer\"",
+          "sku": "fc010",
+          "label": "Formatge sencer",
           "price": 21
         }
       ]
     },
     {
       "slug": "formatge-curat-amb-castanya",
-      "name": "\"Formatge curat amb castanya\"",
+      "name": "Formatge curat amb castanya",
       "currency": "EUR",
-      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "image": "/assets/images/products/pending-product-image.svg",
       "variants": [
         {
-          "sku": "\"fq010\"",
-          "label": "\"Formatge sencer\"",
+          "sku": "fq010",
+          "label": "Formatge sencer",
           "price": 20.5
         }
       ]
     },
     {
       "slug": "licor-de-castanya",
-      "name": "\"Licor de castanya\"",
+      "name": "Licor de castanya",
       "currency": "EUR",
-      "image": "\"/assets/images/products/licor-de-castanya.jpeg\"",
+      "image": "/assets/images/products/licor-de-castanya.jpeg",
       "variants": [
         {
-          "sku": "\"li010\"",
-          "label": "\"Ampolla de 50 cl · 20% vol.\"",
+          "sku": "li010",
+          "label": "Ampolla de 50 cl · 20% vol.",
           "price": 21.01
         }
       ]
     },
     {
       "slug": "lot-begudes-del-montseny",
-      "name": "\"Lot Begudes del Montseny\"",
+      "name": "Lot Begudes del Montseny",
       "currency": "EUR",
-      "image": "\"/assets/images/products/packs/lot-begudes-del-montseny.png\"",
+      "image": "/assets/images/products/packs/lot-begudes-del-montseny.png",
       "variants": [
         {
           "sku": "lot-begudes-01",
-          "label": "\"Lot de begudes artesanes\"",
+          "label": "Lot de begudes artesanes",
           "price": 29
         }
       ]
     },
     {
       "slug": "lot-castanyes-essencials",
-      "name": "\"Lot Castanyes Essencials\"",
+      "name": "Lot Castanyes Essencials",
       "currency": "EUR",
-      "image": "\"/assets/images/products/packs/lot-castanyes-essencials.png\"",
+      "image": "/assets/images/products/packs/lot-castanyes-essencials.png",
       "variants": [
         {
           "sku": "lot-castanyes-01",
-          "label": "\"Lot de 3 elaborats de castanya\"",
+          "label": "Lot de 3 elaborats de castanya",
           "price": 18
         }
       ]
     },
     {
       "slug": "lot-cremes-del-bosc",
-      "name": "\"Lot Cremes del Bosc\"",
+      "name": "Lot Cremes del Bosc",
       "currency": "EUR",
-      "image": "\"/assets/images/products/packs/lot-cremes-del-bosc.png\"",
+      "image": "/assets/images/products/packs/lot-cremes-del-bosc.png",
       "variants": [
         {
           "sku": "lot-cremes-01",
-          "label": "\"Lot de cremes de castanya\"",
+          "label": "Lot de cremes de castanya",
           "price": 21
         }
       ]
     },
     {
       "slug": "lot-dolcos-de-castanya",
-      "name": "\"Lot Dolç de Castanya\"",
+      "name": "Lot Dolç de Castanya",
       "currency": "EUR",
-      "image": "\"/assets/images/products/packs/lot-dolcos-de-castanya.png\"",
+      "image": "/assets/images/products/packs/lot-dolcos-de-castanya.png",
       "variants": [
         {
           "sku": "lot-dolcos-01",
-          "label": "\"Lot dolç de productes de castanya\"",
+          "label": "Lot dolç de productes de castanya",
           "price": 27
         }
       ]
     },
     {
       "slug": "lot-essencia-crema-infusio-i-melmelada",
-      "name": "\"Lot Essència: crema, infusió i melmelada\"",
+      "name": "Lot Essència: crema, infusió i melmelada",
       "currency": "EUR",
-      "image": "\"/assets/images/gallery/packs.png\"",
+      "image": "/assets/images/gallery/packs.png",
       "variants": [
         {
-          "sku": "\"lot-5\"",
-          "label": "\"Lot de 3 productes\"",
+          "sku": "lot-5",
+          "label": "Lot de 3 productes",
           "price": 19
         }
       ]
     },
     {
       "slug": "lot-mels-del-territori",
-      "name": "\"Lot Mels del Territori\"",
+      "name": "Lot Mels del Territori",
       "currency": "EUR",
-      "image": "\"/assets/images/products/packs/lot-mels-del-territori.png\"",
+      "image": "/assets/images/products/packs/lot-mels-del-territori.png",
       "variants": [
         {
           "sku": "lot-mels-01",
-          "label": "\"Lot de mels del territori\"",
+          "label": "Lot de mels del territori",
           "price": 24
         }
       ]
     },
     {
       "slug": "lot-que-castanyazo",
-      "name": "\"Lot “Que Castanyazo!”\"",
+      "name": "Lot “Que Castanyazo!”",
       "currency": "EUR",
-      "image": "\"/assets/images/gallery/packs.png\"",
+      "image": "/assets/images/gallery/packs.png",
       "variants": [
         {
-          "sku": "\"lot-1\"",
-          "label": "\"Lot de 5 productes\"",
+          "sku": "lot-1",
+          "label": "Lot de 5 productes",
           "price": 22
         }
       ]
     },
     {
       "slug": "lot-sabors-del-montseny",
-      "name": "\"Lot Sabors del Montseny\"",
+      "name": "Lot Sabors del Montseny",
       "currency": "EUR",
-      "image": "\"/assets/images/products/packs/lot-sabors-del-montseny.png\"",
+      "image": "/assets/images/products/packs/lot-sabors-del-montseny.png",
       "variants": [
         {
           "sku": "lot-sabors-01",
-          "label": "\"Lot de sabors del Montseny\"",
+          "label": "Lot de sabors del Montseny",
           "price": 34
         }
       ]
     },
     {
       "slug": "marron-glace",
-      "name": "\"Marron glacé\"",
+      "name": "Marron glacé",
       "currency": "EUR",
-      "image": "\"/assets/images/products/marron-glace.jpeg\"",
+      "image": "/assets/images/products/marron-glace.jpeg",
       "variants": [
         {
-          "sku": "\"mg010\"",
-          "label": "\"2 unitats\"",
+          "sku": "mg010",
+          "label": "2 unitats",
           "price": 3.6
         },
         {
-          "sku": "\"mg011\"",
-          "label": "\"7 unitats · 200 g\"",
+          "sku": "mg011",
+          "label": "7 unitats · 200 g",
           "price": 12.5
         },
         {
-          "sku": "\"mg012\"",
-          "label": "\"Pot de 42 unitats · 1 kg\"",
+          "sku": "mg012",
+          "label": "Pot de 42 unitats · 1 kg",
           "price": 65
         }
       ]
     },
     {
       "slug": "mel-de-bruc",
-      "name": "\"Mel de bruc\"",
+      "name": "Mel de bruc",
       "currency": "EUR",
-      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "image": "/assets/images/products/pending-product-image.svg",
       "variants": [
         {
-          "sku": "\"me020\"",
-          "label": "\"Pot de 500 g\"",
+          "sku": "me020",
+          "label": "Pot de 500 g",
           "price": 8.9
         }
       ]
     },
     {
       "slug": "mel-de-castanyer",
-      "name": "\"Mel de castanyer\"",
+      "name": "Mel de castanyer",
       "currency": "EUR",
-      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "image": "/assets/images/products/pending-product-image.svg",
       "variants": [
         {
-          "sku": "\"me011\"",
-          "label": "\"Pot de 50 g\"",
+          "sku": "me011",
+          "label": "Pot de 50 g",
           "price": 1.9
         },
         {
-          "sku": "\"me010\"",
-          "label": "\"Pot de 500 g\"",
+          "sku": "me010",
+          "label": "Pot de 500 g",
           "price": 8.9
         }
       ]
     },
     {
       "slug": "mel-de-mil-flors",
-      "name": "\"Mel de mil flors\"",
+      "name": "Mel de mil flors",
       "currency": "EUR",
-      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "image": "/assets/images/products/pending-product-image.svg",
       "variants": [
         {
-          "sku": "\"me040\"",
-          "label": "\"Pot de 500 g\"",
+          "sku": "me040",
+          "label": "Pot de 500 g",
           "price": 8.9
         }
       ]
     },
     {
       "slug": "mel-de-romani",
-      "name": "\"Mel de romaní\"",
+      "name": "Mel de romaní",
       "currency": "EUR",
-      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "image": "/assets/images/products/pending-product-image.svg",
       "variants": [
         {
-          "sku": "\"me030\"",
-          "label": "\"Pot de 500 g\"",
+          "sku": "me030",
+          "label": "Pot de 500 g",
           "price": 8.9
         }
       ]
     },
     {
       "slug": "melmelada-de-castanya",
-      "name": "\"Melmelada de castanya\"",
+      "name": "Melmelada de castanya",
       "currency": "EUR",
-      "image": "\"/assets/images/products/pending-product-image.svg\"",
+      "image": "/assets/images/products/pending-product-image.svg",
       "variants": [
         {
-          "sku": "\"ml010\"",
-          "label": "\"Pot de 120 g\"",
+          "sku": "ml010",
+          "label": "Pot de 120 g",
           "price": 6.11
         },
         {
-          "sku": "\"ml011\"",
-          "label": "\"Pot de 275 g\"",
+          "sku": "ml011",
+          "label": "Pot de 275 g",
           "price": 6.11
         }
       ]
     },
     {
       "slug": "melmelada-de-castanya-i-gerds",
-      "name": "\"Melmelada de castanya i gerds\"",
+      "name": "Melmelada de castanya i gerds",
       "currency": "EUR",
-      "image": "\"/assets/images/products/melmelada-de-castanya-i-gerds.jpeg\"",
+      "image": "/assets/images/products/melmelada-de-castanya-i-gerds.jpeg",
       "variants": [
         {
-          "sku": "\"melgerds22\"",
-          "label": "\"Mida gran · 275 g\"",
+          "sku": "melgerds22",
+          "label": "Mida gran · 275 g",
           "price": 9.8
         }
       ]
     },
     {
       "slug": "moscatell",
-      "name": "\"Moscatell\"",
+      "name": "Moscatell",
       "currency": "EUR",
-      "image": "\"/assets/images/products/moscatell.jpeg\"",
+      "image": "/assets/images/products/moscatell.jpeg",
       "variants": [
         {
-          "sku": "\"mo010\"",
-          "label": "\"Ampolla de 75 cl · 15% vol.\"",
+          "sku": "mo010",
+          "label": "Ampolla de 75 cl · 15% vol.",
           "price": 9
         }
       ]
     },
     {
       "slug": "oli-de-castanya",
-      "name": "\"Oli de castanya\"",
+      "name": "Oli de castanya",
       "currency": "EUR",
-      "image": "\"/assets/images/products/oli-de-castanya.jpeg\"",
+      "image": "/assets/images/products/oli-de-castanya.jpeg",
       "variants": [
         {
-          "sku": "\"ol010\"",
-          "label": "\"Ampolla de 100 ml\"",
+          "sku": "ol010",
+          "label": "Ampolla de 100 ml",
           "price": 7
         }
       ]

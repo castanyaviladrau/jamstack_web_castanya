@@ -22,12 +22,16 @@ function parseScalar(value) {
     return '';
   }
 
-  const numberValue = Number(raw);
-  if (Number.isFinite(numberValue) && String(numberValue) === raw) {
+  const unquoted = /^"(.*)"$/.test(raw) || /^'(.*)'$/.test(raw)
+    ? raw.slice(1, -1)
+    : raw;
+
+  const numberValue = Number(unquoted);
+  if (Number.isFinite(numberValue) && String(numberValue) === unquoted) {
     return numberValue;
   }
 
-  return raw;
+  return unquoted;
 }
 
 function parseProductFrontmatter(frontmatter) {
