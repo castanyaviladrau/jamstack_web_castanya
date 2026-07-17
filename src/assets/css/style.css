@@ -1372,12 +1372,12 @@ body.page-blog .content-wrap {
 }
 
 .blog-hero-copy {
-  width: min(100%, 490px);
+  width: min(100%, 620px);
   margin: 0 auto;
 }
 
 .blog-hero-title {
-  max-width: 470px;
+  max-width: 600px;
   margin: 0 auto 8px;
   font-family: var(--font-main);
   font-size: clamp(22px, 2.1vw, 31px);
@@ -1388,7 +1388,7 @@ body.page-blog .content-wrap {
 }
 
 .blog-hero-subtitle {
-  max-width: 430px;
+  max-width: 560px;
   margin: 0 auto 26px;
   font-size: 13px;
   line-height: 1.24;
@@ -1491,35 +1491,45 @@ body.page-blog .content-wrap {
 
 .featured-news-date {
   margin-bottom: 12px;
-  font-size: 12px;
-  font-weight: 600;
+  font-family: var(--font-main);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
 .featured-news-title {
-  margin: 0 0 14px;
+  margin: 0 0 16px;
   font-family: var(--font-secondary);
-  font-size: clamp(30px, 3.2vw, 46px);
-  line-height: 0.95;
+  font-size: clamp(20px, 2.15vw, 30px);
+  line-height: 1.04;
   text-transform: uppercase;
 }
 
 .featured-news-excerpt {
-  max-width: 260px;
+  max-width: 30ch;
   margin: 0 auto 18px;
-  font-size: 13px;
-  line-height: 1.35;
+  font-family: var(--font-main);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.45;
   color: #7f6f4b;
 }
 
 .featured-news-meta {
-  font-size: 12px;
-  line-height: 1.4;
+  font-family: var(--font-main);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.45;
   color: #7f6f4b;
 }
 
 .featured-news-meta p {
-  margin: 0 0 14px;
+  margin: 0 0 12px;
+}
+
+.featured-news-meta strong {
+  font-weight: 700;
 }
 
 .featured-news-image-link {
@@ -1629,36 +1639,46 @@ body.page-blog .content-wrap {
 }
 
 .actualitat-card-date {
-  margin-bottom: 8px;
-  font-size: 11px;
-  font-weight: 600;
+  margin-bottom: 12px;
+  font-family: var(--font-main);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
 .actualitat-card-title {
-  margin: 0 0 14px;
+  margin: 0 0 16px;
   font-family: var(--font-secondary);
-  font-size: clamp(27px, 2.7vw, 38px);
-  line-height: 0.95;
+  font-size: clamp(20px, 2.15vw, 30px);
+  line-height: 1.04;
   text-transform: uppercase;
 }
 
 .actualitat-card-excerpt {
-  max-width: 250px;
-  margin: 0 auto 16px;
-  font-size: 11px;
-  line-height: 1.35;
+  max-width: 30ch;
+  margin: 0 auto 18px;
+  font-family: var(--font-main);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.45;
   color: #7f6f4b;
 }
 
 .actualitat-card-meta {
-  font-size: 11px;
-  line-height: 1.4;
+  font-family: var(--font-main);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.45;
   color: #7f6f4b;
 }
 
 .actualitat-card-meta p {
-  margin: 0 0 10px;
+  margin: 0 0 12px;
+}
+
+.actualitat-card-meta strong {
+  font-weight: 700;
 }
 
 .actualitat-pagination {
@@ -1680,7 +1700,8 @@ body.page-blog .content-wrap {
 .actualitat-load-more {
   display: flex;
   justify-content: center;
-  margin-bottom: 0;
+  margin-bottom: 40px;
+  background-color: #f4f1e6;
 }
 
 .actualitat-load-more button {
@@ -1694,63 +1715,6 @@ body.page-blog .content-wrap {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-}
-
-.actualitat-newsletter {
-  background-color: #af9860;
-  color: #f5f0e8;
-  padding: 45px 0 44px;
-}
-
-.actualitat-newsletter-inner {
-  display: grid;
-  grid-template-columns: minmax(220px, 380px) minmax(0, 1fr);
-  gap: 64px;
-  align-items: center;
-}
-
-.actualitat-newsletter-copy h2 {
-  margin: 0 0 8px;
-  font-family: var(--font-secondary);
-  font-size: clamp(26px, 2.6vw, 40px);
-  line-height: 1;
-  text-transform: uppercase;
-}
-
-.actualitat-newsletter-copy p {
-  max-width: 360px;
-  margin: 0;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1.35;
-}
-
-.actualitat-newsletter-form {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 8px;
-  align-items: center;
-}
-
-.actualitat-newsletter-form input {
-  width: 100%;
-  min-height: 42px;
-  border: 0;
-  border-radius: 999px;
-  background-color: #f4f1e6;
-  padding: 8px 20px;
-}
-
-.actualitat-newsletter-form button {
-  min-height: 42px;
-  border: 0;
-  border-radius: 999px;
-  background-color: #8b7441;
-  color: #f5f0e8;
-  padding: 8px 28px;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
 }
 
 @media (max-width: 900px) {
@@ -1822,18 +1786,6 @@ body.page-blog .content-wrap {
     padding-right: 18px;
   }
 
-  .actualitat-newsletter-inner,
-  .actualitat-newsletter-form {
-    grid-template-columns: 1fr;
-  }
-
-  .actualitat-newsletter-inner {
-    gap: 24px;
-  }
-
-  .actualitat-newsletter-form button {
-    justify-self: start;
-  }
 }
 
 .news-card-content {
@@ -2076,9 +2028,14 @@ body.page-blog .content-wrap {
 }
 
 .actualitat-post__content {
-  color: #4f442f;
-  font-size: 13px;
-  line-height: 1.45;
+  color: #7b6b43;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.actualitat-post__content h2 {
+  margin-top: 18px;
+  font-weight: 700;
 }
 
 .actualitat-post__content img {
@@ -2107,10 +2064,11 @@ body.page-blog .content-wrap {
 
 .actualitat-post__content ul {
   padding-left: 18px;
+  list-style: disc;
 }
 
-.actualitat-post__content li {
-  margin-bottom: 10px;
+.actualitat-post__content li + li {
+  margin-top: 8px;
 }
 
 .actualitat-post__quote {
@@ -4333,7 +4291,7 @@ body.home .nav-item.highlight-shop a {
 
 .professionals-inspiration-recipes__header {
   position: relative;
-  max-width: 760px;
+  max-width: none;
   margin: 0 auto 44px;
   text-align: center;
 }
@@ -4907,6 +4865,7 @@ body.home .home-section-description {
   width: 100%;
   margin: 0;
   padding: 0;
+  background-color: #f4f1e6;
 }
 
 .projecte-page__hero {
@@ -4949,18 +4908,19 @@ body.home .home-section-description {
   letter-spacing: 0.26em;
 }
 
-.projecte-page__hero-title,
-.projecte-page__heading {
-  font-family: var(--font-slider-title);
-  color: #8f7240;
-  text-transform: uppercase;
-}
-
 .projecte-page__hero-title {
+  font-family: var(--font-slider-title);
+  color: #f5f0e8;
+  text-transform: uppercase;
   max-width: 720px;
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1.05;
-  color: #f5f0e8;
+}
+
+.projecte-page__heading {
+  font-family: var(--font-title);
+  color: #8b7445;
+  text-transform: uppercase;
 }
 
 .projecte-page__hero-copy {
@@ -4971,22 +4931,27 @@ body.home .home-section-description {
 }
 
 .projecte-page__grid {
+  max-width: 1160px;
+  margin: 0 auto;
+  margin-top: 72px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .projecte-page__panel {
-  min-height: 520px;
+  min-height: 620px;
 }
 
 .projecte-page__panel--image {
   position: relative;
   overflow: hidden;
+  background: #ddd6c5;
 }
 
 .projecte-page__image {
   width: 100%;
   height: 100%;
+  min-height: 620px;
   display: block;
   object-fit: cover;
 }
@@ -4997,24 +4962,24 @@ body.home .home-section-description {
   justify-content: center;
   gap: 22px;
   padding: clamp(38px, 5vw, 84px);
-  background: #f3ede2;
+  background: #f4f1e6;
   text-align: center;
 }
 
 .projecte-page__heading {
   max-width: 420px;
   margin: 0 auto;
-  font-size: clamp(1.9rem, 3vw, 2.7rem);
-  line-height: 1.08;
+  font-size: 30px;
+  line-height: 1.04;
 }
 
 .projecte-page__panel--text p {
-  max-width: 470px;
+  max-width: 420px;
   margin: 0 auto;
   font-family: var(--font-main);
-  font-size: 1.12rem;
-  line-height: 1.55;
-  color: #5a4f40;
+  font-size: 17px;
+  line-height: 1.35;
+  color: #8b7445;
 }
 
 .projecte-page__panel--captioned {
@@ -5123,7 +5088,7 @@ body.home .home-section-description {
   max-width: 980px;
   margin: 0 auto;
   text-align: center;
-  color: #f8f4ea;
+  color: #f5f0e8;
 }
 
 .projecte-feature__content--slider .projecte-feature__text {
@@ -5166,18 +5131,19 @@ body.home .home-section-description {
 
 .projecte-feature__title {
   margin: 0 0 18px;
-  font-family: var(--font-slider-title);
-  font-size: clamp(2.2rem, 4vw, 3.8rem);
-  line-height: 1.02;
+  font-family: var(--font-title);
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.1;
   text-transform: uppercase;
 }
 
 .projecte-feature__copy {
-  max-width: 780px;
+  max-width: 760px;
   margin: 0 auto;
   font-family: var(--font-main);
-  font-size: 1.22rem;
-  line-height: 1.45;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 .projecte-feature__copy + .projecte-feature__copy {
@@ -5268,11 +5234,12 @@ body.home .home-section-description {
   }
 
   .projecte-page__grid {
+    margin-top: 56px;
     grid-template-columns: minmax(0, 1fr);
   }
 
   .projecte-page__panel--image {
-    min-height: 360px;
+    min-height: 420px;
   }
 
   .projecte-page__caption-card {
@@ -5595,7 +5562,7 @@ body.home .home-section-description {
 }
 
 .gastronomic-nutrition-sections {
-  padding: 8px 12px 90px;
+  padding: 72px 12px 90px;
 }
 
 .gastronomic-nutrition-grid {
@@ -5658,17 +5625,18 @@ body.home .home-section-description {
 
 .gastronomic-nutrition-panel__title {
   margin: 0;
-  font-family: var(--font-secondary);
-  font-size: clamp(28px, 3vw, 42px);
+  font-family: var(--font-title);
+  font-size: 30px;
   font-weight: 400;
-  line-height: 1.02;
+  line-height: 1.04;
   text-transform: uppercase;
 }
 
 .gastronomic-nutrition-panel__text {
   margin: 22px 0 0;
-  font-size: 18px;
-  line-height: 1.55;
+  font-family: var(--font-secondary);
+  font-size: 17px;
+  line-height: 1.35;
 }
 
 .gastronomic-nutrition-chart {
@@ -5711,7 +5679,7 @@ body.home .home-section-description {
 }
 
 .gastronomic-sensory__banner-overlay {
-  background: rgba(48, 38, 17, 0.32);
+  background: rgba(55, 52, 41, 0.34);
 }
 
 .gastronomic-sensory__banner-content {
@@ -5719,29 +5687,35 @@ body.home .home-section-description {
   z-index: 1;
   display: flex;
   min-height: var(--section-banner-min-height);
+  max-width: 980px;
+  margin: 0 auto;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 42px 24px;
+  padding: 60px 28px;
   color: #f5f0e8;
   text-align: center;
 }
 
 .gastronomic-sensory__banner-title {
   margin: 0;
+  max-width: 700px;
   font-family: var(--font-title);
-  font-size: clamp(32px, 4vw, 56px);
+  font-size: clamp(30px, 3vw, 40px);
   font-weight: 400;
-  line-height: 1.05;
+  line-height: 1.08;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
 .gastronomic-sensory__banner-text {
-  max-width: 760px;
-  margin: 18px auto 0;
+  max-width: 700px;
+  margin: 14px auto 30px;
   font-family: var(--font-main);
-  font-size: clamp(18px, 1.45vw, 24px);
-  line-height: 1.4;
+  font-size: clamp(16px, 1.35vw, 18px);
+  font-style: normal;
+  line-height: 1.55;
+  letter-spacing: 0;
 }
 
 .gastronomic-sensory__inner {
@@ -5759,24 +5733,28 @@ body.home .home-section-description {
 
 .gastronomic-sensory__title {
   margin: 0;
-  font-size: clamp(28px, 2.4vw, 38px);
-  font-family: "Copperplate Gothic Castanya", "Copperplate Gothic", serif;
+  font-size: clamp(26px, 2.3vw, 34px);
+  font-family: var(--font-main);
   font-weight: 700;
-  line-height: 1.14;
-  letter-spacing: 1.5px;
+  line-height: 1.15;
+  letter-spacing: 1.3px;
   text-transform: uppercase;
+  color: #8b7445;
 }
 
 .gastronomic-sensory__intro {
-  margin: 16px 0 0;
-  font-size: 17px;
+  max-width: 720px;
+  margin: 18px auto 34px;
+  font-family: var(--font-main);
+  font-size: clamp(16px, 1.35vw, 20px);
   line-height: 1.45;
+  color: #7b6b43;
 }
 
 .gastronomic-sensory__grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  gap: 4px;
 }
 
 .gastronomic-sensory-card {
@@ -5811,19 +5789,22 @@ body.home .home-section-description {
 }
 
 .gastronomic-sensory-card__title {
-  margin: 18px 0 0;
-  font-family: var(--font-secondary);
-  font-size: clamp(26px, 2.6vw, 38px);
+  margin: 24px 0 10px;
+  font-family: "PP Neue World", serif;
+  font-size: 30px;
   font-weight: 400;
-  line-height: 1.02;
+  line-height: 1.04;
   text-transform: uppercase;
+  color: #7b6b43;
 }
 
 .gastronomic-sensory-card__text {
-  max-width: 300px;
-  margin: 12px auto 0;
+  margin: 0 auto;
+  max-width: 320px;
+  font-family: "Gotham-Medium", "Gotham Medium", sans-serif;
   font-size: 17px;
-  line-height: 1.45;
+  line-height: 1.35;
+  color: #7b6b43;
 }
 
 .gastronomic-sensory__actions {
@@ -7058,7 +7039,7 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
   font-weight: 700;
   letter-spacing: 1.1px;
   text-transform: uppercase;
-  color: #81663d;
+  color: #8b7445;
 }
 
 .where-page__subtitle {
@@ -7066,7 +7047,7 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
   font-family: var(--font-main);
   font-size: 20px;
   line-height: 1.5;
-  color: #81663d;
+  color: #8b7445;
 }
 
 .where-page__locations {
@@ -7420,21 +7401,25 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
 }
 
 .where-sales-cta__title {
+  margin: 0;
   max-width: 700px;
   font-family: var(--font-title);
-  font-size: var(--type-banner-title-size);
+  font-size: clamp(30px, 3vw, 40px);
   font-weight: 400;
-  line-height: var(--type-banner-title-line-height);
+  line-height: 1.08;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
 .where-sales-cta__text {
-  max-width: 760px;
-  margin-top: 24px;
+  max-width: 700px;
+  margin-top: 14px;
   font-family: var(--font-main);
-  font-size: var(--type-banner-text-size);
-  font-weight: 600;
-  line-height: 1.5;
+  font-size: clamp(16px, 1.35vw, 18px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0;
 }
 
 .where-sales-cta__button {
@@ -7537,15 +7522,6 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
   .where-sales-cta__content {
     min-height: var(--section-banner-min-height-mobile);
     padding: 48px 22px;
-  }
-
-  .where-sales-cta__title {
-    font-size: clamp(36px, 10vw, 48px);
-    line-height: 1;
-  }
-
-  .where-sales-cta__text {
-    font-size: 17px;
   }
 
   .where-sales-cta__button {
@@ -7944,6 +7920,11 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
   overflow: hidden;
 }
 
+body.page-gastronomic-nutrition .professionals-value-feature__cta {
+  margin-top: 0;
+  min-height: var(--section-banner-min-height);
+}
+
 .professionals-value-feature__cta-image,
 .professionals-value-feature__cta-overlay,
 .professionals-value-feature__cta-content {
@@ -7979,7 +7960,6 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
 }
 
 .professionals-value-feature__cta-content {
-  position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -8072,7 +8052,7 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
 }
 
 .page-botiga .content-wrap {
-  background: #eee9df;
+  background: #f4f1e6;
 }
 
 .shop-page-hero {
@@ -8240,21 +8220,43 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
   position: relative;
   z-index: 1;
   padding: 72px 0 48px;
-  background: #f8f4ec;
+  background: #f4f1e6;
 }
 
 .shop-page-categories__header {
-  width: min(1120px, calc(100% - 40px));
+  width: min(1120px, calc(100% - 48px));
   margin: 0 auto 42px;
-  display: grid;
-  grid-template-columns: 48px minmax(0, 1fr) 48px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 24px;
   text-align: center;
 }
 
+.shop-page-categories__title-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
 .shop-page-categories__arrow {
-  justify-self: center;
+  width: 48px;
+  height: 48px;
+}
+
+.shop-page-categories__title-row .shop-page-categories__arrow {
+  position: absolute;
+}
+
+.shop-page-categories__title-row .shop-page-categories__arrow:first-child {
+  left: 20px;
+}
+
+.shop-page-categories__title-row .shop-page-categories__arrow:last-child {
+  right: 20px;
 }
 
 .shop-page-categories__scroller {
@@ -8424,30 +8426,30 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
 
 .shop-page-products__kicker {
   margin: 0 0 10px;
-  color: #8b7445;
-  font-size: 12px;
+  color: #7b6b43;
+  font-size: 16px;
   font-weight: 500;
   letter-spacing: 0.14em;
 }
 
 .shop-page-products__title {
   margin: 0;
-  color: #8b7445;
+  color: #7b6b43;
   font-family: "Copperplate Gothic Castanya", "Copperplate Gothic", serif;
   font-size: clamp(24px, 2.2vw, 32px);
   font-weight: 400;
   line-height: 1.08;
-  letter-spacing: 1.25px;
+  letter-spacing: 1.05px;
   text-transform: uppercase;
 }
 
 .shop-page-products__subtitle {
   margin: 7px 0 0;
-  color: #8b7445;
+  color: #7b6b43;
   font-family: var(--font-main);
-  font-size: clamp(15px, 1.15vw, 16px);
+  font-size: 18px !important;
   font-weight: 500;
-  line-height: 1.3;
+  line-height: 1.4;
 }
 
 .shop-page-products__arrow {
@@ -8558,9 +8560,20 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
   }
 
   .shop-page-categories__header {
-    grid-template-columns: 40px minmax(0, 1fr) 40px;
-    gap: 12px;
     margin-bottom: 28px;
+  }
+
+  .shop-page-categories__arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .shop-page-categories__title-row .shop-page-categories__arrow:first-child {
+    left: 12px;
+  }
+
+  .shop-page-categories__title-row .shop-page-categories__arrow:last-child {
+    right: 12px;
   }
 
   .shop-page-category-card {
@@ -8750,24 +8763,27 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
   width: min(1240px, calc(100% - 40px));
   margin: 0 auto;
   padding: 42px 0 72px;
-  background: #f3eee3;
+  background: #f4f1e6;
   text-align: center;
 }
 
 .shop-page-featured__header {
   width: min(1120px, calc(100% - 48px));
   margin: 0 auto 48px;
-  display: grid;
-  grid-template-columns: 48px minmax(0, 1fr) 48px;
-  align-items: center;
-  gap: 24px;
-  text-align: center;
-}
-
-.shop-page-featured__heading {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+}
+
+.shop-page-featured__title-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 
 .shop-page-featured__arrow {
@@ -8776,6 +8792,18 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
   border: 0;
   background: #8b7445;
   color: #f5f0e8;
+}
+
+.shop-page-featured__title-row .shop-page-featured__arrow {
+  position: absolute;
+}
+
+.shop-page-featured__title-row .shop-page-featured__arrow:first-child {
+  left: 20px;
+}
+
+.shop-page-featured__title-row .shop-page-featured__arrow:last-child {
+  right: 20px;
 }
 
 .shop-page-featured__scroller {
@@ -8889,13 +8917,19 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
   .shop-page-featured__header {
     width: calc(100% - 24px);
     margin-bottom: 30px;
-    grid-template-columns: 40px minmax(0, 1fr) 40px;
-    gap: 12px;
   }
 
   .shop-page-featured__arrow {
     width: 40px;
     height: 40px;
+  }
+
+  .shop-page-featured__title-row .shop-page-featured__arrow:first-child {
+    left: 12px;
+  }
+
+  .shop-page-featured__title-row .shop-page-featured__arrow:last-child {
+    right: 12px;
   }
 
   .shop-page-featured__scroller {
@@ -9232,12 +9266,39 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
 }
 
 .shop-page-gifts__header {
-  width: min(1040px, calc(100% - 40px));
+  width: min(1040px, calc(100% - 48px));
   margin: 0 auto 36px;
-  display: grid;
-  grid-template-columns: 44px minmax(0, 1fr) 44px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 28px;
+  text-align: center;
+}
+
+.shop-page-gifts__title-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.shop-page-gifts__arrow {
+  width: 48px;
+  height: 48px;
+}
+
+.shop-page-gifts__title-row .shop-page-gifts__arrow {
+  position: absolute;
+}
+
+.shop-page-gifts__title-row .shop-page-gifts__arrow:first-child {
+  left: 20px;
+}
+
+.shop-page-gifts__title-row .shop-page-gifts__arrow:last-child {
+  right: 20px;
 }
 
 .shop-page-gifts__scroller {
@@ -10001,7 +10062,7 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
 .shop-page-professionals {
   position: relative;
   width: 100%;
-  min-height: 280px;
+  min-height: var(--home-banner-min-height);
   margin: 0 auto;
   overflow: hidden;
   display: grid;
@@ -10028,7 +10089,7 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
 .shop-page-professionals__content {
   position: relative;
   z-index: 1;
-  width: min(820px, calc(100% - 40px));
+  width: min(1080px, calc(100% - 40px));
   padding: 40px 0;
 }
 
@@ -10036,7 +10097,7 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
   margin: 0;
   color: #f5f0e8;
   font-family: var(--font-title);
-  font-size: var(--type-banner-title-size);
+  font-size: clamp(40px, 4.1vw, 64px);
   font-weight: 400;
   line-height: var(--type-banner-title-line-height);
   text-transform: uppercase;
@@ -10100,9 +10161,17 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
     padding: 28px 24px 26px;
   }
 
-  .shop-page-gifts__header {
-    grid-template-columns: 1fr;
-    justify-items: center;
+  .shop-page-gifts__arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .shop-page-gifts__title-row .shop-page-gifts__arrow:first-child {
+    left: 12px;
+  }
+
+  .shop-page-gifts__title-row .shop-page-gifts__arrow:last-child {
+    right: 12px;
   }
 
   .shop-cart {
@@ -10164,7 +10233,7 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
   }
 
   .shop-page-professionals {
-    min-height: 300px;
+    min-height: var(--home-banner-min-height-mobile);
   }
 
   .shop-page-professionals__title {
@@ -10238,7 +10307,7 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
   }
 
   .gastronomic-nutrition-sections {
-    padding: 8px 12px 72px;
+    padding: 56px 12px 72px;
   }
 
   .gastronomic-nutrition-chart {
@@ -10253,6 +10322,10 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
   .gastronomic-sensory__banner-content,
   .footer-cta-section {
     min-height: var(--section-banner-min-height-mobile);
+  }
+
+  .gastronomic-sensory__banner-content {
+    padding: 44px 28px;
   }
 
   .gastronomic-sensory__inner {
@@ -10491,6 +10564,11 @@ body.home .actualitat-content-centered.block-content-style .home-section-descrip
 
   .professionals-value-feature__cta {
     margin-top: 58px;
+  }
+
+  body.page-gastronomic-nutrition .professionals-value-feature__cta {
+    margin-top: 0;
+    min-height: var(--section-banner-min-height-mobile);
   }
 
   .professionals-value-feature__cta-note {
@@ -12606,6 +12684,10 @@ body.internal.page-gastronomic-recipes {
     margin-top: 46px;
   }
 
+  body.page-gastronomic-nutrition .professionals-value-feature__cta {
+    margin-top: 0;
+  }
+
   .professionals-value-feature__cta-content {
     padding: 42px 20px 30px;
   }
@@ -12638,7 +12720,6 @@ body.internal.page-gastronomic-recipes {
 
 /* Align inner-page hero and intro typography with the homepage title/copy balance. */
 .projecte-page__hero-title,
-.projecte-page__heading,
 .fusta-hero__title,
 .visits-hero__title,
 .visits-montseny-hero__title,
@@ -12660,7 +12741,6 @@ body.internal.page-gastronomic-recipes {
 }
 
 .projecte-page__hero-title,
-.projecte-page__heading,
 .fusta-hero__title,
 .visits-hero__title,
 .visits-montseny-hero__title,
@@ -12690,7 +12770,6 @@ body.internal.page-gastronomic-recipes {
 }
 
 .projecte-page__hero-copy,
-.projecte-page__panel--text p,
 .fusta-hero__text,
 .visits-hero__text,
 .visits-montseny-hero__text,

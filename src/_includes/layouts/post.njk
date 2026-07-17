@@ -75,19 +75,7 @@ layout: base
   {% endfor %}
 </article>
 
-<section class="actualitat-newsletter" aria-labelledby="actualitat-post-newsletter-title">
-  <div class="container actualitat-newsletter-inner">
-    <div class="actualitat-newsletter-copy">
-      <h2 id="actualitat-post-newsletter-title">{{ pageContent.newsletter.title }}</h2>
-      <p>{{ pageContent.newsletter.text }}</p>
-    </div>
-    <form class="actualitat-newsletter-form">
-      <label class="sr-only" for="actualitat-post-newsletter-email">{{ pageContent.newsletter.inputLabel }}</label>
-      <input id="actualitat-post-newsletter-email" type="email" />
-      <button type="submit">{{ pageContent.newsletter.buttonLabel }}</button>
-    </form>
-  </div>
-</section>
+{% include "footer-newsletter-home.html" %}
 
 <script type="application/ld+json">
   {
