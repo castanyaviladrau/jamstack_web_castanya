@@ -38,7 +38,7 @@
     X-Frame-Options = "SAMEORIGIN"
     
     # Added CSP frame-ancestors to explicitly allow your site to frame itself
-    Content-Security-Policy = "frame-ancestors 'self' https://web-castanya.netlify.app;"
+    Content-Security-Policy = "frame-ancestors 'self' https://web-castanya.netlify.app https://castanyadeviladrau.cat https://www.castanyadeviladrau.cat;"
     
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
