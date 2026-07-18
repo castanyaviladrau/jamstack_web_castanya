@@ -30,7 +30,7 @@ footerVariant: home-newsletter
         <p class="blog-hero-subtitle block_title_content">{{ pageContent.hero.text }}</p>
 
         <div class="blog-tag-cloud" aria-label="Etiquetes destacades">
-          <span class="blog-tag-cloud-title">{{ pageContent.hero.tagsTitle }}</span>
+          <span class="blog-tag-cloud-title block_title_content">{{ pageContent.hero.tagsTitle }}</span>
           <div class="blog-tag-cloud-list">
             {% for tag in pageContent.hero.tags %}
             <a href="/blog/?topic={{ tag | slugify }}#news-list" class="filter-btn">{{ tag }}</a>
@@ -116,7 +116,7 @@ footerVariant: home-newsletter
   {% endif %}
 
   <div class="actualitat-filter-feedback" data-news-filter-feedback>
-    <p data-news-filter-status>Explora totes les notícies o tria un filtre.</p>
+    <p data-news-filter-status class="block_title_content">Explora totes les notícies o tria un filtre.</p>
     <button type="button" data-news-filter-reset hidden>{{ pageContent.filtersBar.resetLabel }}</button>
   </div>
   <p class="actualitat-filter-empty" data-news-filter-empty hidden>{{ pageContent.filtersBar.emptyLabel }}</p>
@@ -163,14 +163,14 @@ footerVariant: home-newsletter
     {% endfor %}
   </section>
 
-  <nav class="actualitat-pagination" aria-label="Paginació d'articles">
-    <span aria-hidden="true">&lsaquo;</span>
-    <span>1</span>
-    <span aria-hidden="true">&rsaquo;</span>
+  <nav class="actualitat-pagination" aria-label="Paginació d'articles" data-news-pagination>
+    <button type="button" class="actualitat-pagination__arrow" data-news-page-prev aria-label="Pàgina anterior">
+      <img src="/assets/images/pagination-arrow-left.svg" alt="" aria-hidden="true" />
+    </button>
+    <div class="actualitat-pagination__pages" data-news-page-list></div>
+    <button type="button" class="actualitat-pagination__arrow" data-news-page-next aria-label="Pàgina següent">
+      <img src="/assets/images/pagination-arrow-right.svg" alt="" aria-hidden="true" />
+    </button>
   </nav>
-
-  <div class="actualitat-load-more">
-    <button type="button">{{ pageContent.loadMoreLabel }}</button>
-  </div>
 </div>
 

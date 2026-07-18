@@ -320,6 +320,15 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    const PAGE_SIZE = 3;
+    let currentPage = 1;
+    let totalPages = 1;
+
+    const pagination = document.querySelector("[data-news-pagination]");
+    const pageList = pagination?.querySelector("[data-news-page-list]");
+    const prevPageButton = pagination?.querySelector("[data-news-page-prev]");
+    const nextPageButton = pagination?.querySelector("[data-news-page-next]");
+
     const groups = Array.from(
       filterBar.querySelectorAll("[data-news-filter-menu]"),
     ).map((menu) => ({
@@ -448,6 +457,33 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .filter(Boolean);
 
+    const renderPagination = () => {
+      if (!pagination || !pageList) {
+        return;
+      }
+
+      pageList.innerHTML = "";
+
+      for (let page = 1; page <= totalPages; page += 1) {
+        const pageButton = document.createElement("button");
+        pageButton.type = "button";
+        pageButton.className = "actualitat-pagination__page";
+        pageButton.textContent = String(page);
+        if (page === currentPage) {
+          pageButton.setAttribute("aria-current", "true");
+        }
+        pageButton.addEventListener("click", () => goToPage(page));
+        pageList.appendChild(pageButton);
+      }
+
+      if (prevPageButton) {
+        prevPageButton.disabled = currentPage <= 1;
+      }
+      if (nextPageButton) {
+        nextPageButton.disabled = currentPage >= totalPages;
+      }
+    };
+
     const render = (options = {}) => {
       const defaultView = !hasActiveFilters();
       const matchedCards = cards.filter(cardMatches).sort((a, b) => {
@@ -459,17 +495,29 @@ document.addEventListener("DOMContentLoaded", () => {
         featured.hidden = !defaultView;
       }
 
+      const gridCards = matchedCards.filter((card) => {
+        const isFeaturedDuplicate = card.hasAttribute(
+          "data-news-featured-duplicate",
+        );
+        return !(defaultView && isFeaturedDuplicate);
+      });
+
+      totalPages = Math.max(1, Math.ceil(gridCards.length / PAGE_SIZE));
+      currentPage = Math.min(Math.max(currentPage, 1), totalPages);
+
+      const pageStart = (currentPage - 1) * PAGE_SIZE;
+      const pageCards = gridCards.slice(pageStart, pageStart + PAGE_SIZE);
+
       cards.forEach((card) => {
         card.hidden = true;
       });
 
-      matchedCards.forEach((card) => {
-        const isFeaturedDuplicate = card.hasAttribute(
-          "data-news-featured-duplicate",
-        );
-        card.hidden = defaultView && isFeaturedDuplicate;
+      pageCards.forEach((card) => {
+        card.hidden = false;
         grid.appendChild(card);
       });
+
+      renderPagination();
 
       const activeLabels = getActiveLabels();
       const newsLabel = matchedCards.length === 1 ? "notícia" : "notícies";
@@ -496,11 +544,30 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
 
+    const goToPage = (page) => {
+      currentPage = page;
+      render();
+      grid.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    prevPageButton?.addEventListener("click", () => {
+      if (currentPage > 1) {
+        goToPage(currentPage - 1);
+      }
+    });
+
+    nextPageButton?.addEventListener("click", () => {
+      if (currentPage < totalPages) {
+        goToPage(currentPage + 1);
+      }
+    });
+
     groups.forEach((group) => {
       group.options.forEach((option) => {
         option.addEventListener("click", () => {
           filters[group.type] = option.dataset.newsFilterValue || "";
           group.menu.removeAttribute("open");
+          currentPage = 1;
           render({ updateUrl: true });
         });
       });
@@ -508,6 +575,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     reset?.addEventListener("click", () => {
       Object.assign(filters, defaultFilters);
+      currentPage = 1;
       render({ updateUrl: true });
     });
 

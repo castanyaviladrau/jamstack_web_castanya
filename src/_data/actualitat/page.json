@@ -2,8 +2,8 @@
   "hero": {
     "title": "ACTUALITAT I NOTÍCIES DE\nLA CASTANYA DE VILADRAU",
     "text": "Descobreix el dia a dia de la Castanya de Viladrau, des de la cura dels nostres boscos fins a la cultura que ens defineix.",
-    "backgroundImage": "/assets/images/gallery/fusta_exterior.png",
-    "backgroundAlt": "Espai exterior de la Castanya de Viladrau",
+    "backgroundImage": "/assets/images/gallery/actualitat_hero.jpg",
+    "backgroundAlt": "Espai exterior amb porxo de fusta i taules de pícnic a la Castanya de Viladrau",
     "tagsTitle": "ÚLTIMES ETIQUETES",
     "tags": [
       "Gastronomia",
