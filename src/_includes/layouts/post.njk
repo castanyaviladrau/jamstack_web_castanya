@@ -8,7 +8,10 @@ layout: base
 
 <article class="actualitat-post">
   <div class="container actualitat-post__inner">
-    <a class="actualitat-post__back" href="/blog/">← TORNAR</a>
+    <a class="actualitat-post__back" href="/blog/">
+      <img src="/assets/images/icon-arrow-left.svg" alt="" class="actualitat-post__back-arrow" aria-hidden="true" />
+      TORNAR
+    </a>
 
     <header class="actualitat-post__header">
       <time class="actualitat-post__date" datetime="{{ page.date | htmlDateString }}">
@@ -61,14 +64,26 @@ layout: base
       {% set nextPost = posts[loop.index0 - 1] if loop.index0 > 0 else null %}
   <nav class="container actualitat-post__nav" aria-label="Articles relacionats">
     {% if previousPost %}
-    <a href="{{ previousPost.url }}">← ANTERIOR ARTICLE</a>
+    <a href="{{ previousPost.url }}">
+      <img src="/assets/images/icon-arrow-left.svg" alt="" class="actualitat-post__nav-arrow" aria-hidden="true" />
+      ANTERIOR ARTICLE
+    </a>
     {% else %}
-    <a href="/blog/">← TOTES LES NOTICIES</a>
+    <a href="/blog/">
+      <img src="/assets/images/icon-arrow-left.svg" alt="" class="actualitat-post__nav-arrow" aria-hidden="true" />
+      TOTES LES NOTICIES
+    </a>
     {% endif %}
     {% if nextPost %}
-    <a href="{{ nextPost.url }}">SEGÜENT ARTICLE →</a>
+    <a href="{{ nextPost.url }}">
+      SEGÜENT ARTICLE
+      <img src="/assets/images/icon-arrow-right.svg" alt="" class="actualitat-post__nav-arrow" aria-hidden="true" />
+    </a>
     {% else %}
-    <a href="/blog/">TORNAR AL BLOG →</a>
+    <a href="/blog/">
+      TORNAR AL BLOG
+      <img src="/assets/images/icon-arrow-right.svg" alt="" class="actualitat-post__nav-arrow" aria-hidden="true" />
+    </a>
     {% endif %}
   </nav>
     {% endif %}
