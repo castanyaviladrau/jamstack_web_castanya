@@ -47,7 +47,7 @@ footerVariant: home-newsletter
       <details class="shop-page-filter-menu blog-sort-menu" data-news-filter-menu data-news-filter-type="{{ item.type }}">
         <summary class="shop-page-filter" data-news-filter-summary data-default-label="{{ item.label }}">
           <span data-news-filter-summary-label>{{ item.label }}</span>
-          <span aria-hidden="true">&#8964;</span>
+          <img class="shop-page-filter__arrow" src="/assets/images/recipe-filter-arrow.svg" alt="" aria-hidden="true" />
         </summary>
         <div class="shop-page-filter-menu__list">
           {% for option in item.options %}

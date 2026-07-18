@@ -1744,10 +1744,6 @@ body.page-blog .content-wrap {
     gap: 12px 18px;
   }
 
-  .blog-sort-menu .shop-page-filter {
-    font-size: 12px;
-  }
-
   .featured-news-card {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -5821,10 +5817,11 @@ body.home .home-section-description {
 .gastronomic-recipes-card .professionals-inspiration-card__meta {
   gap: 25px;
   color: #7f6f4b;
+  font-family: var(--font-main);
 }
 
 .gastronomic-recipes-card .professionals-inspiration-card__meta-item {
-  align-items: flex-start;
+  align-items: center;
   gap: 4px;
 }
 
@@ -8192,7 +8189,7 @@ body.page-professionals .professionals-value-feature__cta {
 .shop-page-search {
   padding: 8px 16px;
   border-radius: 999px;
-  background: #8b7445;
+  background: var(--header-bg);
   text-transform: uppercase;
   font-size: 11px;
 }
@@ -8278,7 +8275,32 @@ body.page-professionals .professionals-value-feature__cta {
 }
 
 [data-recipe-filter-form] .shop-page-search {
-  background: #9a8453;
+  background: var(--header-bg);
+}
+
+/* Actualitat filter bar (matches receptes filter styling) */
+[data-news-filter-bar] .shop-page-filter {
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-family: var(--font-main) !important;
+  font-size: clamp(16px, 1.15vw, 18px) !important;
+  line-height: 1.45;
+  color: #f5f0e8;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+[data-news-filter-bar] .shop-page-filter:hover {
+  background-color: #8b7445;
+  color: #f5f0e8;
+}
+
+[data-news-filter-bar] .shop-page-filter-menu[open] > .shop-page-filter {
+  background-color: #3f3520;
+  color: #f5f0e8;
+}
+
+[data-news-filter-bar] .shop-page-filter-menu[open] .shop-page-filter__arrow {
+  transform: rotate(180deg);
 }
 
 [data-recipe-filter-form] .shop-page-search:hover {
@@ -12515,6 +12537,20 @@ body.page-professionals .professionals-value-feature__cta {
   max-width: 1120px;
 }
 
+.gastronomic-recipes-section .title-nav-wrapper {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.gastronomic-recipes-section .title-nav-wrapper .nav-arrow-inline.left {
+  left: 40px;
+}
+
+.gastronomic-recipes-section .title-nav-wrapper .nav-arrow-inline.right {
+  right: 40px;
+}
+
 .gastronomic-recipes-section .professionals-inspiration-recipes__grid {
   grid-auto-columns: calc((100% - 8px) / 3);
   gap: 4px;
@@ -12622,8 +12658,8 @@ body.internal.page-gastronomic-recipes {
 
 .recipe-detail__description {
   margin-top: 18px;
-  font-size: 17px;
-  line-height: 1.35;
+  font-size: 15px;
+  line-height: 1.7;
 }
 
 .recipe-detail__meta {
@@ -12637,8 +12673,10 @@ body.internal.page-gastronomic-recipes {
 
 .recipe-detail__meta-item {
   display: inline-flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 4px;
+  font-family: var(--font-main);
+  font-size: 15px;
 }
 
 .recipe-detail__meta-item svg {
@@ -12647,6 +12685,12 @@ body.internal.page-gastronomic-recipes {
   stroke: currentColor;
   stroke-width: 1.8;
   fill: none;
+}
+
+.recipe-detail__meta-item img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
 }
 
 .recipe-detail__download {

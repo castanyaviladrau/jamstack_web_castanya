@@ -514,6 +514,36 @@ document.addEventListener("DOMContentLoaded", () => {
     render();
   };
 
+  const setupNewsFilterMenus = () => {
+    const menus = Array.from(
+      document.querySelectorAll("[data-news-filter-menu]"),
+    );
+
+    if (!menus.length) {
+      return;
+    }
+
+    menus.forEach((menu) => {
+      menu.addEventListener("toggle", () => {
+        if (menu.open) {
+          menus.forEach((other) => {
+            if (other !== menu) {
+              other.removeAttribute("open");
+            }
+          });
+        }
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      menus.forEach((menu) => {
+        if (menu.open && !menu.contains(event.target)) {
+          menu.removeAttribute("open");
+        }
+      });
+    });
+  };
+
   const setupRecipeResultsFilter = () => {
     const form = document.querySelector("[data-recipe-filter-form]");
 
@@ -833,6 +863,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   setupShopCatalogFiltering();
   setupNewsFiltering();
+  setupNewsFilterMenus();
   setupRecipeResultsFilter();
   setupRecipeFilterMenus();
   setupRecipeSearch();
