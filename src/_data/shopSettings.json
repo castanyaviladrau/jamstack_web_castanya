@@ -1,0 +1,6 @@
+{
+  "shipping": {
+    "minimumAmount": 50,
+    "cost": 11.4
+  }
+}

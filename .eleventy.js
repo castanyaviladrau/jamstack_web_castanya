@@ -80,6 +80,11 @@ module.exports = function (eleventyConfig) {
     return array.slice(0, n);
   });
 
+  eleventyConfig.addFilter("eur", (value) => {
+    const number = Number(value);
+    return (Number.isFinite(number) ? number : 0).toFixed(2).replace(".", ",");
+  });
+
   eleventyConfig.addPassthroughCopy({ "src/assets/images": "assets/images" });
   eleventyConfig.addPassthroughCopy({ "src/assets/css": "assets/css" });
   eleventyConfig.addPassthroughCopy({ "src/assets/fonts": "assets/fonts" });

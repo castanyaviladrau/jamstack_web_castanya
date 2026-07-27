@@ -45,7 +45,7 @@ test("create-order handler stores pickup fulfillment fields", async () => {
     const response = await mod.handler({
       httpMethod: "POST",
       body: JSON.stringify({
-        items: [{ sku: "castanya-viladrau-torrada-250", quantity: 2 }],
+        items: [{ sku: "se010", quantity: 2 }],
         customer: {
           name: "Buyer",
           email: "buyer@example.com",
@@ -65,6 +65,7 @@ test("create-order handler stores pickup fulfillment fields", async () => {
     const orderInsertPayload = JSON.parse(fetchCalls[0].options.body);
     assert.equal(orderInsertPayload.fulfillment_method, "pickup");
     assert.equal(orderInsertPayload.pickup_store, "Barcelona");
+    assert.equal(orderInsertPayload.shipping_amount, 0);
     assert.deepEqual(orderInsertPayload.shipping_address_json, {
       address_line_1: "Carrer Major 1",
       city: "Viladrau",
@@ -73,7 +74,7 @@ test("create-order handler stores pickup fulfillment fields", async () => {
     });
 
     const orderItemsPayload = JSON.parse(fetchCalls[1].options.body);
-    assert.equal(orderItemsPayload[0].sku, "castanya-viladrau-torrada-250");
+    assert.equal(orderItemsPayload[0].sku, "se010");
   } finally {
     global.fetch = originalFetch;
   }
@@ -116,13 +117,38 @@ test("create-order handler rejects invalid pickup store", async () => {
   }
 });
 
-test("create-order handler rejects shipping orders below 50 EUR", async () => {
+test("create-order handler charges the configured shipping fee for shipping orders below the minimum", async () => {
   process.env.SUPABASE_URL = "https://example.supabase.co";
   process.env.SUPABASE_SERVICE_ROLE_KEY = "service-role";
 
   const originalFetch = global.fetch;
-  global.fetch = async () => {
-    throw new Error("Fetch should not be called for invalid payloads");
+  const fetchCalls = [];
+  global.fetch = async (url, options = {}) => {
+    fetchCalls.push({ url, options });
+
+    if (String(url).includes("/rest/v1/orders?select=*")) {
+      return {
+        ok: true,
+        json: async () => [
+          {
+            id: "order-shipping-1",
+            public_order_code: "CV-TEST-SHIPPING",
+            status: "pending_payment",
+            payment_status: "pending",
+            currency: "EUR",
+          },
+        ],
+      };
+    }
+
+    if (String(url).includes("/rest/v1/order_items")) {
+      return {
+        ok: true,
+        json: async () => null,
+      };
+    }
+
+    throw new Error(`Unexpected fetch call: ${url}`);
   };
 
   try {
@@ -130,7 +156,7 @@ test("create-order handler rejects shipping orders below 50 EUR", async () => {
     const response = await mod.handler({
       httpMethod: "POST",
       body: JSON.stringify({
-        items: [{ sku: "castanya-viladrau-torrada-250", quantity: 1 }],
+        items: [{ sku: "br010", quantity: 1 }],
         customer: {
           name: "Buyer",
           email: "buyer@example.com",
@@ -143,9 +169,16 @@ test("create-order handler rejects shipping orders below 50 EUR", async () => {
       }),
     });
 
-    assert.equal(response.statusCode, 400);
+    assert.equal(response.statusCode, 200);
     const body = JSON.parse(response.body);
-    assert.equal(body.details, "Minimum shipping order amount is 50 EUR");
+    assert.equal(body.order.subtotalAmount, 8.09);
+    assert.equal(body.order.shippingAmount, 11.4);
+    assert.equal(body.order.totalAmount, 19.49);
+
+    const orderInsertPayload = JSON.parse(fetchCalls[0].options.body);
+    assert.equal(orderInsertPayload.fulfillment_method, "shipping");
+    assert.equal(orderInsertPayload.shipping_amount, 11.4);
+    assert.equal(orderInsertPayload.total_amount, 19.49);
   } finally {
     global.fetch = originalFetch;
   }

@@ -75,6 +75,8 @@ footerVariant: projecte-newsletter
         class="shop-cart-checkout"
         aria-labelledby="shop-cart-checkout-title"
         data-checkout-section
+        data-shipping-minimum="{{ shopSettings.shipping.minimumAmount }}"
+        data-shipping-cost="{{ shopSettings.shipping.cost }}"
         hidden
       >
         <div class="shop-cart-checkout__heading">
@@ -84,25 +86,31 @@ footerVariant: projecte-newsletter
           </h3>
         </div>
 
+        <div class="shop-cart-checkout__shipping-info" data-shipping-info>
+          <span class="shop-cart__eyebrow">RECOLLIDA A BOTIGA</span>
+          <p class="shop-cart-checkout__shipping-info-text">
+            Si prefereixes recollir la comanda en una de les nostres
+            botigues, activa aquesta opcio. La facturacio no canvia.
+          </p>
+          <p class="shop-cart-checkout__shipping-info-text">
+            Els enviaments requereixen una comanda minima de
+            {{ shopSettings.shipping.minimumAmount | eur }} €. Les comandes
+            amb recollida a botiga es poden tramitar per sota d'aquest
+            import.
+          </p>
+          <p class="shop-cart-checkout__shipping-info-text">
+            Si no arribes a l'import minim i prefereixes rebre la comanda a
+            domicili, el cost d'enviament sera de
+            {{ shopSettings.shipping.cost | eur }} €.
+          </p>
+        </div>
+
         <form class="shop-cart-checkout__form" data-checkout-form novalidate>
           <div class="shop-cart-checkout__grid">
             <div
               class="shop-cart-checkout__pickup shop-cart-checkout__field--full"
               data-pickup-section
             >
-              <div class="shop-cart-checkout__pickup-header">
-                <span class="shop-cart__eyebrow">RECOLLIDA A BOTIGA</span>
-                <p class="shop-cart-checkout__pickup-text">
-                  Si prefereixes recollir la comanda en una de les nostres
-                  botigues, activa aquesta opcio. La facturacio no canvia.
-                </p>
-                <p class="shop-cart-checkout__pickup-note">
-                  Els enviaments requereixen una comanda minima de 50,00 €.
-                  Les comandes amb recollida a botiga es poden tramitar per sota
-                  d'aquest import.
-                </p>
-              </div>
-
               <label
                 class="shop-cart-checkout__checkbox shop-cart-checkout__checkbox--pickup"
               >
