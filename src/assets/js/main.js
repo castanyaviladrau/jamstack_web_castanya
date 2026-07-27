@@ -2499,6 +2499,47 @@ document.addEventListener("DOMContentLoaded", () => {
       const shippingMinimumAmount =
         Number(checkoutSection?.dataset.shippingMinimum) || 50;
       const shippingCost = Number(checkoutSection?.dataset.shippingCost) || 0;
+      const resumeMessage = document.querySelector("[data-resume-message]");
+
+      const handleResumePayment = async () => {
+        const resumeCode = new URLSearchParams(window.location.search).get(
+          "resume",
+        );
+        if (!resumeCode || !resumeMessage) {
+          return;
+        }
+
+        resumeMessage.hidden = false;
+        resumeMessage.dataset.state = "success";
+        resumeMessage.textContent =
+          "Reprenent el pagament de la teva comanda...";
+
+        try {
+          const paymentResult = await initiatePayment({
+            publicOrderCode: resumeCode,
+            paymentMethod: "card",
+          });
+
+          if (
+            paymentResult.ok &&
+            paymentResult.data?.success &&
+            paymentResult.data?.payment
+          ) {
+            submitPaymentForm(paymentResult.data.payment);
+            return;
+          }
+
+          resumeMessage.dataset.state = "error";
+          resumeMessage.textContent =
+            paymentResult.data?.error === "Order already paid"
+              ? "Aquesta comanda ja s'ha pagat correctament."
+              : "No hem pogut reprendre el pagament d'aquesta comanda. Torna a fer la comanda des de la cistella o contacta amb nosaltres.";
+        } catch (error) {
+          resumeMessage.dataset.state = "error";
+          resumeMessage.textContent =
+            "No hem pogut reprendre el pagament d'aquesta comanda. Torna a fer la comanda des de la cistella o contacta amb nosaltres.";
+        }
+      };
 
       const fillCheckoutDraft = () => {
         if (!checkoutForm) {
@@ -3024,6 +3065,7 @@ document.addEventListener("DOMContentLoaded", () => {
       fillCheckoutDraft();
       applyPickupState();
       renderCartPage();
+      handleResumePayment();
     };
 
     updateCartCount();

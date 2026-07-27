@@ -68,9 +68,13 @@ alter table public.order_items
 alter table public.order_items
   add column if not exists vat_rate numeric(4,2);
 
+alter table public.orders
+  add column if not exists payment_reminder_sent_at timestamptz;
+
 create index if not exists orders_created_at_idx on public.orders (created_at desc);
 create index if not exists orders_payment_status_idx on public.orders (payment_status);
 create index if not exists orders_fulfillment_status_idx on public.orders (fulfillment_status);
+create index if not exists orders_status_idx on public.orders (status);
 create index if not exists order_items_order_id_idx on public.order_items (order_id);
 
 create or replace function public.set_updated_at()

@@ -30,6 +30,7 @@ function getRequiredRecipient(type, to) {
     case "order-confirmation":
     case "newsletter":
     case "activity-booking-confirmation":
+    case "payment-reminder":
       return to;
     case "order-notification":
       return process.env.ORDER_NOTIFICATION_EMAIL;
@@ -187,6 +188,30 @@ function buildOrderNotificationEmail({ data }) {
   };
 }
 
+function buildPaymentReminderEmail({ to, data }) {
+  return {
+    to: [{ email: to }],
+    sender: getSender(),
+    subject: `La teva comanda ${data.orderCode} esta pendent de pagament`,
+    htmlContent: `
+      <h2>La teva comanda encara no s'ha pagat</h2>
+      <p>
+        Hem vist que la comanda <strong>${escapeHtml(data.orderCode)}</strong>
+        (€ ${Number(data.totalAmount || 0).toFixed(2)}) es va quedar pendent
+        de pagament.
+      </p>
+      <p>
+        Pots acabar-la ara mateix fent clic aqui:
+        <a href="${escapeHtml(data.resumeUrl)}">Completar el pagament</a>.
+      </p>
+      <p>
+        Si no vols continuar amb la comanda, no cal que facis res: la
+        cancel·larem automaticament passats uns dies.
+      </p>
+    `,
+  };
+}
+
 function buildContactEmail({ data }) {
   return {
     to: [{ email: getRequiredRecipient("contact") }],
@@ -269,6 +294,8 @@ function buildEmailConfig({ type, to, data }) {
       return buildActivityBookingNotificationEmail({ data });
     case "activity-booking-confirmation":
       return buildActivityBookingConfirmationEmail({ to, data });
+    case "payment-reminder":
+      return buildPaymentReminderEmail({ to, data });
     default:
       throw new Error("Invalid email type");
   }

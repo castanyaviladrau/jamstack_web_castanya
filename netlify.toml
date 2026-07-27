@@ -31,6 +31,11 @@
     "src/assets/images/invoice-logo.png"
   ]
 
+# Hourly check for orders stuck pending payment: emails a resume reminder
+# after 24h and auto-cancels orders still unpaid after 7 days.
+[functions."payment-reminder"]
+  schedule = "@hourly"
+
 # Headers for security and performance
 [[headers]]
   for = "/*"
