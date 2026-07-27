@@ -1038,21 +1038,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "visitActivityReviewsNext",
   );
   setupProfessionalsRecipeCarousel(
-    "professionalsFoundationsCarousel",
-    "professionalsFoundationsPrev",
-    "professionalsFoundationsNext",
-  );
-  setupProfessionalsRecipeCarousel(
-    "professionalsRecipesCarousel",
-    "professionalsRecipesPrev",
-    "professionalsRecipesNext",
-  );
-  setupProfessionalsRecipeCarousel(
-    "professionalsAuthorCarousel",
-    "professionalsAuthorPrev",
-    "professionalsAuthorNext",
-  );
-  setupProfessionalsRecipeCarousel(
     "gastronomicRecipesCarousel",
     "gastronomicRecipesPrev",
     "gastronomicRecipesNext",
@@ -2498,6 +2483,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const emptyNode = document.querySelector("[data-cart-empty]");
       const countNode = document.querySelector("[data-cart-product-count]");
       const subtotalNode = document.querySelector("[data-cart-subtotal]");
+      const shippingNode = document.querySelector("[data-cart-shipping]");
       const totalNode = document.querySelector("[data-cart-total]");
       const noteNode = document.querySelector("[data-cart-summary-note]");
       const shippingWarningNode = document.querySelector(
@@ -2510,7 +2496,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const checkoutSubmitButton = checkoutForm?.querySelector(
         'button[type="submit"]',
       );
-      const shippingMinimumAmount = 50;
+      const shippingMinimumAmount =
+        Number(checkoutSection?.dataset.shippingMinimum) || 50;
+      const shippingCost = Number(checkoutSection?.dataset.shippingCost) || 0;
 
       const fillCheckoutDraft = () => {
         if (!checkoutForm) {
@@ -2649,7 +2637,7 @@ document.addEventListener("DOMContentLoaded", () => {
             : "readonly";
         }
         setPickupInputsDisabled(!isPickup);
-        renderShippingMinimumWarning();
+        renderCartPage();
       };
 
       const renderShippingMinimumWarning = () => {
@@ -2660,7 +2648,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const cart = readCart();
         const subtotal = getCartSubtotal(cart);
         const isPickup = pickupCheckbox?.checked;
-        const shippingMinimumAmount = 50;
 
         if (
           !cart.items.length ||
@@ -2673,8 +2660,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         shippingWarningNode.hidden = false;
-        shippingWarningNode.textContent =
-          "Per fer un enviament, la comanda ha d'arribar a 50,00 €. Pots afegir mes productes o seleccionar recollida a botiga.";
+        shippingWarningNode.textContent = `Com que la comanda no arriba als ${formatMoney(shippingMinimumAmount)}, s'hi afegira un cost d'enviament de ${formatMoney(shippingCost)}. Tambe pots seleccionar recollida a botiga per evitar-lo.`;
       };
 
       billingSameCheckbox?.addEventListener("change", () => {
@@ -2711,6 +2697,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const hasItems = cart.items.length > 0;
         const itemCount = getCartCount(cart);
         const subtotal = getCartSubtotal(cart);
+        const isPickup = pickupCheckbox?.checked;
+        const shippingFee =
+          hasItems && !isPickup && subtotal < shippingMinimumAmount
+            ? shippingCost
+            : 0;
+        const total = subtotal + shippingFee;
 
         cartRoot.innerHTML = "";
         cartRoot.hidden = !hasItems;
@@ -2739,8 +2731,19 @@ document.addEventListener("DOMContentLoaded", () => {
         if (subtotalNode) {
           subtotalNode.textContent = formatMoney(subtotal);
         }
+        if (shippingNode) {
+          if (!hasItems) {
+            shippingNode.textContent = "A calcular al proxim pas";
+          } else if (isPickup) {
+            shippingNode.textContent = "Recollida a botiga (gratuit)";
+          } else if (shippingFee > 0) {
+            shippingNode.textContent = formatMoney(shippingFee);
+          } else {
+            shippingNode.textContent = "Gratuit";
+          }
+        }
         if (totalNode) {
-          totalNode.textContent = formatMoney(subtotal);
+          totalNode.textContent = formatMoney(total);
         }
         if (noteNode) {
           noteNode.textContent = hasItems
@@ -2906,16 +2909,6 @@ document.addEventListener("DOMContentLoaded", () => {
             checkoutMessage.dataset.state = "error";
             checkoutMessage.textContent =
               "La cistella esta buida. Afegeix-hi algun producte abans de continuar.";
-          }
-          return;
-        }
-
-        const subtotal = getCartSubtotal(cart);
-        if (payload.isPickup !== "on" && subtotal < shippingMinimumAmount) {
-          if (checkoutMessage) {
-            checkoutMessage.dataset.state = "error";
-            checkoutMessage.textContent =
-              "L'import minim per a enviaments es de 50,00 €. Pots continuar amb recollida a botiga o afegir mes productes.";
           }
           return;
         }
