@@ -4,9 +4,7 @@ permalink: /shop/products/oli-de-castanya/
 title: "Oli de castanya"
 description: "És un oli d’oliva arbequina macerat amb la nostra castanya, de calibre mini, durant mig any."
 tagline: "Selecció artesana de productes locals amb castanya."
-category: elaborats-de-castanyes
-homepageTags:
-  - estrella
+category: productes-estrella
 consumptionMoments:
   - cuinar
 dietTags:

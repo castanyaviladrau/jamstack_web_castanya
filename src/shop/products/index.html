@@ -176,14 +176,11 @@ footerVariant: projecte-newsletter
   </div>
 
   <div class="shop-page-featured__scroller" id="shopFeaturedCarousel">
-    {% for product in productsList %} {% set homepageTags =
-    product.data.homepageTags | default([]) %} {% if 'estrella' in homepageTags
-    %} {% set productImage = product.data.image or '' %} {% if not productImage
-    or 'pending-product-image.svg' in productImage %} {% if
-    product.data.category == 'packs' %} {% set productImage =
-    '/assets/images/gallery/botiga/botiga_productes.png' %} {% else %} {% set
-    productImage = '/assets/images/gallery/elaborats.jpg' %} {% endif %} {%
-    endif %}
+    {% for product in productsList %} {% if product.data.category ==
+    'productes-estrella' %} {% set productImage = product.data.image or '' %}
+    {% if not productImage or 'pending-product-image.svg' in productImage %}
+    {% set productImage = '/assets/images/gallery/elaborats.jpg' %} {% endif
+    %}
     <a href="{{ product.url }}" class="shop-page-featured-product gallery-item">
       <img
         src="{{ productImage }}"

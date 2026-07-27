@@ -6,7 +6,8 @@
     { "label": "Dolços", "value": "dolcos" },
     { "label": "Begudes", "value": "begudes" },
     { "label": "Mels", "value": "mels" },
-    { "label": "Packs", "value": "packs" }
+    { "label": "Packs", "value": "packs" },
+    { "label": "Productes Estrella", "value": "productes-estrella" }
   ],
   "moments": [
     { "label": "Per picar i compartir", "value": "picar-compartir" },

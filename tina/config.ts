@@ -157,6 +157,7 @@ export default defineConfig({
               { label: "Begudes", value: "begudes" },
               { label: "Mels", value: "mels" },
               { label: "Packs", value: "packs" },
+              { label: "Productes Estrella", value: "productes-estrella" },
             ],
           },
           {
@@ -187,10 +188,7 @@ export default defineConfig({
             name: "homepageTags",
             label: "Homepage tags",
             list: true,
-            options: [
-              { label: "Estrella", value: "estrella" },
-              { label: "Pack regalo", value: "pack-regalo" },
-            ],
+            options: [{ label: "Pack regalo", value: "pack-regalo" }],
           },
           {
             type: "number",
