@@ -2373,12 +2373,19 @@ document.addEventListener("DOMContentLoaded", () => {
       addButtons.forEach((button) => {
         const productDetail = button.closest(".product-detail__purchase");
         const formatSelect = productDetail?.querySelector("#product-format");
+        const formatMenu = productDetail?.querySelector(
+          "[data-product-format-menu]",
+        );
         const priceNode = document.querySelector(
           "[data-product-price-display]",
         );
         const feedbackNode = productDetail?.querySelector(
           "[data-add-to-cart-feedback]",
         );
+        const requiresFormatSelection = Boolean(
+          formatSelect && formatSelect.options.length,
+        );
+        let formatSelected = false;
 
         const syncSelectedFormat = () => {
           if (!formatSelect) {
@@ -2404,14 +2411,32 @@ document.addEventListener("DOMContentLoaded", () => {
           if (priceNode) {
             priceNode.textContent = formatMoney(selectedPrice);
           }
+
+          formatSelected = true;
+
+          if (feedbackNode && feedbackNode.dataset.state === "error") {
+            feedbackNode.hidden = true;
+            feedbackNode.textContent = "";
+            delete feedbackNode.dataset.state;
+          }
         };
 
         if (formatSelect) {
-          syncSelectedFormat();
           formatSelect.addEventListener("change", syncSelectedFormat);
         }
 
         button.addEventListener("click", () => {
+          if (requiresFormatSelection && !formatSelected) {
+            if (feedbackNode) {
+              feedbackNode.hidden = false;
+              feedbackNode.dataset.state = "error";
+              feedbackNode.textContent =
+                "Selecciona un format abans d'afegir-lo a la cistella.";
+            }
+            formatMenu?.setAttribute("open", "");
+            return;
+          }
+
           const selectedOption =
             formatSelect?.options[formatSelect.selectedIndex];
           const variantLabel = selectedOption?.value || "Format general";
