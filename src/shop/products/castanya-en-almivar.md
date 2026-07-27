@@ -17,8 +17,8 @@ priceLabel: "7,60 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Castanyes, aigua, sucre, canyella i àcid cítric. Sense llet, sense ous. Sense gluten."
-image: "/assets/images/products/pending-product-image.svg"
-imageAlt: "Imatge pendent per a Castanya en almívar"
+image: "/assets/images/products/castanya-en-almivar.jpeg"
+imageAlt: "Castanya en almívar"
 gallery: []
 formatLabel: Selecciona format
 formats:

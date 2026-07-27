@@ -18,8 +18,8 @@ priceLabel: "Des de 4,20 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Castanya pelada i deshidratada. Sense gluten."
-image: "/assets/images/products/pending-product-image.svg"
-imageAlt: "Imatge pendent per a Castanya pilonga deshidratada"
+image: "/assets/images/gallery/product_castanya_seca.png"
+imageAlt: "Secallona"
 gallery: []
 formatLabel: Selecciona format
 formats:

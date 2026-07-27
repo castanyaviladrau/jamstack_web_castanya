@@ -19,8 +19,8 @@ priceLabel: "5,70 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Castanya torrada procedent de producció ecològica."
-image: "/assets/images/products/pending-product-image.svg"
-imageAlt: "Imatge pendent per a Castanya torrada"
+image: "/assets/images/gallery/product_castanya_torrada.png"
+imageAlt: "Castanya torrada tot l'any"
 gallery: []
 formatLabel: Selecciona format
 formats:
