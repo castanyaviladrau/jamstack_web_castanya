@@ -4,7 +4,15 @@
   {% include "head.html" %}
 
   <body class="{% if page.url == '/' %}home{% else %}internal{% endif %}{% if name %} page-{{ name }}{% endif %}">
-
+    <script>
+      (function () {
+        try {
+          if (window.localStorage.getItem("castanya-cookie-consent") == null) {
+            document.body.classList.add("has-cookie-banner");
+          }
+        } catch (error) {}
+      })();
+    </script>
 
     {% include "header.html" %}
     <div class="outer-wrap">
