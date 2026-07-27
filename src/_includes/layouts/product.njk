@@ -107,7 +107,7 @@ footerVariant: projecte-newsletter
           </div>
           <div class="product-detail__trust-item">
             <img src="/assets/images/icon-thumbsup.svg" alt="" class="product-detail__trust-icon" aria-hidden="true" />
-            <p class="product-detail__trust-text">Enviaments gratuits des de 60€</p>
+            <p class="product-detail__trust-text">Enviaments gratuits des de {{ shopSettings.shipping.minimumAmount | eur }}€</p>
           </div>
           <div class="product-detail__trust-item">
             <img src="/assets/images/icon-shield.svg" alt="" class="product-detail__trust-icon" aria-hidden="true" />

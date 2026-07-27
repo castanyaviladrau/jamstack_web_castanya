@@ -61,7 +61,7 @@ Els metodes de pagament disponibles en cada moment s'indiquen durant el proces d
 
 ## Enviament, lliurament o recollida
 
-Les condicions aplicables a l'enviament o a la recollida de la comanda es mostraran durant el proces de compra. La persona clienta es responsable de facilitar correctament les dades necessaries per al lliurament o la recollida.
+Les condicions aplicables a l'enviament o a la recollida de la comanda es mostraran durant el proces de compra i es poden consultar tambe a la pagina de **Condicions d'enviament**. La persona clienta es responsable de facilitar correctament les dades necessaries per al lliurament o la recollida.
 
 Castanya de Viladrau no es fa responsable dels retards o impossibilitats de lliurament derivats de dades incorrectes, absencia de la persona destinataria o causes alienes al seu control.
 
