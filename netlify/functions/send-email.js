@@ -307,7 +307,7 @@ async function sendBrevoEmail(emailConfig) {
   return response.json();
 }
 
-async function sendEmail({ type, to, data }) {
+async function sendEmail({ type, to, data, attachments }) {
   if (!isBrevoConfigured()) {
     throw new Error("Brevo environment is not configured");
   }
@@ -337,7 +337,10 @@ async function sendEmail({ type, to, data }) {
     throw new Error("Recipient email is required");
   }
 
-  const emailConfig = withEmailContent(buildEmailConfig({ type, to, data }));
+  let emailConfig = withEmailContent(buildEmailConfig({ type, to, data }));
+  if (Array.isArray(attachments) && attachments.length > 0) {
+    emailConfig = { ...emailConfig, attachment: attachments };
+  }
   await sendBrevoEmail(emailConfig);
   return { success: true };
 }

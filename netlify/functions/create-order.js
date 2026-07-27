@@ -5,7 +5,6 @@ const path = require("path");
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
-const MINIMUM_SHIPPING_ORDER_AMOUNT = 50;
 
 function jsonResponse(statusCode, body) {
   return {
@@ -81,11 +80,25 @@ function loadProductsIndex() {
         product_image: normalizeText(product?.image) || null,
         variant_label: normalizeText(variant?.label),
         unit_price: Number(variant?.price),
+        vat_rate: Number(variant?.vatRate),
       });
     });
   });
 
   return skuIndex;
+}
+
+function loadShippingSettings() {
+  const filePath = path.join(process.cwd(), "src", "_data", "shopSettings.json");
+  const raw = fs.readFileSync(filePath, "utf8");
+  const parsed = JSON.parse(raw);
+  const minimumAmount = Number(parsed?.shipping?.minimumAmount);
+  const cost = Number(parsed?.shipping?.cost);
+
+  return {
+    minimumAmount: Number.isFinite(minimumAmount) ? minimumAmount : 50,
+    cost: Number.isFinite(cost) ? cost : 0,
+  };
 }
 
 function validateCustomer(customer) {
@@ -179,6 +192,7 @@ function buildValidatedItems(rawItems) {
     }
 
     const lineTotal = Number((resolved.unit_price * quantity).toFixed(2));
+    const vatRate = Number.isFinite(resolved.vat_rate) ? resolved.vat_rate : 0.21;
 
     return {
       sku,
@@ -189,6 +203,7 @@ function buildValidatedItems(rawItems) {
       unit_price: resolved.unit_price,
       quantity,
       line_total: lineTotal,
+      vat_rate: vatRate,
     };
   });
 }
@@ -242,14 +257,12 @@ exports.handler = async (event) => {
       validatedItems.reduce((sum, item) => sum + item.line_total, 0).toFixed(2),
     );
 
-    if (
+    const shippingSettings = loadShippingSettings();
+    const shippingAmount =
       validatedCustomer.fulfillmentMethod === "shipping" &&
-      subtotalAmount < MINIMUM_SHIPPING_ORDER_AMOUNT
-    ) {
-      throw new Error("Minimum shipping order amount is 50 €");
-    }
-
-    const shippingAmount = 0;
+      subtotalAmount < shippingSettings.minimumAmount
+        ? shippingSettings.cost
+        : 0;
     const totalAmount = Number((subtotalAmount + shippingAmount).toFixed(2));
     const publicOrderCode = createOrderCode();
 
@@ -311,6 +324,7 @@ exports.handler = async (event) => {
       quantity: item.quantity,
       line_total: item.line_total,
       product_image: item.product_image,
+      vat_rate: item.vat_rate,
     }));
 
     await insertSupabaseRow("order_items", orderItemsPayload);
@@ -343,7 +357,6 @@ exports.handler = async (event) => {
       error.message === "Invalid customer email" ||
       error.message === "Invalid customer phone" ||
       error.message === "Invalid pickup store" ||
-      error.message === "Minimum shipping order amount is 50 €" ||
       error.message === "Cart is empty" ||
       error.message.startsWith("Invalid cart item") ||
       error.message.startsWith("Unknown SKU") ||

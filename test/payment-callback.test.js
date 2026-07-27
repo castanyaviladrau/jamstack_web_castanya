@@ -412,6 +412,7 @@ test('payment-callback handler sends customer and provider emails when Brevo is 
             variant_label: '1kg',
             quantity: 2,
             line_total: 15,
+            vat_rate: 0.1,
           },
         ],
       };
@@ -462,6 +463,18 @@ test('payment-callback handler sends customer and provider emails when Brevo is 
     assert.match(
       providerEmailPayload.htmlContent,
       /<strong>Botiga:<\/strong> Viladrau/i,
+    );
+    assert.equal(customerEmailPayload.attachment, undefined);
+    assert.equal(providerEmailPayload.attachment.length, 1);
+    assert.equal(
+      providerEmailPayload.attachment[0].name,
+      'Factura-CV-PAID-EMAILS.pdf',
+    );
+    assert.match(
+      Buffer.from(providerEmailPayload.attachment[0].content, 'base64')
+        .subarray(0, 5)
+        .toString('utf8'),
+      /%PDF-/,
     );
   } finally {
     global.fetch = originalFetch;

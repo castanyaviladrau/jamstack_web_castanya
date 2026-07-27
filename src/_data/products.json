@@ -9,7 +9,8 @@
         {
           "sku": "br010",
           "label": "Pot de 300 g",
-          "price": 8.09
+          "price": 8.09,
+          "vatRate": 0.21
         }
       ]
     },
@@ -22,7 +23,8 @@
         {
           "sku": "ca010",
           "label": "Pot de 350 g",
-          "price": 7.6
+          "price": 7.6,
+          "vatRate": 0.21
         }
       ]
     },
@@ -35,12 +37,14 @@
         {
           "sku": "se010",
           "label": "Bossa de 200 g",
-          "price": 4.2
+          "price": 4.2,
+          "vatRate": 0.21
         },
         {
           "sku": "se0101",
           "label": "Bossa d’1 kg",
-          "price": 19
+          "price": 19,
+          "vatRate": 0.21
         }
       ]
     },
@@ -53,7 +57,8 @@
         {
           "sku": "ct010",
           "label": "Bossa de 150 g",
-          "price": 5.7
+          "price": 5.7,
+          "vatRate": 0.21
         }
       ]
     },
@@ -66,7 +71,8 @@
         {
           "sku": "ce013",
           "label": "Ampolla de 33 cl · 5,1% vol.",
-          "price": 4.01
+          "price": 4.01,
+          "vatRate": 0.21
         }
       ]
     },
@@ -79,7 +85,8 @@
         {
           "sku": "ce014",
           "label": "Ampolla de 33 cl · 0,6% vol.",
-          "price": 4.1
+          "price": 4.1,
+          "vatRate": 0.21
         }
       ]
     },
@@ -92,7 +99,8 @@
         {
           "sku": "ce010",
           "label": "Cervesa Torrent “Sureda”",
-          "price": 16.5
+          "price": 16.5,
+          "vatRate": 0.21
         }
       ]
     },
@@ -105,7 +113,8 @@
         {
           "sku": "cc010",
           "label": "Pot de 230 g",
-          "price": 6
+          "price": 6,
+          "vatRate": 0.21
         }
       ]
     },
@@ -118,7 +127,8 @@
         {
           "sku": "cb010",
           "label": "Pot de vidre de 500 ml · dues racions",
-          "price": 7.1
+          "price": 7.1,
+          "vatRate": 0.21
         }
       ]
     },
@@ -131,12 +141,14 @@
         {
           "sku": "fa010",
           "label": "Bosseta de 200 g",
-          "price": 4.2
+          "price": 4.2,
+          "vatRate": 0.21
         },
         {
           "sku": "fa012",
           "label": "Bossa d’1 kg",
-          "price": 19
+          "price": 19,
+          "vatRate": 0.21
         }
       ]
     },
@@ -149,12 +161,14 @@
         {
           "sku": "888fc010",
           "label": "Bossa de 150 g",
-          "price": 4.3
+          "price": 4.3,
+          "vatRate": 0.21
         },
         {
           "sku": "888fc011",
           "label": "Bossa de 500 g",
-          "price": 16
+          "price": 16,
+          "vatRate": 0.21
         }
       ]
     },
@@ -167,7 +181,8 @@
         {
           "sku": "fc010",
           "label": "Formatge sencer",
-          "price": 21
+          "price": 21,
+          "vatRate": 0.21
         }
       ]
     },
@@ -180,7 +195,8 @@
         {
           "sku": "fq010",
           "label": "Formatge sencer",
-          "price": 20.5
+          "price": 20.5,
+          "vatRate": 0.21
         }
       ]
     },
@@ -193,7 +209,8 @@
         {
           "sku": "li010",
           "label": "Ampolla de 50 cl · 20% vol.",
-          "price": 21.01
+          "price": 21.01,
+          "vatRate": 0.21
         }
       ]
     },
@@ -206,7 +223,8 @@
         {
           "sku": "lot-begudes-01",
           "label": "Lot de begudes artesanes",
-          "price": 29
+          "price": 29,
+          "vatRate": 0.21
         }
       ]
     },
@@ -219,7 +237,8 @@
         {
           "sku": "lot-castanyes-01",
           "label": "Lot de 3 elaborats de castanya",
-          "price": 18
+          "price": 18,
+          "vatRate": 0.21
         }
       ]
     },
@@ -232,7 +251,8 @@
         {
           "sku": "lot-cremes-01",
           "label": "Lot de cremes de castanya",
-          "price": 21
+          "price": 21,
+          "vatRate": 0.21
         }
       ]
     },
@@ -245,7 +265,8 @@
         {
           "sku": "lot-dolcos-01",
           "label": "Lot dolç de productes de castanya",
-          "price": 27
+          "price": 27,
+          "vatRate": 0.21
         }
       ]
     },
@@ -258,7 +279,8 @@
         {
           "sku": "lot-5",
           "label": "Lot de 3 productes",
-          "price": 19
+          "price": 19,
+          "vatRate": 0.21
         }
       ]
     },
@@ -271,7 +293,8 @@
         {
           "sku": "lot-mels-01",
           "label": "Lot de mels del territori",
-          "price": 24
+          "price": 24,
+          "vatRate": 0.21
         }
       ]
     },
@@ -284,7 +307,8 @@
         {
           "sku": "lot-1",
           "label": "Lot de 5 productes",
-          "price": 22
+          "price": 22,
+          "vatRate": 0.21
         }
       ]
     },
@@ -297,7 +321,8 @@
         {
           "sku": "lot-sabors-01",
           "label": "Lot de sabors del Montseny",
-          "price": 34
+          "price": 34,
+          "vatRate": 0.21
         }
       ]
     },
@@ -310,17 +335,20 @@
         {
           "sku": "mg010",
           "label": "2 unitats",
-          "price": 3.6
+          "price": 3.6,
+          "vatRate": 0.21
         },
         {
           "sku": "mg011",
           "label": "7 unitats · 200 g",
-          "price": 12.5
+          "price": 12.5,
+          "vatRate": 0.21
         },
         {
           "sku": "mg012",
           "label": "Pot de 42 unitats · 1 kg",
-          "price": 65
+          "price": 65,
+          "vatRate": 0.21
         }
       ]
     },
@@ -333,7 +361,8 @@
         {
           "sku": "me020",
           "label": "Pot de 500 g",
-          "price": 8.9
+          "price": 8.9,
+          "vatRate": 0.21
         }
       ]
     },
@@ -346,12 +375,14 @@
         {
           "sku": "me011",
           "label": "Pot de 50 g",
-          "price": 1.9
+          "price": 1.9,
+          "vatRate": 0.21
         },
         {
           "sku": "me010",
           "label": "Pot de 500 g",
-          "price": 8.9
+          "price": 8.9,
+          "vatRate": 0.21
         }
       ]
     },
@@ -364,7 +395,8 @@
         {
           "sku": "me040",
           "label": "Pot de 500 g",
-          "price": 8.9
+          "price": 8.9,
+          "vatRate": 0.21
         }
       ]
     },
@@ -377,7 +409,8 @@
         {
           "sku": "me030",
           "label": "Pot de 500 g",
-          "price": 8.9
+          "price": 8.9,
+          "vatRate": 0.21
         }
       ]
     },
@@ -390,12 +423,14 @@
         {
           "sku": "ml010",
           "label": "Pot de 120 g",
-          "price": 6.11
+          "price": 6.11,
+          "vatRate": 0.21
         },
         {
           "sku": "ml011",
           "label": "Pot de 275 g",
-          "price": 6.11
+          "price": 6.11,
+          "vatRate": 0.21
         }
       ]
     },
@@ -408,7 +443,8 @@
         {
           "sku": "melgerds22",
           "label": "Mida gran · 275 g",
-          "price": 9.8
+          "price": 9.8,
+          "vatRate": 0.21
         }
       ]
     },
@@ -421,7 +457,8 @@
         {
           "sku": "mo010",
           "label": "Ampolla de 75 cl · 15% vol.",
-          "price": 9
+          "price": 9,
+          "vatRate": 0.21
         }
       ]
     },
@@ -434,7 +471,8 @@
         {
           "sku": "ol010",
           "label": "Ampolla de 100 ml",
-          "price": 7
+          "price": 7,
+          "vatRate": 0.21
         }
       ]
     }

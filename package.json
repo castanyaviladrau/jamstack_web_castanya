@@ -51,6 +51,7 @@
     "gray-matter": "^4.0.3",
     "netlify-plugin-cache": "^1.0.3",
     "node-fetch": "^3.3.2",
+    "pdf-lib": "^1.17.1",
     "tinacms": "^3.6.1"
   },
   "engines": {

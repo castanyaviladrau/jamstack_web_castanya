@@ -65,6 +65,9 @@ create table if not exists public.order_items (
 alter table public.order_items
   add column if not exists sku text;
 
+alter table public.order_items
+  add column if not exists vat_rate numeric(4,2);
+
 create index if not exists orders_created_at_idx on public.orders (created_at desc);
 create index if not exists orders_payment_status_idx on public.orders (payment_status);
 create index if not exists orders_fulfillment_status_idx on public.orders (fulfillment_status);

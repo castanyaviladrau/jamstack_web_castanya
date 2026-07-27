@@ -6,6 +6,7 @@ const {
   verifyMerchantParametersSignature,
 } = require('./redsys-signature');
 const { sendEmail, isBrevoConfigured } = require('./send-email');
+const { buildOrderInvoicePdf } = require('./lib/invoice-pdf');
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -148,6 +149,7 @@ async function sendOrderEmails(order) {
       variantLabel: item.variant_label,
       quantity: item.quantity,
       lineTotal: Number(item.line_total || 0),
+      vatRate: Number.isFinite(Number(item.vat_rate)) ? Number(item.vat_rate) : 0.21,
     })),
     customer: {
       name: order.customer_name,
@@ -180,12 +182,69 @@ async function sendOrderEmails(order) {
     data: emailData,
   });
 
+  const invoiceAttachment = await buildInvoiceAttachment(order, emailData, billingAddress);
+
   await sendEmail({
     type: 'order-notification',
     data: emailData,
+    attachments: invoiceAttachment ? [invoiceAttachment] : undefined,
   });
 
   return { skipped: false };
+}
+
+async function buildInvoiceAttachment(order, emailData, billingAddress) {
+  const hasBillingDetails = Boolean(
+    billingAddress.company_name || billingAddress.address_line_1,
+  );
+
+  const client = hasBillingDetails
+    ? {
+        company: billingAddress.company_name || '',
+        vat: billingAddress.vat_number || '',
+        name: emailData.customer.name,
+        address: billingAddress.address_line_1 || '',
+        city: billingAddress.city || '',
+        postalCode: billingAddress.postal_code || '',
+        country: billingAddress.country || '',
+        email: emailData.customer.email,
+        phone: emailData.customer.phone,
+      }
+    : {
+        company: '',
+        vat: '',
+        name: emailData.customer.name,
+        address: emailData.customer.address,
+        city: emailData.customer.city,
+        postalCode: emailData.customer.postalCode,
+        country: emailData.customer.country,
+        email: emailData.customer.email,
+        phone: emailData.customer.phone,
+      };
+
+  try {
+    const pdfBuffer = await buildOrderInvoicePdf({
+      code: order.public_order_code,
+      date: order.created_at || new Date(),
+      client,
+      items: emailData.items,
+      shipping: {
+        amount: Number(order.shipping_amount || 0),
+        vatRate: 0.21,
+      },
+    });
+
+    return {
+      content: pdfBuffer.toString('base64'),
+      name: `Factura-${order.public_order_code}.pdf`,
+    };
+  } catch (pdfError) {
+    console.error(
+      `Failed to generate invoice PDF for order ${order.public_order_code}:`,
+      pdfError,
+    );
+    return null;
+  }
 }
 
 exports._test = {
