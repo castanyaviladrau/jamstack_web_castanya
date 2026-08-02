@@ -13799,5 +13799,38 @@ body.home .header-nav li:not(:last-child) {
     transform: translateY(-50%) translateY(calc(-1 * var(--arrow-lift)))
       scale(1.06);
   }
+
+  /* --- Header layout -------------------------------------------------------
+     Stack the logo mark above the wordmark so the title sits truly centred,
+     and use the horizontal space this frees on the right for the cart.
+     -------------------------------------------------------------------- */
+
+  .header-logo .logo-link {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
+
+  /* Stacking the mark on top of the wordmark makes the group taller, so the
+     mark is trimmed to keep .header-top at its existing 92px height. */
+  .header-logo img,
+  .logo-img {
+    height: 36px;
+  }
+
+  /* Bring the cart into the header row itself: menu toggle left, cart right.
+     Overrides the site-wide rule that suppresses the in-header duplicate. */
+  body .utility-right .header-icon-button--cart {
+    display: inline-flex !important;
+  }
+
+  .utility-right .header-menu-toggle {
+    order: -1;
+  }
+
+  /* ...and drop it from the floating overlay so it is not shown twice. */
+  .utility-top-overlay .header-icon-button--cart {
+    display: none;
+  }
 }
 
