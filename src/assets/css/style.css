@@ -8514,7 +8514,7 @@ body.page-professionals .professionals-value-feature__cta {
 }
 
 .shop-page-categories__scroller {
-  width: min(1120px, calc(100% - 40px));
+  width: 100%;
   margin: 0 auto;
   display: flex;
   gap: 18px;
@@ -9019,7 +9019,7 @@ body.page-professionals .professionals-value-feature__cta {
 }
 
 .shop-page-featured {
-  width: min(1240px, calc(100% - 40px));
+  width: 100%;
   margin: 0 auto;
   padding: 42px 0 72px;
   background: #f4f1e6;
@@ -9060,7 +9060,7 @@ body.page-professionals .professionals-value-feature__cta {
 .shop-page-featured__scroller {
   display: flex;
   gap: 8px;
-  width: min(1120px, calc(100% - 48px));
+  width: 100%;
   margin: 0 auto;
   overflow-x: auto;
   scroll-behavior: smooth;
@@ -9074,7 +9074,7 @@ body.page-professionals .professionals-value-feature__cta {
 
 .shop-page-featured-product {
   flex: 0 0 calc((100% - 32px) / 5);
-  min-width: 180px;
+  min-width: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;

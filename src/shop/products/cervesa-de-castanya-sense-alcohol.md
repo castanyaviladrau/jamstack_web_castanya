@@ -17,8 +17,8 @@ priceLabel: "4,10 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Castanya del Montseny, llevat, llúpols ecològics i maltes d’ordi."
-image: "/assets/images/products/pending-product-image.svg"
-imageAlt: "Imatge pendent per a Cervesa de castanya sense alcohol"
+image: "/assets/images/products/cervesa-de-castanya-sense-alcohol.png"
+imageAlt: "Cervesa de castanya sense alcohol"
 gallery: []
 formatLabel: Selecciona format
 formats:

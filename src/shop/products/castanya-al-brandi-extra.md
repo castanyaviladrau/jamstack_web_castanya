@@ -17,8 +17,8 @@ priceLabel: "8,09 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Castanyes, aigua, sucre, canyella, brandi i àcid cítric. Sense llet, sense ous. Sense gluten."
-image: "/assets/images/products/pending-product-image.svg"
-imageAlt: "Imatge pendent per a Castanya al brandi extra"
+image: "/assets/images/products/castanya-al-brandi-extra.png"
+imageAlt: "Castanya al brandi extra"
 gallery: []
 formatLabel: Selecciona format
 formats:

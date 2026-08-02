@@ -18,10 +18,10 @@ priceLabel: "34,00 €"
 availability: "Disponible per encàrrec"
 ingredientsLabel: INGREDIENTS
 ingredients: "Consulta la fitxa de cada producte per conèixer-ne els ingredients, els al·lèrgens i les condicions de conservació."
-image: "/assets/images/products/packs/lot-sabors-del-montseny.png"
+image: "/assets/images/products/packs/lot-sabors-del-montseny.jpeg"
 imageAlt: "Formatges i botifarra de castanya del Montseny"
 gallery:
-  - image: "/assets/images/products/packs/lot-sabors-del-montseny.png"
+  - image: "/assets/images/products/packs/lot-sabors-del-montseny.jpeg"
 formatLabel: Selecciona format
 formats:
   - label: "Lot de sabors del Montseny"

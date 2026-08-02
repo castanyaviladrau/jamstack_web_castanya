@@ -18,8 +18,8 @@ priceLabel: "8,90 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Mel."
-image: "/assets/images/products/pending-product-image.svg"
-imageAlt: "Imatge pendent per a Mel de mil flors"
+image: "/assets/images/products/mel-de-mil-flors.jpeg"
+imageAlt: "Mel de mil flors"
 gallery: []
 formatLabel: Selecciona format
 formats:

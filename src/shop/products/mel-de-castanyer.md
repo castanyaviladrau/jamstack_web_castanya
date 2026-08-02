@@ -18,8 +18,8 @@ priceLabel: "Des de 1,90 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Mel."
-image: "/assets/images/products/pending-product-image.svg"
-imageAlt: "Imatge pendent per a Mel de castanyer"
+image: "/assets/images/products/mel-de-castanyer.jpeg"
+imageAlt: "Mel de castanyer"
 gallery: []
 formatLabel: Selecciona format
 formats:

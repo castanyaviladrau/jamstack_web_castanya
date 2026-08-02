@@ -18,8 +18,8 @@ priceLabel: "Des de 6,11 €"
 availability: "Disponible a la botiga online"
 ingredientsLabel: INGREDIENTS
 ingredients: "Castanya, sucre i llimona. Sense llet, sense ous. Sense gluten."
-image: "/assets/images/products/pending-product-image.svg"
-imageAlt: "Imatge pendent per a Melmelada de castanya"
+image: "/assets/images/products/melmelada-de-castanya.png"
+imageAlt: "Melmelada de castanya"
 gallery: []
 formatLabel: Selecciona format
 formats:

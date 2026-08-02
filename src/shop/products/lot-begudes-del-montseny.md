@@ -18,10 +18,10 @@ priceLabel: "29,00 €"
 availability: "Disponible per encàrrec"
 ingredientsLabel: INGREDIENTS
 ingredients: "Consulta la fitxa de cada beguda per conèixer-ne els ingredients i els al·lèrgens."
-image: "/assets/images/products/packs/lot-begudes-del-montseny.png"
+image: "/assets/images/products/packs/lot-begudes-del-montseny.jpeg"
 imageAlt: "Selecció de cerveses i licors artesans de Castanya de Viladrau"
 gallery:
-  - image: "/assets/images/products/packs/lot-begudes-del-montseny.png"
+  - image: "/assets/images/products/packs/lot-begudes-del-montseny.jpeg"
 formatLabel: Selecciona format
 formats:
   - label: "Lot de begudes artesanes"

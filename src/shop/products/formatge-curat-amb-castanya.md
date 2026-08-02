@@ -16,8 +16,8 @@ priceLabel: "20,50 €"
 availability: "Disponible amb preparació artesana"
 ingredientsLabel: INGREDIENTS
 ingredients: "Castanya i llet de cabra pasteuritzada."
-image: "/assets/images/products/pending-product-image.svg"
-imageAlt: "Imatge pendent per a Formatge curat amb castanya"
+image: "/assets/images/products/formatge-curat-amb-castanya.png"
+imageAlt: "Formatge curat amb castanya"
 gallery: []
 formatLabel: Selecciona format
 formats:

@@ -4,7 +4,7 @@
       "slug": "castanya-al-brandi-extra",
       "name": "Castanya al brandi extra",
       "currency": "EUR",
-      "image": "/assets/images/products/pending-product-image.svg",
+      "image": "/assets/images/products/castanya-al-brandi-extra.png",
       "variants": [
         {
           "sku": "br010",
@@ -30,7 +30,7 @@
       "slug": "castanya-pilonga-deshidratada",
       "name": "Castanya pilonga deshidratada",
       "currency": "EUR",
-      "image": "/assets/images/gallery/product_castanya_seca.png",
+      "image": "/assets/images/products/castanya-pilonga-deshidratada.jpeg",
       "variants": [
         {
           "sku": "se010",
@@ -48,7 +48,7 @@
       "slug": "castanya-torrada",
       "name": "Castanya torrada",
       "currency": "EUR",
-      "image": "/assets/images/gallery/product_castanya_torrada.png",
+      "image": "/assets/images/products/castanya-torrada.png",
       "variants": [
         {
           "sku": "ct010",
@@ -74,7 +74,7 @@
       "slug": "cervesa-de-castanya-sense-alcohol",
       "name": "Cervesa de castanya sense alcohol",
       "currency": "EUR",
-      "image": "/assets/images/products/pending-product-image.svg",
+      "image": "/assets/images/products/cervesa-de-castanya-sense-alcohol.png",
       "variants": [
         {
           "sku": "ce014",
@@ -87,7 +87,7 @@
       "slug": "cervesa-torrent-sureda",
       "name": "Cervesa Torrent “Sureda”",
       "currency": "EUR",
-      "image": "/assets/images/products/pending-product-image.svg",
+      "image": "/assets/images/products/cervesa-torrent-sureda.png",
       "variants": [
         {
           "sku": "ce010",
@@ -175,7 +175,7 @@
       "slug": "formatge-curat-amb-castanya",
       "name": "Formatge curat amb castanya",
       "currency": "EUR",
-      "image": "/assets/images/products/pending-product-image.svg",
+      "image": "/assets/images/products/formatge-curat-amb-castanya.png",
       "variants": [
         {
           "sku": "fq010",
@@ -201,7 +201,7 @@
       "slug": "lot-begudes-del-montseny",
       "name": "Lot Begudes del Montseny",
       "currency": "EUR",
-      "image": "/assets/images/products/packs/lot-begudes-del-montseny.png",
+      "image": "/assets/images/products/packs/lot-begudes-del-montseny.jpeg",
       "variants": [
         {
           "sku": "lot-begudes-01",
@@ -214,7 +214,7 @@
       "slug": "lot-castanyes-essencials",
       "name": "Lot Castanyes Essencials",
       "currency": "EUR",
-      "image": "/assets/images/products/packs/lot-castanyes-essencials.png",
+      "image": "/assets/images/products/packs/lot-castanyes-essencials.jpeg",
       "variants": [
         {
           "sku": "lot-castanyes-01",
@@ -227,7 +227,7 @@
       "slug": "lot-cremes-del-bosc",
       "name": "Lot Cremes del Bosc",
       "currency": "EUR",
-      "image": "/assets/images/products/packs/lot-cremes-del-bosc.png",
+      "image": "/assets/images/products/packs/lot-cremes-del-bosc.jpeg",
       "variants": [
         {
           "sku": "lot-cremes-01",
@@ -279,7 +279,7 @@
       "slug": "lot-que-castanyazo",
       "name": "Lot “Que Castanyazo!”",
       "currency": "EUR",
-      "image": "/assets/images/gallery/packs.png",
+      "image": "/assets/images/products/packs/lot-castanyes-essencials.jpeg",
       "variants": [
         {
           "sku": "lot-1",
@@ -292,7 +292,7 @@
       "slug": "lot-sabors-del-montseny",
       "name": "Lot Sabors del Montseny",
       "currency": "EUR",
-      "image": "/assets/images/products/packs/lot-sabors-del-montseny.png",
+      "image": "/assets/images/products/packs/lot-sabors-del-montseny.jpeg",
       "variants": [
         {
           "sku": "lot-sabors-01",
@@ -328,7 +328,7 @@
       "slug": "mel-de-bruc",
       "name": "Mel de bruc",
       "currency": "EUR",
-      "image": "/assets/images/products/pending-product-image.svg",
+      "image": "/assets/images/products/mel-de-bruc.jpeg",
       "variants": [
         {
           "sku": "me020",
@@ -341,7 +341,7 @@
       "slug": "mel-de-castanyer",
       "name": "Mel de castanyer",
       "currency": "EUR",
-      "image": "/assets/images/products/pending-product-image.svg",
+      "image": "/assets/images/products/mel-de-castanyer.jpeg",
       "variants": [
         {
           "sku": "me011",
@@ -359,7 +359,7 @@
       "slug": "mel-de-mil-flors",
       "name": "Mel de mil flors",
       "currency": "EUR",
-      "image": "/assets/images/products/pending-product-image.svg",
+      "image": "/assets/images/products/mel-de-mil-flors.jpeg",
       "variants": [
         {
           "sku": "me040",
@@ -385,7 +385,7 @@
       "slug": "melmelada-de-castanya",
       "name": "Melmelada de castanya",
       "currency": "EUR",
-      "image": "/assets/images/products/pending-product-image.svg",
+      "image": "/assets/images/products/melmelada-de-castanya.png",
       "variants": [
         {
           "sku": "ml010",
@@ -409,6 +409,19 @@
           "sku": "melgerds22",
           "label": "Mida gran · 275 g",
           "price": 9.8
+        }
+      ]
+    },
+    {
+      "slug": "mini-delicies",
+      "name": "Mini Delícies",
+      "currency": "EUR",
+      "image": "/assets/images/products/packs/mini-delicies.jpeg",
+      "variants": [
+        {
+          "sku": "mini-delicies-01",
+          "label": "Trio de mini pots",
+          "price": 17.81
         }
       ]
     },

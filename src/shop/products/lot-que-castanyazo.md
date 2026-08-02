@@ -18,9 +18,10 @@ priceLabel: "22,00 €"
 availability: "Disponibilitat segons temporada"
 ingredientsLabel: INGREDIENTS
 ingredients: "Consulta la fitxa del producte per als ingredients."
-image: "/assets/images/gallery/packs.png"
-imageAlt: "Selecció de productes artesans de Castanya de Viladrau per regalar"
-gallery: []
+image: "/assets/images/products/packs/lot-castanyes-essencials.jpeg"
+imageAlt: "Farina, flocs, castanya torrada i secallona de Castanya de Viladrau"
+gallery:
+  - image: "/assets/images/products/packs/lot-castanyes-essencials.jpeg"
 formatLabel: Selecciona format
 formats:
   - label: "Lot de 5 productes"

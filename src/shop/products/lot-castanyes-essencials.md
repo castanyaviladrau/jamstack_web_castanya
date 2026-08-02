@@ -20,10 +20,10 @@ priceLabel: "18,00 €"
 availability: "Disponible per encàrrec"
 ingredientsLabel: INGREDIENTS
 ingredients: "Castanya del Montseny en diferents formats. Consulta la fitxa de cada producte per obtenir la informació completa."
-image: "/assets/images/products/packs/lot-castanyes-essencials.png"
-imageAlt: "Castanyes senceres, flocs i farina de castanya de Viladrau"
+image: "/assets/images/products/packs/lot-castanyes-essencials.jpeg"
+imageAlt: "Farina, flocs, castanya torrada i secallona de Castanya de Viladrau"
 gallery:
-  - image: "/assets/images/products/packs/lot-castanyes-essencials.png"
+  - image: "/assets/images/products/packs/lot-castanyes-essencials.jpeg"
 formatLabel: Selecciona format
 formats:
   - label: "Lot de 3 elaborats de castanya"

@@ -18,10 +18,10 @@ priceLabel: "21,00 €"
 availability: "Disponible per encàrrec"
 ingredientsLabel: INGREDIENTS
 ingredients: "Consulta la fitxa de cada crema per conèixer-ne els ingredients i els al·lèrgens."
-image: "/assets/images/products/packs/lot-cremes-del-bosc.png"
+image: "/assets/images/products/packs/lot-cremes-del-bosc.jpeg"
 imageAlt: "Selecció de cremes i preparacions de castanya de Viladrau"
 gallery:
-  - image: "/assets/images/products/packs/lot-cremes-del-bosc.png"
+  - image: "/assets/images/products/packs/lot-cremes-del-bosc.jpeg"
 formatLabel: Selecciona format
 formats:
   - label: "Lot de cremes de castanya"
