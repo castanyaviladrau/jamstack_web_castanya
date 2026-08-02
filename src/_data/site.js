@@ -4,7 +4,7 @@ module.exports = {
   titleSuffix: "Castanya de Viladrau",
   defaultTitle: "Castanya de Viladrau | Productes artesans, visites i gastronomia al Montseny",
   defaultDescription:
-    "Castanya de Viladrau porta la castanya del Montseny a la taula amb productes artesans, visites guiades i propostes gastronomiques arrelades al territori.",
+    "Castanya de Viladrau porta la castanya del Montseny a la taula amb productes artesans, visites guiades i propostes gastronòmiques arrelades al territori.",
   defaultOgImage: "/assets/images/gallery/index_background.png",
   locale: "ca_ES",
   language: "ca",

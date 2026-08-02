@@ -5,10 +5,10 @@ footerVariant: visits-newsletter
 tags:
   - visitActivities
 order: 3
-title: "FINCA DE LA CASTANYA: HISTORIA I TAST ARTESA"
+title: "FINCA DE LA CASTANYA: HISTÒRIA I TAST ARTESÀ"
 permalink: /visits/finca-castanya-historia-i-tast/
 cardImage: /assets/images/gallery/visites/visites_guiades_3.jpg
-cardImageAlt: Finca de la castanya i tast artesa
+cardImageAlt: Finca de la castanya i tast artesà
 cardDescription: "Visita el centre de la Castanya de Viladrau: coneix les nostres arrels i gaudeix de la pau del Montseny amb un tast de productes artesans."
 heroImage: /assets/images/gallery/visites/visites_guiades_3.jpg
 heroImageAlt: Espai de tast de productes de castanya
@@ -24,7 +24,7 @@ bookingHighlights:
   - IDEAL PER A PETITS GRUPS I VISITES PRIVADES
 personsMin: 2
 personsMax: 8
-duration: 1 hora amb degustacio
+duration: 1 hora amb degustació
 priceFrom: 18€
 priceNote: segons format i mida del grup
 difficulty: Nivell facil

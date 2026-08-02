@@ -9,7 +9,7 @@ title: TASTET
 permalink: /visits/tastet/
 cardImage: /assets/images/gallery/visites/visita-guiada.jpg
 cardImageAlt: Tastet de productes de castanya
-cardDescription: Experimenta en un tast tot el mon gourmet que te la castanya. A traves de 5 productes locals, tots amb castanya.
+cardDescription: Experimenta en un tast tot el món gurmet que té la castanya. A través de cinc productes locals, tots amb castanya.
 heroImage: /assets/images/gallery/visites/visita-guiada.jpg
 heroImageAlt: Taula de tast de productes de castanya
 galleryButtonLabel: VEURE GALERIA DE FOTOS

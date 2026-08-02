@@ -9,7 +9,7 @@ title: "AVENTURA 4X4: CASTANYERS CENTENARIS DEL MONTSENY"
 permalink: /visits/aventura-4x4/
 cardImage: /assets/images/gallery/visites/aventura-4x4-castanyers-centenaris-20260511.jpg
 cardImageAlt: Aventura 4x4 pels castanyers centenaris del Montseny
-cardDescription: "Viu la magia del Montseny amb una ruta en 4x4 cap al cor del bosc, on s'amaguen els nostres castanyers centenaris mes secrets. Una immersio a la Reserva de la Biosfera per sentir el batec mes profund de la natura."
+cardDescription: "Viu la màgia del Montseny amb una ruta en 4x4 cap al cor del bosc, on s'amaguen els nostres castanyers centenaris més secrets. Una immersió a la Reserva de la Biosfera per sentir el batec més profund de la natura."
 heroImage: /assets/images/gallery/visites/aventura-4x4-castanyers-centenaris-20260511.jpg
 heroImageAlt: Vehicle 4x4 al bosc del Montseny
 galleryButtonLabel: VEURE GALERIA DE FOTOS
@@ -24,7 +24,7 @@ bookingHighlights:
   - POLITICA DE CANCELACIO FLEXIBLE FINS A 48H ABANS DE LA VISITA
 personsMin: 2
 personsMax: 8
-duration: 1 hora amb degustacio
+duration: 1 hora amb degustació
 priceFrom: 20€
 priceNote: segons nombre de persones
 difficulty: Nivell facil

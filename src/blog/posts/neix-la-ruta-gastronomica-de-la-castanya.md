@@ -1,6 +1,6 @@
 ---
-title: "Neix la Ruta Gastronomica de la Castanya: un homenatge al producte, la cuina i el territori"
-description: "La Castanya impulsa la Ruta Gastronomica de la Castanya per connectar el bosc amb la taula i donar visibilitat a un element emblema del territori. El xef Joan Antonio esdevé el primer 'Xef Oficial de la Castanya'."
+title: "Neix la Ruta Gastronòmica de la Castanya: un homenatge al producte, la cuina i el territori"
+description: "La Castanya impulsa la Ruta Gastronòmica de la Castanya per connectar el bosc amb la taula i donar visibilitat a un element emblemàtic del territori. El xef Joan Antonio esdevé el primer 'Xef Oficial de la Castanya'."
 date: 2026-04-21T13:25:00.000Z
 displayDate: "21 ABR 2026"
 readingTimeValue: "4 minuts"

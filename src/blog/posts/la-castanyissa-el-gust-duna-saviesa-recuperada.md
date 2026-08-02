@@ -1,6 +1,6 @@
 ---
 title: "La Castanyissa: el gust d'una saviesa recuperada"
-description: "Hi ha productes que no nomes es mengen: expliquen un paisatge, una tradicio i una manera d'entendre la terra. La Castanyissa neix d'aquesta complicitat i recupera un coneixement antic." 
+description: "Hi ha productes que no només es mengen: expliquen un paisatge, una tradició i una manera d'entendre la terra. La Castanyissa neix d'aquesta complicitat i recupera un coneixement antic." 
 date: 2026-04-21T16:51:00.000Z
 displayDate: "21 ABR 2026"
 readingTimeValue: "3 minuts"
@@ -9,7 +9,7 @@ image: "/assets/images/blog/2026/la-castanyissa/featured.jpg"
 imageAlt: "La Castanyissa"
 tags:
   - Gastronomia
-  - Tradicio
+  - Tradició
 featured: true
 ---
 

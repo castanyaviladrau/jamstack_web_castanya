@@ -1,7 +1,7 @@
 {
   "hero": {
-    "title": "RECEPTES AMB CASTANYA DE&nbsp;VILADRAU\nCUINA L'ESSENCIA DEL MONTSENY A&nbsp;CASA",
-    "text": "Des de la tradicio de la castanyada fins a sorprenents plats per a tot l'any. Descobreix com portar el sabor del bosc a la teva taula de forma facil i saludable.",
+    "title": "RECEPTES AMB CASTANYA DE&nbsp;VILADRAU\nCUINA L'ESSÈNCIA DEL MONTSENY A&nbsp;CASA",
+    "text": "Des de la tradició de la castanyada fins a sorprenents plats per a tot l'any. Descobreix com portar el sabor del bosc a la teva taula de forma fàcil i saludable.",
     "backgroundImage": "/assets/images/gallery/espai-gastronomic/castanya_receptes.png",
     "backgroundAlt": "Ingredients i castanyes sobre la taula"
   },
@@ -21,7 +21,7 @@
         "time": "120 minuts",
         "difficulty": "mitja",
         "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanyes de Viladrau", "Brou de pollastre", "Nata liquida"]
+        "ingredients": ["Castanyes de Viladrau", "Brou de pollastre", "Nata líquida"]
       },
       {
         "title": "RISOTTO DE CASTANYES I BOLETS",
@@ -30,7 +30,7 @@
         "time": "40 minuts",
         "difficulty": "mitja",
         "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanyes cuites", "Bolets variats", "Arros per a risotto"]
+        "ingredients": ["Castanyes cuites", "Bolets variats", "Arròs per a risotto"]
       },
       {
         "title": "PASTÍS SALAT DE CEBA AMB CASTANYES I HERBES AROMÀTIQUES",
@@ -54,18 +54,18 @@
   },
   "homeTraditionsSection": {
     "title": "PLATS PRINCIPALS AMB CASTANYA DE VILADRAU",
-    "intro": "Plats de resistencia i cuina de mercat que converteixen la castanya en l'anima de cada apat. Del camp a la taula, amb tot el sabor del Montseny.",
+    "intro": "Plats consistents i cuina de mercat que converteixen la castanya en l'ànima de cada àpat. Del camp a la taula, amb tot el sabor del Montseny.",
     "ctaLabel": "VEURE TOTES",
     "ctaHref": "/gastronomic/receptes/resultats/?dishType=homeTraditions",
     "slides": [
       {
         "title": "CARN AMB SALSA DE CASTANYES",
         "image": "/assets/images/gallery/receptes/carn-salsa-castanyes.png",
-        "imageAlt": "Filet de bou amb salsa intensa de castanyes i Pedro Ximenez",
+        "imageAlt": "Filet de bou amb salsa intensa de castanyes i Pedro Ximénez",
         "time": "45 minuts",
         "difficulty": "dificil",
         "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Filet de bou", "Castanyes cuites", "Pedro Ximenez"]
+        "ingredients": ["Filet de bou", "Castanyes cuites", "Pedro Ximénez"]
       },
       {
         "title": "POLLASTRE ROSTIT AMB CASTANYES",
@@ -212,7 +212,7 @@
     ]
   },
   "sweetSection": {
-    "title": "MOMENT DOLC (REBOSTERIA FACIL)",
+    "title": "MOMENT DOLÇ (REBOSTERIA FÀCIL)",
     "intro": "Capritxos irresistibles i postres artesanes per endolcir els teus moments especials.",
     "ctaLabel": "VEURE TOTES",
     "ctaHref": "/gastronomic/receptes/resultats/?dishType=sweet",

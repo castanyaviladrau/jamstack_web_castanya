@@ -1,6 +1,6 @@
 ---
-title: "Iniciem les tasques de recuperacio i manteniment del castanyer de les 9 branques"
-description: "Hem iniciat un proces de cura, respecte i compromis per preservar el castanyer de les 9 branques, un arbre singular del patrimoni natural i emocional de Viladrau. Una mirada llarga per cuidar paisatge, memoria i comunitat."
+title: "Iniciem les tasques de recuperació i manteniment del castanyer de les 9 branques"
+description: "Hem iniciat un procés de cura, respecte i compromís per preservar el castanyer de les 9 branques, un arbre singular del patrimoni natural i emocional de Viladrau. Una mirada llarga per cuidar paisatge, memòria i comunitat."
 date: 2026-04-21T14:12:00.000Z
 displayDate: "21 ABR 2026"
 readingTimeValue: "4 minuts"

@@ -82,7 +82,7 @@
             "value": "short"
           },
           {
-            "label": "3-5 minuts",
+            "label": "3–5 minuts",
             "value": "medium"
           },
           {
@@ -98,7 +98,7 @@
   "loadMoreLabel": "CARREGAR MÉS",
   "newsletter": {
     "title": "BUTLLETÍ",
-    "text": "Uneix-te al nostre butlletí per estar al dia de nous productes i activitats a més de rebre descomptes",
+    "text": "Uneix-te al nostre butlletí per estar al dia de nous productes i activitats, a més de rebre descomptes.",
     "inputLabel": "Correu electrònic",
     "buttonLabel": "AFEGEIX-ME!"
   }

@@ -52,7 +52,7 @@ collections.recipes %} {% if recipe.data.title == slide.title and recipe.url %}
         alt=""
         aria-hidden="true"
       />
-      >{{ slide.difficulty }}</span
+      {{ slide.difficulty | difficultyLabel }}</span
     >
   </div>
   <p class="professionals-inspiration-card__label">

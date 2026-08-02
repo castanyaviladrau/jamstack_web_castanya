@@ -168,9 +168,9 @@ module.exports = function (eleventyConfig) {
   });
 
   const difficultyLabels = {
-    facil: "Facil",
-    mitja: "Mitja",
-    dificil: "Dificil",
+    facil: "Fàcil",
+    mitja: "Mitjà",
+    dificil: "Difícil",
   };
   eleventyConfig.addFilter(
     "difficultyLabel",
@@ -179,9 +179,9 @@ module.exports = function (eleventyConfig) {
 
   const dishTypeLabels = {
     foundations: "Entrants",
-    sweet: "Dolc",
+    sweet: "Dolç",
     homeTraditions: "Plats principals",
-    classics: "Classics",
+    classics: "Clàssics",
     healthy: "Saludable",
   };
   eleventyConfig.addFilter(

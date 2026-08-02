@@ -3,15 +3,15 @@
     "image": "/assets/images/gallery/visites/visites_guiades_bg.jpg",
     "imageAlt": "Visites guiades al Montseny",
     "title": "LES NOSTRES VISITES GUIADES",
-    "text": "Connecta amb la natura al cor de la Reserva de la Biosfera i deixa't sorprendre pels boscos i castanyers mil-lenaris del Montseny.",
-    "ctaLabel": "LLEGEIX MES SOBRE EL PARC DEL MONTSENY",
+    "text": "Connecta amb la natura al cor de la Reserva de la Biosfera i deixa't sorprendre pels boscos i castanyers mil·lenaris del Montseny.",
+    "ctaLabel": "LLEGEIX MÉS SOBRE EL PARC DEL MONTSENY",
     "ctaHref": "/projecte/"
   },
   "banner": {
     "image": "/assets/images/gallery/visites/visites_guiades_banner.jpg",
     "imageAlt": "Visites a mida al Montseny",
     "title": "VISITES A MIDA: EXPERTESA FORESTAL I NATURA PER AL TEU PROJECTE",
-    "text": "Obrim les portes a professionals del bosc, escoles, paisatgistes i projectes de biodiversitat que busquen una experiencia real al Montseny.",
+    "text": "Obrim les portes a professionals del bosc, escoles, paisatgistes i projectes de biodiversitat que busquen una experiència real al Montseny.",
     "buttonLabel": "SOL·LICITA LA TEVA VISITA A MIDA",
     "buttonHref": "/contact/"
   }
