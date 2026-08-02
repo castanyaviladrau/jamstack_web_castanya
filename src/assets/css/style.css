@@ -86,6 +86,10 @@ table {
 }
 
 :root {
+  /* This is a light-only design: opt out of the device dark mode so the
+     browser stops re-colouring form controls, scrollbars and the canvas. */
+  color-scheme: light;
+
   --color-primary: #2d5a27;
   --color-accent: #7ba525;
   --color-brown: #a76a23;
@@ -13714,5 +13718,86 @@ body.home .header-nav li:not(:last-child) {
 .featured-news-tags {
   font-family: "Gotham-Medium", "Gotham Medium", sans-serif;
   font-weight: 500;
+}
+
+/* ==========================================================================
+   MOBILE-ONLY ADJUSTMENTS
+   Applies at <= 980px, the breakpoint where the site switches to the mobile
+   menu (mobileMenuBreakpoint in main.js). Desktop rendering is untouched.
+   ========================================================================== */
+
+@media (max-width: 980px) {
+  /* --- Slider arrows -------------------------------------------------------
+     Lift the arrows into their own band above the section heading so they
+     stop covering the title. Horizontal offsets are deliberately left alone.
+     -------------------------------------------------------------------- */
+
+  .title-nav-wrapper {
+    padding-top: 57px;
+  }
+
+  .title-nav-wrapper .nav-arrow-inline.left,
+  .title-nav-wrapper .nav-arrow-inline.right {
+    top: 0;
+  }
+
+  .shop-page-categories__title-row,
+  .shop-page-featured__title-row,
+  .shop-page-gifts__title-row {
+    padding-top: 57px;
+  }
+
+  .shop-page-categories__title-row .shop-page-categories__arrow,
+  .shop-page-featured__title-row .shop-page-featured__arrow,
+  .shop-page-gifts__title-row .shop-page-gifts__arrow {
+    top: 0;
+  }
+
+  /* Fusta showcase: the arrows overlay the photo, so take them out of the
+     absolute centre and give them their own row above the text block. The
+     hero image and its overlay are position:absolute, so the switch to grid
+     does not affect them. */
+  .fusta-showcase__hero {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .fusta-showcase__arrow {
+    position: static;
+    transform: none;
+    grid-row: 1;
+  }
+
+  .fusta-showcase__arrow--prev {
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  .fusta-showcase__arrow--next {
+    grid-column: 3;
+    justify-self: end;
+  }
+
+  .fusta-showcase__hero-content {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    margin-top: 18px;
+  }
+
+  /* Professionals "Valor afegit": the text block is an absolutely centred
+     overlay, so the arrows are lifted above it instead. Adjust --arrow-lift
+     if a slide's copy runs longer than the current content. */
+  .professionals-value-feature__arrow {
+    --arrow-lift: 150px;
+    transform: translateY(-50%) translateY(calc(-1 * var(--arrow-lift)));
+  }
+
+  .professionals-value-feature__arrow:hover {
+    transform: translateY(-50%) translateY(calc(-1 * var(--arrow-lift)))
+      scale(1.06);
+  }
 }
 

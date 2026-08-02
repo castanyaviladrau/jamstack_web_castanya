@@ -34,8 +34,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (window.innerWidth <= mobileMenuBreakpoint) {
-      header.classList.add("is-scrolled");
+      // On mobile the header is pinned to the top by CSS, so the climb
+      // transform never applies; only the background state has to change.
       document.documentElement.style.setProperty("--climb-progress", "1");
+
+      if (!hasClimbHeader) {
+        header.classList.add("is-scrolled");
+        return;
+      }
+
+      // Homepage: stay transparent over the hero and fade to the solid
+      // background once it has been scrolled past, mirroring the desktop.
+      const heroDistance = window.innerHeight - 65;
+      header.classList.toggle("is-scrolled", window.scrollY >= heroDistance);
       return;
     }
 
@@ -71,6 +82,9 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   window.addEventListener("scroll", handleScroll, { passive: true });
+  // The mobile threshold depends on the viewport height, so recompute it when
+  // the device is rotated or the window is resized across the breakpoint.
+  window.addEventListener("resize", handleScroll, { passive: true });
   handleScroll(); // Run immediately on load
 
   // --- CAROUSEL LOGIC ---
