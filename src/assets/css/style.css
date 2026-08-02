@@ -13351,6 +13351,27 @@ body.has-mobile-menu-open {
     text-align: center;
   }
 
+  /* Take the arrow out of the inline flow so it no longer skews the
+     nav-btn-text off-centre; it stays visible, pinned to the right edge
+     of the button instead of sitting inline next to the text. */
+  .nav-item--dropdown > .nav-link-button .nav-drop-arrow {
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    margin-left: 0;
+    transform: translateY(-50%);
+  }
+
+  /* The desktop rule for these two items (line ~2521) left-aligns their
+     two-line label for its fixed-width nav cell. That rule has no media
+     query, so it leaks into mobile and makes "VISITES/GUIADES" and
+     "ESPAI/GASTRONÒMIC" look ragged-left next to the other, centered items. */
+  .nav-item--gastronomic .nav-btn-text,
+  .nav-item--visits .nav-btn-text {
+    justify-content: center;
+    text-align: center;
+  }
+
   .nav-dropdown {
     position: static;
     left: auto;
@@ -13361,9 +13382,10 @@ body.has-mobile-menu-open {
     max-width: 100%;
     min-width: 0;
     margin: 0 auto;
-    padding: 0 0 8px;
+    padding: 8px 0;
     border: 0;
-    background: transparent !important;
+    border-radius: 0;
+    background: #efe5d3 !important;
     box-shadow: none;
     opacity: 1;
     visibility: visible;
@@ -13408,11 +13430,12 @@ body.has-mobile-menu-open {
     max-width: min(100%, 280px);
     margin: 0 auto;
     padding: 10px 12px;
-    color: #f7f1e3 !important;
+    color: #8d7748 !important;
     text-align: center;
     line-height: 1.35;
     white-space: normal;
     background: transparent !important;
+    border-radius: 0;
     opacity: 1 !important;
     visibility: visible !important;
   }
@@ -13426,8 +13449,9 @@ body.has-mobile-menu-open {
   body.page-gastronomic .header-nav .nav-dropdown__link:hover,
   body.page-gastronomic .header-nav .nav-dropdown__link:focus-visible,
   body.page-gastronomic .header-nav .nav-dropdown__link.is-active {
-    color: #f5f0e8 !important;
-    background: transparent !important;
+    color: #6b5738 !important;
+    background: #e2d4b4 !important;
+    border-radius: 0;
   }
 
   .site-header:not(.is-menu-open) .nav-dropdown {
