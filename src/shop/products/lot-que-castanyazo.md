@@ -4,7 +4,8 @@ permalink: /shop/products/lot-que-castanyazo/
 title: "Lot “Que Castanyazo!”"
 description: "Lot format per cinc productes, tots ells amb la castanya com a ingredient principal. Elaborats de manera artesanal i sense sucres afegits."
 tagline: "Selecció artesana de productes locals amb castanya."
-category: packs
+categories:
+  - packs
 consumptionMoments:
   - regals-detalls
 dietTags:

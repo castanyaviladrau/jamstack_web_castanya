@@ -4,7 +4,8 @@ permalink: /shop/products/lot-cremes-del-bosc/
 title: "Lot Cremes del Bosc"
 description: "Una selecció cremosa i reconfortant de preparacions de castanya per untar, cuinar i gaudir sense presses."
 tagline: "Textures suaus amb tot el gust del Montseny."
-category: packs
+categories:
+  - packs
 consumptionMoments:
   - picar-compartir
   - regals-detalls

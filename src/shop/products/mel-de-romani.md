@@ -4,7 +4,10 @@ permalink: /shop/products/mel-de-romani/
 title: "Mel de romaní"
 description: "Mel de color clar. Tonificant i estimulant natural per a tot l’aparell digestiu."
 tagline: "Mel de caràcter intens vinculada al paisatge del Montseny."
-category: mels
+categories:
+  - elaborats-de-castanyes
+  - dolcos
+  - mels
 consumptionMoments:
   - moments-dolcos
   - regals-detalls

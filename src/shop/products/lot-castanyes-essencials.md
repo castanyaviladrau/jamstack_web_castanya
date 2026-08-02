@@ -4,7 +4,8 @@ permalink: /shop/products/lot-castanyes-essencials/
 title: "Lot Castanyes Essencials"
 description: "Tres maneres de gaudir la castanya: sencera, en flocs i en farina, per omplir la cuina de receptes amb arrel."
 tagline: "La castanya en els seus formats més versàtils."
-category: packs
+categories:
+  - packs
 consumptionMoments:
   - cuinar
   - regals-detalls

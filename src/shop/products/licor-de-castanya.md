@@ -4,7 +4,9 @@ permalink: /shop/products/licor-de-castanya/
 title: "Licor de castanya"
 description: "Ideal per acompanyar postres, fruits secs, castanyes, etc."
 tagline: "Beguda artesana amb castanya i gust de territori."
-category: begudes
+categories:
+  - begudes
+  - elaborats-de-castanyes
 consumptionMoments:
   - moments-dolcos
   - regals-detalls

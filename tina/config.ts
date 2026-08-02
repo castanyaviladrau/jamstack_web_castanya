@@ -111,7 +111,7 @@ export default defineConfig({
             detailNotes: [],
             ctaLabel: "AFEGIR A LA CISTELLA",
             ctaHref: "/shop/cart/",
-            category: "elaborats-de-castanyes",
+            categories: ["elaborats-de-castanyes"],
             consumptionMoments: ["cuinar"],
             dietTags: [],
             homepageTags: [],
@@ -143,8 +143,9 @@ export default defineConfig({
           },
           {
             type: "string",
-            name: "category",
-            label: "Shop Category",
+            name: "categories",
+            label: "Shop Categories",
+            list: true,
             required: true,
             options: [
               { label: "Castanyes", value: "castanyes" },

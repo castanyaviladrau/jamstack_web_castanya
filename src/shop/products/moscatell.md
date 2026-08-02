@@ -4,7 +4,9 @@ permalink: /shop/products/moscatell/
 title: "Moscatell"
 description: "De sabor dolç, és una de les begudes típiques de les terres catalanes."
 tagline: "Beguda artesana amb castanya i gust de territori."
-category: begudes
+categories:
+  - begudes
+  - elaborats-de-castanyes
 consumptionMoments:
   - moments-dolcos
   - regals-detalls

@@ -236,12 +236,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const getTokens = (value = "") => value.split(/\s+/).filter(Boolean);
 
     const productMatches = (product) => {
+      const productCategories = getTokens(product.dataset.shopProductCategory);
       const productMoments = getTokens(product.dataset.shopProductMoments);
       const productDiets = getTokens(product.dataset.shopProductDiets);
 
       return activeEntries.every(([type, value]) => {
         if (type === "category") {
-          return product.dataset.shopProductCategory === value;
+          return productCategories.includes(value);
         }
 
         if (type === "moment") {

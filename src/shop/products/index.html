@@ -176,8 +176,9 @@ footerVariant: projecte-newsletter
   </div>
 
   <div class="shop-page-featured__scroller" id="shopFeaturedCarousel">
-    {% for product in productsList %} {% if product.data.category ==
-    'productes-estrella' %} {% set productImage = product.data.image or '' %}
+    {% for product in productsList %} {% set productCategories =
+    product.data.categories | default([]) %} {% if 'productes-estrella' in
+    productCategories %} {% set productImage = product.data.image or '' %}
     {% if not productImage or 'pending-product-image.svg' in productImage %}
     {% set productImage = '/assets/images/gallery/elaborats.jpg' %} {% endif
     %}
@@ -281,9 +282,10 @@ footerVariant: projecte-newsletter
   <div class="shop-page-gifts__scroller" id="shopGiftsCarousel">
     {% for product in productsList %} {% set homepageTags =
     product.data.homepageTags | default([]) %} {% if 'pack-regalo' in
-    homepageTags %} {% set productImage = product.data.image or '' %} {% if not
+    homepageTags %} {% set productCategories = product.data.categories |
+    default([]) %} {% set productImage = product.data.image or '' %} {% if not
     productImage or 'pending-product-image.svg' in productImage %} {% if
-    product.data.category == 'packs' %} {% set productImage =
+    'packs' in productCategories %} {% set productImage =
     '/assets/images/gallery/botiga/botiga_productes.png' %} {% else %} {% set
     productImage = '/assets/images/gallery/elaborats.jpg' %} {% endif %} {%
     endif %}

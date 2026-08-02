@@ -4,7 +4,9 @@ permalink: /shop/products/formatge-curat-amb-castanya/
 title: "Formatge curat amb castanya"
 description: "Ideal per acompanyar amanides, aperitius i torrades."
 tagline: "Selecció artesana de productes locals amb castanya."
-category: elaborats-de-castanyes
+categories:
+  - elaborats-de-castanyes
+  - productes-estrella
 consumptionMoments:
   - picar-compartir
 dietTags:

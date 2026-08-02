@@ -4,7 +4,8 @@ permalink: /shop/products/lot-sabors-del-montseny/
 title: "Lot Sabors del Montseny"
 description: "Un tast de territori amb formatges i elaborats carnis on la castanya aporta un toc singular i profund."
 tagline: "Una selecció gurmet per compartir a taula."
-category: packs
+categories:
+  - packs
 consumptionMoments:
   - picar-compartir
   - regals-detalls

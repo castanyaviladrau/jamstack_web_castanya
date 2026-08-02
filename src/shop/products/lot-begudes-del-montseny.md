@@ -4,7 +4,8 @@ permalink: /shop/products/lot-begudes-del-montseny/
 title: "Lot Begudes del Montseny"
 description: "Una selecció per brindar amb el caràcter del bosc: cerveses artesanes i licor de castanya per compartir en bona companyia."
 tagline: "Sabors líquids amb ànima de castanya."
-category: packs
+categories:
+  - packs
 consumptionMoments:
   - picar-compartir
   - regals-detalls

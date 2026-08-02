@@ -4,7 +4,8 @@ permalink: /shop/products/mini-delicies/
 title: "Mini Delícies"
 description: "Un trio de mini pots per descobrir la cara més dolça de la castanya: melmelada de castanya, melmelada de castanya i gerds i mel de castanyer."
 tagline: "Petits plaers per descobrir o per regalar."
-category: packs
+categories:
+  - packs
 consumptionMoments:
   - moments-dolcos
   - regals-detalls

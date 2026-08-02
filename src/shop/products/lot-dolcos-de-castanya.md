@@ -4,7 +4,8 @@ permalink: /shop/products/lot-dolcos-de-castanya/
 title: "Lot Dolç de Castanya"
 description: "Una capsa de petits plaers amb marron glacé, melmelades i cremes per celebrar la cara més llaminera de la castanya."
 tagline: "Un regal dolç amb el gust del bosc."
-category: packs
+categories:
+  - packs
 consumptionMoments:
   - moments-dolcos
   - regals-detalls

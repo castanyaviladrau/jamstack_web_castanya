@@ -4,7 +4,8 @@ permalink: /shop/products/lot-mels-del-territori/
 title: "Lot Mels del Territori"
 description: "Un recorregut per les mels de l'entorn: castanyer, mil flors i bosc, cadascuna amb el seu propi aroma i matís."
 tagline: "La dolçor natural del paisatge del Montseny."
-category: packs
+categories:
+  - packs
 consumptionMoments:
   - moments-dolcos
   - regals-detalls

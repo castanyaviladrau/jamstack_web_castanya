@@ -4,7 +4,9 @@ permalink: /shop/products/cervesa-torrent-sureda/
 title: "Cervesa Torrent “Sureda”"
 description: "La cervesa “Sureda” és més que una cervesa. Recollint els ingredients del paisatge mediterrani d’un bosc de suredes, no hem volgut fer una cervesa més, sinó trobar l’umami de la nostra cervesa."
 tagline: "Beguda artesana amb castanya i gust de territori."
-category: begudes
+categories:
+  - begudes
+  - elaborats-de-castanyes
 consumptionMoments:
   - picar-compartir
   - regals-detalls

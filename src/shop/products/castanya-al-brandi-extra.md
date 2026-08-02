@@ -4,7 +4,9 @@ permalink: /shop/products/castanya-al-brandi-extra/
 title: "Castanya al brandi extra"
 description: "Castanyes de mida gran."
 tagline: "Elaboració dolça i artesana per gaudir la castanya tot l’any."
-category: dolcos
+categories:
+  - elaborats-de-castanyes
+  - dolcos
 consumptionMoments:
   - moments-dolcos
   - regals-detalls

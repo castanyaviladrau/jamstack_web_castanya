@@ -4,7 +4,10 @@ permalink: /shop/products/mel-de-bruc/
 title: "Mel de bruc"
 description: "Mel de color caoba."
 tagline: "Mel de caràcter intens vinculada al paisatge del Montseny."
-category: mels
+categories:
+  - elaborats-de-castanyes
+  - dolcos
+  - mels
 consumptionMoments:
   - moments-dolcos
   - regals-detalls

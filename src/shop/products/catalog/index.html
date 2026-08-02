@@ -50,22 +50,22 @@ footerVariant: projecte-newsletter
 
   <div class="shop-page-products__grid" data-shop-product-grid>
     {% for product in productsList %}
-      {% set productCategory = product.data.category or 'elaborats-de-castanyes' %}
+      {% set productCategories = product.data.categories | default(['elaborats-de-castanyes']) %}
       {% set productMoments = product.data.consumptionMoments | default([]) %}
       {% set productDiets = product.data.dietTags | default([]) %}
       {% set productImage = product.data.image or '' %}
       {% if not productImage or 'pending-product-image.svg' in productImage %}
-        {% if productCategory == 'castanyes' %}
+        {% if 'castanyes' in productCategories %}
           {% set productImage = '/assets/images/gallery/castanyes.jpg' %}
-        {% elif productCategory == 'cremes' %}
+        {% elif 'cremes' in productCategories %}
           {% set productImage = '/assets/images/gallery/cremes.jpg' %}
-        {% elif productCategory == 'dolcos' %}
+        {% elif 'dolcos' in productCategories %}
           {% set productImage = '/assets/images/gallery/dolcos.jpg' %}
-        {% elif productCategory == 'begudes' %}
+        {% elif 'begudes' in productCategories %}
           {% set productImage = '/assets/images/products/cervesa-de-castanya.jpeg' %}
-        {% elif productCategory == 'mels' %}
+        {% elif 'mels' in productCategories %}
           {% set productImage = '/assets/images/gallery/espai-gastronomic/bosc.jpg' %}
-        {% elif productCategory == 'packs' %}
+        {% elif 'packs' in productCategories %}
           {% set productImage = '/assets/images/gallery/botiga/botiga_productes.png' %}
         {% else %}
           {% set productImage = '/assets/images/gallery/elaborats.jpg' %}
@@ -75,7 +75,7 @@ footerVariant: projecte-newsletter
       href="{{ product.url }}"
       class="shop-page-product gallery-item"
       data-shop-product
-      data-shop-product-category="{{ productCategory }}"
+      data-shop-product-category="{{ productCategories | join(' ') }}"
       data-shop-product-moments="{{ productMoments | join(' ') }}"
       data-shop-product-diets="{{ productDiets | join(' ') }}"
     >
