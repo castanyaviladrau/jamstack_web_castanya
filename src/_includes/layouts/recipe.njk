@@ -49,7 +49,7 @@
                       src="/assets/images/gallery/espai-gastronomic/espai_grade.png"
                       alt=""
                       aria-hidden="true"
-                    />{{ difficulty }}</span
+                    />{{ difficulty | difficultyLabel }}</span
                   >
                 </div>
 
@@ -93,7 +93,7 @@
               </aside>
             </div>
 
-            <nav class="recipe-detail__pagination" aria-label="Navegacio entre receptes">
+            <nav class="recipe-detail__pagination" aria-label="Navegació entre receptes">
               {% if previousRecipe %}
               <a href="{{ previousRecipe.url }}" class="recipe-detail__pagination-link">&larr; Anterior recepta</a>
               {% else %}
