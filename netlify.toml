@@ -27,6 +27,7 @@
   directory = "netlify/functions/"
   included_files = [
     "src/_data/products.json",
+    "src/_data/shopSettings.json",
     "src/gastronomic/receptes/recipes/**/*.md",
     "src/assets/images/invoice-logo.png"
   ]
