@@ -13372,6 +13372,16 @@ body.has-mobile-menu-open {
     text-align: center;
   }
 
+  /* The desktop rule above also left-aligns the button itself, at 3-class
+     specificity. The generic mobile button rules only reach 2 classes, so
+     without this the button still pins the (now-centered) text span to its
+     left edge instead of centering it in the full-width button. */
+  .nav-item--dropdown.nav-item--gastronomic > .nav-link-button,
+  .nav-item--dropdown.nav-item--visits > .nav-link-button {
+    justify-content: center;
+    text-align: center;
+  }
+
   .nav-dropdown {
     position: static;
     left: auto;
