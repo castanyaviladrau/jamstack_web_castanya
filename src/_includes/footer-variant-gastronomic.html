@@ -17,7 +17,7 @@
       {{ i18n[lang].gastroCtaText2 }}
     </p>
     <a
-      href="{% if lang == 'es' %}/es/contact/{% else %}/contact/{% endif %}"
+      href="{% if lang == 'es' %}/es/contact/{% elif lang == 'en' %}/en/contact/{% else %}/contact/{% endif %}"
       class="btn-olive-transparent btn-olive-transparent--gastronomic"
       >{{ i18n[lang].gastroCtaButton }}</a
     >

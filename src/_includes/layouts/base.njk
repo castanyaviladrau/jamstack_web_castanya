@@ -3,7 +3,7 @@
 
   {% include "head.html" %}
 
-  <body class="{% if page.url == '/' or page.url == '/es/' %}home{% else %}internal{% endif %}{% if name %} page-{{ name }}{% endif %}">
+  <body class="{% if page.url == '/' or page.url == '/es/' or page.url == '/en/' %}home{% else %}internal{% endif %}{% if name %} page-{{ name }}{% endif %}">
     <script>
       (function () {
         try {
@@ -35,7 +35,7 @@
             <p class="cookie-banner__eyebrow">{{ i18n[lang].cookieEyebrow }}</p>
             <p class="cookie-banner__text">
               {{ i18n[lang].cookieTextPre }}
-              <a href="{% if lang == 'es' %}/es/politica-de-cookies/{% else %}/politica-de-cookies/{% endif %}">{{ i18n[lang].cookieLinkLabel }}</a>.
+              <a href="{% if lang == 'es' %}/es/politica-de-cookies/{% elif lang == 'en' %}/en/politica-de-cookies/{% else %}/politica-de-cookies/{% endif %}">{{ i18n[lang].cookieLinkLabel }}</a>.
             </p>
           </div>
           <div class="cookie-banner__actions">

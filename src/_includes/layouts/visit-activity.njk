@@ -4,7 +4,7 @@
   {% include "head.html" %}
 
   {% set lang = page.url | pageLang %}
-  {% set visitsIndexUrl = '/es/visits/' if lang == 'es' else '/visits/' %}
+  {% set visitsIndexUrl = '/es/visits/' if lang == 'es' else ('/en/visits/' if lang == 'en' else '/visits/') %}
 
   <body class="internal page-visit-activity{% if name %} page-{{ name }}{% endif %}">
     {% include "header.html" %}

@@ -24,7 +24,7 @@
 
     <div class="professionals-value-feature__cta-actions">
       <a
-        href="{% if lang == 'es' %}/es/gastronomic/receptes/{% else %}/gastronomic/receptes/{% endif %}"
+        href="{% if lang == 'es' %}/es/gastronomic/receptes/{% elif lang == 'en' %}/en/gastronomic/receptes/{% else %}/gastronomic/receptes/{% endif %}"
         class="professionals-value-feature__cta-button professionals-value-feature__cta-button--primary"
         >{{ i18n[lang].nutritionCtaButton }}</a
       >

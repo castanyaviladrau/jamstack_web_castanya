@@ -6,32 +6,32 @@
         <div class="footer-col">
           <h3>{{ i18n[lang].footerBrandTitle }}</h3>
           <ul>
-            <li><a href="{% if lang == 'es' %}/es/projecte/{% else %}/projecte/{% endif %}">{{ i18n[lang].footerElProjecte }}</a></li>
-            <li><a href="{% if lang == 'es' %}/es/projecte/{% else %}/projecte/{% endif %}">{{ i18n[lang].footerTerritori }}</a></li>
-            <li><a href="{% if lang == 'es' %}/es/fusta/{% else %}/fusta/{% endif %}">{{ i18n[lang].footerFusta }}</a></li>
+            <li><a href="{% if lang == 'es' %}/es/projecte/{% elif lang == 'en' %}/en/projecte/{% else %}/projecte/{% endif %}">{{ i18n[lang].footerElProjecte }}</a></li>
+            <li><a href="{% if lang == 'es' %}/es/projecte/{% elif lang == 'en' %}/en/projecte/{% else %}/projecte/{% endif %}">{{ i18n[lang].footerTerritori }}</a></li>
+            <li><a href="{% if lang == 'es' %}/es/fusta/{% elif lang == 'en' %}/en/fusta/{% else %}/fusta/{% endif %}">{{ i18n[lang].footerFusta }}</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h3>{{ i18n[lang].footerViureCol }}</h3>
           <ul>
-            <li><a href="{% if lang == 'es' %}/es/visits/{% else %}/visits/{% endif %}">{{ i18n[lang].footerVisitesGuiades }}</a></li>
-            <li><a href="{% if lang == 'es' %}/es/gastronomic/{% else %}/gastronomic/{% endif %}">{{ i18n[lang].footerEspaiGastronomic }}</a></li>
-            <li><a href="{% if lang == 'es' %}/es/blog/{% else %}/blog/{% endif %}">{{ i18n[lang].footerAgenda }}</a></li>
+            <li><a href="{% if lang == 'es' %}/es/visits/{% elif lang == 'en' %}/en/visits/{% else %}/visits/{% endif %}">{{ i18n[lang].footerVisitesGuiades }}</a></li>
+            <li><a href="{% if lang == 'es' %}/es/gastronomic/{% elif lang == 'en' %}/en/gastronomic/{% else %}/gastronomic/{% endif %}">{{ i18n[lang].footerEspaiGastronomic }}</a></li>
+            <li><a href="{% if lang == 'es' %}/es/blog/{% elif lang == 'en' %}/en/blog/{% else %}/blog/{% endif %}">{{ i18n[lang].footerAgenda }}</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h3>{{ i18n[lang].footerProfessionalsCol }}</h3>
           <ul>
-            <li><a href="{% if lang == 'es' %}/es/professionals/{% else %}/professionals/{% endif %}">{{ i18n[lang].footerEspaiProfessionals }}</a></li>
-            <li><a href="{% if lang == 'es' %}/es/contact/{% else %}/contact/{% endif %}">{{ i18n[lang].footerColaboracions }}</a></li>
+            <li><a href="{% if lang == 'es' %}/es/professionals/{% elif lang == 'en' %}/en/professionals/{% else %}/professionals/{% endif %}">{{ i18n[lang].footerEspaiProfessionals }}</a></li>
+            <li><a href="{% if lang == 'es' %}/es/contact/{% elif lang == 'en' %}/en/contact/{% else %}/contact/{% endif %}">{{ i18n[lang].footerColaboracions }}</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h3>{{ i18n[lang].footerComunitat }}</h3>
           <ul>
-            <li><a href="{% if lang == 'es' %}/es/trobar-nos/{% else %}/trobar-nos/{% endif %}">{{ i18n[lang].footerOnTrobarNos }}</a></li>
-            <li><a href="{% if lang == 'es' %}/es/contact/{% else %}/contact/{% endif %}">{{ i18n[lang].footerContacte }}</a></li>
-            <li><a href="{% if lang == 'es' %}/es/contact/{% else %}/contact/{% endif %}">{{ i18n[lang].footerNewsletter }}</a></li>
+            <li><a href="{% if lang == 'es' %}/es/trobar-nos/{% elif lang == 'en' %}/en/trobar-nos/{% else %}/trobar-nos/{% endif %}">{{ i18n[lang].footerOnTrobarNos }}</a></li>
+            <li><a href="{% if lang == 'es' %}/es/contact/{% elif lang == 'en' %}/en/contact/{% else %}/contact/{% endif %}">{{ i18n[lang].footerContacte }}</a></li>
+            <li><a href="{% if lang == 'es' %}/es/contact/{% elif lang == 'en' %}/en/contact/{% else %}/contact/{% endif %}">{{ i18n[lang].footerNewsletter }}</a></li>
             <li><a href="https://www.instagram.com/castanyadeviladrau/" target="_blank" rel="noopener noreferrer">{{ i18n[lang].footerInstagram }}</a></li>
           </ul>
         </div>
@@ -56,13 +56,13 @@
             ></a>
           </div>
           <div class="footer-legal-links">
-            <a href="{% if lang == 'es' %}/es/avis-legal/{% else %}/avis-legal/{% endif %}">{{ i18n[lang].footerAvisLegal }}</a> ·
-            <a href="{% if lang == 'es' %}/es/politica-de-privacitat/{% else %}/politica-de-privacitat/{% endif %}">{{ i18n[lang].footerPrivacitat }}</a> ·
-            <a href="{% if lang == 'es' %}/es/politica-de-cookies/{% else %}/politica-de-cookies/{% endif %}">{{ i18n[lang].footerCookies }}</a> ·
-            <a href="{% if lang == 'es' %}/es/termes-i-condicions/{% else %}/termes-i-condicions/{% endif %}">{{ i18n[lang].footerTermes }}</a> ·
-            <a href="{% if lang == 'es' %}/es/forma-de-pagament/{% else %}/forma-de-pagament/{% endif %}">{{ i18n[lang].footerFormaPagament }}</a> ·
-            <a href="{% if lang == 'es' %}/es/devolucio-d-una-comanda/{% else %}/devolucio-d-una-comanda/{% endif %}">{{ i18n[lang].footerDevolucions }}</a> ·
-            <a href="{% if lang == 'es' %}/es/condicions-d-enviament/{% else %}/condicions-d-enviament/{% endif %}">{{ i18n[lang].footerCondicionsEnviament }}</a> ·
+            <a href="{% if lang == 'es' %}/es/avis-legal/{% elif lang == 'en' %}/en/avis-legal/{% else %}/avis-legal/{% endif %}">{{ i18n[lang].footerAvisLegal }}</a> ·
+            <a href="{% if lang == 'es' %}/es/politica-de-privacitat/{% elif lang == 'en' %}/en/politica-de-privacitat/{% else %}/politica-de-privacitat/{% endif %}">{{ i18n[lang].footerPrivacitat }}</a> ·
+            <a href="{% if lang == 'es' %}/es/politica-de-cookies/{% elif lang == 'en' %}/en/politica-de-cookies/{% else %}/politica-de-cookies/{% endif %}">{{ i18n[lang].footerCookies }}</a> ·
+            <a href="{% if lang == 'es' %}/es/termes-i-condicions/{% elif lang == 'en' %}/en/termes-i-condicions/{% else %}/termes-i-condicions/{% endif %}">{{ i18n[lang].footerTermes }}</a> ·
+            <a href="{% if lang == 'es' %}/es/forma-de-pagament/{% elif lang == 'en' %}/en/forma-de-pagament/{% else %}/forma-de-pagament/{% endif %}">{{ i18n[lang].footerFormaPagament }}</a> ·
+            <a href="{% if lang == 'es' %}/es/devolucio-d-una-comanda/{% elif lang == 'en' %}/en/devolucio-d-una-comanda/{% else %}/devolucio-d-una-comanda/{% endif %}">{{ i18n[lang].footerDevolucions }}</a> ·
+            <a href="{% if lang == 'es' %}/es/condicions-d-enviament/{% elif lang == 'en' %}/en/condicions-d-enviament/{% else %}/condicions-d-enviament/{% endif %}">{{ i18n[lang].footerCondicionsEnviament }}</a> ·
             <button type="button" class="footer-legal-button" data-cookie-preferences>{{ i18n[lang].footerCanviarCookies }}</button> ·
             <span>{{ i18n[lang].footerCopyright }}</span>
           </div>

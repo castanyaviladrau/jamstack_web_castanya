@@ -47,7 +47,7 @@ name: home
 
 {% set lang = page.url | pageLang %}
 {% set homeCategories = shopCategories | default([]) %}
-{% set catalogUrl = '/es/shop/products/catalog/' if lang == 'es' else '/shop/products/catalog/' %}
+{% set catalogUrl = '/es/shop/products/catalog/' if lang == 'es' else ('/en/shop/products/catalog/' if lang == 'en' else '/shop/products/catalog/') %}
 
 <section class="botiga-section-updated unified-bg">
   <div class="botiga-header-centered block-content-style">
@@ -71,8 +71,8 @@ name: home
   <div class="gallery-container">
     <div class="gallery-scroll" id="galleryScroll">
       {% for category in homeCategories %}
-        {% set categoryTitle = category.titleEs if lang == 'es' else category.title %}
-        {% set categoryImageAlt = category.imageAltEs if lang == 'es' else category.imageAlt %}
+        {% set categoryTitle = category.titleEs if lang == 'es' else (category.titleEn if lang == 'en' else category.title) %}
+        {% set categoryImageAlt = category.imageAltEs if lang == 'es' else (category.imageAltEn if lang == 'en' else category.imageAlt) %}
         <a href="{{ catalogUrl }}?category={{ category.slug }}" class="gallery-item">
           <img
             src="{{ category.image }}"

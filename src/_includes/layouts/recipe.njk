@@ -15,7 +15,7 @@
   {% set nextRecipe = recipes[currentIndex + 1] if currentIndex > -1 and currentIndex < (recipes | length - 1) else null %}
   {% set relatedProductsSectionData = relatedProductsSection or {} %}
   {% set relatedProductKeys = relatedProductsSectionData.products or [] %}
-  {% set receptesIndexUrl = '/es/gastronomic/receptes/' if lang == 'es' else '/gastronomic/receptes/' %}
+  {% set receptesIndexUrl = '/es/gastronomic/receptes/' if lang == 'es' else ('/en/gastronomic/receptes/' if lang == 'en' else '/gastronomic/receptes/') %}
 
   <body class="internal{% if name %} page-{{ name }}{% endif %}">
     {% include "header.html" %}

@@ -21,7 +21,7 @@ footerVariant: projecte-newsletter
 
 <section class="product-detail">
   <div class="product-detail__inner">
-    <a href="{% if lang == 'es' %}/es/shop/products/{% else %}/shop/products/{% endif %}" class="product-detail__back">
+    <a href="{% if lang == 'es' %}/es/shop/products/{% elif lang == 'en' %}/en/shop/products/{% else %}/shop/products/{% endif %}" class="product-detail__back">
       <img src="/assets/images/icon-arrow-left.svg" alt="" class="product-detail__back-arrow" aria-hidden="true" />
       {{ i18n[lang].productBack }}
     </a>
@@ -189,7 +189,7 @@ footerVariant: projecte-newsletter
         "@type": "ListItem",
         "position": 2,
         "name": {{ i18n[lang].breadcrumbBotiga | dump | safe }},
-        "item": {{ ((('/es/shop/products/' if lang == 'es' else '/shop/products/')) | absoluteUrl(site.url)) | dump | safe }}
+        "item": {{ ((('/es/shop/products/' if lang == 'es' else ('/en/shop/products/' if lang == 'en' else '/shop/products/'))) | absoluteUrl(site.url)) | dump | safe }}
       },
       {
         "@type": "ListItem",

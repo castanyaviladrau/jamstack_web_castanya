@@ -1,0 +1,269 @@
+---
+layout: base
+title: Chestnut Recipes
+name: gastronomic-recipes
+footerVariant: visits-newsletter
+lang: en
+---
+
+{% from "partials/recipe-filters.njk" import recipeFiltersBar %}
+{% set lang = page.url | pageLang %}
+{% set langRecipes = collections.recipes | filterByLang(lang) %}
+{% set pageContent = gastronomicRecipes.page[lang] if gastronomicRecipes.page[lang] else gastronomicRecipes.page %}
+{% set difficultyOptions = langRecipes | uniqueByField("difficulty", ["facil", "mitja", "dificil"]) %}
+{% set dishTypeOptions = langRecipes | uniqueByField("listingSections", ["foundations", "sweet", "homeTraditions", "classics", "healthy"]) %}
+{% macro recipeCard(slide,
+dishType, remedyFlag) %} {% set href = '#' %} {% for recipe in
+langRecipes %} {% if recipe.data.title == slide.title and recipe.url %}
+{% set href = recipe.url %} {% endif %} {% endfor %} {% set prepMinutes =
+(slide.time | replace(" minuts", "") | trim) %} {% set timeBucket = "medium" %}
+{% if prepMinutes and (prepMinutes | int) <= 20 %} {% set timeBucket = "short"
+%} {% elif prepMinutes and (prepMinutes | int) > 30 %} {% set timeBucket =
+"long" %} {% endif %}
+<a
+  href="{{ href }}"
+  class="professionals-inspiration-card gastronomic-recipes-card gastronomic-recipes-card--link"
+  data-recipe-card
+  data-difficulty="{{ slide.difficulty | lower }}"
+  data-time="{{ timeBucket }}"
+  data-dish-type="{{ dishType }}"
+  data-remedy="{{ remedyFlag }}"
+>
+  <h3 class="professionals-inspiration-card__title"><span>{{ slide.title }}</span></h3>
+  <div class="gastronomic-recipes-card__media">
+    <img
+      src="{{ slide.image }}"
+      alt="{{ slide.imageAlt }}"
+      class="professionals-inspiration-card__image"
+    />
+    <span class="gastronomic-recipes-card__arrow" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M5 19 19 5M8 5h11v11" />
+      </svg>
+    </span>
+  </div>
+  <div class="professionals-inspiration-card__meta">
+    <span class="professionals-inspiration-card__meta-item"
+      ><svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="8"></circle>
+        <path d="M12 7v5l3 2"></path></svg
+      >{{ slide.time }}</span
+    >
+    <span class="professionals-inspiration-card__meta-item"
+      ><img
+        src="/assets/images/gallery/espai-gastronomic/espai_grade.png"
+        alt=""
+        aria-hidden="true"
+      />
+      {{ slide.difficulty | difficultyLabel(lang) }}</span
+    >
+  </div>
+  <p class="professionals-inspiration-card__label">
+    {{ slide.ingredientsLabel }}
+  </p>
+  <ul class="professionals-inspiration-card__ingredients">
+    {% for ingredient in slide.ingredients %}
+    <li>{{ ingredient }}</li>
+    {% endfor %}
+  </ul>
+</a>
+{% endmacro %}
+
+<section class="gastronomic-recipes-hero">
+  <img
+    src="{{ pageContent.hero.backgroundImage }}"
+    alt="{{ pageContent.hero.backgroundAlt }}"
+    class="hero-bg-img"
+  />
+
+  <div class="hero-dark-overlay"></div>
+
+  <div class="gastronomic-recipes-hero__overlay">
+    <div class="gastronomic-recipes-hero__content">
+      <h1 class="gastronomic-recipes-hero__title block_title_style">
+        {{ pageContent.hero.title | replace("\n", "<br />") | safe }}
+      </h1>
+      <p class="gastronomic-recipes-hero__text block_title_content">{{ pageContent.hero.text }}</p>
+    </div>
+  </div>
+</section>
+
+<nav class="shop-page-filters" aria-label="Recipe filters">
+  {{ recipeFiltersBar((('/en/gastronomic/receptes/resultats/' if lang == 'en' else '/gastronomic/receptes/resultats/')), difficultyOptions, dishTypeOptions, pageContent.filtersBar.searchLabel, false, langRecipes, lang) }}
+</nav>
+
+<section
+  class="professionals-inspiration-recipes professionals-inspiration-recipes--stacked gastronomic-recipes-section"
+  data-recipe-section
+  data-section-type="sweet"
+>
+  <div class="professionals-inspiration-recipes__header botiga-header-centered block-content-style">
+    <div class="title-nav-wrapper">
+      <button
+        type="button"
+        class="nav-arrow-inline left"
+        id="gastronomicSweetPrev"
+        aria-label="Previous block"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <h2 class="professionals-inspiration-recipes__title section-title-main section-title-main--products home-section-title block_title_style">
+        {{ pageContent.sweetSection.title }}
+      </h2>
+      <button
+        type="button"
+        class="nav-arrow-inline right"
+        id="gastronomicSweetNext"
+        aria-label="Next block"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+    <p class="professionals-inspiration-recipes__intro section-subtitle-italic home-section-description block_title_content">
+      {{ pageContent.sweetSection.intro }}
+    </p>
+  </div>
+  <div class="professionals-inspiration-recipes__inner">
+    <div
+      class="professionals-inspiration-recipes__carousel"
+      id="gastronomicSweetCarousel"
+    >
+      <div class="professionals-inspiration-recipes__track">
+        {% for slideGroup in pageContent.sweetSection.slides | batch(3, null) %}
+        <div class="professionals-inspiration-recipes__grid">
+          {% for slide in slideGroup %} {% if slide %} {{ recipeCard(slide,
+          "sweet", "no") }} {% endif %} {% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="professionals-inspiration-recipes__cta">
+      <a href="{{ pageContent.sweetSection.ctaHref }}" class="btn-olive"
+        >{{ pageContent.sweetSection.ctaLabel }}</a
+      >
+    </div>
+  </div>
+</section>
+
+<section
+  class="professionals-inspiration-recipes gastronomic-recipes-section"
+  id="fonaments-gastronomics"
+  data-recipe-section
+  data-section-type="foundations"
+>
+  <div class="professionals-inspiration-recipes__header botiga-header-centered block-content-style">
+    <div class="title-nav-wrapper">
+      <button
+        type="button"
+        class="nav-arrow-inline left"
+        id="gastronomicRecipesPrev"
+        aria-label="Previous block"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <h2 class="professionals-inspiration-recipes__title section-title-main section-title-main--products home-section-title block_title_style">
+        {{ pageContent.foundationsSection.title }}
+      </h2>
+      <button
+        type="button"
+        class="nav-arrow-inline right"
+        id="gastronomicRecipesNext"
+        aria-label="Next block"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+    <p class="professionals-inspiration-recipes__intro section-subtitle-italic home-section-description block_title_content">
+      {{ pageContent.foundationsSection.intro }}
+    </p>
+  </div>
+  <div class="professionals-inspiration-recipes__inner">
+    <div
+      class="professionals-inspiration-recipes__carousel"
+      id="gastronomicRecipesCarousel"
+    >
+      <div class="professionals-inspiration-recipes__track">
+        {% for slideGroup in pageContent.foundationsSection.slides | batch(3,
+        null) %}
+        <div class="professionals-inspiration-recipes__grid">
+          {% for slide in slideGroup %} {% if slide %} {{ recipeCard(slide,
+          "foundations", "no") }} {% endif %} {% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="professionals-inspiration-recipes__cta">
+      <a href="{{ pageContent.foundationsSection.ctaHref }}" class="btn-olive"
+        >{{ pageContent.foundationsSection.ctaLabel }}</a
+      >
+    </div>
+  </div>
+</section>
+
+<section
+  class="professionals-inspiration-recipes professionals-inspiration-recipes--stacked gastronomic-recipes-section"
+  data-recipe-section
+  data-section-type="home-traditions"
+>
+  <div class="professionals-inspiration-recipes__header botiga-header-centered block-content-style">
+    <div class="title-nav-wrapper">
+      <button
+        type="button"
+        class="nav-arrow-inline left"
+        id="gastronomicHomePrev"
+        aria-label="Previous block"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <h2 class="professionals-inspiration-recipes__title section-title-main section-title-main--products home-section-title block_title_style">
+        {{ pageContent.homeTraditionsSection.title }}
+      </h2>
+      <button
+        type="button"
+        class="nav-arrow-inline right"
+        id="gastronomicHomeNext"
+        aria-label="Next block"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+    <p class="professionals-inspiration-recipes__intro section-subtitle-italic home-section-description block_title_content">
+      {{ pageContent.homeTraditionsSection.intro }}
+    </p>
+  </div>
+  <div class="professionals-inspiration-recipes__inner">
+    <div
+      class="professionals-inspiration-recipes__carousel"
+      id="gastronomicHomeCarousel"
+    >
+      <div class="professionals-inspiration-recipes__track">
+        {% for slideGroup in pageContent.homeTraditionsSection.slides | batch(3,
+        null) %}
+        <div class="professionals-inspiration-recipes__grid">
+          {% for slide in slideGroup %} {% if slide %} {{ recipeCard(slide,
+          "home-traditions", "no") }} {% endif %} {% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="professionals-inspiration-recipes__cta">
+      <a
+        href="{{ pageContent.homeTraditionsSection.ctaHref }}"
+        class="btn-olive"
+        >{{ pageContent.homeTraditionsSection.ctaLabel }}</a
+      >
+    </div>
+  </div>
+</section>

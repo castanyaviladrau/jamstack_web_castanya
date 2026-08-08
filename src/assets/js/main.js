@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const pageLang = document.documentElement.lang === "es" ? "es" : "ca";
+  const htmlLang = document.documentElement.lang;
+  const pageLang =
+    htmlLang === "es" ? "es" : htmlLang === "en" ? "en" : "ca";
 
   // UI strings generated dynamically from JS (form status messages, cart
   // rendering, checkout validation...) live here instead of i18n.js because
@@ -192,6 +194,100 @@ document.addEventListener("DOMContentLoaded", () => {
             "Nuestro producto destaca en el paladar profesional por tres características clave derivadas de su origen.",
           title: "CRIBADO Y SELECCIÓN MANUAL",
           text: "Nuestro valor diferencial es el factor humano. Revisamos cada fruto para garantizar que solo el mejor calibre y estado llegue a tu cocina.",
+        },
+      ],
+    },
+    en: {
+      contactSending: "Sending enquiry...",
+      contactSuccess:
+        "Enquiry sent successfully. Joaquim will reply to you as soon as possible.",
+      contactError:
+        "We couldn't send the enquiry right now. Please try again in a few minutes.",
+      bookingSending: "Sending request...",
+      bookingSuccess:
+        "Request sent successfully. You will receive a confirmation email shortly.",
+      bookingError:
+        "We couldn't send the request right now. Please try again in a few minutes.",
+      cartFormatRequired: "Select a format before adding it to the cart.",
+      cartInvalidProduct:
+        "This product doesn't have a valid format or price to purchase yet.",
+      cartProductAdded: "Product added to the cart.",
+      cartDefaultFormatLabel: "General format",
+      checkoutMissingFields:
+        "Fill in all the required fields before continuing.",
+      checkoutInvalidEmail: "Enter a valid email address.",
+      checkoutInvalidPhone:
+        "Enter a valid phone number, with the international code if needed.",
+      checkoutPickupStoreRequired:
+        "Select the store where you want to pick up the order.",
+      checkoutAcceptLegal: "You must accept the Legal notice to continue.",
+      checkoutAcceptPrivacy:
+        "You must accept the Privacy policy to continue.",
+      checkoutAcceptFulfillment:
+        "You must confirm that you understand the shipping and pickup conditions.",
+      orderCreateError: "We couldn't create the order.",
+      resumePaymentPending: "Resuming payment for your order...",
+      resumeAlreadyPaid: "This order has already been paid successfully.",
+      resumeGenericError:
+        "We couldn't resume payment for this order. Place the order again from the cart or contact us.",
+      cartTitleHasItems: "REVIEW YOUR CART",
+      cartTitleEmpty: "THERE ARE NO PRODUCTS IN YOUR CART YET",
+      cartIntroHasItems:
+        "You can adjust quantities, remove products and get your shipping details ready before moving on to checkout.",
+      cartIntroEmpty:
+        "When you add products from the shop, you'll find them here to review formats, quantities and the order summary.",
+      shippingToCalculate: "To be calculated at the next step",
+      shippingPickupFree: "Store pickup (free)",
+      shippingFree: "Free",
+      cartSummaryNote:
+        "The cart is saved in this browser until you complete the purchase.",
+      cartCtaBackToShop: "BACK TO SHOP",
+      cartCtaKeepShopping: "KEEP SHOPPING",
+      cartItemFormatLabel: "Format",
+      cartItemUnitPriceLabel: "Unit price",
+      cartItemQtyAria: "Quantity",
+      cartItemRemove: "Remove",
+      shippingWarning: (min, cost) =>
+        `Since the order doesn't reach ${min}, a shipping cost of ${cost} will be added. You can also select store pickup to avoid it.`,
+      checkoutCartEmpty:
+        "The cart is empty. Add a product before continuing.",
+      checkoutInvalidSku:
+        "There's a product in the cart without an SKU. Add the products to the cart again.",
+      checkoutPreparing: "PREPARING THE ORDER...",
+      checkoutCreatingOrder:
+        "Creating the order and preparing the payment step...",
+      checkoutOrderCreated: (code) =>
+        `Order ${code} created. Redirecting to payment...`,
+      checkoutPaymentUnavailable:
+        "We couldn't start the payment right now. Please try again in a few minutes or contact us.",
+      checkoutPaymentPrepError:
+        "We couldn't prepare the payment right now.",
+      checkoutGenericError: "There was an error preparing the order.",
+      checkoutSubmitLabel: "CONTINUE TO PAYMENT",
+      professionalsSlides: [
+        {
+          eyebrow:
+            "OUR ADDED VALUE: MORE THAN AN INGREDIENT, A PROJECT",
+          intro:
+            "By choosing Castanya de Viladrau as your trusted supplier, your establishment joins a project with soul.",
+          title: "FOREST RECOVERY",
+          text: "We work actively on cleaning and revitalising the woodlands of the Montseny Natural Park, recovering centuries-old chestnut trees that had been abandoned.",
+        },
+        {
+          eyebrow:
+            "ATTRIBUTES THAT MAKE OUR CHESTNUT A KEY INGREDIENT IN THE KITCHEN",
+          intro:
+            "Our product stands out to the professional palate for three key characteristics derived from its origin.",
+          title: "SUSTAINABLE COMMITMENT",
+          text: "We are a zero-kilometre project committed to the circular economy and the preservation of the territory. Serving our chestnuts means telling your customers a story of respect for nature.",
+        },
+        {
+          eyebrow:
+            "ATTRIBUTES THAT MAKE OUR CHESTNUT A KEY INGREDIENT IN THE KITCHEN",
+          intro:
+            "Our product stands out to the professional palate for three key characteristics derived from its origin.",
+          title: "MANUAL SORTING AND SELECTION",
+          text: "Our differentiating value is the human factor. We check every fruit to ensure only the best size and condition reaches your kitchen.",
         },
       ],
     },

@@ -834,5 +834,423 @@
         }
       ]
     }
+  },
+  "en": {
+    "hero": {
+      "title": "RECIPES WITH VILADRAU&nbsp;CHESTNUT\nCOOK THE ESSENCE OF THE MONTSENY AT&nbsp;HOME",
+      "text": "From the tradition of the chestnut festival to surprising dishes for all year round. Discover how to bring the flavour of the forest to your table, easily and healthily.",
+      "backgroundImage": "/assets/images/gallery/espai-gastronomic/castanya_receptes.png",
+      "backgroundAlt": "Ingredients and chestnuts on the table"
+    },
+    "filtersBar": {
+      "searchLabel": "SEARCH RECIPE"
+    },
+    "foundationsSection": {
+      "title": "STARTERS WITH VILADRAU CHESTNUT",
+      "intro": "Elegant, flavour-packed starters to open any autumn meal. Viladrau chestnut as the star of the first course.",
+      "ctaLabel": "SEE ALL",
+      "ctaHref": "/en/gastronomic/receptes/resultats/?dishType=foundations",
+      "slides": [
+        {
+          "title": "CHESTNUT CREAM",
+          "image": "/assets/images/gallery/receptes/crema-de-castanyes.png",
+          "imageAlt": "Chestnut cream served hot with a garnish",
+          "time": "120 minutes",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Viladrau chestnuts",
+            "Chicken stock",
+            "Liquid cream"
+          ]
+        },
+        {
+          "title": "CHESTNUT AND MUSHROOM RISOTTO",
+          "image": "/assets/images/gallery/receptes/risotto-castanyes-bolets.png",
+          "imageAlt": "Creamy risotto with chestnuts and seasonal mushrooms",
+          "time": "40 minutes",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Cooked chestnuts",
+            "Assorted mushrooms",
+            "Risotto rice"
+          ]
+        },
+        {
+          "title": "SAVOURY ONION CAKE WITH CHESTNUTS AND AROMATIC HERBS",
+          "image": "/assets/images/gallery/receptes/pastis-salat-ceba-castanyes.png",
+          "imageAlt": "Savoury red onion cake with chestnuts and herbs",
+          "time": "40 minutes",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Viladrau chestnuts",
+            "Red onion",
+            "Puff pastry"
+          ]
+        },
+        {
+          "title": "CHESTNUT NEST WITH PUMPKIN EGG AND SWEET POTATO SAUCE",
+          "image": "/assets/images/gallery/receptes/niu-castanyes-ou-carabassa.png",
+          "imageAlt": "Chestnut purée nest with pumpkin egg and sweet potato sauce",
+          "time": "90 minutes",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Viladrau chestnuts",
+            "Pumpkin",
+            "Sweet potato"
+          ]
+        }
+      ]
+    },
+    "homeTraditionsSection": {
+      "title": "MAIN DISHES WITH VILADRAU CHESTNUT",
+      "intro": "Hearty dishes and market cuisine that turn chestnut into the soul of every meal. From field to table, with all the flavour of the Montseny.",
+      "ctaLabel": "SEE ALL",
+      "ctaHref": "/en/gastronomic/receptes/resultats/?dishType=homeTraditions",
+      "slides": [
+        {
+          "title": "MEAT WITH CHESTNUT SAUCE",
+          "image": "/assets/images/gallery/receptes/carn-salsa-castanyes.png",
+          "imageAlt": "Beef fillet with an intense chestnut and Pedro Ximénez sauce",
+          "time": "45 minutes",
+          "difficulty": "dificil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Beef fillet",
+            "Cooked chestnuts",
+            "Pedro Ximénez"
+          ]
+        },
+        {
+          "title": "ROAST CHICKEN WITH CHESTNUTS",
+          "image": "/assets/images/gallery/receptes/pollastre-rostit-castanyes.png",
+          "imageAlt": "Oven-roasted chicken with chestnuts and aromatic herbs",
+          "time": "75 minutes",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Chicken",
+            "Viladrau chestnuts",
+            "White wine"
+          ]
+        },
+        {
+          "title": "MEATBALLS WITH CHESTNUTS AND MUSHROOMS",
+          "image": "/assets/images/gallery/receptes/mandonguilles-castanyes-bolets.png",
+          "imageAlt": "Meatballs in a fortified wine sauce with chestnuts and mushrooms",
+          "time": "75 minutes",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Pork and veal",
+            "Cooked chestnuts",
+            "Assorted mushrooms"
+          ]
+        }
+      ]
+    },
+    "classicsSection": {
+      "title": "THE CLASSICS THAT NEVER FAIL",
+      "intro": "Timeless recipes with the seal of authenticity of the Montseny",
+      "ctaLabel": "SEE ALL",
+      "ctaHref": "/en/contact/",
+      "slides": [
+        {
+          "title": "HOW TO REHYDRATE DRIED CHESTNUT",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Group in the chestnut forest",
+          "time": "20 minutes",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Roasted chestnut",
+            "Chestnut flour"
+          ]
+        },
+        {
+          "title": "HOW TO REHYDRATE DRIED CHESTNUT",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Practical session with chestnut in the Montseny",
+          "time": "20 minutes",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Roasted chestnut",
+            "Chestnut flour"
+          ]
+        },
+        {
+          "title": "HOW TO REHYDRATE DRIED CHESTNUT",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Gastronomic workshop with chestnut",
+          "time": "20 minutes",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Roasted chestnut",
+            "Chestnut flour"
+          ]
+        },
+        {
+          "title": "PERFECT BOILED CHESTNUT",
+          "image": "/assets/images/gallery/espai-gastronomic/castanya_plat.jpg",
+          "imageAlt": "Dish with a chestnut preparation",
+          "time": "25 minutes",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Boiled chestnut",
+            "Vegetable stock"
+          ]
+        },
+        {
+          "title": "AUTUMN CREAM",
+          "image": "/assets/images/gallery/espai-gastronomic/cake.jpg",
+          "imageAlt": "Homemade preparation with chestnut",
+          "time": "35 minutes",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Chestnut flour",
+            "Milk"
+          ]
+        },
+        {
+          "title": "CHESTNUT GARNISH",
+          "image": "/assets/images/gallery/espai-gastronomic/castanya_camp.jpg",
+          "imageAlt": "Chestnut in the Montseny landscape",
+          "time": "15 minutes",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Fresh chestnut",
+            "Fine salt"
+          ]
+        }
+      ]
+    },
+    "healthySection": {
+      "title": "HEALTHY AND FIT COOKING",
+      "intro": "Natural energy and light dishes to look after yourself without giving up the best flavour.",
+      "ctaLabel": "SEE ALL",
+      "ctaHref": "/en/contact/",
+      "slides": [
+        {
+          "title": "HOW TO REHYDRATE DRIED CHESTNUT",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Group in the chestnut forest",
+          "time": "20 minutes",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Roasted chestnut",
+            "Chestnut flour"
+          ]
+        },
+        {
+          "title": "HOW TO REHYDRATE DRIED CHESTNUT",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Practical session with chestnut in the Montseny",
+          "time": "20 minutes",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Roasted chestnut",
+            "Chestnut flour"
+          ]
+        },
+        {
+          "title": "HOW TO REHYDRATE DRIED CHESTNUT",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Gastronomic workshop with chestnut",
+          "time": "20 minutes",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Roasted chestnut",
+            "Chestnut flour"
+          ]
+        },
+        {
+          "title": "LIGHTER DESSERTS",
+          "image": "/assets/images/gallery/espai-gastronomic/baixa_en_greixos.jpg",
+          "imageAlt": "Chestnut prepared for a healthy recipe",
+          "time": "30 minutes",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Chestnut",
+            "Olive oil"
+          ]
+        },
+        {
+          "title": "TEXTURE FOR DESSERTS",
+          "image": "/assets/images/gallery/espai-gastronomic/cake.jpg",
+          "imageAlt": "Dessert with chestnut",
+          "time": "35 minutes",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Chestnut flour",
+            "Chocolate"
+          ]
+        },
+        {
+          "title": "SEASONAL CHESTNUT",
+          "image": "/assets/images/gallery/espai-gastronomic/castanya_camp.jpg",
+          "imageAlt": "Chestnut in the Montseny landscape",
+          "time": "15 minutes",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Fresh chestnut",
+            "Fine salt"
+          ]
+        }
+      ]
+    },
+    "sweetSection": {
+      "title": "SWEET MOMENT (EASY BAKING)",
+      "intro": "Irresistible treats and homemade desserts to sweeten your special moments.",
+      "ctaLabel": "SEE ALL",
+      "ctaHref": "/en/gastronomic/receptes/resultats/?dishType=sweet",
+      "slides": [
+        {
+          "title": "CARAMELISED CHESTNUTS",
+          "image": "/assets/images/gallery/receptes/castanyes-caramelitzades.png",
+          "imageAlt": "Golden caramelised chestnuts with honey and cinnamon",
+          "time": "30 minutes",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Viladrau chestnuts",
+            "Artisan honey",
+            "Cinnamon stick"
+          ]
+        },
+        {
+          "title": "CHESTNUT PANELLETS",
+          "image": "/assets/images/gallery/receptes/panellets-de-castanya.png",
+          "imageAlt": "Chestnut panellets with oven-toasted pine nuts",
+          "time": "45 minutes",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Viladrau chestnuts",
+            "Pine nuts",
+            "Sugar"
+          ]
+        },
+        {
+          "title": "CHESTNUT CREAM CAKE",
+          "image": "/assets/images/gallery/receptes/pastis-castanya.png",
+          "imageAlt": "Fluffy chestnut cream cake with icing sugar",
+          "time": "60 minutes",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Chestnut cream",
+            "Spelt flour",
+            "Extra virgin olive oil"
+          ]
+        },
+        {
+          "title": "CHESTNUT AND CHOCOLATE MOUSSE",
+          "image": "/assets/images/gallery/receptes/mousse-castanyes-xocolata.png",
+          "imageAlt": "Chestnut and dark chocolate mousse served in glasses",
+          "time": "40 minutes",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Viladrau chestnuts",
+            "Dark chocolate",
+            "Egg whites"
+          ]
+        }
+      ]
+    },
+    "remediesSection": {
+      "title": "THE FOREST'S MEDICINE CABINET: TRADITIONAL CHESTNUT-TREE REMEDIES",
+      "intro": "We explore the medicinal use of the Viladrau chestnut tree, a tree with centuries of wisdom in health care.",
+      "ctaLabel": "SEE ALL",
+      "ctaHref": "/en/contact/",
+      "slides": [
+        {
+          "title": "HOW TO REHYDRATE DRIED CHESTNUT",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Group in the chestnut forest",
+          "time": "20 minutes",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Roasted chestnut",
+            "Chestnut flour"
+          ]
+        },
+        {
+          "title": "HOW TO REHYDRATE DRIED CHESTNUT",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Practical session with chestnut in the Montseny",
+          "time": "20 minutes",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Roasted chestnut",
+            "Chestnut flour"
+          ]
+        },
+        {
+          "title": "HOW TO REHYDRATE DRIED CHESTNUT",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Gastronomic workshop with chestnut",
+          "time": "20 minutes",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Roasted chestnut",
+            "Chestnut flour"
+          ]
+        },
+        {
+          "title": "LEAF INFUSION",
+          "image": "/assets/images/gallery/espai-gastronomic/castanya.jpg",
+          "imageAlt": "Chestnut still on the tree",
+          "time": "10 minutes",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Chestnut tree leaf",
+            "Water"
+          ]
+        },
+        {
+          "title": "TRADITIONAL USE OF THE FRUIT",
+          "image": "/assets/images/gallery/espai-gastronomic/castanya_camp.jpg",
+          "imageAlt": "Chestnut in the Montseny landscape",
+          "time": "15 minutes",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Fresh chestnut",
+            "Honey"
+          ]
+        },
+        {
+          "title": "SEASONAL REMEDY",
+          "image": "/assets/images/gallery/espai-gastronomic/recollida.jpg",
+          "imageAlt": "Manual harvesting and sorting",
+          "time": "20 minutes",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Selected chestnut",
+            "Water"
+          ]
+        }
+      ]
+    }
   }
 }

@@ -1,23 +1,23 @@
 {
   "categories": [
-    { "label": "Castanyes", "labelEs": "Castañas", "value": "castanyes" },
-    { "label": "Elaborats de castanyes", "labelEs": "Elaborados de castaña", "value": "elaborats-de-castanyes" },
-    { "label": "Cremes", "labelEs": "Cremas", "value": "cremes" },
-    { "label": "Dolços", "labelEs": "Dulces", "value": "dolcos" },
-    { "label": "Begudes", "labelEs": "Bebidas", "value": "begudes" },
-    { "label": "Mels", "labelEs": "Mieles", "value": "mels" },
-    { "label": "Packs", "labelEs": "Packs", "value": "packs" },
-    { "label": "Productes Estrella", "labelEs": "Productos Estrella", "value": "productes-estrella" }
+    { "label": "Castanyes", "labelEs": "Castañas", "labelEn": "Chestnuts", "value": "castanyes" },
+    { "label": "Elaborats de castanyes", "labelEs": "Elaborados de castaña", "labelEn": "Chestnut products", "value": "elaborats-de-castanyes" },
+    { "label": "Cremes", "labelEs": "Cremas", "labelEn": "Creams", "value": "cremes" },
+    { "label": "Dolços", "labelEs": "Dulces", "labelEn": "Sweets", "value": "dolcos" },
+    { "label": "Begudes", "labelEs": "Bebidas", "labelEn": "Drinks", "value": "begudes" },
+    { "label": "Mels", "labelEs": "Mieles", "labelEn": "Honeys", "value": "mels" },
+    { "label": "Packs", "labelEs": "Packs", "labelEn": "Packs", "value": "packs" },
+    { "label": "Productes Estrella", "labelEs": "Productos Estrella", "labelEn": "Star products", "value": "productes-estrella" }
   ],
   "moments": [
-    { "label": "Per picar i compartir", "labelEs": "Para picar y compartir", "value": "picar-compartir" },
-    { "label": "Per cuinar", "labelEs": "Para cocinar", "value": "cuinar" },
-    { "label": "Moments dolços", "labelEs": "Momentos dulces", "value": "moments-dolcos" },
-    { "label": "Regals i detalls", "labelEs": "Regalos y detalles", "value": "regals-detalls" }
+    { "label": "Per picar i compartir", "labelEs": "Para picar y compartir", "labelEn": "For snacking and sharing", "value": "picar-compartir" },
+    { "label": "Per cuinar", "labelEs": "Para cocinar", "labelEn": "For cooking", "value": "cuinar" },
+    { "label": "Moments dolços", "labelEs": "Momentos dulces", "labelEn": "Sweet moments", "value": "moments-dolcos" },
+    { "label": "Regals i detalls", "labelEs": "Regalos y detalles", "labelEn": "Gifts and treats", "value": "regals-detalls" }
   ],
   "diets": [
-    { "label": "Vegà", "labelEs": "Vegano", "value": "vega" },
-    { "label": "Sense gluten", "labelEs": "Sin gluten", "value": "sense-gluten" },
-    { "label": "Sense sucres afegits", "labelEs": "Sin azúcares añadidos", "value": "sense-sucres-afegits" }
+    { "label": "Vegà", "labelEs": "Vegano", "labelEn": "Vegan", "value": "vega" },
+    { "label": "Sense gluten", "labelEs": "Sin gluten", "labelEn": "Gluten-free", "value": "sense-gluten" },
+    { "label": "Sense sucres afegits", "labelEs": "Sin azúcares añadidos", "labelEn": "No added sugars", "value": "sense-sucres-afegits" }
   ]
 }

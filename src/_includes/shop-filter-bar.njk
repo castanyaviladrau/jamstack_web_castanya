@@ -8,9 +8,9 @@
       </summary>
       <div class="shop-page-filter-menu__list">
         {% for item in shopFilters.categories %}
-        {% set itemLabel = item.labelEs if lang == 'es' else item.label %}
+        {% set itemLabel = item.labelEs if lang == 'es' else (item.labelEn if lang == 'en' else item.label) %}
         <a
-          href="{% if lang == 'es' %}/es/shop/products/catalog/{% else %}/shop/products/catalog/{% endif %}?category={{ item.value }}"
+          href="{% if lang == 'es' %}/es/shop/products/catalog/{% elif lang == 'en' %}/en/shop/products/catalog/{% else %}/shop/products/catalog/{% endif %}?category={{ item.value }}"
           class="shop-page-filter-menu__item"
           data-shop-filter-link
           data-shop-filter-type="category"
@@ -28,9 +28,9 @@
       </summary>
       <div class="shop-page-filter-menu__list">
         {% for item in shopFilters.moments %}
-        {% set itemLabel = item.labelEs if lang == 'es' else item.label %}
+        {% set itemLabel = item.labelEs if lang == 'es' else (item.labelEn if lang == 'en' else item.label) %}
         <a
-          href="{% if lang == 'es' %}/es/shop/products/catalog/{% else %}/shop/products/catalog/{% endif %}?moment={{ item.value }}"
+          href="{% if lang == 'es' %}/es/shop/products/catalog/{% elif lang == 'en' %}/en/shop/products/catalog/{% else %}/shop/products/catalog/{% endif %}?moment={{ item.value }}"
           class="shop-page-filter-menu__item"
           data-shop-filter-link
           data-shop-filter-type="moment"
@@ -48,9 +48,9 @@
       </summary>
       <div class="shop-page-filter-menu__list">
         {% for item in shopFilters.diets %}
-        {% set itemLabel = item.labelEs if lang == 'es' else item.label %}
+        {% set itemLabel = item.labelEs if lang == 'es' else (item.labelEn if lang == 'en' else item.label) %}
         <a
-          href="{% if lang == 'es' %}/es/shop/products/catalog/{% else %}/shop/products/catalog/{% endif %}?diet={{ item.value }}"
+          href="{% if lang == 'es' %}/es/shop/products/catalog/{% elif lang == 'en' %}/en/shop/products/catalog/{% else %}/shop/products/catalog/{% endif %}?diet={{ item.value }}"
           class="shop-page-filter-menu__item"
           data-shop-filter-link
           data-shop-filter-type="diet"
@@ -61,8 +61,8 @@
       </div>
     </details>
 
-    <a href="{% if lang == 'es' %}/es/gastronomic/receptes{% else %}/gastronomic/receptes{% endif %}" class="shop-page-filter">{{ i18n[lang].shopFilterTrees }}</a>
-    <a href="{% if lang == 'es' %}/es/shop/products/catalog/{% else %}/shop/products/catalog/{% endif %}" class="shop-page-search">
+    <a href="{% if lang == 'es' %}/es/gastronomic/receptes{% elif lang == 'en' %}/en/gastronomic/receptes{% else %}/gastronomic/receptes{% endif %}" class="shop-page-filter">{{ i18n[lang].shopFilterTrees }}</a>
+    <a href="{% if lang == 'es' %}/es/shop/products/catalog/{% elif lang == 'en' %}/en/shop/products/catalog/{% else %}/shop/products/catalog/{% endif %}" class="shop-page-search">
       {{ i18n[lang].shopFilterSearch }}
       <span aria-hidden="true">&rsaquo;</span>
     </a>

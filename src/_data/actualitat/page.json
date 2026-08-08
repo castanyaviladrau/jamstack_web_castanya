@@ -208,5 +208,110 @@
       "inputLabel": "Correo electrónico",
       "buttonLabel": "¡APÚNTAME!"
     }
+  },
+  "en": {
+    "hero": {
+      "title": "NEWS AND UPDATES FROM\nLA CASTANYA DE VILADRAU",
+      "text": "Discover the day-to-day life of Castanya de Viladrau, from the care of our forests to the culture that defines us.",
+      "backgroundImage": "/assets/images/gallery/actualitat_hero.jpg",
+      "backgroundAlt": "Outdoor space with a wooden porch and picnic tables at Castanya de Viladrau",
+      "tagsTitle": "LATEST TAGS",
+      "tags": [
+        "Gastronomy",
+        "Heritage",
+        "Nature",
+        "Territory",
+        "Tradition"
+      ]
+    },
+    "filtersBar": {
+      "items": [
+        {
+          "label": "Newest first",
+          "type": "sort",
+          "options": [
+            {
+              "label": "Newest first",
+              "value": "newest"
+            },
+            {
+              "label": "Oldest first",
+              "value": "oldest"
+            }
+          ]
+        },
+        {
+          "label": "By topic",
+          "type": "topic",
+          "options": [
+            {
+              "label": "Gastronomy",
+              "value": "gastronomia"
+            },
+            {
+              "label": "Heritage",
+              "value": "patrimoni"
+            },
+            {
+              "label": "Nature",
+              "value": "natura"
+            },
+            {
+              "label": "Territory",
+              "value": "territori"
+            },
+            {
+              "label": "Tradition",
+              "value": "tradicio"
+            }
+          ]
+        },
+        {
+          "label": "Type of news",
+          "type": "type",
+          "options": [
+            {
+              "label": "Product",
+              "value": "producte"
+            },
+            {
+              "label": "Project",
+              "value": "projecte"
+            },
+            {
+              "label": "Heritage",
+              "value": "patrimoni"
+            }
+          ]
+        },
+        {
+          "label": "By reading time",
+          "type": "readingTime",
+          "options": [
+            {
+              "label": "Less than 3 minutes",
+              "value": "short"
+            },
+            {
+              "label": "3–5 minutes",
+              "value": "medium"
+            },
+            {
+              "label": "More than 5 minutes",
+              "value": "long"
+            }
+          ]
+        }
+      ],
+      "resetLabel": "Reset filters",
+      "emptyLabel": "We couldn't find any news with these filters. Try another combination."
+    },
+    "loadMoreLabel": "LOAD MORE",
+    "newsletter": {
+      "title": "NEWSLETTER",
+      "text": "Join our newsletter to stay up to date on new products and activities, and get discounts.",
+      "inputLabel": "Email",
+      "buttonLabel": "SIGN ME UP!"
+    }
   }
 }

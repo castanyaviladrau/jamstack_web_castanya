@@ -3,14 +3,14 @@ layout: base
 ---
 
 {% set lang = page.url | pageLang %}
-{% set blogIndexUrl = '/es/blog/' if lang == 'es' else '/blog/' %}
+{% set blogIndexUrl = '/es/blog/' if lang == 'es' else ('/en/blog/' if lang == 'en' else '/blog/') %}
 {% set pageContent = actualitat.page %}
 {% set articleDescription = seoDescription or description or title %}
 {% set posts = collections.posts | filterByLang(lang) %}
 
 <article class="actualitat-post">
   <div class="container actualitat-post__inner">
-    <a class="actualitat-post__back" href="{% if lang == 'es' %}/es/blog/{% else %}/blog/{% endif %}">
+    <a class="actualitat-post__back" href="{% if lang == 'es' %}/es/blog/{% elif lang == 'en' %}/en/blog/{% else %}/blog/{% endif %}">
       <img src="/assets/images/icon-arrow-left.svg" alt="" class="actualitat-post__back-arrow" aria-hidden="true" />
       {{ i18n[lang].postBack }}
     </a>
@@ -71,7 +71,7 @@ layout: base
       {{ i18n[lang].postPrevArticle }}
     </a>
     {% else %}
-    <a href="{% if lang == 'es' %}/es/blog/{% else %}/blog/{% endif %}">
+    <a href="{% if lang == 'es' %}/es/blog/{% elif lang == 'en' %}/en/blog/{% else %}/blog/{% endif %}">
       <img src="/assets/images/icon-arrow-left.svg" alt="" class="actualitat-post__nav-arrow" aria-hidden="true" />
       {{ i18n[lang].postAllNews }}
     </a>
@@ -82,7 +82,7 @@ layout: base
       <img src="/assets/images/icon-arrow-right.svg" alt="" class="actualitat-post__nav-arrow" aria-hidden="true" />
     </a>
     {% else %}
-    <a href="{% if lang == 'es' %}/es/blog/{% else %}/blog/{% endif %}">
+    <a href="{% if lang == 'es' %}/es/blog/{% elif lang == 'en' %}/en/blog/{% else %}/blog/{% endif %}">
       {{ i18n[lang].postBackToBlog }}
       <img src="/assets/images/icon-arrow-right.svg" alt="" class="actualitat-post__nav-arrow" aria-hidden="true" />
     </a>

@@ -68,5 +68,40 @@
       "imageAlt": "Copos de castaña",
       "href": "/es/shop/products/flocs-de-castanya/"
     }
+  },
+  "en": {
+    "list": ["castanya-torrada", "farina-castanya", "secallona", "flocs-castanya"],
+    "castanya-torrada": {
+      "title": "ROASTED CHESTNUT",
+      "subtitle": "Available 365 days a year",
+      "price": "24€",
+      "image": "/assets/images/gallery/product_castanya_torrada.png",
+      "imageAlt": "Roasted chestnut",
+      "href": "/en/shop/products/castanya-torrada/"
+    },
+    "farina-castanya": {
+      "title": "CHESTNUT FLOUR",
+      "subtitle": "Stone-ground",
+      "price": "18€",
+      "image": "/assets/images/gallery/product_castanya_farina.png",
+      "imageAlt": "Chestnut flour",
+      "href": "/en/shop/products/farina-de-castanya/"
+    },
+    "secallona": {
+      "title": "DRIED CHESTNUT",
+      "subtitle": "Slow-dried in Viladrau",
+      "price": "22€",
+      "image": "/assets/images/gallery/product_castanya_seca.png",
+      "imageAlt": "Dried chestnut",
+      "href": "/en/shop/products/castanya-pilonga-deshidratada/"
+    },
+    "flocs-castanya": {
+      "title": "CHESTNUT FLAKES",
+      "subtitle": "Crunchy and delicate",
+      "price": "16€",
+      "image": "/assets/images/gallery/product_castanya_flocs.png",
+      "imageAlt": "Chestnut flakes",
+      "href": "/en/shop/products/flocs-de-castanya/"
+    }
   }
 }

@@ -1,6 +1,7 @@
 {% set currentLang = page.url | pageLang %}
 {% set langCaHref = page.url | toCaUrl %}
 {% set langEsHref = page.url | toEsUrl %}
+{% set langEnHref = page.url | toEnUrl %}
 <header class="site-header">
   <div class="header-top">
     <!-- Left Side: Search -->
@@ -19,6 +20,8 @@
           <span class="lang-switcher__current">
             {% if currentLang == 'es' %}
             <span class="lang-switcher__label">ES</span>
+            {% elif currentLang == 'en' %}
+            <span class="lang-switcher__label">EN</span>
             {% else %}
             <svg class="lang-switcher__cat-svg" width="42" height="15" viewBox="0 0 42 15" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
               <path d="M7.12031 14.48C6.09365 14.48 5.14698 14.2933 4.28031 13.92C3.41365 13.5467 2.66031 13.04 2.02031 12.4C1.39365 11.7467 0.900313 10.98 0.540313 10.1C0.180313 9.21999 0.000312582 8.27999 0.000312582 7.27999V7.23999C0.000312582 6.23999 0.173646 5.30666 0.520313 4.43999C0.880313 3.55999 1.38031 2.79332 2.02031 2.13999C2.66031 1.47332 3.42031 0.953323 4.30031 0.57999C5.18031 0.193323 6.15365 -1.00136e-05 7.22031 -1.00136e-05C7.86031 -1.00136e-05 8.44031 0.053323 8.96031 0.159989C9.49365 0.266656 9.98031 0.419989 10.4203 0.619989C10.8603 0.806656 11.267 1.03332 11.6403 1.29999C12.0136 1.56666 12.367 1.85999 12.7003 2.17999L11.1203 3.99999C10.5603 3.47999 9.96698 3.05999 9.34031 2.73999C8.71365 2.41999 8.00031 2.25999 7.20031 2.25999C6.53365 2.25999 5.91365 2.39332 5.34031 2.65999C4.78031 2.91332 4.29365 3.26666 3.88031 3.71999C3.46698 4.15999 3.14698 4.67999 2.92031 5.27999C2.69365 5.87999 2.58031 6.51999 2.58031 7.19999V7.23999C2.58031 7.91999 2.69365 8.56666 2.92031 9.17999C3.14698 9.77999 3.46698 10.3067 3.88031 10.76C4.29365 11.2133 4.78031 11.5733 5.34031 11.84C5.91365 12.0933 6.53365 12.22 7.20031 12.22C8.05365 12.22 8.78698 12.06 9.40031 11.74C10.0136 11.4067 10.6203 10.96 11.2203 10.4L12.8003 12C12.4403 12.3867 12.0603 12.7333 11.6603 13.04C11.2736 13.3333 10.8536 13.5933 10.4003 13.82C9.94698 14.0333 9.44698 14.1933 8.90031 14.3C8.36698 14.42 7.77365 14.48 7.12031 14.48ZM23.8659 8.67999L21.4459 3.07999L19.0459 8.67999H23.8659ZM20.3459 0.139989H22.6259L28.7859 14.24H26.1859L24.7659 10.86H18.1459L16.7059 14.24H14.1859L20.3459 0.139989ZM34.6267 2.51999H30.1867V0.239989H41.5467V2.51999H37.1067V14.24H34.6267V2.51999Z" fill="#EEE9DF"/>
@@ -44,6 +47,13 @@
             {% if currentLang == 'es' %}aria-current="true"{% endif %}
             >ES</a
           >
+          <a
+            href="{{ langEnHref }}"
+            class="lang-switcher__option {% if currentLang == 'en' %}is-active{% endif %}"
+            role="menuitem"
+            {% if currentLang == 'en' %}aria-current="true"{% endif %}
+            >EN</a
+          >
         </div>
       </div>
     </div>
@@ -51,7 +61,7 @@
     <!-- Center: Logo + Text Title -->
     <div class="header-logo">
       <div class="header-logo">
-        <a href="{% if currentLang == 'es' %}/es/{% else %}/{% endif %}" class="logo-link">
+        <a href="{% if currentLang == 'es' %}/es/{% elif currentLang == 'en' %}/en/{% else %}/{% endif %}" class="logo-link">
           <img
             src="/assets/images/logo-white.png"
             alt="Castanya de Viladrau"
@@ -70,10 +80,10 @@
 
     <!-- Right Side: Shopping Cart -->
     <div class="utility-right">
-      <a class="header-contact-button" href="{% if currentLang == 'es' %}/es/contact{% else %}/contact{% endif %}">{{ i18n[currentLang].contacte }}</a>
+      <a class="header-contact-button" href="{% if currentLang == 'es' %}/es/contact{% elif currentLang == 'en' %}/en/contact{% else %}/contact{% endif %}">{{ i18n[currentLang].contacte }}</a>
       <a
         class="header-icon-button header-icon-button--cart"
-        href="{% if currentLang == 'es' %}/es/shop/cart/{% else %}/shop/cart/{% endif %}"
+        href="{% if currentLang == 'es' %}/es/shop/cart/{% elif currentLang == 'en' %}/en/shop/cart/{% else %}/shop/cart/{% endif %}"
         aria-label="{{ i18n[currentLang].cartAria }}"
       >
         <img
@@ -86,7 +96,7 @@
       </a>
       <a
         class="header-icon-button header-icon-button--whatsapp"
-        href="{% if currentLang == 'es' %}https://wa.me/34608131199?text=Hola%2C%20me%20interesar%C3%ADa%20hacer%20una%20consulta...{% else %}https://wa.me/34608131199?text=Hola%2C%20m%27interessaria%20fer%20una%20consulta...{% endif %}"
+        href="{% if currentLang == 'es' %}https://wa.me/34608131199?text=Hola%2C%20me%20interesar%C3%ADa%20hacer%20una%20consulta...{% elif currentLang == 'en' %}https://wa.me/34608131199?text=Hello%2C%20I%27d%20like%20to%20make%20an%20enquiry...{% else %}https://wa.me/34608131199?text=Hola%2C%20m%27interessaria%20fer%20una%20consulta...{% endif %}"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp"
@@ -116,7 +126,7 @@
     <div class="nav-flex-container">
       <div class="header-mobile-panel">
         <div class="header-mobile-actions">
-          <a class="header-mobile-actions__link" href="{% if currentLang == 'es' %}/es/contact{% else %}/contact{% endif %}">{{ i18n[currentLang].contacte }}</a>
+          <a class="header-mobile-actions__link" href="{% if currentLang == 'es' %}/es/contact{% elif currentLang == 'en' %}/en/contact{% else %}/contact{% endif %}">{{ i18n[currentLang].contacte }}</a>
           <div class="header-mobile-actions__lang">
             <a
               href="{{ langCaHref }}"
@@ -129,6 +139,12 @@
               class="header-mobile-actions__link header-mobile-actions__lang-link {% if currentLang == 'es' %}is-active{% endif %}"
               {% if currentLang == 'es' %}aria-current="true"{% endif %}
               >ES</a
+            >
+            <a
+              href="{{ langEnHref }}"
+              class="header-mobile-actions__link header-mobile-actions__lang-link {% if currentLang == 'en' %}is-active{% endif %}"
+              {% if currentLang == 'en' %}aria-current="true"{% endif %}
+              >EN</a
             >
           </div>
         </div>
@@ -149,12 +165,12 @@
           <div class="nav-dropdown" id="visits-submenu">
             <div class="nav-dropdown__inner">
               <a
-                href="{% if currentLang == 'es' %}/es/visits/{% else %}/visits/{% endif %}"
-                class="nav-dropdown__link {% if page.url == '/visits/' or page.url == '/es/visits/' %}is-active{% endif %}"
+                href="{% if currentLang == 'es' %}/es/visits/{% elif currentLang == 'en' %}/en/visits/{% else %}/visits/{% endif %}"
+                class="nav-dropdown__link {% if page.url == '/visits/' or page.url == '/es/visits/' or page.url == '/en/visits/' %}is-active{% endif %}"
                 >{{ i18n[currentLang].navVisitesGuiadesLink }}</a
               >
               <a
-                href="{% if currentLang == 'es' %}/es/visits/parc-natural-del-montseny/{% else %}/visits/parc-natural-del-montseny/{% endif %}"
+                href="{% if currentLang == 'es' %}/es/visits/parc-natural-del-montseny/{% elif currentLang == 'en' %}/en/visits/parc-natural-del-montseny/{% else %}/visits/parc-natural-del-montseny/{% endif %}"
                 class="nav-dropdown__link {% if '/visits/parc-natural-del-montseny/' in page.url %}is-active{% endif %}"
                 >{{ i18n[currentLang].navParcNatural }}</a
               >
@@ -162,12 +178,12 @@
           </div>
         </li>
         <li class="nav-item {% if '/fusta' in page.url %}active{% endif %}">
-          <a href="{% if currentLang == 'es' %}/es/fusta{% else %}/fusta{% endif %}">{{ i18n[currentLang].navFusta }}</a>
+          <a href="{% if currentLang == 'es' %}/es/fusta{% elif currentLang == 'en' %}/en/fusta{% else %}/fusta{% endif %}">{{ i18n[currentLang].navFusta }}</a>
         </li>
         <li
           class="nav-item {% if '/professionals' in page.url %}active{% endif %}"
         >
-          <a href="{% if currentLang == 'es' %}/es/professionals{% else %}/professionals{% endif %}">{{ i18n[currentLang].navProfessionals | safe }}</a>
+          <a href="{% if currentLang == 'es' %}/es/professionals{% elif currentLang == 'en' %}/en/professionals{% else %}/professionals{% endif %}">{{ i18n[currentLang].navProfessionals | safe }}</a>
         </li>
         <li
           class="nav-item {% if '/gastronomic' in page.url %}active{% endif %} has-dropdown nav-item--dropdown nav-item--gastronomic"
@@ -184,17 +200,17 @@
           <div class="nav-dropdown" id="gastronomic-submenu">
             <div class="nav-dropdown__inner">
               <a
-                href="{% if currentLang == 'es' %}/es/gastronomic{% else %}/gastronomic{% endif %}"
-                class="nav-dropdown__link {% if page.url == '/gastronomic/' or page.url == '/es/gastronomic/' %}is-active{% endif %}"
+                href="{% if currentLang == 'es' %}/es/gastronomic{% elif currentLang == 'en' %}/en/gastronomic{% else %}/gastronomic{% endif %}"
+                class="nav-dropdown__link {% if page.url == '/gastronomic/' or page.url == '/es/gastronomic/' or page.url == '/en/gastronomic/' %}is-active{% endif %}"
                 >{{ i18n[currentLang].navGastronomicOn }}</a
               >
               <a
-                href="{% if currentLang == 'es' %}/es/gastronomic/valor-nutricionals{% else %}/gastronomic/valor-nutricionals{% endif %}"
+                href="{% if currentLang == 'es' %}/es/gastronomic/valor-nutricionals{% elif currentLang == 'en' %}/en/gastronomic/valor-nutricionals{% else %}/gastronomic/valor-nutricionals{% endif %}"
                 class="nav-dropdown__link {% if '/gastronomic/valor-nutricionals' in page.url %}is-active{% endif %}"
                 >{{ i18n[currentLang].navGastronomicNutrition }}</a
               >
               <a
-                href="{% if currentLang == 'es' %}/es/gastronomic/receptes{% else %}/gastronomic/receptes{% endif %}"
+                href="{% if currentLang == 'es' %}/es/gastronomic/receptes{% elif currentLang == 'en' %}/en/gastronomic/receptes{% else %}/gastronomic/receptes{% endif %}"
                 class="nav-dropdown__link {% if '/gastronomic/receptes' in page.url %}is-active{% endif %}"
                 >{{ i18n[currentLang].navGastronomicReceptes }}</a
               >
@@ -202,18 +218,18 @@
           </div>
         </li>
         <li class="nav-item {% if '/projecte' in page.url %}active{% endif %}">
-          <a href="{% if currentLang == 'es' %}/es/projecte{% else %}/projecte{% endif %}">{{ i18n[currentLang].navProjecte | safe }}</a>
+          <a href="{% if currentLang == 'es' %}/es/projecte{% elif currentLang == 'en' %}/en/projecte{% else %}/projecte{% endif %}">{{ i18n[currentLang].navProjecte | safe }}</a>
         </li>
         <li
           class="nav-item {% if '/trobar-nos' in page.url %}active{% endif %}"
         >
-          <a href="{% if currentLang == 'es' %}/es/trobar-nos{% else %}/trobar-nos{% endif %}">{{ i18n[currentLang].navTrobarNos }}</a>
+          <a href="{% if currentLang == 'es' %}/es/trobar-nos{% elif currentLang == 'en' %}/en/trobar-nos{% else %}/trobar-nos{% endif %}">{{ i18n[currentLang].navTrobarNos }}</a>
         </li>
         <li class="nav-item {% if '/blog' in page.url %}active{% endif %}">
-          <a href="{% if currentLang == 'es' %}/es/blog{% else %}/blog{% endif %}">{{ i18n[currentLang].navActualitat }}</a>
+          <a href="{% if currentLang == 'es' %}/es/blog{% elif currentLang == 'en' %}/en/blog{% else %}/blog{% endif %}">{{ i18n[currentLang].navActualitat }}</a>
         </li>
         <li class="nav-item nav-item--shop {% if '/shop' in page.url %}active{% endif %}">
-          <a href="{% if currentLang == 'es' %}/es/shop/products{% else %}/shop/products{% endif %}">{{ i18n[currentLang].navBotiga }}</a>
+          <a href="{% if currentLang == 'es' %}/es/shop/products{% elif currentLang == 'en' %}/en/shop/products{% else %}/shop/products{% endif %}">{{ i18n[currentLang].navBotiga }}</a>
         </li>
       </ul>
     </div>
@@ -239,6 +255,8 @@
       <span class="lang-switcher__current">
         {% if currentLang == 'es' %}
         <span class="lang-switcher__label">ES</span>
+        {% elif currentLang == 'en' %}
+        <span class="lang-switcher__label">EN</span>
         {% else %}
         <svg class="lang-switcher__cat-svg" width="42" height="15" viewBox="0 0 42 15" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
           <path d="M7.12031 14.48C6.09365 14.48 5.14698 14.2933 4.28031 13.92C3.41365 13.5467 2.66031 13.04 2.02031 12.4C1.39365 11.7467 0.900313 10.98 0.540313 10.1C0.180313 9.21999 0.000312582 8.27999 0.000312582 7.27999V7.23999C0.000312582 6.23999 0.173646 5.30666 0.520313 4.43999C0.880313 3.55999 1.38031 2.79332 2.02031 2.13999C2.66031 1.47332 3.42031 0.953323 4.30031 0.57999C5.18031 0.193323 6.15365 -1.00136e-05 7.22031 -1.00136e-05C7.86031 -1.00136e-05 8.44031 0.053323 8.96031 0.159989C9.49365 0.266656 9.98031 0.419989 10.4203 0.619989C10.8603 0.806656 11.267 1.03332 11.6403 1.29999C12.0136 1.56666 12.367 1.85999 12.7003 2.17999L11.1203 3.99999C10.5603 3.47999 9.96698 3.05999 9.34031 2.73999C8.71365 2.41999 8.00031 2.25999 7.20031 2.25999C6.53365 2.25999 5.91365 2.39332 5.34031 2.65999C4.78031 2.91332 4.29365 3.26666 3.88031 3.71999C3.46698 4.15999 3.14698 4.67999 2.92031 5.27999C2.69365 5.87999 2.58031 6.51999 2.58031 7.19999V7.23999C2.58031 7.91999 2.69365 8.56666 2.92031 9.17999C3.14698 9.77999 3.46698 10.3067 3.88031 10.76C4.29365 11.2133 4.78031 11.5733 5.34031 11.84C5.91365 12.0933 6.53365 12.22 7.20031 12.22C8.05365 12.22 8.78698 12.06 9.40031 11.74C10.0136 11.4067 10.6203 10.96 11.2203 10.4L12.8003 12C12.4403 12.3867 12.0603 12.7333 11.6603 13.04C11.2736 13.3333 10.8536 13.5933 10.4003 13.82C9.94698 14.0333 9.44698 14.1933 8.90031 14.3C8.36698 14.42 7.77365 14.48 7.12031 14.48ZM23.8659 8.67999L21.4459 3.07999L19.0459 8.67999H23.8659ZM20.3459 0.139989H22.6259L28.7859 14.24H26.1859L24.7659 10.86H18.1459L16.7059 14.24H14.1859L20.3459 0.139989ZM34.6267 2.51999H30.1867V0.239989H41.5467V2.51999H37.1067V14.24H34.6267V2.51999Z" fill="#EEE9DF"/>
@@ -264,16 +282,23 @@
         {% if currentLang == 'es' %}aria-current="true"{% endif %}
         >ES</a
       >
+      <a
+        href="{{ langEnHref }}"
+        class="lang-switcher__option {% if currentLang == 'en' %}is-active{% endif %}"
+        role="menuitem"
+        {% if currentLang == 'en' %}aria-current="true"{% endif %}
+        >EN</a
+      >
     </div>
   </div>
 </div>
 
 <!-- Fixed top-right overlay for pages where the header sits at the bottom -->
 <div class="utility-top-overlay">
-  <a class="header-contact-button" href="{% if currentLang == 'es' %}/es/contact{% else %}/contact{% endif %}">{{ i18n[currentLang].contacte }}</a>
+  <a class="header-contact-button" href="{% if currentLang == 'es' %}/es/contact{% elif currentLang == 'en' %}/en/contact{% else %}/contact{% endif %}">{{ i18n[currentLang].contacte }}</a>
   <a
     class="header-icon-button header-icon-button--cart"
-    href="{% if currentLang == 'es' %}/es/shop/cart/{% else %}/shop/cart/{% endif %}"
+    href="{% if currentLang == 'es' %}/es/shop/cart/{% elif currentLang == 'en' %}/en/shop/cart/{% else %}/shop/cart/{% endif %}"
     aria-label="{{ i18n[currentLang].cartAria }}"
   >
     <img
@@ -286,7 +311,7 @@
   </a>
   <a
     class="header-icon-button header-icon-button--whatsapp"
-    href="{% if currentLang == 'es' %}https://wa.me/34608131199?text=Hola%2C%20me%20interesar%C3%ADa%20hacer%20una%20consulta...{% else %}https://wa.me/34608131199?text=Hola%2C%20m%27interessaria%20fer%20una%20consulta...{% endif %}"
+    href="{% if currentLang == 'es' %}https://wa.me/34608131199?text=Hola%2C%20me%20interesar%C3%ADa%20hacer%20una%20consulta...{% elif currentLang == 'en' %}https://wa.me/34608131199?text=Hello%2C%20I%27d%20like%20to%20make%20an%20enquiry...{% else %}https://wa.me/34608131199?text=Hola%2C%20m%27interessaria%20fer%20una%20consulta...{% endif %}"
     target="_blank"
     rel="noopener noreferrer"
     aria-label="WhatsApp"

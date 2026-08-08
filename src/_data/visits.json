@@ -34,5 +34,23 @@
       "buttonLabel": "SOLICITA TU VISITA A MEDIDA",
       "buttonHref": "/es/contact/"
     }
+  },
+  "en": {
+    "hero": {
+      "image": "/assets/images/gallery/visites/visites_guiades_bg.jpg",
+      "imageAlt": "Guided tours in the Montseny",
+      "title": "OUR GUIDED TOURS",
+      "text": "Connect with nature in the heart of the Biosphere Reserve and let yourself be amazed by the ancient forests and chestnut trees of the Montseny.",
+      "ctaLabel": "READ MORE ABOUT THE MONTSENY PARK",
+      "ctaHref": "/en/projecte/"
+    },
+    "banner": {
+      "image": "/assets/images/gallery/visites/visites_guiades_banner.jpg",
+      "imageAlt": "Tailored visits in the Montseny",
+      "title": "TAILORED VISITS: FOREST EXPERTISE AND NATURE FOR YOUR PROJECT",
+      "text": "We open our doors to forestry professionals, schools, landscapers and biodiversity projects looking for a real experience in the Montseny.",
+      "buttonLabel": "REQUEST YOUR TAILORED VISIT",
+      "buttonHref": "/en/contact/"
+    }
   }
 }

@@ -76,5 +76,44 @@
         "url": "/es/shop/products/marron-glace/"
       }
     ]
+  },
+  "en": {
+    "list": [
+      {
+        "title": "Roasted chestnut",
+        "image": "/assets/images/products/pending-product-image.svg",
+        "availability": "Available in the online shop",
+        "price": "5,70 €",
+        "url": "/en/shop/products/castanya-torrada/"
+      },
+      {
+        "title": "Chestnut cream",
+        "image": "/assets/images/products/crema-de-castanya.jpeg",
+        "availability": "Available in the online shop",
+        "price": "6,00 €",
+        "url": "/en/shop/products/crema-de-castanya/"
+      },
+      {
+        "title": "Chestnut flour",
+        "image": "/assets/images/products/farina-de-castanya.jpeg",
+        "availability": "Available in the online shop",
+        "price": "4,20 €",
+        "url": "/en/shop/products/farina-de-castanya/"
+      },
+      {
+        "title": "Chestnut flakes",
+        "image": "/assets/images/products/flocs-de-castanya.jpeg",
+        "availability": "Available in the online shop",
+        "price": "4,30 €",
+        "url": "/en/shop/products/flocs-de-castanya/"
+      },
+      {
+        "title": "Marron glacé",
+        "image": "/assets/images/products/marron-glace.jpeg",
+        "availability": "Available in the online shop",
+        "price": "3,60 €",
+        "url": "/en/shop/products/marron-glace/"
+      }
+    ]
   }
 }

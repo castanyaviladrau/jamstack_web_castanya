@@ -29,34 +29,42 @@ module.exports = function (eleventyConfig) {
   });
 
   // Language-switcher helpers: derive the current language and the
-  // equivalent URL in the other language from a page's URL. Spanish pages
-  // live under a leading /es/ segment; everything else is Catalan.
+  // equivalent URL in another language from a page's URL. Spanish pages
+  // live under a leading /es/ segment, English pages under /en/; everything
+  // else is Catalan.
   eleventyConfig.addFilter("pageLang", (url = "") => {
-    return String(url).startsWith("/es/") || String(url) === "/es"
-      ? "es"
-      : "ca";
-  });
-
-  eleventyConfig.addFilter("toEsUrl", (url = "") => {
     const value = String(url);
     if (value.startsWith("/es/") || value === "/es") {
-      return value;
+      return "es";
     }
-    if (value === "/") {
-      return "/es/";
+    if (value.startsWith("/en/") || value === "/en") {
+      return "en";
     }
-    return "/es" + value;
+    return "ca";
   });
 
-  eleventyConfig.addFilter("toCaUrl", (url = "") => {
+  // Strips a leading /es/ or /en/ segment, returning the Catalan-equivalent path.
+  const stripLangPrefix = (url = "") => {
     const value = String(url);
-    if (value === "/es") {
+    if (value === "/es" || value === "/en") {
       return "/";
     }
-    if (value.startsWith("/es/")) {
+    if (value.startsWith("/es/") || value.startsWith("/en/")) {
       return value.slice(3) || "/";
     }
     return value;
+  };
+
+  eleventyConfig.addFilter("toCaUrl", (url = "") => stripLangPrefix(url));
+
+  eleventyConfig.addFilter("toEsUrl", (url = "") => {
+    const caPath = stripLangPrefix(url);
+    return caPath === "/" ? "/es/" : "/es" + caPath;
+  });
+
+  eleventyConfig.addFilter("toEnUrl", (url = "") => {
+    const caPath = stripLangPrefix(url);
+    return caPath === "/" ? "/en/" : "/en" + caPath;
   });
 
   eleventyConfig.addFilter("stripHtml", (content = "") => {
@@ -217,6 +225,11 @@ module.exports = function (eleventyConfig) {
       mitja: "Media",
       dificil: "Difícil",
     },
+    en: {
+      facil: "Easy",
+      mitja: "Medium",
+      dificil: "Difficult",
+    },
   };
   eleventyConfig.addFilter("difficultyLabel", (value, lang) => {
     const labels = difficultyLabels[lang] || difficultyLabels.ca;
@@ -238,6 +251,13 @@ module.exports = function (eleventyConfig) {
       classics: "Clásicos",
       healthy: "Saludable",
     },
+    en: {
+      foundations: "Starters",
+      sweet: "Sweet",
+      homeTraditions: "Main dishes",
+      classics: "Classics",
+      healthy: "Healthy",
+    },
   };
   eleventyConfig.addFilter("dishTypeLabel", (value, lang) => {
     const labels = dishTypeLabels[lang] || dishTypeLabels.ca;
@@ -249,6 +269,7 @@ module.exports = function (eleventyConfig) {
       .getFilteredByGlob([
         "./src/visits/activities/*.md",
         "./src/es/visits/activities/*.md",
+        "./src/en/visits/activities/*.md",
       ])
       .sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
   });
@@ -258,6 +279,7 @@ module.exports = function (eleventyConfig) {
       .getFilteredByGlob([
         "./src/gastronomic/receptes/recipes/*.md",
         "./src/es/gastronomic/receptes/recipes/*.md",
+        "./src/en/gastronomic/receptes/recipes/*.md",
       ])
       .sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
   });
@@ -267,6 +289,7 @@ module.exports = function (eleventyConfig) {
       .getFilteredByGlob([
         "./src/shop/products/*.md",
         "./src/es/shop/products/*.md",
+        "./src/en/shop/products/*.md",
       ])
       .sort((a, b) => a.data.title.localeCompare(b.data.title));
   });

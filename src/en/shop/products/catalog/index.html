@@ -1,0 +1,98 @@
+---
+layout: base
+title: "Product catalog"
+seoTitle: "Catalog | Castanya de Viladrau products"
+description: "Search and filter Castanya de Viladrau's artisan chestnut products by category, time of consumption and diets."
+seoImage: /assets/images/gallery/botiga/botiga_productes.png
+name: botiga
+footerVariant: projecte-newsletter
+lang: en
+---
+
+{% set lang = page.url | pageLang %}
+{% set productsList = collections.products | filterByLang(lang) %}
+
+<section class="shop-page-hero shop-page-hero--compact">
+  <img
+    src="/assets/images/gallery/botiga/botiga_productes.png"
+    alt="{% if lang == 'en' %}Castanya de Viladrau product catalog{% else %}Catàleg de productes de Castanya de Viladrau{% endif %}"
+    class="shop-page-hero__image"
+  />
+  <div class="shop-page-hero__overlay"></div>
+  <div class="shop-page-hero__content">
+    <span class="shop-page-hero__kicker">{% if lang == 'en' %}CATALOG{% else %}CATÀLEG{% endif %}</span>
+    <h1 class="shop-page-hero__title">
+      {% if lang == 'en' %}
+      FIND YOUR<br />
+      PRODUCT
+      {% else %}
+      BUSCA EL TEU<br />
+      PRODUCTE
+      {% endif %}
+    </h1>
+    <p class="shop-page-hero__text">
+      {% if lang == 'en' %}Filter the collection by category, time of consumption or dietary needs.{% else %}Filtra la col·lecció per categoria, moment de consum o necessitats alimentàries.{% endif %}
+    </p>
+  </div>
+</section>
+
+{% include "shop-filter-bar.njk" %}
+
+<section class="shop-page-catalog shop-page-catalog--standalone" id="shopProductCatalog" aria-labelledby="shop-catalog-title">
+  <div class="shop-page-catalog__header">
+    <div class="shop-page-products__heading">
+      <p class="shop-page-products__kicker block_title_style block_title_style--label">{% if lang == 'en' %}CATALOG{% else %}CATÀLEG{% endif %}</p>
+      <h2 id="shop-catalog-title" class="shop-page-products__title block_title_style" data-shop-catalog-title>
+        {% if lang == 'en' %}ALL PRODUCTS{% else %}TOTS ELS PRODUCTES{% endif %}
+      </h2>
+      <p class="shop-page-products__subtitle block_title_style block_title_style--copy" data-shop-catalog-status>
+        {% if lang == 'en' %}Explore the whole collection or choose a filter.{% else %}Explora tota la col·lecció o tria un filtre.{% endif %}
+      </p>
+    </div>
+
+    <a href="{% if lang == 'en' %}/en/shop/products/catalog/{% else %}/shop/products/catalog/{% endif %}" class="btn-olive professionals-inspiration-hero__cta" data-shop-filter-reset hidden>
+      {% if lang == 'en' %}All products{% else %}Tots els productes{% endif %}
+    </a>
+  </div>
+
+  <div class="shop-page-products__grid" data-shop-product-grid>
+    {% for product in productsList %}
+      {% set productCategories = product.data.categories | default(['elaborats-de-castanyes']) %}
+      {% set productMoments = product.data.consumptionMoments | default([]) %}
+      {% set productDiets = product.data.dietTags | default([]) %}
+      {% set productImage = product.data.image or '' %}
+      {% if not productImage or 'pending-product-image.svg' in productImage %}
+        {% if 'castanyes' in productCategories %}
+          {% set productImage = '/assets/images/gallery/castanyes.jpg' %}
+        {% elif 'cremes' in productCategories %}
+          {% set productImage = '/assets/images/gallery/cremes.jpg' %}
+        {% elif 'dolcos' in productCategories %}
+          {% set productImage = '/assets/images/gallery/dolcos.jpg' %}
+        {% elif 'begudes' in productCategories %}
+          {% set productImage = '/assets/images/products/cervesa-de-castanya.jpeg' %}
+        {% elif 'mels' in productCategories %}
+          {% set productImage = '/assets/images/gallery/espai-gastronomic/bosc.jpg' %}
+        {% elif 'packs' in productCategories %}
+          {% set productImage = '/assets/images/gallery/botiga/botiga_productes.png' %}
+        {% else %}
+          {% set productImage = '/assets/images/gallery/elaborats.jpg' %}
+        {% endif %}
+      {% endif %}
+    <a
+      href="{{ product.url }}"
+      class="shop-page-product gallery-item"
+      data-shop-product
+      data-shop-product-category="{{ productCategories | join(' ') }}"
+      data-shop-product-moments="{{ productMoments | join(' ') }}"
+      data-shop-product-diets="{{ productDiets | join(' ') }}"
+    >
+      <img
+        src="{{ productImage }}"
+        alt="{{ product.data.title }}"
+        class="shop-page-product__image"
+      />
+      <h3 class="shop-page-product__title">{{ product.data.title }}</h3>
+    </a>
+    {% endfor %}
+  </div>
+</section>
