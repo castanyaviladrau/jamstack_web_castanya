@@ -4,10 +4,11 @@ name: product-detail
 footerVariant: projecte-newsletter
 ---
 
+{% set lang = page.url | pageLang %}
 {% set currentUrl = page.url %}
-{% set relatedCollection = collections.products | default([]) | reverse %}
-{% set relatedFallback = relatedProducts.list | default([]) %}
-{% set productsList = collections.products | default([]) %}
+{% set relatedCollection = collections.products | default([]) | filterByLang(lang) | reverse %}
+{% set relatedFallback = (relatedProducts[lang].list if relatedProducts[lang] else relatedProducts.list) | default([]) %}
+{% set productsList = collections.products | default([]) | filterByLang(lang) %}
 {% set totalProducts = productsList.length %}
 {% set currentIndex = productsList | indexOfUrl(currentUrl) %}
 {% set prevProduct = productsList[(currentIndex - 1 + totalProducts) % totalProducts] if totalProducts and currentIndex > -1 else null %}
@@ -20,9 +21,9 @@ footerVariant: projecte-newsletter
 
 <section class="product-detail">
   <div class="product-detail__inner">
-    <a href="/shop/products/" class="product-detail__back">
+    <a href="{% if lang == 'es' %}/es/shop/products/{% else %}/shop/products/{% endif %}" class="product-detail__back">
       <img src="/assets/images/icon-arrow-left.svg" alt="" class="product-detail__back-arrow" aria-hidden="true" />
-      TORNAR
+      {{ i18n[lang].productBack }}
     </a>
 
     <div class="product-detail__grid">
@@ -34,11 +35,11 @@ footerVariant: projecte-newsletter
         />
 
         {% if gallery and gallery.length %}
-          <div class="product-detail__thumbs" aria-label="Galeria del producte">
+          <div class="product-detail__thumbs" aria-label="{{ i18n[lang].productGalleryAria }}">
             {% for item in gallery %}
               <img
                 src="{{ item.image }}"
-                alt="{{ title }} vista {{ loop.index }}"
+                alt="{{ title }} {{ i18n[lang].productVista }} {{ loop.index }}"
                 class="product-detail__thumb"
               />
             {% endfor %}
@@ -47,7 +48,7 @@ footerVariant: projecte-newsletter
       </div>
 
       <aside class="product-detail__aside{% if asideClass %} {{ asideClass }}{% endif %}">
-        <p class="product-detail__brand">CASTANYA DE<br />VILADRAU TORRADA</p>
+        <p class="product-detail__brand">{{ i18n[lang].productBrandLine | safe }}</p>
         <h1 class="product-detail__title{% if titleClass %} {{ titleClass }}{% endif %}">{{ title }}</h1>
         <p class="product-detail__tagline{% if taglineClass %} {{ taglineClass }}{% endif %}">{{ tagline }}</p>
 
@@ -103,15 +104,15 @@ footerVariant: projecte-newsletter
         <div class="product-detail__info-list">
           <div class="product-detail__trust-item">
             <img src="/assets/images/icon-delivery.svg" alt="" class="product-detail__trust-icon" aria-hidden="true" />
-            <p class="product-detail__trust-text">Normalment arriba en 24/48 hores</p>
+            <p class="product-detail__trust-text">{{ i18n[lang].productTrustDelivery }}</p>
           </div>
           <div class="product-detail__trust-item">
             <img src="/assets/images/icon-thumbsup.svg" alt="" class="product-detail__trust-icon" aria-hidden="true" />
-            <p class="product-detail__trust-text">Enviaments gratuits des de {{ shopSettings.shipping.minimumAmount | eur }}€</p>
+            <p class="product-detail__trust-text">{{ i18n[lang].productTrustShippingPre }} {{ shopSettings.shipping.minimumAmount | eur }}€</p>
           </div>
           <div class="product-detail__trust-item">
             <img src="/assets/images/icon-shield.svg" alt="" class="product-detail__trust-icon" aria-hidden="true" />
-            <p class="product-detail__trust-text">Pagament segur</p>
+            <p class="product-detail__trust-text">{{ i18n[lang].productTrustSecure }}</p>
           </div>
         </div>
 
@@ -144,12 +145,12 @@ footerVariant: projecte-newsletter
       {% if prevProduct %}
         <a href="{{ prevProduct.url }}" class="product-detail__pager-link">
           <img src="/assets/images/icon-arrow-left.svg" alt="" class="product-detail__pager-arrow" aria-hidden="true" />
-          ANTERIOR PRODUCTE
+          {{ i18n[lang].productPrev }}
         </a>
       {% endif %}
       {% if nextProduct %}
         <a href="{{ nextProduct.url }}" class="product-detail__pager-link">
-          SEGUENT PRODUCTE
+          {{ i18n[lang].productNext }}
           <img src="/assets/images/icon-arrow-right.svg" alt="" class="product-detail__pager-arrow" aria-hidden="true" />
         </a>
       {% endif %}
@@ -181,14 +182,14 @@ footerVariant: projecte-newsletter
       {
         "@type": "ListItem",
         "position": 1,
-        "name": "Inici",
+        "name": {{ i18n[lang].breadcrumbHome | dump | safe }},
         "item": {{ site.url | dump | safe }}
       },
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "Botiga",
-        "item": {{ ('/shop/products/' | absoluteUrl(site.url)) | dump | safe }}
+        "name": {{ i18n[lang].breadcrumbBotiga | dump | safe }},
+        "item": {{ ((('/es/shop/products/' if lang == 'es' else '/shop/products/')) | absoluteUrl(site.url)) | dump | safe }}
       },
       {
         "@type": "ListItem",
@@ -203,7 +204,7 @@ footerVariant: projecte-newsletter
 <section class="product-detail__related" aria-labelledby="product-related-title">
   <div class="product-detail__related-inner">
     <h2 id="product-related-title" class="product-detail__related-title">
-      ALTRES PRODUCTES QUE ET PODRIEN AGRADAR
+      {{ i18n[lang].productRelatedTitle }}
     </h2>
 
     <div class="product-detail__related-grid">

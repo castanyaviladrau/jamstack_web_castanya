@@ -2,6 +2,7 @@
 layout: layouts/base
 ---
 
+{% set lang = page.url | pageLang %}
 <div class="post post--legal">
   {% if page.hero_img %}
   <section class="hero" style="background-image:url('{{ page.hero_img }}')">
@@ -13,7 +14,7 @@ layout: layouts/base
   {% endif %}
 
   <header class="post-header row post-header--legal">
-    <p class="post-header__eyebrow">Informacio legal</p>
+    <p class="post-header__eyebrow">{% if lang == 'es' %}Información legal{% else %}Informacio legal{% endif %}</p>
     <h1 class="post-title post-title--legal">{{ page.title }}</h1>
   </header>
 

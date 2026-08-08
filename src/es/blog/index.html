@@ -1,0 +1,178 @@
+---
+layout: base
+title: "Actualidad"
+seoTitle: "Actualidad | Blog y novedades de Castanya de Viladrau"
+description: "Actualidad de Castanya de Viladrau con novedades, recetas, sostenibilidad e historias del Montseny."
+seoImage: /assets/images/gallery/sostenibilitat.jpeg
+name: blog
+footerVariant: home-newsletter
+lang: es
+---
+
+{% set lang = page.url | pageLang %}
+{% set pageContent = actualitat.page[lang] if actualitat.page[lang] else actualitat.page %}
+{% set posts = collections.posts | filterByLang(lang) %}
+{% set featuredPost = posts[0] %}
+
+<section class="blog-header-section">
+  <div class="blog-hero">
+    <img
+      src="{{ pageContent.hero.backgroundImage }}"
+      alt="{{ pageContent.hero.backgroundAlt }}"
+      class="blog-hero-bg"
+    />
+
+    <div class="blog-hero-overlay"></div>
+
+    <div class="container blog-hero-inner">
+      <div class="blog-hero-copy">
+        <h1 class="blog-hero-title block_title_style">
+          {{ pageContent.hero.title | replace("\n", "<br />") | safe }}
+        </h1>
+        <p class="blog-hero-subtitle block_title_content">{{ pageContent.hero.text }}</p>
+
+        <div class="blog-tag-cloud" aria-label="{% if lang == 'es' %}Etiquetas destacadas{% else %}Etiquetes destacades{% endif %}">
+          <span class="blog-tag-cloud-title block_title_content">{{ pageContent.hero.tagsTitle }}</span>
+          <div class="blog-tag-cloud-list">
+            {% for tag in pageContent.hero.tags %}
+            <a href="{% if lang == 'es' %}/es/blog/{% else %}/blog/{% endif %}?topic={{ tag | slugify }}#news-list" class="filter-btn">{{ tag }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="blog-sort-bar shop-page-filters" aria-label="{% if lang == 'es' %}Filtros de actualidad{% else %}Filtres d'actualitat{% endif %}" data-news-filter-bar>
+    <div class="container blog-sort-list shop-page-filters__inner">
+      {% for item in pageContent.filtersBar.items %}
+      <details class="shop-page-filter-menu blog-sort-menu" data-news-filter-menu data-news-filter-type="{{ item.type }}">
+        <summary class="shop-page-filter" data-news-filter-summary data-default-label="{{ item.label }}">
+          <span data-news-filter-summary-label>{{ item.label }}</span>
+          <img class="shop-page-filter__arrow" src="/assets/images/recipe-filter-arrow.svg" alt="" aria-hidden="true" />
+        </summary>
+        <div class="shop-page-filter-menu__list">
+          {% for option in item.options %}
+          <button
+            type="button"
+            class="shop-page-filter-menu__item blog-sort-menu__item"
+            data-news-filter-option
+            data-news-filter-type="{{ item.type }}"
+            data-news-filter-value="{{ option.value }}"
+            data-news-filter-label="{{ option.label }}"
+          >
+            {{ option.label }}
+          </button>
+          {% endfor %}
+        </div>
+      </details>
+      {% endfor %}
+    </div>
+  </nav>
+</section>
+
+<div class="container">
+  {% if featuredPost %}
+  <a
+    class="featured-news-card"
+    href="{{ featuredPost.url }}"
+    data-news-featured
+    data-news-date="{{ featuredPost.data.date }}"
+    data-news-type="{{ featuredPost.data.newsType or 'actualitat' }}"
+    data-news-reading-time="{% if featuredPost.data.readingTimeValue %}{{ featuredPost.data.readingTimeValue }}{% else %}{{ featuredPost.templateContent | readingTime }}{% endif %}"
+    data-news-topics="{% if featuredPost.data.tags %}{% for tag in featuredPost.data.tags %}{% if tag != 'posts' %}{{ tag | slugify }} {% endif %}{% endfor %}{% endif %}"
+  >
+    <div class="featured-news-copy">
+      <p class="featured-news-date">{% if featuredPost.data.displayDate %}{{ featuredPost.data.displayDate }}{% else %}{{ featuredPost.date | readableDate }}{% endif %}</p>
+      <h2 class="featured-news-title">
+        {{ featuredPost.data.title | replace("\n", "<br />") | safe }}
+      </h2>
+      <p class="featured-news-excerpt">{{ featuredPost.data.description }}</p>
+      <div class="featured-news-meta">
+        <p>
+          <strong>{{ i18n[lang].postReadingTime }}</strong><br />
+          {% if featuredPost.data.readingTimeValue %}{{ featuredPost.data.readingTimeValue }}{% else %}{{ featuredPost.templateContent | readingTime }} {{ i18n[lang].postMinutes }}{% endif %}
+        </p>
+        <p class="featured-news-tags">
+          <strong>{{ i18n[lang].postTags }}</strong><br />
+          {% if featuredPost.data.tags %}
+            {% for tag in featuredPost.data.tags %}{% if tag != 'posts' %}{{ tag }} {% endif %}{% endfor %}
+          {% else %}
+            {{ i18n[lang].breadcrumbActualitat }}
+          {% endif %}
+        </p>
+      </div>
+    </div>
+
+    <div class="featured-news-image-link">
+      <div class="featured-news-image">
+        <span class="featured-news-chip">{% if lang == 'es' %}Destacado{% else %}Destacat{% endif %}</span>
+        <img
+          src="{{ featuredPost.data.image or site.defaultOgImage }}"
+          alt="{{ featuredPost.data.imageAlt or featuredPost.data.title }}"
+          class="fit-img"
+        />
+      </div>
+    </div>
+  </a>
+  {% endif %}
+
+  <div class="actualitat-filter-feedback" data-news-filter-feedback>
+    <p data-news-filter-status class="block_title_content">{% if lang == 'es' %}Explora todas las noticias o elige un filtro.{% else %}Explora totes les notícies o tria un filtre.{% endif %}</p>
+    <button type="button" data-news-filter-reset hidden>{{ pageContent.filtersBar.resetLabel }}</button>
+  </div>
+  <p class="actualitat-filter-empty" data-news-filter-empty hidden>{{ pageContent.filtersBar.emptyLabel }}</p>
+
+  <section id="news-list" class="actualitat-grid" aria-label="{% if lang == 'es' %}Más artículos{% else %}Més articles{% endif %}" data-news-grid>
+    {% for post in posts %}
+    <a
+      class="actualitat-card"
+      href="{{ post.url }}"
+      data-news-card
+      {% if loop.first %}data-news-featured-duplicate hidden{% endif %}
+      data-news-date="{{ post.data.date }}"
+      data-news-type="{{ post.data.newsType or 'actualitat' }}"
+      data-news-reading-time="{% if post.data.readingTimeValue %}{{ post.data.readingTimeValue }}{% else %}{{ post.templateContent | readingTime }}{% endif %}"
+      data-news-topics="{% if post.data.tags %}{% for tag in post.data.tags %}{% if tag != 'posts' %}{{ tag | slugify }} {% endif %}{% endfor %}{% endif %}"
+    >
+      <div class="actualitat-card-image">
+        <span class="featured-news-chip">{{ i18n[lang].breadcrumbActualitat }}</span>
+        <img src="{{ post.data.image or site.defaultOgImage }}" alt="{{ post.data.imageAlt or post.data.title }}" class="fit-img" />
+      </div>
+
+      <div class="actualitat-card-content">
+        <p class="actualitat-card-date">{% if post.data.displayDate %}{{ post.data.displayDate }}{% else %}{{ post.date | readableDate }}{% endif %}</p>
+        <h3 class="actualitat-card-title">
+          {{ post.data.title | replace("\n", "<br />") | safe }}
+        </h3>
+        <p class="actualitat-card-excerpt">{{ post.data.description }}</p>
+        <div class="actualitat-card-meta">
+          <p>
+            <strong>{{ i18n[lang].postReadingTime }}</strong><br />
+            {% if post.data.readingTimeValue %}{{ post.data.readingTimeValue }}{% else %}{{ post.templateContent | readingTime }} {{ i18n[lang].postMinutes }}{% endif %}
+          </p>
+          <p class="actualitat-card-tags">
+            <strong>{{ i18n[lang].postTags }}</strong><br />
+            {% if post.data.tags %}
+              {% for tag in post.data.tags %}{% if tag != 'posts' %}{{ tag }} {% endif %}{% endfor %}
+            {% else %}
+              {{ i18n[lang].breadcrumbActualitat }}
+            {% endif %}
+          </p>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </section>
+
+  <nav class="actualitat-pagination" aria-label="{% if lang == 'es' %}Paginación de artículos{% else %}Paginació d'articles{% endif %}" data-news-pagination>
+    <button type="button" class="actualitat-pagination__arrow" data-news-page-prev aria-label="{% if lang == 'es' %}Página anterior{% else %}Pàgina anterior{% endif %}">
+      <img src="/assets/images/pagination-arrow-left.svg" alt="" aria-hidden="true" />
+    </button>
+    <div class="actualitat-pagination__pages" data-news-page-list></div>
+    <button type="button" class="actualitat-pagination__arrow" data-news-page-next aria-label="{% if lang == 'es' %}Página siguiente{% else %}Pàgina següent{% endif %}">
+      <img src="/assets/images/pagination-arrow-right.svg" alt="" aria-hidden="true" />
+    </button>
+  </nav>
+</div>
+

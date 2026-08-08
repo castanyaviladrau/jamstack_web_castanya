@@ -2,15 +2,17 @@
 layout: base
 ---
 
+{% set lang = page.url | pageLang %}
+{% set blogIndexUrl = '/es/blog/' if lang == 'es' else '/blog/' %}
 {% set pageContent = actualitat.page %}
 {% set articleDescription = seoDescription or description or title %}
-{% set posts = collections.posts %}
+{% set posts = collections.posts | filterByLang(lang) %}
 
 <article class="actualitat-post">
   <div class="container actualitat-post__inner">
-    <a class="actualitat-post__back" href="/blog/">
+    <a class="actualitat-post__back" href="{% if lang == 'es' %}/es/blog/{% else %}/blog/{% endif %}">
       <img src="/assets/images/icon-arrow-left.svg" alt="" class="actualitat-post__back-arrow" aria-hidden="true" />
-      TORNAR
+      {{ i18n[lang].postBack }}
     </a>
 
     <header class="actualitat-post__header">
@@ -22,13 +24,13 @@ layout: base
       <p class="actualitat-post__subtitle">{{ description }}</p>
       {% endif %}
 
-      <div class="actualitat-post__meta" aria-label="Informació de l'article">
+      <div class="actualitat-post__meta" aria-label="{{ i18n[lang].postArticleInfoAria }}">
         <p>
-          <strong>Temps de lectura</strong>
-          {% if readingTimeValue %}{{ readingTimeValue }}{% else %}{{ content | readingTime }} minuts{% endif %}
+          <strong>{{ i18n[lang].postReadingTime }}</strong>
+          {% if readingTimeValue %}{{ readingTimeValue }}{% else %}{{ content | readingTime }} {{ i18n[lang].postMinutes }}{% endif %}
         </p>
         <p>
-          <strong>Etiquetes</strong>
+          <strong>{{ i18n[lang].postTags }}</strong>
           {% for tag in tags %}
             {% if tag != "posts" %}{{ tag }}{% if not loop.last %}, {% endif %}{% endif %}
           {% endfor %}
@@ -49,7 +51,7 @@ layout: base
     </div>
 
     {% if quote %}
-    <aside class="actualitat-post__quote" aria-label="Cita destacada">
+    <aside class="actualitat-post__quote" aria-label="{{ i18n[lang].postQuoteAria }}">
       <blockquote>“{{ quote }}”</blockquote>
       {% if quoteAuthor %}
       <p>— {{ quoteAuthor }}</p>
@@ -62,26 +64,26 @@ layout: base
     {% if post.url == page.url %}
       {% set previousPost = posts[loop.index] %}
       {% set nextPost = posts[loop.index0 - 1] if loop.index0 > 0 else null %}
-  <nav class="container actualitat-post__nav" aria-label="Articles relacionats">
+  <nav class="container actualitat-post__nav" aria-label="{{ i18n[lang].postAriaRelated }}">
     {% if previousPost %}
     <a href="{{ previousPost.url }}">
       <img src="/assets/images/icon-arrow-left.svg" alt="" class="actualitat-post__nav-arrow" aria-hidden="true" />
-      ANTERIOR ARTICLE
+      {{ i18n[lang].postPrevArticle }}
     </a>
     {% else %}
-    <a href="/blog/">
+    <a href="{% if lang == 'es' %}/es/blog/{% else %}/blog/{% endif %}">
       <img src="/assets/images/icon-arrow-left.svg" alt="" class="actualitat-post__nav-arrow" aria-hidden="true" />
-      TOTES LES NOTICIES
+      {{ i18n[lang].postAllNews }}
     </a>
     {% endif %}
     {% if nextPost %}
     <a href="{{ nextPost.url }}">
-      SEGÜENT ARTICLE
+      {{ i18n[lang].postNextArticle }}
       <img src="/assets/images/icon-arrow-right.svg" alt="" class="actualitat-post__nav-arrow" aria-hidden="true" />
     </a>
     {% else %}
-    <a href="/blog/">
-      TORNAR AL BLOG
+    <a href="{% if lang == 'es' %}/es/blog/{% else %}/blog/{% endif %}">
+      {{ i18n[lang].postBackToBlog }}
       <img src="/assets/images/icon-arrow-right.svg" alt="" class="actualitat-post__nav-arrow" aria-hidden="true" />
     </a>
     {% endif %}
@@ -125,14 +127,14 @@ layout: base
       {
         "@type": "ListItem",
         "position": 1,
-        "name": "Inici",
+        "name": {{ i18n[lang].breadcrumbHome | dump | safe }},
         "item": {{ site.url | dump | safe }}
       },
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "Actualitat",
-        "item": {{ ('/blog/' | absoluteUrl(site.url)) | dump | safe }}
+        "name": {{ i18n[lang].breadcrumbActualitat | dump | safe }},
+        "item": {{ (blogIndexUrl | absoluteUrl(site.url)) | dump | safe }}
       },
       {
         "@type": "ListItem",

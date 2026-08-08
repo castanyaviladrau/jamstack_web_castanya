@@ -1,0 +1,103 @@
+---
+layout: base
+title: "Visitas guiadas"
+seoTitle: "Visitas guiadas | Experiencias con Castanya de Viladrau en el Montseny"
+description: "Reserva visitas guiadas con Castanya de Viladrau para descubrir bosques, patrimonio y gastronomía en el Parc Natural del Montseny."
+seoImage: /assets/images/gallery/banner-parc-natural.png
+name: visits
+footerVariant: visits
+lang: es
+---
+
+{% set lang = page.url | pageLang %}
+{% set visitsHero = visits[lang].hero if visits[lang] else visits.hero %}
+<section class="hero-wrapper visits-hero">
+  <img
+    src="{{ visitsHero.image }}"
+    alt="{{ visitsHero.imageAlt }}"
+    class="hero-img"
+  />
+
+  <div class="hero-content-overlay visits-hero__overlay">
+    <div class="visits-hero__content">
+      <h1 class="visits-hero__title block_title_style">{{ visitsHero.title }}</h1>
+      <p class="visits-hero__text block_title_content">
+        {{ visitsHero.text }}
+      </p>
+      <a href="{{ visitsHero.ctaHref }}" class="btn-olive visits-hero__cta"
+        >{{ visitsHero.ctaLabel }}</a
+      >
+    </div>
+  </div>
+</section>
+
+<section class="visits-slider unified-bg" aria-label="{{ i18n[lang].breadcrumbVisites }}">
+  <div class="visits-slider__inner">
+
+    <div class="visits-slider__track">
+      {% for activity in collections.visitActivities | filterByLang(lang) %}
+      <a href="{{ activity.url }}" class="visits-card-link">
+        <article class="visits-card">
+          <img
+            src="{{ activity.data.cardImage }}"
+            alt="{{ activity.data.cardImageAlt }}"
+            class="visits-card__image"
+          />
+          <span class="visits-card__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M5 19 19 5M8 5h11v11" />
+            </svg>
+          </span>
+          <div class="visits-card__content">
+            <h3 class="visits-card__title">{{ activity.data.title }}</h3>
+            <p class="visits-card__text block_heavy_content_style">{{ activity.data.cardDescription }}</p>
+            <div class="visits-card__meta block_heavy_content_style">
+              <div class="visits-card__meta-item">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-users"
+                >
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+                <span
+                  >{{ i18n[lang].visitDe }} {{ activity.data.personsMin }} {{ i18n[lang].visitA }} {{
+                  activity.data.personsMax }} {{ i18n[lang].visitPersones }}</span
+                >
+              </div>
+              <div class="visits-card__meta-item">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-clock"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+                <span>{{ activity.data.duration }}</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,14 +1,57 @@
+{% set currentLang = page.url | pageLang %}
+{% set langCaHref = page.url | toCaUrl %}
+{% set langEsHref = page.url | toEsUrl %}
 <header class="site-header">
   <div class="header-top">
     <!-- Left Side: Search -->
     <div class="utility-left">
       <svg class="icon search"><use xlink:href="#search-icon"></use></svg>
+
+      <div class="lang-switcher">
+        <button
+          type="button"
+          class="lang-switcher__toggle"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="lang-switcher-menu"
+          aria-label="{{ i18n[currentLang].langSwitchAria }}"
+        >
+          <span class="lang-switcher__current">
+            {% if currentLang == 'es' %}
+            <span class="lang-switcher__label">ES</span>
+            {% else %}
+            <svg class="lang-switcher__cat-svg" width="42" height="15" viewBox="0 0 42 15" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <path d="M7.12031 14.48C6.09365 14.48 5.14698 14.2933 4.28031 13.92C3.41365 13.5467 2.66031 13.04 2.02031 12.4C1.39365 11.7467 0.900313 10.98 0.540313 10.1C0.180313 9.21999 0.000312582 8.27999 0.000312582 7.27999V7.23999C0.000312582 6.23999 0.173646 5.30666 0.520313 4.43999C0.880313 3.55999 1.38031 2.79332 2.02031 2.13999C2.66031 1.47332 3.42031 0.953323 4.30031 0.57999C5.18031 0.193323 6.15365 -1.00136e-05 7.22031 -1.00136e-05C7.86031 -1.00136e-05 8.44031 0.053323 8.96031 0.159989C9.49365 0.266656 9.98031 0.419989 10.4203 0.619989C10.8603 0.806656 11.267 1.03332 11.6403 1.29999C12.0136 1.56666 12.367 1.85999 12.7003 2.17999L11.1203 3.99999C10.5603 3.47999 9.96698 3.05999 9.34031 2.73999C8.71365 2.41999 8.00031 2.25999 7.20031 2.25999C6.53365 2.25999 5.91365 2.39332 5.34031 2.65999C4.78031 2.91332 4.29365 3.26666 3.88031 3.71999C3.46698 4.15999 3.14698 4.67999 2.92031 5.27999C2.69365 5.87999 2.58031 6.51999 2.58031 7.19999V7.23999C2.58031 7.91999 2.69365 8.56666 2.92031 9.17999C3.14698 9.77999 3.46698 10.3067 3.88031 10.76C4.29365 11.2133 4.78031 11.5733 5.34031 11.84C5.91365 12.0933 6.53365 12.22 7.20031 12.22C8.05365 12.22 8.78698 12.06 9.40031 11.74C10.0136 11.4067 10.6203 10.96 11.2203 10.4L12.8003 12C12.4403 12.3867 12.0603 12.7333 11.6603 13.04C11.2736 13.3333 10.8536 13.5933 10.4003 13.82C9.94698 14.0333 9.44698 14.1933 8.90031 14.3C8.36698 14.42 7.77365 14.48 7.12031 14.48ZM23.8659 8.67999L21.4459 3.07999L19.0459 8.67999H23.8659ZM20.3459 0.139989H22.6259L28.7859 14.24H26.1859L24.7659 10.86H18.1459L16.7059 14.24H14.1859L20.3459 0.139989ZM34.6267 2.51999H30.1867V0.239989H41.5467V2.51999H37.1067V14.24H34.6267V2.51999Z" fill="#EEE9DF"/>
+            </svg>
+            {% endif %}
+          </span>
+          <svg class="lang-switcher__chevron" width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.210844 0.263901C-0.0699635 0.55551 -0.0699635 1.02712 0.210844 1.31801L6.16109 7.48354C6.29225 7.62156 6.45011 7.73145 6.62507 7.80655C6.80004 7.88164 6.98844 7.92036 7.17884 7.92036C7.36923 7.92036 7.55764 7.88164 7.7326 7.80655C7.90757 7.73145 8.06543 7.62156 8.19659 7.48354L14.1908 1.27337C14.3247 1.13243 14.4 0.945783 14.4013 0.751339C14.4027 0.556895 14.33 0.369232 14.198 0.226461C14.1328 0.155735 14.0537 0.0991444 13.9658 0.0601944C13.8779 0.0212444 13.7828 0.000764019 13.6867 2.15366e-05C13.5905 -0.000720946 13.4952 0.0182903 13.4066 0.0558779C13.3181 0.0934655 13.2382 0.148829 13.1719 0.218541L7.68753 5.90238C7.62195 5.97144 7.543 6.02644 7.45548 6.06402C7.36797 6.1016 7.27372 6.12098 7.17848 6.12098C7.08324 6.12098 6.98899 6.1016 6.90148 6.06402C6.81396 6.02644 6.73501 5.97144 6.66942 5.90238L1.22823 0.263901C1.16271 0.194859 1.08382 0.139877 0.996365 0.102304C0.908911 0.064732 0.814723 0.0453557 0.719539 0.0453557C0.624354 0.0453557 0.530166 0.064732 0.442712 0.102304C0.355257 0.139877 0.276366 0.194859 0.210844 0.263901Z" fill="#EEE9DF"/>
+          </svg>
+        </button>
+        <div class="lang-switcher__menu" id="lang-switcher-menu" role="menu">
+          <a
+            href="{{ langCaHref }}"
+            class="lang-switcher__option {% if currentLang == 'ca' %}is-active{% endif %}"
+            role="menuitem"
+            {% if currentLang == 'ca' %}aria-current="true"{% endif %}
+            >CAT</a
+          >
+          <a
+            href="{{ langEsHref }}"
+            class="lang-switcher__option {% if currentLang == 'es' %}is-active{% endif %}"
+            role="menuitem"
+            {% if currentLang == 'es' %}aria-current="true"{% endif %}
+            >ES</a
+          >
+        </div>
+      </div>
     </div>
 
     <!-- Center: Logo + Text Title -->
     <div class="header-logo">
       <div class="header-logo">
-        <a href="/" class="logo-link">
+        <a href="{% if currentLang == 'es' %}/es/{% else %}/{% endif %}" class="logo-link">
           <img
             src="/assets/images/logo-white.png"
             alt="Castanya de Viladrau"
@@ -27,11 +70,11 @@
 
     <!-- Right Side: Shopping Cart -->
     <div class="utility-right">
-      <a class="header-contact-button" href="/contact">CONTACTE</a>
+      <a class="header-contact-button" href="{% if currentLang == 'es' %}/es/contact{% else %}/contact{% endif %}">{{ i18n[currentLang].contacte }}</a>
       <a
         class="header-icon-button header-icon-button--cart"
-        href="/shop/cart/"
-        aria-label="Carret"
+        href="{% if currentLang == 'es' %}/es/shop/cart/{% else %}/shop/cart/{% endif %}"
+        aria-label="{{ i18n[currentLang].cartAria }}"
       >
         <img
           src="/assets/images/shopping_cart_button.svg"
@@ -43,7 +86,7 @@
       </a>
       <a
         class="header-icon-button header-icon-button--whatsapp"
-        href="https://wa.me/34608131199?text=Hola%2C%20m%27interessaria%20fer%20una%20consulta..."
+        href="{% if currentLang == 'es' %}https://wa.me/34608131199?text=Hola%2C%20me%20interesar%C3%ADa%20hacer%20una%20consulta...{% else %}https://wa.me/34608131199?text=Hola%2C%20m%27interessaria%20fer%20una%20consulta...{% endif %}"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp"
@@ -60,7 +103,7 @@
         class="header-menu-toggle"
         aria-expanded="false"
         aria-controls="primary-navigation"
-        aria-label="Obrir menú principal"
+        aria-label="{{ i18n[currentLang].menuToggleAria }}"
       >
         <span class="header-menu-toggle__line"></span>
         <span class="header-menu-toggle__line"></span>
@@ -73,7 +116,21 @@
     <div class="nav-flex-container">
       <div class="header-mobile-panel">
         <div class="header-mobile-actions">
-          <a class="header-mobile-actions__link" href="/contact">CONTACTE</a>
+          <a class="header-mobile-actions__link" href="{% if currentLang == 'es' %}/es/contact{% else %}/contact{% endif %}">{{ i18n[currentLang].contacte }}</a>
+          <div class="header-mobile-actions__lang">
+            <a
+              href="{{ langCaHref }}"
+              class="header-mobile-actions__link header-mobile-actions__lang-link {% if currentLang == 'ca' %}is-active{% endif %}"
+              {% if currentLang == 'ca' %}aria-current="true"{% endif %}
+              >CAT</a
+            >
+            <a
+              href="{{ langEsHref }}"
+              class="header-mobile-actions__link header-mobile-actions__lang-link {% if currentLang == 'es' %}is-active{% endif %}"
+              {% if currentLang == 'es' %}aria-current="true"{% endif %}
+              >ES</a
+            >
+          </div>
         </div>
       </div>
       <ul class="nav-list">
@@ -86,31 +143,31 @@
             aria-expanded="{% if '/visits' in page.url %}true{% else %}false{% endif %}"
             aria-controls="visits-submenu"
           >
-            <span class="nav-btn-text">VISITES<br>GUIADES</span>
+            <span class="nav-btn-text">{{ i18n[currentLang].navVisitesGuiades | safe }}</span>
             <img class="nav-drop-arrow" src="/assets/images/arrow_vector.svg" alt="" aria-hidden="true">
           </button>
           <div class="nav-dropdown" id="visits-submenu">
             <div class="nav-dropdown__inner">
               <a
-                href="/visits/"
-                class="nav-dropdown__link {% if page.url == '/visits/' %}is-active{% endif %}"
-                >Visites guiades</a
+                href="{% if currentLang == 'es' %}/es/visits/{% else %}/visits/{% endif %}"
+                class="nav-dropdown__link {% if page.url == '/visits/' or page.url == '/es/visits/' %}is-active{% endif %}"
+                >{{ i18n[currentLang].navVisitesGuiadesLink }}</a
               >
               <a
-                href="/visits/parc-natural-del-montseny/"
+                href="{% if currentLang == 'es' %}/es/visits/parc-natural-del-montseny/{% else %}/visits/parc-natural-del-montseny/{% endif %}"
                 class="nav-dropdown__link {% if '/visits/parc-natural-del-montseny/' in page.url %}is-active{% endif %}"
-                >Parc Natural del Montseny</a
+                >{{ i18n[currentLang].navParcNatural }}</a
               >
             </div>
           </div>
         </li>
         <li class="nav-item {% if '/fusta' in page.url %}active{% endif %}">
-          <a href="/fusta">FUSTA</a>
+          <a href="{% if currentLang == 'es' %}/es/fusta{% else %}/fusta{% endif %}">{{ i18n[currentLang].navFusta }}</a>
         </li>
         <li
           class="nav-item {% if '/professionals' in page.url %}active{% endif %}"
         >
-          <a href="/professionals">ESPAI PER A<br>PROFESSIONALS</a>
+          <a href="{% if currentLang == 'es' %}/es/professionals{% else %}/professionals{% endif %}">{{ i18n[currentLang].navProfessionals | safe }}</a>
         </li>
         <li
           class="nav-item {% if '/gastronomic' in page.url %}active{% endif %} has-dropdown nav-item--dropdown nav-item--gastronomic"
@@ -121,55 +178,103 @@
             aria-expanded="{% if '/gastronomic' in page.url %}true{% else %}false{% endif %}"
             aria-controls="gastronomic-submenu"
           >
-            <span class="nav-btn-text">ESPAI<br>GASTRONÒMIC</span>
+            <span class="nav-btn-text">{{ i18n[currentLang].navGastronomic | safe }}</span>
             <img class="nav-drop-arrow" src="/assets/images/arrow_vector.svg" alt="" aria-hidden="true">
           </button>
           <div class="nav-dropdown" id="gastronomic-submenu">
             <div class="nav-dropdown__inner">
               <a
-                href="/gastronomic"
-                class="nav-dropdown__link {% if page.url == '/gastronomic/' %}is-active{% endif %}"
-                >On menjar la castanya de Viladrau</a
+                href="{% if currentLang == 'es' %}/es/gastronomic{% else %}/gastronomic{% endif %}"
+                class="nav-dropdown__link {% if page.url == '/gastronomic/' or page.url == '/es/gastronomic/' %}is-active{% endif %}"
+                >{{ i18n[currentLang].navGastronomicOn }}</a
               >
               <a
-                href="/gastronomic/valor-nutricionals"
+                href="{% if currentLang == 'es' %}/es/gastronomic/valor-nutricionals{% else %}/gastronomic/valor-nutricionals{% endif %}"
                 class="nav-dropdown__link {% if '/gastronomic/valor-nutricionals' in page.url %}is-active{% endif %}"
-                >Valors nutricionals</a
+                >{{ i18n[currentLang].navGastronomicNutrition }}</a
               >
               <a
-                href="/gastronomic/receptes"
+                href="{% if currentLang == 'es' %}/es/gastronomic/receptes{% else %}/gastronomic/receptes{% endif %}"
                 class="nav-dropdown__link {% if '/gastronomic/receptes' in page.url %}is-active{% endif %}"
-                >Receptes</a
+                >{{ i18n[currentLang].navGastronomicReceptes }}</a
               >
             </div>
           </div>
         </li>
         <li class="nav-item {% if '/projecte' in page.url %}active{% endif %}">
-          <a href="/projecte">SOBRE EL<br>PROJECTE</a>
+          <a href="{% if currentLang == 'es' %}/es/projecte{% else %}/projecte{% endif %}">{{ i18n[currentLang].navProjecte | safe }}</a>
         </li>
         <li
           class="nav-item {% if '/trobar-nos' in page.url %}active{% endif %}"
         >
-          <a href="/trobar-nos">ON TROBAR-NOS</a>
+          <a href="{% if currentLang == 'es' %}/es/trobar-nos{% else %}/trobar-nos{% endif %}">{{ i18n[currentLang].navTrobarNos }}</a>
         </li>
         <li class="nav-item {% if '/blog' in page.url %}active{% endif %}">
-          <a href="/blog">ACTUALITAT</a>
+          <a href="{% if currentLang == 'es' %}/es/blog{% else %}/blog{% endif %}">{{ i18n[currentLang].navActualitat }}</a>
         </li>
         <li class="nav-item nav-item--shop {% if '/shop' in page.url %}active{% endif %}">
-          <a href="/shop/products">BOTIGA</a>
+          <a href="{% if currentLang == 'es' %}/es/shop/products{% else %}/shop/products{% endif %}">{{ i18n[currentLang].navBotiga }}</a>
         </li>
       </ul>
     </div>
   </nav>
 </header>
 
+<!-- Fixed top-left overlay for pages where the header sits at the bottom.
+     Must live outside <header>: body.home applies a transform to
+     .site-header for the hero "climb" effect, and a transform on an
+     ancestor makes it the containing block for position:fixed descendants
+     — so a fixed element nested inside .site-header stays pinned to the
+     header's own (bottom-docked) box instead of the viewport. -->
+<div class="utility-top-left-overlay">
+  <div class="lang-switcher">
+    <button
+      type="button"
+      class="lang-switcher__toggle"
+      aria-haspopup="true"
+      aria-expanded="false"
+      aria-controls="lang-switcher-menu-fixed"
+      aria-label="{{ i18n[currentLang].langSwitchAria }}"
+    >
+      <span class="lang-switcher__current">
+        {% if currentLang == 'es' %}
+        <span class="lang-switcher__label">ES</span>
+        {% else %}
+        <svg class="lang-switcher__cat-svg" width="42" height="15" viewBox="0 0 42 15" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <path d="M7.12031 14.48C6.09365 14.48 5.14698 14.2933 4.28031 13.92C3.41365 13.5467 2.66031 13.04 2.02031 12.4C1.39365 11.7467 0.900313 10.98 0.540313 10.1C0.180313 9.21999 0.000312582 8.27999 0.000312582 7.27999V7.23999C0.000312582 6.23999 0.173646 5.30666 0.520313 4.43999C0.880313 3.55999 1.38031 2.79332 2.02031 2.13999C2.66031 1.47332 3.42031 0.953323 4.30031 0.57999C5.18031 0.193323 6.15365 -1.00136e-05 7.22031 -1.00136e-05C7.86031 -1.00136e-05 8.44031 0.053323 8.96031 0.159989C9.49365 0.266656 9.98031 0.419989 10.4203 0.619989C10.8603 0.806656 11.267 1.03332 11.6403 1.29999C12.0136 1.56666 12.367 1.85999 12.7003 2.17999L11.1203 3.99999C10.5603 3.47999 9.96698 3.05999 9.34031 2.73999C8.71365 2.41999 8.00031 2.25999 7.20031 2.25999C6.53365 2.25999 5.91365 2.39332 5.34031 2.65999C4.78031 2.91332 4.29365 3.26666 3.88031 3.71999C3.46698 4.15999 3.14698 4.67999 2.92031 5.27999C2.69365 5.87999 2.58031 6.51999 2.58031 7.19999V7.23999C2.58031 7.91999 2.69365 8.56666 2.92031 9.17999C3.14698 9.77999 3.46698 10.3067 3.88031 10.76C4.29365 11.2133 4.78031 11.5733 5.34031 11.84C5.91365 12.0933 6.53365 12.22 7.20031 12.22C8.05365 12.22 8.78698 12.06 9.40031 11.74C10.0136 11.4067 10.6203 10.96 11.2203 10.4L12.8003 12C12.4403 12.3867 12.0603 12.7333 11.6603 13.04C11.2736 13.3333 10.8536 13.5933 10.4003 13.82C9.94698 14.0333 9.44698 14.1933 8.90031 14.3C8.36698 14.42 7.77365 14.48 7.12031 14.48ZM23.8659 8.67999L21.4459 3.07999L19.0459 8.67999H23.8659ZM20.3459 0.139989H22.6259L28.7859 14.24H26.1859L24.7659 10.86H18.1459L16.7059 14.24H14.1859L20.3459 0.139989ZM34.6267 2.51999H30.1867V0.239989H41.5467V2.51999H37.1067V14.24H34.6267V2.51999Z" fill="#EEE9DF"/>
+        </svg>
+        {% endif %}
+      </span>
+      <svg class="lang-switcher__chevron" width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.210844 0.263901C-0.0699635 0.55551 -0.0699635 1.02712 0.210844 1.31801L6.16109 7.48354C6.29225 7.62156 6.45011 7.73145 6.62507 7.80655C6.80004 7.88164 6.98844 7.92036 7.17884 7.92036C7.36923 7.92036 7.55764 7.88164 7.7326 7.80655C7.90757 7.73145 8.06543 7.62156 8.19659 7.48354L14.1908 1.27337C14.3247 1.13243 14.4 0.945783 14.4013 0.751339C14.4027 0.556895 14.33 0.369232 14.198 0.226461C14.1328 0.155735 14.0537 0.0991444 13.9658 0.0601944C13.8779 0.0212444 13.7828 0.000764019 13.6867 2.15366e-05C13.5905 -0.000720946 13.4952 0.0182903 13.4066 0.0558779C13.3181 0.0934655 13.2382 0.148829 13.1719 0.218541L7.68753 5.90238C7.62195 5.97144 7.543 6.02644 7.45548 6.06402C7.36797 6.1016 7.27372 6.12098 7.17848 6.12098C7.08324 6.12098 6.98899 6.1016 6.90148 6.06402C6.81396 6.02644 6.73501 5.97144 6.66942 5.90238L1.22823 0.263901C1.16271 0.194859 1.08382 0.139877 0.996365 0.102304C0.908911 0.064732 0.814723 0.0453557 0.719539 0.0453557C0.624354 0.0453557 0.530166 0.064732 0.442712 0.102304C0.355257 0.139877 0.276366 0.194859 0.210844 0.263901Z" fill="#EEE9DF"/>
+      </svg>
+    </button>
+    <div class="lang-switcher__menu" id="lang-switcher-menu-fixed" role="menu">
+      <a
+        href="{{ langCaHref }}"
+        class="lang-switcher__option {% if currentLang == 'ca' %}is-active{% endif %}"
+        role="menuitem"
+        {% if currentLang == 'ca' %}aria-current="true"{% endif %}
+        >CAT</a
+      >
+      <a
+        href="{{ langEsHref }}"
+        class="lang-switcher__option {% if currentLang == 'es' %}is-active{% endif %}"
+        role="menuitem"
+        {% if currentLang == 'es' %}aria-current="true"{% endif %}
+        >ES</a
+      >
+    </div>
+  </div>
+</div>
+
 <!-- Fixed top-right overlay for pages where the header sits at the bottom -->
 <div class="utility-top-overlay">
-  <a class="header-contact-button" href="/contact">CONTACTE</a>
+  <a class="header-contact-button" href="{% if currentLang == 'es' %}/es/contact{% else %}/contact{% endif %}">{{ i18n[currentLang].contacte }}</a>
   <a
     class="header-icon-button header-icon-button--cart"
-    href="/shop/cart/"
-    aria-label="Carret"
+    href="{% if currentLang == 'es' %}/es/shop/cart/{% else %}/shop/cart/{% endif %}"
+    aria-label="{{ i18n[currentLang].cartAria }}"
   >
     <img
       src="/assets/images/shopping_cart_button.svg"
@@ -181,7 +286,7 @@
   </a>
   <a
     class="header-icon-button header-icon-button--whatsapp"
-    href="https://wa.me/34608131199?text=Hola%2C%20m%27interessaria%20fer%20una%20consulta..."
+    href="{% if currentLang == 'es' %}https://wa.me/34608131199?text=Hola%2C%20me%20interesar%C3%ADa%20hacer%20una%20consulta...{% else %}https://wa.me/34608131199?text=Hola%2C%20m%27interessaria%20fer%20una%20consulta...{% endif %}"
     target="_blank"
     rel="noopener noreferrer"
     aria-label="WhatsApp"

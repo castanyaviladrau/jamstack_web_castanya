@@ -1,17 +1,19 @@
+{% set lang = page.url | pageLang %}
+{% set visitsBanner = visits[lang].banner if visits[lang] else visits.banner %}
 <section class="footer-cta-section footer-cta-section--visits">
   <img
-    src="{{ visits.banner.image }}"
-    alt="{{ visits.banner.imageAlt }}"
+    src="{{ visitsBanner.image }}"
+    alt="{{ visitsBanner.imageAlt }}"
     class="cta-bg-img"
   />
   <div class="cta-overlay cta-overlay--visits"></div>
   <div class="cta-content cta-content--visits">
-    <h2 class="cta-title cta-title--visits">{{ visits.banner.title }}</h2>
-    <p class="cta-text cta-text--visits">{{ visits.banner.text }}</p>
+    <h2 class="cta-title cta-title--visits">{{ visitsBanner.title }}</h2>
+    <p class="cta-text cta-text--visits">{{ visitsBanner.text }}</p>
     <a
-      href="{{ visits.banner.buttonHref }}"
+      href="{{ visitsBanner.buttonHref }}"
       class="btn-olive-transparent btn-olive-transparent--visits"
-      >{{ visits.banner.buttonLabel }}</a
+      >{{ visitsBanner.buttonLabel }}</a
     >
   </div>
 </section>

@@ -6,12 +6,14 @@ footerVariant: visits-newsletter
 ---
 
 {% from "partials/recipe-filters.njk" import recipeFiltersBar %}
-{% set pageContent = gastronomicRecipes.page %}
-{% set difficultyOptions = collections.recipes | uniqueByField("difficulty", ["facil", "mitja", "dificil"]) %}
-{% set dishTypeOptions = collections.recipes | uniqueByField("listingSections", ["foundations", "sweet", "homeTraditions", "classics", "healthy"]) %}
+{% set lang = page.url | pageLang %}
+{% set langRecipes = collections.recipes | filterByLang(lang) %}
+{% set pageContent = gastronomicRecipes.page[lang] if gastronomicRecipes.page[lang] else gastronomicRecipes.page %}
+{% set difficultyOptions = langRecipes | uniqueByField("difficulty", ["facil", "mitja", "dificil"]) %}
+{% set dishTypeOptions = langRecipes | uniqueByField("listingSections", ["foundations", "sweet", "homeTraditions", "classics", "healthy"]) %}
 {% macro recipeCard(slide,
 dishType, remedyFlag) %} {% set href = '#' %} {% for recipe in
-collections.recipes %} {% if recipe.data.title == slide.title and recipe.url %}
+langRecipes %} {% if recipe.data.title == slide.title and recipe.url %}
 {% set href = recipe.url %} {% endif %} {% endfor %} {% set prepMinutes =
 (slide.time | replace(" minuts", "") | trim) %} {% set timeBucket = "medium" %}
 {% if prepMinutes and (prepMinutes | int) <= 20 %} {% set timeBucket = "short"
@@ -52,7 +54,7 @@ collections.recipes %} {% if recipe.data.title == slide.title and recipe.url %}
         alt=""
         aria-hidden="true"
       />
-      {{ slide.difficulty | difficultyLabel }}</span
+      {{ slide.difficulty | difficultyLabel(lang) }}</span
     >
   </div>
   <p class="professionals-inspiration-card__label">
@@ -86,7 +88,7 @@ collections.recipes %} {% if recipe.data.title == slide.title and recipe.url %}
 </section>
 
 <nav class="shop-page-filters" aria-label="Filtres de receptes">
-  {{ recipeFiltersBar("/gastronomic/receptes/resultats/", difficultyOptions, dishTypeOptions, pageContent.filtersBar.searchLabel, false, collections.recipes) }}
+  {{ recipeFiltersBar((('/es/gastronomic/receptes/resultats/' if lang == 'es' else '/gastronomic/receptes/resultats/')), difficultyOptions, dishTypeOptions, pageContent.filtersBar.searchLabel, false, langRecipes, lang) }}
 </nav>
 
 <section

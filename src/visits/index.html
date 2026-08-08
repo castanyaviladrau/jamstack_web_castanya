@@ -8,31 +8,33 @@ name: visits
 footerVariant: visits
 ---
 
+{% set lang = page.url | pageLang %}
+{% set visitsHero = visits[lang].hero if visits[lang] else visits.hero %}
 <section class="hero-wrapper visits-hero">
   <img
-    src="{{ visits.hero.image }}"
-    alt="{{ visits.hero.imageAlt }}"
+    src="{{ visitsHero.image }}"
+    alt="{{ visitsHero.imageAlt }}"
     class="hero-img"
   />
 
   <div class="hero-content-overlay visits-hero__overlay">
     <div class="visits-hero__content">
-      <h1 class="visits-hero__title block_title_style">{{ visits.hero.title }}</h1>
+      <h1 class="visits-hero__title block_title_style">{{ visitsHero.title }}</h1>
       <p class="visits-hero__text block_title_content">
-        {{ visits.hero.text }}
+        {{ visitsHero.text }}
       </p>
-      <a href="{{ visits.hero.ctaHref }}" class="btn-olive visits-hero__cta"
-        >{{ visits.hero.ctaLabel }}</a
+      <a href="{{ visitsHero.ctaHref }}" class="btn-olive visits-hero__cta"
+        >{{ visitsHero.ctaLabel }}</a
       >
     </div>
   </div>
 </section>
 
-<section class="visits-slider unified-bg" aria-label="Visites guiades">
+<section class="visits-slider unified-bg" aria-label="{{ i18n[lang].breadcrumbVisites }}">
   <div class="visits-slider__inner">
 
     <div class="visits-slider__track">
-      {% for activity in collections.visitActivities %}
+      {% for activity in collections.visitActivities | filterByLang(lang) %}
       <a href="{{ activity.url }}" class="visits-card-link">
         <article class="visits-card">
           <img
@@ -68,8 +70,8 @@ footerVariant: visits
                   <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                 </svg>
                 <span
-                  >De {{ activity.data.personsMin }} a {{
-                  activity.data.personsMax }} persones</span
+                  >{{ i18n[lang].visitDe }} {{ activity.data.personsMin }} {{ i18n[lang].visitA }} {{
+                  activity.data.personsMax }} {{ i18n[lang].visitPersones }}</span
                 >
               </div>
               <div class="visits-card__meta-item">

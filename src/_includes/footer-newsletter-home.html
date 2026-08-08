@@ -1,23 +1,23 @@
+{% set lang = page.url | pageLang %}
 <div class="newsletter-bar">
   <div class="footer-container flex-newsletter flex-newsletter--home">
     <div class="newsletter-copy newsletter-copy--home">
-      <h2 class="newsletter-heading">BUTLLETÍ</h2>
+      <h2 class="newsletter-heading">{{ i18n[lang].newsletterHeading }}</h2>
       <p class="newsletter-text">
-        Uneix-te al nostre butlletí per estar al dia de nous productes i
-        activitats, a més de rebre descomptes.
+        {{ i18n[lang].newsletterText }}
       </p>
     </div>
     <div class="newsletter-form newsletter-form--home">
       <input
         type="email"
         class="newsletter-input-field newsletter-input-field--home"
-        placeholder="correu@exemple.com"
+        placeholder="{{ i18n[lang].newsletterPlaceholderHome }}"
       />
       <button
         type="submit"
         class="btn-newsletter-submit btn-newsletter-submit--home"
       >
-        AFEGEIX-ME!
+        {{ i18n[lang].newsletterButton }}
       </button>
     </div>
   </div>

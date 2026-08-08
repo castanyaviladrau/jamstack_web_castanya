@@ -1,0 +1,98 @@
+---
+layout: base
+title: Resultats de la cerca de receptes
+name: gastronomic-recipes-results
+footerVariant: visits-newsletter
+robots: noindex
+lang: es
+---
+
+{% from "partials/recipe-filters.njk" import recipeFiltersBar %}
+{% set lang = page.url | pageLang %}
+{% set langRecipes = collections.recipes | filterByLang(lang) %}
+{% set difficultyOptions = langRecipes | uniqueByField("difficulty", ["facil", "mitja", "dificil"]) %}
+{% set dishTypeOptions = langRecipes | uniqueByField("listingSections", ["foundations", "sweet", "homeTraditions", "classics", "healthy"]) %}
+{% set receptesResultatsUrl = '/es/gastronomic/receptes/resultats/' if lang == 'es' else '/gastronomic/receptes/resultats/' %}
+{% set receptesIndexUrl = '/es/gastronomic/receptes/' if lang == 'es' else '/gastronomic/receptes/' %}
+
+<nav class="shop-page-filters" aria-label="Filtres de receptes">
+  {{ recipeFiltersBar(receptesResultatsUrl, difficultyOptions, dishTypeOptions, ('BUSCAR' if lang == 'es' else 'CERCAR'), true, langRecipes, lang) }}
+</nav>
+
+<section class="shop-page-catalog gastronomic-recipes-results" id="recipeResultsCatalog">
+  <div class="gastronomic-recipes-results__back-wrap">
+    <a href="{{ receptesIndexUrl }}" class="recipe-detail__back">{{ i18n[lang].recipeBack }}</a>
+  </div>
+  <div class="shop-page-catalog__header">
+    <div class="shop-page-products__heading">
+      <p class="shop-page-products__kicker">{% if lang == 'es' %}RECETAS CON CASTAÑA{% else %}RECEPTES AMB CASTANYA{% endif %}</p>
+      <h1 class="shop-page-products__title">{% if lang == 'es' %}TODAS LAS RECETAS{% else %}TOTES LES RECEPTES{% endif %}</h1>
+      <p
+        class="shop-page-products__subtitle"
+        data-recipe-results-status
+      >
+        {% if lang == 'es' %}Explora todas las recetas o afina la búsqueda con los filtros.{% else %}Explora totes les receptes o afina la cerca amb els filtres.{% endif %}
+      </p>
+    </div>
+  </div>
+
+  <div class="professionals-inspiration-recipes__inner gastronomic-recipes-results__inner">
+  <div
+    class="professionals-inspiration-recipes__grid gastronomic-recipes-results__grid"
+    data-recipe-results-grid
+  >
+    {% for recipe in langRecipes %}
+    <a
+      href="{{ recipe.url }}"
+      class="professionals-inspiration-card gastronomic-recipes-card gastronomic-recipes-card--link"
+      data-recipe-card
+      data-difficulty="{{ recipe.data.difficulty | lower }}"
+      data-time="{{ recipe.data.time | timeBucket }}"
+      data-dish-type="{{ recipe.data.listingSections | join(' ') }}"
+    >
+      <h3 class="professionals-inspiration-card__title"><span>{{ recipe.data.title }}</span></h3>
+      <div class="gastronomic-recipes-card__media">
+        <img
+          src="{{ recipe.data.image }}"
+          alt="{{ recipe.data.imageAlt }}"
+          class="professionals-inspiration-card__image"
+        />
+        <span class="gastronomic-recipes-card__arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M5 19 19 5M8 5h11v11" />
+          </svg>
+        </span>
+      </div>
+      <div class="professionals-inspiration-card__meta">
+        <span class="professionals-inspiration-card__meta-item"
+          ><svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="8"></circle>
+            <path d="M12 7v5l3 2"></path></svg
+          >{{ recipe.data.time }}</span
+        >
+        <span class="professionals-inspiration-card__meta-item"
+          ><img
+            src="/assets/images/gallery/espai-gastronomic/espai_grade.png"
+            alt=""
+            aria-hidden="true"
+          />
+          {{ recipe.data.difficulty | difficultyLabel(lang) }}</span
+        >
+      </div>
+      <p class="professionals-inspiration-card__label">
+        {{ recipe.data.ingredientsLabel }}
+      </p>
+      <ul class="professionals-inspiration-card__ingredients">
+        {% for ingredient in recipe.data.ingredients %}
+        <li>{{ ingredient }}</li>
+        {% endfor %}
+      </ul>
+    </a>
+    {% endfor %}
+  </div>
+
+  <p class="gastronomic-recipes-results__empty" data-recipe-results-empty hidden>
+    {% if lang == 'es' %}No hemos encontrado ninguna receta con estos filtros. Prueba a cambiar alguno.{% else %}No hem trobat cap recepta amb aquests filtres. Prova de canviar-ne algun.{% endif %}
+  </p>
+  </div>
+</section>

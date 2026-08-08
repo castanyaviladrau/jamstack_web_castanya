@@ -8,7 +8,9 @@ name: botiga
 footerVariant: projecte-newsletter
 ---
 
-{% set productsList = collections.products | default([]) %}
+{% set lang = page.url | pageLang %}
+{% set productsList = collections.products | default([]) | filterByLang(lang) %}
+{% set catalogUrl = '/es/shop/products/catalog/' if lang == 'es' else '/shop/products/catalog/' %}
 
 <section class="shop-page-hero">
   <img
@@ -63,23 +65,26 @@ footerVariant: projecte-newsletter
 
   <div class="shop-page-categories__scroller" id="shopCategoriesCarousel">
     {% for category in shopCategories %}
+    {% set categoryTitle = category.titleEs if lang == 'es' else category.title %}
+    {% set categoryDescription = category.descriptionEs if lang == 'es' else category.description %}
+    {% set categoryImageAlt = category.imageAltEs if lang == 'es' else category.imageAlt %}
     <a
-      href="/shop/products/catalog/?category={{ category.slug }}"
+      href="{{ catalogUrl }}?category={{ category.slug }}"
       class="shop-page-category-card gallery-item"
     >
       <span class="shop-page-category-card__media">
         <img
           src="{{ category.image }}"
-          alt="{{ category.imageAlt }}"
+          alt="{{ categoryImageAlt }}"
           class="shop-page-category-card__image"
         />
       </span>
       <span class="shop-page-category-card__content">
-        <span class="shop-page-category-card__title">{{ category.title }}</span>
+        <span class="shop-page-category-card__title">{{ categoryTitle }}</span>
         <span class="shop-page-category-card__description"
-          >{{ category.description }}</span
+          >{{ categoryDescription }}</span
         >
-        <span class="shop-page-category-card__cta">Veure productes</span>
+        <span class="shop-page-category-card__cta">{% if lang == 'es' %}Ver productos{% else %}Veure productes{% endif %}</span>
       </span>
     </a>
     {% endfor %}

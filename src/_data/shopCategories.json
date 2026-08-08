@@ -2,50 +2,71 @@
   {
     "slug": "castanyes",
     "title": "Castanyes",
+    "titleEs": "Castañas",
     "description": "La castanya en estat pur: torrada, seca o preparada per gaudir-la tot l'any.",
+    "descriptionEs": "La castaña en estado puro: tostada, seca o preparada para disfrutarla todo el año.",
     "image": "/assets/images/products/packs/lot-castanyes-essencials.png",
-    "imageAlt": "Castanyes del Montseny dins del pelló"
+    "imageAlt": "Castanyes del Montseny dins del pelló",
+    "imageAltEs": "Castañas del Montseny dentro del erizo"
   },
   {
     "slug": "elaborats-de-castanyes",
     "title": "Elaborats de castanyes",
+    "titleEs": "Elaborados de castaña",
     "description": "Farines, flocs, olis i altres formats per portar el bosc a la cuina.",
+    "descriptionEs": "Harinas, copos, aceites y otros formatos para llevar el bosque a la cocina.",
     "image": "/assets/images/products/packs/lot-sabors-del-montseny.png",
-    "imageAlt": "Producte elaborat artesanal amb castanya"
+    "imageAlt": "Producte elaborat artesanal amb castanya",
+    "imageAltEs": "Producto elaborado artesanal con castaña"
   },
   {
     "slug": "cremes",
     "title": "Cremes",
+    "titleEs": "Cremas",
     "description": "Cremes suaus i receptes de temporada fetes amb castanya del Montseny.",
+    "descriptionEs": "Cremas suaves y recetas de temporada elaboradas con castaña del Montseny.",
     "image": "/assets/images/products/packs/lot-cremes-del-bosc.png",
-    "imageAlt": "Crema de castanya servida en una cassola"
+    "imageAlt": "Crema de castanya servida en una cassola",
+    "imageAltEs": "Crema de castaña servida en una cazuela"
   },
   {
     "slug": "dolcos",
     "title": "Dolços",
+    "titleEs": "Dulces",
     "description": "Marron glacé, melmelades i capricis dolços amb gust de castanya.",
+    "descriptionEs": "Marron glacé, mermeladas y caprichos dulces con sabor a castaña.",
     "image": "/assets/images/products/packs/lot-dolcos-de-castanya.png",
-    "imageAlt": "Dolços artesans de castanya sobre fusta"
+    "imageAlt": "Dolços artesans de castanya sobre fusta",
+    "imageAltEs": "Dulces artesanos de castaña sobre madera"
   },
   {
     "slug": "begudes",
     "title": "Begudes",
+    "titleEs": "Bebidas",
     "description": "Cerveses, licors i propostes líquides amb identitat de castanya.",
+    "descriptionEs": "Cervezas, licores y propuestas líquidas con identidad de castaña.",
     "image": "/assets/images/products/packs/lot-begudes-del-montseny.png",
-    "imageAlt": "Ampolla de cervesa artesana de castanya"
+    "imageAlt": "Ampolla de cervesa artesana de castanya",
+    "imageAltEs": "Botella de cerveza artesana de castaña"
   },
   {
     "slug": "mels",
     "title": "Mels",
+    "titleEs": "Mieles",
     "description": "Mels de castanyer, romaní, bruc i mil flors amb caràcter de territori.",
+    "descriptionEs": "Mieles de castaño, romero, brezo y mil flores con carácter de territorio.",
     "image": "/assets/images/products/packs/lot-mels-del-territori.png",
-    "imageAlt": "Bosc del Montseny d'on neixen les mels del territori"
+    "imageAlt": "Bosc del Montseny d'on neixen les mels del territori",
+    "imageAltEs": "Bosque del Montseny de donde nacen las mieles del territorio"
   },
   {
     "slug": "packs",
     "title": "Packs",
+    "titleEs": "Packs",
     "description": "Lots i regals per descobrir la col·lecció de Castanya de Viladrau.",
+    "descriptionEs": "Lotes y regalos para descubrir la colección de Castanya de Viladrau.",
     "image": "/assets/images/gallery/packs.png",
-    "imageAlt": "Selecció de productes artesans de Castanya de Viladrau per regalar"
+    "imageAlt": "Selecció de productes artesans de Castanya de Viladrau per regalar",
+    "imageAltEs": "Selección de productos artesanos de Castanya de Viladrau para regalar"
   }
 ]

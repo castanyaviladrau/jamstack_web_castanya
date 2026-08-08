@@ -1,16 +1,17 @@
+{% set lang = page.url | pageLang %}
 <section class="footer-cta-section home-banner-section">
   <img
     src="/assets/images/gallery/footer-contact.png"
-    alt="Recollida d'una castanya al bosc"
+    alt="{{ i18n[lang].homeCtaImgAlt }}"
     class="cta-bg-img"
   />
   <div class="cta-overlay"></div>
   <div class="cta-content cta-content--home">
     <h2 class="cta-title cta-title--home">
-      <span class="cta-title-line">TENS UNA FINCA I VOLS SER PRODUCTOR O</span>
-      <span class="cta-title-line">NECESSITES ASSESSORAMENT?</span>
+      <span class="cta-title-line">{{ i18n[lang].homeCtaLine1 }}</span>
+      <span class="cta-title-line">{{ i18n[lang].homeCtaLine2 }}</span>
     </h2>
-    <a href="/contact/" class="btn-olive-transparent">CONTACTA AMB NOSALTRES</a>
+    <a href="{% if lang == 'es' %}/es/contact/{% else %}/contact/{% endif %}" class="btn-olive-transparent">{{ i18n[lang].homeCtaButton }}</a>
   </div>
 </section>
 

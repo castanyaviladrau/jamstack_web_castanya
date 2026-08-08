@@ -1,10 +1,11 @@
+{% set lang = page.url | pageLang %}
 <section
   class="professionals-value-feature__cta"
   aria-labelledby="gastronomic-nutrition-cta-title"
 >
   <img
     src="/assets/images/gallery/espai-gastronomic/espai_gastronomic_bg.jpg"
-    alt="Paisatge del Montseny"
+    alt="{{ i18n[lang].gastroCtaImgAlt }}"
     class="professionals-value-feature__cta-image"
   />
   <div class="professionals-value-feature__cta-overlay"></div>
@@ -14,20 +15,18 @@
       id="gastronomic-nutrition-cta-title"
       class="professionals-value-feature__cta-title hero-title-elegant light"
     >
-      CUIDA'T AMB EL SABOR DE SEMPRE.
+      {{ i18n[lang].nutritionCtaTitle }}
     </h3>
 
     <p class="professionals-value-feature__cta-text hero-text-body light">
-      Si busques una dieta equilibrada i de proximitat, la castanya és la teva
-      millor aliada. Consulta les nostres receptes saludables i comença a
-      gaudir-ne avui mateix.
+      {{ i18n[lang].nutritionCtaText }}
     </p>
 
     <div class="professionals-value-feature__cta-actions">
       <a
-        href="/gastronomic/receptes/"
+        href="{% if lang == 'es' %}/es/gastronomic/receptes/{% else %}/gastronomic/receptes/{% endif %}"
         class="professionals-value-feature__cta-button professionals-value-feature__cta-button--primary"
-        >VEURE RECEPTES SALUDABLES</a
+        >{{ i18n[lang].nutritionCtaButton }}</a
       >
     </div>
   </div>
@@ -36,15 +35,14 @@
 <div class="newsletter-bar">
   <div class="footer-container flex-newsletter">
     <div class="newsletter-copy">
-      <h2 class="newsletter-heading">BUTLLETÍ</h2>
+      <h2 class="newsletter-heading">{{ i18n[lang].newsletterHeading }}</h2>
       <p class="newsletter-text">
-        Uneix-te al nostre butlletí per estar al dia de nous productes i
-        activitats, a més de rebre descomptes.
+        {{ i18n[lang].newsletterText }}
       </p>
     </div>
     <div class="newsletter-form">
       <input type="email" class="newsletter-input-field" placeholder="" />
-      <button type="submit" class="btn-newsletter-submit">AFEGEIX-ME!</button>
+      <button type="submit" class="btn-newsletter-submit">{{ i18n[lang].newsletterButton }}</button>
     </div>
   </div>
 </div>

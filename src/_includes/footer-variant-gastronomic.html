@@ -1,27 +1,25 @@
+{% set lang = page.url | pageLang %}
 <section class="footer-cta-section footer-cta-section--gastronomic">
   <img
     src="/assets/images/gallery/espai-gastronomic/espai_gastronomic_bg.jpg"
-    alt="Paisatge del Montseny"
+    alt="{{ i18n[lang].gastroCtaImgAlt }}"
     class="cta-bg-img"
   />
   <div class="cta-overlay cta-overlay--gastronomic"></div>
   <div class="cta-content cta-content--gastronomic block-content-style">
     <h2 class="cta-title cta-title--gastronomic">
-      VOLS QUE EL TEU RESTAURANT FORMI PART DE LA NOSTRA RUTA?
+      {{ i18n[lang].gastroCtaTitle }}
     </h2>
     <p class="cta-text cta-text--gastronomic cta-text--gastronomic-lead">
-      Uneix-te a la xarxa d'establiments que aposten per l'autenticitat de la
-      Castanya de Viladrau.
+      {{ i18n[lang].gastroCtaText1 }}
     </p>
     <p class="cta-text cta-text--gastronomic">
-      Si ets un professional de la restauració i la nostra castanya és
-      protagonista a la teva carta, volem que tothom ho sàpiga. Forma part de la
-      guia oficial de restaurants del Montseny.
+      {{ i18n[lang].gastroCtaText2 }}
     </p>
     <a
-      href="/contact/"
+      href="{% if lang == 'es' %}/es/contact/{% else %}/contact/{% endif %}"
       class="btn-olive-transparent btn-olive-transparent--gastronomic"
-      >VULL SER UN ESTABLIMENT RECOMANAT</a
+      >{{ i18n[lang].gastroCtaButton }}</a
     >
   </div>
 </section>

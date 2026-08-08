@@ -1,40 +1,72 @@
 {
-  "list": [
-    "castanya-torrada",
-    "farina-castanya",
-    "secallona",
-    "flocs-castanya"
-  ],
-  "castanya-torrada": {
-    "title": "CASTANYA TORRADA",
-    "subtitle": "Disponible 365 l'any",
-    "price": "24€",
-    "image": "/assets/images/gallery/product_castanya_torrada.png",
-    "imageAlt": "Castanya torrada",
-    "href": "/shop/products/castanya-torrada/"
+  "ca": {
+    "list": ["castanya-torrada", "farina-castanya", "secallona", "flocs-castanya"],
+    "castanya-torrada": {
+      "title": "CASTANYA TORRADA",
+      "subtitle": "Disponible 365 l'any",
+      "price": "24€",
+      "image": "/assets/images/gallery/product_castanya_torrada.png",
+      "imageAlt": "Castanya torrada",
+      "href": "/shop/products/castanya-torrada/"
+    },
+    "farina-castanya": {
+      "title": "FARINA DE CASTANYA",
+      "subtitle": "Molta en moli de pedra",
+      "price": "18€",
+      "image": "/assets/images/gallery/product_castanya_farina.png",
+      "imageAlt": "Farina de castanya",
+      "href": "/shop/products/farina-de-castanya/"
+    },
+    "secallona": {
+      "title": "SECALLONA",
+      "subtitle": "Assecat lent de Viladrau",
+      "price": "22€",
+      "image": "/assets/images/gallery/product_castanya_seca.png",
+      "imageAlt": "Secallona de castanya",
+      "href": "/shop/products/castanya-pilonga-deshidratada/"
+    },
+    "flocs-castanya": {
+      "title": "FLOCS DE CASTANYA",
+      "subtitle": "Cruixents i delicats",
+      "price": "16€",
+      "image": "/assets/images/gallery/product_castanya_flocs.png",
+      "imageAlt": "Flocs de castanya",
+      "href": "/shop/products/flocs-de-castanya/"
+    }
   },
-  "farina-castanya": {
-    "title": "FARINA DE CASTANYA",
-    "subtitle": "Molta en moli de pedra",
-    "price": "18€",
-    "image": "/assets/images/gallery/product_castanya_farina.png",
-    "imageAlt": "Farina de castanya",
-    "href": "/shop/products/farina-de-castanya/"
-  },
-  "secallona": {
-    "title": "SECALLONA",
-    "subtitle": "Assecat lent de Viladrau",
-    "price": "22€",
-    "image": "/assets/images/gallery/product_castanya_seca.png",
-    "imageAlt": "Secallona de castanya",
-    "href": "/shop/products/castanya-pilonga-deshidratada/"
-  },
-  "flocs-castanya": {
-    "title": "FLOCS DE CASTANYA",
-    "subtitle": "Cruixents i delicats",
-    "price": "16€",
-    "image": "/assets/images/gallery/product_castanya_flocs.png",
-    "imageAlt": "Flocs de castanya",
-    "href": "/shop/products/flocs-de-castanya/"
+  "es": {
+    "list": ["castanya-torrada", "farina-castanya", "secallona", "flocs-castanya"],
+    "castanya-torrada": {
+      "title": "CASTAÑA TOSTADA",
+      "subtitle": "Disponible los 365 días del año",
+      "price": "24€",
+      "image": "/assets/images/gallery/product_castanya_torrada.png",
+      "imageAlt": "Castaña tostada",
+      "href": "/es/shop/products/castanya-torrada/"
+    },
+    "farina-castanya": {
+      "title": "HARINA DE CASTAÑA",
+      "subtitle": "Molida en molino de piedra",
+      "price": "18€",
+      "image": "/assets/images/gallery/product_castanya_farina.png",
+      "imageAlt": "Harina de castaña",
+      "href": "/es/shop/products/farina-de-castanya/"
+    },
+    "secallona": {
+      "title": "SECALLONA",
+      "subtitle": "Secado lento de Viladrau",
+      "price": "22€",
+      "image": "/assets/images/gallery/product_castanya_seca.png",
+      "imageAlt": "Secallona de castaña",
+      "href": "/es/shop/products/castanya-pilonga-deshidratada/"
+    },
+    "flocs-castanya": {
+      "title": "COPOS DE CASTAÑA",
+      "subtitle": "Crujientes y delicados",
+      "price": "16€",
+      "image": "/assets/images/gallery/product_castanya_flocs.png",
+      "imageAlt": "Copos de castaña",
+      "href": "/es/shop/products/flocs-de-castanya/"
+    }
   }
 }

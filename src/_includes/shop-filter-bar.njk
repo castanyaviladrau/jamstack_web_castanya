@@ -1,65 +1,69 @@
-<nav class="shop-page-filters" aria-label="Filtres de producte" data-shop-filter-bar>
+{% set lang = page.url | pageLang %}
+<nav class="shop-page-filters" aria-label="{{ i18n[lang].shopFilterBarAria }}" data-shop-filter-bar>
   <div class="shop-page-filters__inner">
     <details class="shop-page-filter-menu" data-shop-filter-menu="category">
       <summary class="shop-page-filter">
-        Per categoria
+        {{ i18n[lang].shopFilterCategory }}
         <img class="shop-page-filter__arrow" src="/assets/images/recipe-filter-arrow.svg" alt="" aria-hidden="true" />
       </summary>
       <div class="shop-page-filter-menu__list">
         {% for item in shopFilters.categories %}
+        {% set itemLabel = item.labelEs if lang == 'es' else item.label %}
         <a
-          href="/shop/products/catalog/?category={{ item.value }}"
+          href="{% if lang == 'es' %}/es/shop/products/catalog/{% else %}/shop/products/catalog/{% endif %}?category={{ item.value }}"
           class="shop-page-filter-menu__item"
           data-shop-filter-link
           data-shop-filter-type="category"
           data-shop-filter-value="{{ item.value }}"
-          data-shop-filter-label="{{ item.label }}"
-        >{{ item.label }}</a>
+          data-shop-filter-label="{{ itemLabel }}"
+        >{{ itemLabel }}</a>
         {% endfor %}
       </div>
     </details>
 
     <details class="shop-page-filter-menu" data-shop-filter-menu="moment">
       <summary class="shop-page-filter">
-        Moment de consum
+        {{ i18n[lang].shopFilterMoment }}
         <img class="shop-page-filter__arrow" src="/assets/images/recipe-filter-arrow.svg" alt="" aria-hidden="true" />
       </summary>
       <div class="shop-page-filter-menu__list">
         {% for item in shopFilters.moments %}
+        {% set itemLabel = item.labelEs if lang == 'es' else item.label %}
         <a
-          href="/shop/products/catalog/?moment={{ item.value }}"
+          href="{% if lang == 'es' %}/es/shop/products/catalog/{% else %}/shop/products/catalog/{% endif %}?moment={{ item.value }}"
           class="shop-page-filter-menu__item"
           data-shop-filter-link
           data-shop-filter-type="moment"
           data-shop-filter-value="{{ item.value }}"
-          data-shop-filter-label="{{ item.label }}"
-        >{{ item.label }}</a>
+          data-shop-filter-label="{{ itemLabel }}"
+        >{{ itemLabel }}</a>
         {% endfor %}
       </div>
     </details>
 
     <details class="shop-page-filter-menu" data-shop-filter-menu="diet">
       <summary class="shop-page-filter">
-        Dietes i intoleràncies
+        {{ i18n[lang].shopFilterDiet }}
         <img class="shop-page-filter__arrow" src="/assets/images/recipe-filter-arrow.svg" alt="" aria-hidden="true" />
       </summary>
       <div class="shop-page-filter-menu__list">
         {% for item in shopFilters.diets %}
+        {% set itemLabel = item.labelEs if lang == 'es' else item.label %}
         <a
-          href="/shop/products/catalog/?diet={{ item.value }}"
+          href="{% if lang == 'es' %}/es/shop/products/catalog/{% else %}/shop/products/catalog/{% endif %}?diet={{ item.value }}"
           class="shop-page-filter-menu__item"
           data-shop-filter-link
           data-shop-filter-type="diet"
           data-shop-filter-value="{{ item.value }}"
-          data-shop-filter-label="{{ item.label }}"
-        >{{ item.label }}</a>
+          data-shop-filter-label="{{ itemLabel }}"
+        >{{ itemLabel }}</a>
         {% endfor %}
       </div>
     </details>
 
-    <a href="/gastronomic/receptes" class="shop-page-filter">Arbres</a>
-    <a href="/shop/products/catalog/" class="shop-page-search">
-      Busca producte
+    <a href="{% if lang == 'es' %}/es/gastronomic/receptes{% else %}/gastronomic/receptes{% endif %}" class="shop-page-filter">{{ i18n[lang].shopFilterTrees }}</a>
+    <a href="{% if lang == 'es' %}/es/shop/products/catalog/{% else %}/shop/products/catalog/{% endif %}" class="shop-page-search">
+      {{ i18n[lang].shopFilterSearch }}
       <span aria-hidden="true">&rsaquo;</span>
     </a>
   </div>

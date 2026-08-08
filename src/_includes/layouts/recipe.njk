@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ site.language }}">
+<html lang="{{ page.url | pageLang }}">
 
   {% include "head.html" %}
 
-  {% set recipes = collections.recipes %}
+  {% set lang = page.url | pageLang %}
+  {% set recipes = collections.recipes | filterByLang(lang) %}
   {% set currentIndex = -1 %}
   {% for item in recipes %}
     {% if item.url == page.url %}
@@ -14,6 +15,7 @@
   {% set nextRecipe = recipes[currentIndex + 1] if currentIndex > -1 and currentIndex < (recipes | length - 1) else null %}
   {% set relatedProductsSectionData = relatedProductsSection or {} %}
   {% set relatedProductKeys = relatedProductsSectionData.products or [] %}
+  {% set receptesIndexUrl = '/es/gastronomic/receptes/' if lang == 'es' else '/gastronomic/receptes/' %}
 
   <body class="internal{% if name %} page-{{ name }}{% endif %}">
     {% include "header.html" %}
@@ -21,7 +23,7 @@
       <div class="content-wrap unified-bg">
         <section class="recipe-detail">
           <div class="recipe-detail__inner">
-            <a href="/gastronomic/receptes/" class="recipe-detail__back">&larr; Tornar</a>
+            <a href="{{ receptesIndexUrl }}" class="recipe-detail__back">{{ i18n[lang].recipeBack }}</a>
 
             <div class="recipe-detail__header">
               <div class="recipe-detail__media-wrap">
@@ -34,7 +36,7 @@
 
               <div class="recipe-detail__summary">
                 <h1 class="recipe-detail__title">{{ title }}</h1>
-                <p class="recipe-detail__author">Per {{ author }}, {{ origin }}</p>
+                <p class="recipe-detail__author">{{ i18n[lang].recipeBy }} {{ author }}, {{ origin }}</p>
                 <p class="recipe-detail__description">{{ summary }}</p>
 
                 <div class="recipe-detail__meta">
@@ -49,7 +51,7 @@
                       src="/assets/images/gallery/espai-gastronomic/espai_grade.png"
                       alt=""
                       aria-hidden="true"
-                    />{{ difficulty | difficultyLabel }}</span
+                    />{{ difficulty | difficultyLabel(lang) }}</span
                   >
                 </div>
 
@@ -93,17 +95,17 @@
               </aside>
             </div>
 
-            <nav class="recipe-detail__pagination" aria-label="Navegació entre receptes">
+            <nav class="recipe-detail__pagination" aria-label="{{ i18n[lang].recipePaginationAria }}">
               {% if previousRecipe %}
-              <a href="{{ previousRecipe.url }}" class="recipe-detail__pagination-link">&larr; Anterior recepta</a>
+              <a href="{{ previousRecipe.url }}" class="recipe-detail__pagination-link">{{ i18n[lang].recipePrev }}</a>
               {% else %}
-              <span class="recipe-detail__pagination-link recipe-detail__pagination-link--disabled">&larr; Anterior recepta</span>
+              <span class="recipe-detail__pagination-link recipe-detail__pagination-link--disabled">{{ i18n[lang].recipePrev }}</span>
               {% endif %}
 
               {% if nextRecipe %}
-              <a href="{{ nextRecipe.url }}" class="recipe-detail__pagination-link">Següent recepta &rarr;</a>
+              <a href="{{ nextRecipe.url }}" class="recipe-detail__pagination-link">{{ i18n[lang].recipeNext }}</a>
               {% else %}
-              <span class="recipe-detail__pagination-link recipe-detail__pagination-link--disabled">Següent recepta &rarr;</span>
+              <span class="recipe-detail__pagination-link recipe-detail__pagination-link--disabled">{{ i18n[lang].recipeNext }}</span>
               {% endif %}
             </nav>
 
@@ -117,8 +119,9 @@
               </div>
 
               <div class="recipe-detail__related-products-grid">
+                {% set recipeProductsByLang = recipeProducts[lang] if recipeProducts[lang] else recipeProducts %}
                 {% for productKey in relatedProductKeys %}
-                  {% set product = recipeProducts[productKey] %}
+                  {% set product = recipeProductsByLang[productKey] %}
                   {% if product %}
                   <a href="{{ product.href }}" class="recipe-detail__related-product-card">
                     <img
@@ -171,14 +174,14 @@
           {
             "@type": "ListItem",
             "position": 1,
-            "name": "Inici",
+            "name": {{ i18n[lang].breadcrumbHome | dump | safe }},
             "item": {{ site.url | dump | safe }}
           },
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "Receptes",
-            "item": {{ ('/gastronomic/receptes/' | absoluteUrl(site.url)) | dump | safe }}
+            "name": {{ i18n[lang].breadcrumbReceptes | dump | safe }},
+            "item": {{ (receptesIndexUrl | absoluteUrl(site.url)) | dump | safe }}
           },
           {
             "@type": "ListItem",

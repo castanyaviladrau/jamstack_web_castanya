@@ -1,0 +1,7 @@
+{
+  "layout": "post",
+  "permalink": "/es/blog/{{ page.fileSlug }}/index.html",
+  "name": "blog-post",
+  "footerVariant": "none",
+  "tags": ["posts"]
+}

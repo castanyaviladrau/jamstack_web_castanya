@@ -28,11 +28,50 @@ module.exports = function (eleventyConfig) {
     return list.findIndex((item) => item.url === url);
   });
 
+  // Language-switcher helpers: derive the current language and the
+  // equivalent URL in the other language from a page's URL. Spanish pages
+  // live under a leading /es/ segment; everything else is Catalan.
+  eleventyConfig.addFilter("pageLang", (url = "") => {
+    return String(url).startsWith("/es/") || String(url) === "/es"
+      ? "es"
+      : "ca";
+  });
+
+  eleventyConfig.addFilter("toEsUrl", (url = "") => {
+    const value = String(url);
+    if (value.startsWith("/es/") || value === "/es") {
+      return value;
+    }
+    if (value === "/") {
+      return "/es/";
+    }
+    return "/es" + value;
+  });
+
+  eleventyConfig.addFilter("toCaUrl", (url = "") => {
+    const value = String(url);
+    if (value === "/es") {
+      return "/";
+    }
+    if (value.startsWith("/es/")) {
+      return value.slice(3) || "/";
+    }
+    return value;
+  });
+
   eleventyConfig.addFilter("stripHtml", (content = "") => {
     return String(content)
       .replace(/<[^>]*>/g, " ")
       .replace(/\s+/g, " ")
       .trim();
+  });
+
+  // Filters a collection array down to items matching the given language.
+  // Items without an explicit `lang` front-matter field default to "ca".
+  eleventyConfig.addFilter("filterByLang", (items = [], lang = "ca") => {
+    return (items || []).filter(
+      (item) => (item.data && (item.data.lang || "ca")) === lang,
+    );
   });
 
   eleventyConfig.addFilter("slugify", (value = "") => {
@@ -168,42 +207,67 @@ module.exports = function (eleventyConfig) {
   });
 
   const difficultyLabels = {
-    facil: "Fàcil",
-    mitja: "Mitjà",
-    dificil: "Difícil",
+    ca: {
+      facil: "Fàcil",
+      mitja: "Mitjà",
+      dificil: "Difícil",
+    },
+    es: {
+      facil: "Fácil",
+      mitja: "Media",
+      dificil: "Difícil",
+    },
   };
-  eleventyConfig.addFilter(
-    "difficultyLabel",
-    (value) => difficultyLabels[value] || value,
-  );
+  eleventyConfig.addFilter("difficultyLabel", (value, lang) => {
+    const labels = difficultyLabels[lang] || difficultyLabels.ca;
+    return labels[value] || value;
+  });
 
   const dishTypeLabels = {
-    foundations: "Entrants",
-    sweet: "Dolç",
-    homeTraditions: "Plats principals",
-    classics: "Clàssics",
-    healthy: "Saludable",
+    ca: {
+      foundations: "Entrants",
+      sweet: "Dolç",
+      homeTraditions: "Plats principals",
+      classics: "Clàssics",
+      healthy: "Saludable",
+    },
+    es: {
+      foundations: "Entrantes",
+      sweet: "Dulce",
+      homeTraditions: "Platos principales",
+      classics: "Clásicos",
+      healthy: "Saludable",
+    },
   };
-  eleventyConfig.addFilter(
-    "dishTypeLabel",
-    (value) => dishTypeLabels[value] || value,
-  );
+  eleventyConfig.addFilter("dishTypeLabel", (value, lang) => {
+    const labels = dishTypeLabels[lang] || dishTypeLabels.ca;
+    return labels[value] || value;
+  });
 
   eleventyConfig.addCollection("visitActivities", (collectionApi) => {
     return collectionApi
-      .getFilteredByGlob("./src/visits/activities/*.md")
+      .getFilteredByGlob([
+        "./src/visits/activities/*.md",
+        "./src/es/visits/activities/*.md",
+      ])
       .sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
   });
 
   eleventyConfig.addCollection("recipes", (collectionApi) => {
     return collectionApi
-      .getFilteredByGlob("./src/gastronomic/receptes/recipes/*.md")
+      .getFilteredByGlob([
+        "./src/gastronomic/receptes/recipes/*.md",
+        "./src/es/gastronomic/receptes/recipes/*.md",
+      ])
       .sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
   });
 
   eleventyConfig.addCollection("products", (collectionApi) => {
     return collectionApi
-      .getFilteredByGlob("./src/shop/products/*.md")
+      .getFilteredByGlob([
+        "./src/shop/products/*.md",
+        "./src/es/shop/products/*.md",
+      ])
       .sort((a, b) => a.data.title.localeCompare(b.data.title));
   });
 

@@ -1,4 +1,5 @@
-{% macro recipeFiltersBar(actionUrl, difficultyOptions, dishTypeOptions, searchLabel, showReset, recipes) %}
+{% macro recipeFiltersBar(actionUrl, difficultyOptions, dishTypeOptions, searchLabel, showReset, recipes, lang) %}
+{% set lang = lang or 'ca' %}
 <form
   class="shop-page-filters__inner"
   action="{{ actionUrl }}"
@@ -6,8 +7,8 @@
   data-recipe-filter-form
 >
   <details class="shop-page-filter-menu" data-recipe-filter-menu="difficulty" name="recipe-filter-group">
-    <summary class="shop-page-filter" data-recipe-filter-summary data-default-label="Nivell de dificultat">
-      <span data-recipe-filter-summary-label>Nivell de dificultat</span>
+    <summary class="shop-page-filter" data-recipe-filter-summary data-default-label="{{ i18n[lang].recipeFilterDifficulty }}">
+      <span data-recipe-filter-summary-label>{{ i18n[lang].recipeFilterDifficulty }}</span>
       <img class="shop-page-filter__arrow" src="/assets/images/recipe-filter-arrow.svg" alt="" aria-hidden="true" />
     </summary>
     <div class="shop-page-filter-menu__list">
@@ -17,29 +18,29 @@
         class="shop-page-filter-menu__item recipe-filter-menu__item"
         data-recipe-filter-option
         data-recipe-filter-value="{{ value }}"
-        data-recipe-filter-label="{{ value | difficultyLabel }}"
-      >{{ value | difficultyLabel }}</button>
+        data-recipe-filter-label="{{ value | difficultyLabel(lang) }}"
+      >{{ value | difficultyLabel(lang) }}</button>
       {% endfor %}
     </div>
     <input type="hidden" name="difficulty" data-recipe-filter-input value="" />
   </details>
 
   <details class="shop-page-filter-menu" data-recipe-filter-menu="time" name="recipe-filter-group">
-    <summary class="shop-page-filter" data-recipe-filter-summary data-default-label="Temps de preparació">
-      <span data-recipe-filter-summary-label>Temps de preparació</span>
+    <summary class="shop-page-filter" data-recipe-filter-summary data-default-label="{{ i18n[lang].recipeFilterTime }}">
+      <span data-recipe-filter-summary-label>{{ i18n[lang].recipeFilterTime }}</span>
       <img class="shop-page-filter__arrow" src="/assets/images/recipe-filter-arrow.svg" alt="" aria-hidden="true" />
     </summary>
     <div class="shop-page-filter-menu__list">
-      <button type="button" class="shop-page-filter-menu__item recipe-filter-menu__item" data-recipe-filter-option data-recipe-filter-value="short" data-recipe-filter-label="Menys de 20 minuts">Menys de 20 minuts</button>
-      <button type="button" class="shop-page-filter-menu__item recipe-filter-menu__item" data-recipe-filter-option data-recipe-filter-value="medium" data-recipe-filter-label="Entre 20 i 30 minuts">Entre 20 i 30 minuts</button>
-      <button type="button" class="shop-page-filter-menu__item recipe-filter-menu__item" data-recipe-filter-option data-recipe-filter-value="long" data-recipe-filter-label="Més de 30 minuts">Més de 30 minuts</button>
+      <button type="button" class="shop-page-filter-menu__item recipe-filter-menu__item" data-recipe-filter-option data-recipe-filter-value="short" data-recipe-filter-label="{{ i18n[lang].recipeFilterTimeShort }}">{{ i18n[lang].recipeFilterTimeShort }}</button>
+      <button type="button" class="shop-page-filter-menu__item recipe-filter-menu__item" data-recipe-filter-option data-recipe-filter-value="medium" data-recipe-filter-label="{{ i18n[lang].recipeFilterTimeMedium }}">{{ i18n[lang].recipeFilterTimeMedium }}</button>
+      <button type="button" class="shop-page-filter-menu__item recipe-filter-menu__item" data-recipe-filter-option data-recipe-filter-value="long" data-recipe-filter-label="{{ i18n[lang].recipeFilterTimeLong }}">{{ i18n[lang].recipeFilterTimeLong }}</button>
     </div>
     <input type="hidden" name="time" data-recipe-filter-input value="" />
   </details>
 
   <details class="shop-page-filter-menu" data-recipe-filter-menu="dishType" name="recipe-filter-group">
-    <summary class="shop-page-filter" data-recipe-filter-summary data-default-label="Tipus de plat">
-      <span data-recipe-filter-summary-label>Tipus de plat</span>
+    <summary class="shop-page-filter" data-recipe-filter-summary data-default-label="{{ i18n[lang].recipeFilterDishType }}">
+      <span data-recipe-filter-summary-label>{{ i18n[lang].recipeFilterDishType }}</span>
       <img class="shop-page-filter__arrow" src="/assets/images/recipe-filter-arrow.svg" alt="" aria-hidden="true" />
     </summary>
     <div class="shop-page-filter-menu__list">
@@ -49,8 +50,8 @@
         class="shop-page-filter-menu__item recipe-filter-menu__item"
         data-recipe-filter-option
         data-recipe-filter-value="{{ value }}"
-        data-recipe-filter-label="{{ value | dishTypeLabel }}"
-      >{{ value | dishTypeLabel }}</button>
+        data-recipe-filter-label="{{ value | dishTypeLabel(lang) }}"
+      >{{ value | dishTypeLabel(lang) }}</button>
       {% endfor %}
     </div>
     <input type="hidden" name="dishType" data-recipe-filter-input value="" />
@@ -58,7 +59,7 @@
 
   {% if showReset %}
   <button type="button" class="shop-page-filter" data-recipe-results-reset hidden>
-    Esborra filtres
+    {{ i18n[lang].recipeFilterReset }}
   </button>
   {% endif %}
 
@@ -71,7 +72,7 @@
       type="search"
       class="shop-page-search-input"
       name="q"
-      placeholder="Cerca una recepta..."
+      placeholder="{{ i18n[lang].recipeSearchPlaceholder }}"
       autocomplete="off"
       data-recipe-search-input
       hidden

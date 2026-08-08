@@ -1,37 +1,38 @@
+{% set lang = page.url | pageLang %}
 <footer class="main-footer">
   <div class="footer-links-area">
     <div class="footer-container">
       <div class="footer-grid">
         <div class="footer-col">
-          <h3>La Castanya de Viladrau</h3>
+          <h3>{{ i18n[lang].footerBrandTitle }}</h3>
           <ul>
-            <li><a href="/projecte/">El projecte</a></li>
-            <li><a href="/projecte/">Territori i sostenibilitat</a></li>
-            <li><a href="/fusta/">Fusta de castanyer</a></li>
+            <li><a href="{% if lang == 'es' %}/es/projecte/{% else %}/projecte/{% endif %}">{{ i18n[lang].footerElProjecte }}</a></li>
+            <li><a href="{% if lang == 'es' %}/es/projecte/{% else %}/projecte/{% endif %}">{{ i18n[lang].footerTerritori }}</a></li>
+            <li><a href="{% if lang == 'es' %}/es/fusta/{% else %}/fusta/{% endif %}">{{ i18n[lang].footerFusta }}</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h3>Viure el castanyer</h3>
+          <h3>{{ i18n[lang].footerViureCol }}</h3>
           <ul>
-            <li><a href="/visits/">Visites guiades</a></li>
-            <li><a href="/gastronomic/">Espai gastronòmic</a></li>
-            <li><a href="/blog/">Agenda</a></li>
+            <li><a href="{% if lang == 'es' %}/es/visits/{% else %}/visits/{% endif %}">{{ i18n[lang].footerVisitesGuiades }}</a></li>
+            <li><a href="{% if lang == 'es' %}/es/gastronomic/{% else %}/gastronomic/{% endif %}">{{ i18n[lang].footerEspaiGastronomic }}</a></li>
+            <li><a href="{% if lang == 'es' %}/es/blog/{% else %}/blog/{% endif %}">{{ i18n[lang].footerAgenda }}</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h3>Professionals</h3>
+          <h3>{{ i18n[lang].footerProfessionalsCol }}</h3>
           <ul>
-            <li><a href="/professionals/">Espai per a professionals</a></li>
-            <li><a href="/contact/">Col·laboracions</a></li>
+            <li><a href="{% if lang == 'es' %}/es/professionals/{% else %}/professionals/{% endif %}">{{ i18n[lang].footerEspaiProfessionals }}</a></li>
+            <li><a href="{% if lang == 'es' %}/es/contact/{% else %}/contact/{% endif %}">{{ i18n[lang].footerColaboracions }}</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h3>Comunitat</h3>
+          <h3>{{ i18n[lang].footerComunitat }}</h3>
           <ul>
-            <li><a href="/trobar-nos/">On trobar-nos</a></li>
-            <li><a href="/contact/">Contacte</a></li>
-            <li><a href="/contact/">Newsletter</a></li>
-            <li><a href="https://www.instagram.com/castanyadeviladrau/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="{% if lang == 'es' %}/es/trobar-nos/{% else %}/trobar-nos/{% endif %}">{{ i18n[lang].footerOnTrobarNos }}</a></li>
+            <li><a href="{% if lang == 'es' %}/es/contact/{% else %}/contact/{% endif %}">{{ i18n[lang].footerContacte }}</a></li>
+            <li><a href="{% if lang == 'es' %}/es/contact/{% else %}/contact/{% endif %}">{{ i18n[lang].footerNewsletter }}</a></li>
+            <li><a href="https://www.instagram.com/castanyadeviladrau/" target="_blank" rel="noopener noreferrer">{{ i18n[lang].footerInstagram }}</a></li>
           </ul>
         </div>
       </div>
@@ -46,7 +47,7 @@
                   fill="white"
                 /></svg
             ></a>
-            <a href="mailto:{{ site.business.email }}" aria-label="Correu electrònic"
+            <a href="mailto:{{ site.business.email }}" aria-label="{{ i18n[lang].correuAria }}"
               ><svg class="footer-icon" viewBox="0 0 24 24">
                 <path
                   d="M12.031 2c-5.511 0-9.993 4.481-9.993 9.993 0 1.761.458 3.415 1.258 4.856l-1.336 4.887 5.006-1.313a9.927 9.927 0 005.059 1.363l.006-.001c5.511 0 9.993-4.481 9.993-9.993C22.03 6.481 17.548 2 12.031 2zm0 1.503c4.683 0 8.49 3.807 8.49 8.49s-3.807 8.49-8.49 8.49c-1.572 0-3.045-.432-4.312-1.183l-.309-.182-3.176.834.85-3.102-.22-.35a8.448 8.448 0 01-1.333-4.507c0-4.683 3.807-8.49 8.49-8.49zm-3.953 4.295c-.144.004-.306.015-.472.07-.463.155-.779.431-.967.842-.218.473-.328 1.488.291 2.684.453.875 1.257 1.838 2.378 2.768 1.121.93 2.213 1.54 3.12 1.854.908.314 1.77.301 2.296.113.525-.188.851-.518.995-1.028.053-.186.104-.429.102-.63-.002-.124-.078-.225-.262-.317l-1.554-.783c-.184-.093-.349-.071-.478.04l-.626.657c-.122.128-.279.111-.472.031a5.61 5.61 0 01-1.603-.984 5.38 5.38 0 01-1.111-1.28c-.114-.176-.089-.323.033-.464l.435-.506c.118-.137.142-.279.07-.424l-.693-1.61c-.083-.195-.218-.328-.475-.323z"
@@ -55,15 +56,15 @@
             ></a>
           </div>
           <div class="footer-legal-links">
-            <a href="/avis-legal/">Avís legal</a> ·
-            <a href="/politica-de-privacitat/">Privacitat</a> ·
-            <a href="/politica-de-cookies/">Cookies</a> ·
-            <a href="/termes-i-condicions/">Termes i condicions</a> ·
-            <a href="/forma-de-pagament/">Forma de pagament</a> ·
-            <a href="/devolucio-d-una-comanda/">Devolucions</a> ·
-            <a href="/condicions-d-enviament/">Condicions d'enviament</a> ·
-            <button type="button" class="footer-legal-button" data-cookie-preferences>Canviar cookies</button> ·
-            <span>© La Castanya de Viladrau</span>
+            <a href="{% if lang == 'es' %}/es/avis-legal/{% else %}/avis-legal/{% endif %}">{{ i18n[lang].footerAvisLegal }}</a> ·
+            <a href="{% if lang == 'es' %}/es/politica-de-privacitat/{% else %}/politica-de-privacitat/{% endif %}">{{ i18n[lang].footerPrivacitat }}</a> ·
+            <a href="{% if lang == 'es' %}/es/politica-de-cookies/{% else %}/politica-de-cookies/{% endif %}">{{ i18n[lang].footerCookies }}</a> ·
+            <a href="{% if lang == 'es' %}/es/termes-i-condicions/{% else %}/termes-i-condicions/{% endif %}">{{ i18n[lang].footerTermes }}</a> ·
+            <a href="{% if lang == 'es' %}/es/forma-de-pagament/{% else %}/forma-de-pagament/{% endif %}">{{ i18n[lang].footerFormaPagament }}</a> ·
+            <a href="{% if lang == 'es' %}/es/devolucio-d-una-comanda/{% else %}/devolucio-d-una-comanda/{% endif %}">{{ i18n[lang].footerDevolucions }}</a> ·
+            <a href="{% if lang == 'es' %}/es/condicions-d-enviament/{% else %}/condicions-d-enviament/{% endif %}">{{ i18n[lang].footerCondicionsEnviament }}</a> ·
+            <button type="button" class="footer-legal-button" data-cookie-preferences>{{ i18n[lang].footerCanviarCookies }}</button> ·
+            <span>{{ i18n[lang].footerCopyright }}</span>
           </div>
         </div>
 

@@ -1,320 +1,838 @@
 {
-  "hero": {
-    "title": "RECEPTES AMB CASTANYA DE&nbsp;VILADRAU\nCUINA L'ESSÈNCIA DEL MONTSENY A&nbsp;CASA",
-    "text": "Des de la tradició de la castanyada fins a sorprenents plats per a tot l'any. Descobreix com portar el sabor del bosc a la teva taula de forma fàcil i saludable.",
-    "backgroundImage": "/assets/images/gallery/espai-gastronomic/castanya_receptes.png",
-    "backgroundAlt": "Ingredients i castanyes sobre la taula"
+  "ca": {
+    "hero": {
+      "title": "RECEPTES AMB CASTANYA DE&nbsp;VILADRAU\nCUINA L'ESSÈNCIA DEL MONTSENY A&nbsp;CASA",
+      "text": "Des de la tradició de la castanyada fins a sorprenents plats per a tot l'any. Descobreix com portar el sabor del bosc a la teva taula de forma fàcil i saludable.",
+      "backgroundImage": "/assets/images/gallery/espai-gastronomic/castanya_receptes.png",
+      "backgroundAlt": "Ingredients i castanyes sobre la taula"
+    },
+    "filtersBar": {
+      "searchLabel": "BUSCA RECEPTA"
+    },
+    "foundationsSection": {
+      "title": "ENTRANTS AMB CASTANYA DE VILADRAU",
+      "intro": "Entrants elegants i plens de sabor per iniciar qualsevol àpat de tardor. La castanya de Viladrau com a protagonista de primer plat.",
+      "ctaLabel": "VEURE TOTES",
+      "ctaHref": "/gastronomic/receptes/resultats/?dishType=foundations",
+      "slides": [
+        {
+          "title": "CREMA DE CASTANYES",
+          "image": "/assets/images/gallery/receptes/crema-de-castanyes.png",
+          "imageAlt": "Crema de castanyes servida calenta amb guarnicio",
+          "time": "120 minuts",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Castanyes de Viladrau",
+            "Brou de pollastre",
+            "Nata líquida"
+          ]
+        },
+        {
+          "title": "RISOTTO DE CASTANYES I BOLETS",
+          "image": "/assets/images/gallery/receptes/risotto-castanyes-bolets.png",
+          "imageAlt": "Risotto cremos de castanyes i bolets de temporada",
+          "time": "40 minuts",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Castanyes cuites",
+            "Bolets variats",
+            "Arròs per a risotto"
+          ]
+        },
+        {
+          "title": "PASTÍS SALAT DE CEBA AMB CASTANYES I HERBES AROMÀTIQUES",
+          "image": "/assets/images/gallery/receptes/pastis-salat-ceba-castanyes.png",
+          "imageAlt": "Pastis salat de ceba vermella amb castanyes i herbes",
+          "time": "40 minuts",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Castanyes de Viladrau",
+            "Ceba vermella",
+            "Pasta de full"
+          ]
+        },
+        {
+          "title": "NIU DE CASTANYES AMB OU DE CARABASSA I SALSES DE MONIATO",
+          "image": "/assets/images/gallery/receptes/niu-castanyes-ou-carabassa.png",
+          "imageAlt": "Niu de pure de castanyes amb ou de carabassa i salses de moniato",
+          "time": "90 minuts",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Castanyes de Viladrau",
+            "Carabassa",
+            "Moniato"
+          ]
+        }
+      ]
+    },
+    "homeTraditionsSection": {
+      "title": "PLATS PRINCIPALS AMB CASTANYA DE VILADRAU",
+      "intro": "Plats consistents i cuina de mercat que converteixen la castanya en l'ànima de cada àpat. Del camp a la taula, amb tot el sabor del Montseny.",
+      "ctaLabel": "VEURE TOTES",
+      "ctaHref": "/gastronomic/receptes/resultats/?dishType=homeTraditions",
+      "slides": [
+        {
+          "title": "CARN AMB SALSA DE CASTANYES",
+          "image": "/assets/images/gallery/receptes/carn-salsa-castanyes.png",
+          "imageAlt": "Filet de bou amb salsa intensa de castanyes i Pedro Ximénez",
+          "time": "45 minuts",
+          "difficulty": "dificil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Filet de bou",
+            "Castanyes cuites",
+            "Pedro Ximénez"
+          ]
+        },
+        {
+          "title": "POLLASTRE ROSTIT AMB CASTANYES",
+          "image": "/assets/images/gallery/receptes/pollastre-rostit-castanyes.png",
+          "imageAlt": "Pollastre rostit al forn amb castanyes i herbes aromàtiques",
+          "time": "75 minuts",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Pollastre",
+            "Castanyes de Viladrau",
+            "Vi blanc"
+          ]
+        },
+        {
+          "title": "MANDONGUILLES AMB CASTANYES I BOLETS",
+          "image": "/assets/images/gallery/receptes/mandonguilles-castanyes-bolets.png",
+          "imageAlt": "Mandonguilles en salsa de vi ranci amb castanyes i bolets",
+          "time": "75 minuts",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Carn de porc i vedella",
+            "Castanyes cuites",
+            "Bolets variats"
+          ]
+        }
+      ]
+    },
+    "classicsSection": {
+      "title": "ELS CLASSICS QUE MAI FALLEN",
+      "intro": "Les receptes de tota la vida amb el segell d'autenticitat del Montseny",
+      "ctaLabel": "VEURE TOTES",
+      "ctaHref": "/contact/",
+      "slides": [
+        {
+          "title": "COM HIDRATAR LA SECALLONA",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Grup a l'entorn del bosc de castanyers",
+          "time": "20 minuts",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Castanya torrada",
+            "Farina de castanya"
+          ]
+        },
+        {
+          "title": "COM HIDRATAR LA SECALLONA",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Sessio practica amb castanya al Montseny",
+          "time": "20 minuts",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Castanya torrada",
+            "Farina de castanya"
+          ]
+        },
+        {
+          "title": "COM HIDRATAR LA SECALLONA",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Taller gastronomic amb castanya",
+          "time": "20 minuts",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Castanya torrada",
+            "Farina de castanya"
+          ]
+        },
+        {
+          "title": "CASTANYA BULLIDA PERFECTA",
+          "image": "/assets/images/gallery/espai-gastronomic/castanya_plat.jpg",
+          "imageAlt": "Plat amb elaboracio de castanya",
+          "time": "25 minuts",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Castanya bullida",
+            "Brou vegetal"
+          ]
+        },
+        {
+          "title": "CREMA DE TARDOR",
+          "image": "/assets/images/gallery/espai-gastronomic/cake.jpg",
+          "imageAlt": "Preparacio casolana amb castanya",
+          "time": "35 minuts",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Farina de castanya",
+            "Llet"
+          ]
+        },
+        {
+          "title": "GUARNICIO DE CASTANYA",
+          "image": "/assets/images/gallery/espai-gastronomic/castanya_camp.jpg",
+          "imageAlt": "Castanya al paisatge del Montseny",
+          "time": "15 minuts",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Castanya fresca",
+            "Sal fina"
+          ]
+        }
+      ]
+    },
+    "healthySection": {
+      "title": "CUINA SALUDABLE I FIT",
+      "intro": "Energia natural i plats lleugers per cuidar-te sense renunciar al millor sabor.",
+      "ctaLabel": "VEURE TOTES",
+      "ctaHref": "/contact/",
+      "slides": [
+        {
+          "title": "COM HIDRATAR LA SECALLONA",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Grup a l'entorn del bosc de castanyers",
+          "time": "20 minuts",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Castanya torrada",
+            "Farina de castanya"
+          ]
+        },
+        {
+          "title": "COM HIDRATAR LA SECALLONA",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Sessio practica amb castanya al Montseny",
+          "time": "20 minuts",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Castanya torrada",
+            "Farina de castanya"
+          ]
+        },
+        {
+          "title": "COM HIDRATAR LA SECALLONA",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Taller gastronomic amb castanya",
+          "time": "20 minuts",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Castanya torrada",
+            "Farina de castanya"
+          ]
+        },
+        {
+          "title": "POSTRES MES LLEUGERES",
+          "image": "/assets/images/gallery/espai-gastronomic/baixa_en_greixos.jpg",
+          "imageAlt": "Castanya preparada per a recepta saludable",
+          "time": "30 minuts",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Castanya",
+            "Oli d'oliva"
+          ]
+        },
+        {
+          "title": "TEXTURA PER A POSTRES",
+          "image": "/assets/images/gallery/espai-gastronomic/cake.jpg",
+          "imageAlt": "Postres amb castanya",
+          "time": "35 minuts",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Farina de castanya",
+            "Xocolata"
+          ]
+        },
+        {
+          "title": "CASTANYA DE TEMPORADA",
+          "image": "/assets/images/gallery/espai-gastronomic/castanya_camp.jpg",
+          "imageAlt": "Castanya al paisatge del Montseny",
+          "time": "15 minuts",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Castanya fresca",
+            "Sal fina"
+          ]
+        }
+      ]
+    },
+    "sweetSection": {
+      "title": "MOMENT DOLÇ (REBOSTERIA FÀCIL)",
+      "intro": "Capritxos irresistibles i postres artesanes per endolcir els teus moments especials.",
+      "ctaLabel": "VEURE TOTES",
+      "ctaHref": "/gastronomic/receptes/resultats/?dishType=sweet",
+      "slides": [
+        {
+          "title": "CASTANYES CARAMEL·LITZADES",
+          "image": "/assets/images/gallery/receptes/castanyes-caramelitzades.png",
+          "imageAlt": "Castanyes caramel·litzades daurades amb mel i canyella",
+          "time": "30 minuts",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Castanyes de Viladrau",
+            "Mel artesana",
+            "Canyella en branca"
+          ]
+        },
+        {
+          "title": "PANELLETS DE CASTANYA",
+          "image": "/assets/images/gallery/receptes/panellets-de-castanya.png",
+          "imageAlt": "Panellets de castanya amb pinyons daurats al forn",
+          "time": "45 minuts",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Castanyes de Viladrau",
+            "Pinyons",
+            "Sucre"
+          ]
+        },
+        {
+          "title": "CÓC DE CREMA DE CASTANYES",
+          "image": "/assets/images/gallery/receptes/pastis-castanya.png",
+          "imageAlt": "Coc esponjós de crema de castanyes amb sucre llustre",
+          "time": "60 minuts",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Crema de castanya",
+            "Farina d'espelta",
+            "Oli d'oliva verge extra"
+          ]
+        },
+        {
+          "title": "MOUSSE DE CASTANYES I XOCOLATA",
+          "image": "/assets/images/gallery/receptes/mousse-castanyes-xocolata.png",
+          "imageAlt": "Mousse de castanyes i xocolata negra servida en copes",
+          "time": "40 minuts",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Castanyes de Viladrau",
+            "Xocolata negra",
+            "Clares d'ou"
+          ]
+        }
+      ]
+    },
+    "remediesSection": {
+      "title": "LA FARMACIOLA DEL BOSC: REMEIS TRADICIONALS AMB CASTANYER",
+      "intro": "Explorem l'us medicinal del castanyer de Viladrau, un arbre amb segles de saviesa en la cura de la salut.",
+      "ctaLabel": "VEURE TOTES",
+      "ctaHref": "/contact/",
+      "slides": [
+        {
+          "title": "COM HIDRATAR LA SECALLONA",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Grup a l'entorn del bosc de castanyers",
+          "time": "20 minuts",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Castanya torrada",
+            "Farina de castanya"
+          ]
+        },
+        {
+          "title": "COM HIDRATAR LA SECALLONA",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Sessio practica amb castanya al Montseny",
+          "time": "20 minuts",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Castanya torrada",
+            "Farina de castanya"
+          ]
+        },
+        {
+          "title": "COM HIDRATAR LA SECALLONA",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Taller gastronomic amb castanya",
+          "time": "20 minuts",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Castanya torrada",
+            "Farina de castanya"
+          ]
+        },
+        {
+          "title": "INFUSIO DE FULLA",
+          "image": "/assets/images/gallery/espai-gastronomic/castanya.jpg",
+          "imageAlt": "Castanya encara a l'arbre",
+          "time": "10 minuts",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Fulla de castanyer",
+            "Aigua"
+          ]
+        },
+        {
+          "title": "US TRADICIONAL DEL FRUIT",
+          "image": "/assets/images/gallery/espai-gastronomic/castanya_camp.jpg",
+          "imageAlt": "Castanya al paisatge del Montseny",
+          "time": "15 minuts",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Castanya fresca",
+            "Mel"
+          ]
+        },
+        {
+          "title": "REMEI DE TEMPORADA",
+          "image": "/assets/images/gallery/espai-gastronomic/recollida.jpg",
+          "imageAlt": "Recollida i triatge manual",
+          "time": "20 minuts",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTS",
+          "ingredients": [
+            "Castanya seleccionada",
+            "Aigua"
+          ]
+        }
+      ]
+    }
   },
-  "filtersBar": {
-    "searchLabel": "BUSCA RECEPTA"
-  },
-  "foundationsSection": {
-    "title": "ENTRANTS AMB CASTANYA DE VILADRAU",
-    "intro": "Entrants elegants i plens de sabor per iniciar qualsevol àpat de tardor. La castanya de Viladrau com a protagonista de primer plat.",
-    "ctaLabel": "VEURE TOTES",
-    "ctaHref": "/gastronomic/receptes/resultats/?dishType=foundations",
-    "slides": [
-      {
-        "title": "CREMA DE CASTANYES",
-        "image": "/assets/images/gallery/receptes/crema-de-castanyes.png",
-        "imageAlt": "Crema de castanyes servida calenta amb guarnicio",
-        "time": "120 minuts",
-        "difficulty": "mitja",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanyes de Viladrau", "Brou de pollastre", "Nata líquida"]
-      },
-      {
-        "title": "RISOTTO DE CASTANYES I BOLETS",
-        "image": "/assets/images/gallery/receptes/risotto-castanyes-bolets.png",
-        "imageAlt": "Risotto cremos de castanyes i bolets de temporada",
-        "time": "40 minuts",
-        "difficulty": "mitja",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanyes cuites", "Bolets variats", "Arròs per a risotto"]
-      },
-      {
-        "title": "PASTÍS SALAT DE CEBA AMB CASTANYES I HERBES AROMÀTIQUES",
-        "image": "/assets/images/gallery/receptes/pastis-salat-ceba-castanyes.png",
-        "imageAlt": "Pastis salat de ceba vermella amb castanyes i herbes",
-        "time": "40 minuts",
-        "difficulty": "facil",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanyes de Viladrau", "Ceba vermella", "Pasta de full"]
-      },
-      {
-        "title": "NIU DE CASTANYES AMB OU DE CARABASSA I SALSES DE MONIATO",
-        "image": "/assets/images/gallery/receptes/niu-castanyes-ou-carabassa.png",
-        "imageAlt": "Niu de pure de castanyes amb ou de carabassa i salses de moniato",
-        "time": "90 minuts",
-        "difficulty": "mitja",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanyes de Viladrau", "Carabassa", "Moniato"]
-      }
-    ]
-  },
-  "homeTraditionsSection": {
-    "title": "PLATS PRINCIPALS AMB CASTANYA DE VILADRAU",
-    "intro": "Plats consistents i cuina de mercat que converteixen la castanya en l'ànima de cada àpat. Del camp a la taula, amb tot el sabor del Montseny.",
-    "ctaLabel": "VEURE TOTES",
-    "ctaHref": "/gastronomic/receptes/resultats/?dishType=homeTraditions",
-    "slides": [
-      {
-        "title": "CARN AMB SALSA DE CASTANYES",
-        "image": "/assets/images/gallery/receptes/carn-salsa-castanyes.png",
-        "imageAlt": "Filet de bou amb salsa intensa de castanyes i Pedro Ximénez",
-        "time": "45 minuts",
-        "difficulty": "dificil",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Filet de bou", "Castanyes cuites", "Pedro Ximénez"]
-      },
-      {
-        "title": "POLLASTRE ROSTIT AMB CASTANYES",
-        "image": "/assets/images/gallery/receptes/pollastre-rostit-castanyes.png",
-        "imageAlt": "Pollastre rostit al forn amb castanyes i herbes aromàtiques",
-        "time": "75 minuts",
-        "difficulty": "mitja",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Pollastre", "Castanyes de Viladrau", "Vi blanc"]
-      },
-      {
-        "title": "MANDONGUILLES AMB CASTANYES I BOLETS",
-        "image": "/assets/images/gallery/receptes/mandonguilles-castanyes-bolets.png",
-        "imageAlt": "Mandonguilles en salsa de vi ranci amb castanyes i bolets",
-        "time": "75 minuts",
-        "difficulty": "mitja",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Carn de porc i vedella", "Castanyes cuites", "Bolets variats"]
-      }
-    ]
-  },
-  "classicsSection": {
-    "title": "ELS CLASSICS QUE MAI FALLEN",
-    "intro": "Les receptes de tota la vida amb el segell d'autenticitat del Montseny",
-    "ctaLabel": "VEURE TOTES",
-    "ctaHref": "/contact/",
-    "slides": [
-      {
-        "title": "COM HIDRATAR LA SECALLONA",
-        "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
-        "imageAlt": "Grup a l'entorn del bosc de castanyers",
-        "time": "20 minuts",
-        "difficulty": "facil",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya torrada", "Farina de castanya"]
-      },
-      {
-        "title": "COM HIDRATAR LA SECALLONA",
-        "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
-        "imageAlt": "Sessio practica amb castanya al Montseny",
-        "time": "20 minuts",
-        "difficulty": "facil",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya torrada", "Farina de castanya"]
-      },
-      {
-        "title": "COM HIDRATAR LA SECALLONA",
-        "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
-        "imageAlt": "Taller gastronomic amb castanya",
-        "time": "20 minuts",
-        "difficulty": "facil",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya torrada", "Farina de castanya"]
-      },
-      {
-        "title": "CASTANYA BULLIDA PERFECTA",
-        "image": "/assets/images/gallery/espai-gastronomic/castanya_plat.jpg",
-        "imageAlt": "Plat amb elaboracio de castanya",
-        "time": "25 minuts",
-        "difficulty": "mitja",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya bullida", "Brou vegetal"]
-      },
-      {
-        "title": "CREMA DE TARDOR",
-        "image": "/assets/images/gallery/espai-gastronomic/cake.jpg",
-        "imageAlt": "Preparacio casolana amb castanya",
-        "time": "35 minuts",
-        "difficulty": "mitja",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Farina de castanya", "Llet"]
-      },
-      {
-        "title": "GUARNICIO DE CASTANYA",
-        "image": "/assets/images/gallery/espai-gastronomic/castanya_camp.jpg",
-        "imageAlt": "Castanya al paisatge del Montseny",
-        "time": "15 minuts",
-        "difficulty": "facil",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya fresca", "Sal fina"]
-      }
-    ]
-  },
-  "healthySection": {
-    "title": "CUINA SALUDABLE I FIT",
-    "intro": "Energia natural i plats lleugers per cuidar-te sense renunciar al millor sabor.",
-    "ctaLabel": "VEURE TOTES",
-    "ctaHref": "/contact/",
-    "slides": [
-      {
-        "title": "COM HIDRATAR LA SECALLONA",
-        "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
-        "imageAlt": "Grup a l'entorn del bosc de castanyers",
-        "time": "20 minuts",
-        "difficulty": "facil",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya torrada", "Farina de castanya"]
-      },
-      {
-        "title": "COM HIDRATAR LA SECALLONA",
-        "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
-        "imageAlt": "Sessio practica amb castanya al Montseny",
-        "time": "20 minuts",
-        "difficulty": "facil",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya torrada", "Farina de castanya"]
-      },
-      {
-        "title": "COM HIDRATAR LA SECALLONA",
-        "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
-        "imageAlt": "Taller gastronomic amb castanya",
-        "time": "20 minuts",
-        "difficulty": "facil",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya torrada", "Farina de castanya"]
-      },
-      {
-        "title": "POSTRES MES LLEUGERES",
-        "image": "/assets/images/gallery/espai-gastronomic/baixa_en_greixos.jpg",
-        "imageAlt": "Castanya preparada per a recepta saludable",
-        "time": "30 minuts",
-        "difficulty": "facil",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya", "Oli d'oliva"]
-      },
-      {
-        "title": "TEXTURA PER A POSTRES",
-        "image": "/assets/images/gallery/espai-gastronomic/cake.jpg",
-        "imageAlt": "Postres amb castanya",
-        "time": "35 minuts",
-        "difficulty": "mitja",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Farina de castanya", "Xocolata"]
-      },
-      {
-        "title": "CASTANYA DE TEMPORADA",
-        "image": "/assets/images/gallery/espai-gastronomic/castanya_camp.jpg",
-        "imageAlt": "Castanya al paisatge del Montseny",
-        "time": "15 minuts",
-        "difficulty": "facil",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya fresca", "Sal fina"]
-      }
-    ]
-  },
-  "sweetSection": {
-    "title": "MOMENT DOLÇ (REBOSTERIA FÀCIL)",
-    "intro": "Capritxos irresistibles i postres artesanes per endolcir els teus moments especials.",
-    "ctaLabel": "VEURE TOTES",
-    "ctaHref": "/gastronomic/receptes/resultats/?dishType=sweet",
-    "slides": [
-      {
-        "title": "CASTANYES CARAMEL·LITZADES",
-        "image": "/assets/images/gallery/receptes/castanyes-caramelitzades.png",
-        "imageAlt": "Castanyes caramel·litzades daurades amb mel i canyella",
-        "time": "30 minuts",
-        "difficulty": "facil",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanyes de Viladrau", "Mel artesana", "Canyella en branca"]
-      },
-      {
-        "title": "PANELLETS DE CASTANYA",
-        "image": "/assets/images/gallery/receptes/panellets-de-castanya.png",
-        "imageAlt": "Panellets de castanya amb pinyons daurats al forn",
-        "time": "45 minuts",
-        "difficulty": "facil",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanyes de Viladrau", "Pinyons", "Sucre"]
-      },
-      {
-        "title": "CÓC DE CREMA DE CASTANYES",
-        "image": "/assets/images/gallery/receptes/pastis-castanya.png",
-        "imageAlt": "Coc esponjós de crema de castanyes amb sucre llustre",
-        "time": "60 minuts",
-        "difficulty": "mitja",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Crema de castanya", "Farina d'espelta", "Oli d'oliva verge extra"]
-      },
-      {
-        "title": "MOUSSE DE CASTANYES I XOCOLATA",
-        "image": "/assets/images/gallery/receptes/mousse-castanyes-xocolata.png",
-        "imageAlt": "Mousse de castanyes i xocolata negra servida en copes",
-        "time": "40 minuts",
-        "difficulty": "mitja",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanyes de Viladrau", "Xocolata negra", "Clares d'ou"]
-      }
-    ]
-  },
-  "remediesSection": {
-    "title": "LA FARMACIOLA DEL BOSC: REMEIS TRADICIONALS AMB CASTANYER",
-    "intro": "Explorem l'us medicinal del castanyer de Viladrau, un arbre amb segles de saviesa en la cura de la salut.",
-    "ctaLabel": "VEURE TOTES",
-    "ctaHref": "/contact/",
-    "slides": [
-      {
-        "title": "COM HIDRATAR LA SECALLONA",
-        "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
-        "imageAlt": "Grup a l'entorn del bosc de castanyers",
-        "time": "20 minuts",
-        "difficulty": "facil",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya torrada", "Farina de castanya"]
-      },
-      {
-        "title": "COM HIDRATAR LA SECALLONA",
-        "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
-        "imageAlt": "Sessio practica amb castanya al Montseny",
-        "time": "20 minuts",
-        "difficulty": "facil",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya torrada", "Farina de castanya"]
-      },
-      {
-        "title": "COM HIDRATAR LA SECALLONA",
-        "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
-        "imageAlt": "Taller gastronomic amb castanya",
-        "time": "20 minuts",
-        "difficulty": "facil",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya torrada", "Farina de castanya"]
-      },
-      {
-        "title": "INFUSIO DE FULLA",
-        "image": "/assets/images/gallery/espai-gastronomic/castanya.jpg",
-        "imageAlt": "Castanya encara a l'arbre",
-        "time": "10 minuts",
-        "difficulty": "facil",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Fulla de castanyer", "Aigua"]
-      },
-      {
-        "title": "US TRADICIONAL DEL FRUIT",
-        "image": "/assets/images/gallery/espai-gastronomic/castanya_camp.jpg",
-        "imageAlt": "Castanya al paisatge del Montseny",
-        "time": "15 minuts",
-        "difficulty": "facil",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya fresca", "Mel"]
-      },
-      {
-        "title": "REMEI DE TEMPORADA",
-        "image": "/assets/images/gallery/espai-gastronomic/recollida.jpg",
-        "imageAlt": "Recollida i triatge manual",
-        "time": "20 minuts",
-        "difficulty": "facil",
-        "ingredientsLabel": "INGREDIENTS",
-        "ingredients": ["Castanya seleccionada", "Aigua"]
-      }
-    ]
+  "es": {
+    "hero": {
+      "title": "RECETAS CON CASTAÑA DE&nbsp;VILADRAU\nCOCINA LA ESENCIA DEL MONTSENY EN&nbsp;CASA",
+      "text": "Desde la tradición de la castañada hasta sorprendentes platos para todo el año. Descubre cómo llevar el sabor del bosque a tu mesa de forma fácil y saludable.",
+      "backgroundImage": "/assets/images/gallery/espai-gastronomic/castanya_receptes.png",
+      "backgroundAlt": "Ingredientes y castañas sobre la mesa"
+    },
+    "filtersBar": {
+      "searchLabel": "BUSCA RECETA"
+    },
+    "foundationsSection": {
+      "title": "ENTRANTES CON CASTAÑA DE VILADRAU",
+      "intro": "Entrantes elegantes y llenos de sabor para empezar cualquier comida de otoño. La castaña de Viladrau como protagonista de primer plato.",
+      "ctaLabel": "VER TODAS",
+      "ctaHref": "/es/gastronomic/receptes/resultats/?dishType=foundations",
+      "slides": [
+        {
+          "title": "CREMA DE CASTAÑAS",
+          "image": "/assets/images/gallery/receptes/crema-de-castanyes.png",
+          "imageAlt": "Crema de castañas servida caliente con guarnición",
+          "time": "120 minutos",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Castañas de Viladrau",
+            "Caldo de pollo",
+            "Nata líquida"
+          ]
+        },
+        {
+          "title": "RISOTTO DE CASTAÑAS Y SETAS",
+          "image": "/assets/images/gallery/receptes/risotto-castanyes-bolets.png",
+          "imageAlt": "Risotto cremoso de castañas y setas de temporada",
+          "time": "40 minutos",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Castañas cocidas",
+            "Setas variadas",
+            "Arroz para risotto"
+          ]
+        },
+        {
+          "title": "PASTEL SALADO DE CEBOLLA CON CASTAÑAS Y HIERBAS AROMÁTICAS",
+          "image": "/assets/images/gallery/receptes/pastis-salat-ceba-castanyes.png",
+          "imageAlt": "Pastel salado de cebolla roja con castañas y hierbas",
+          "time": "40 minutos",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Castañas de Viladrau",
+            "Cebolla roja",
+            "Pasta de hojaldre"
+          ]
+        },
+        {
+          "title": "NIDO DE CASTAÑAS CON HUEVO DE CALABAZA Y SALSAS DE BONIATO",
+          "image": "/assets/images/gallery/receptes/niu-castanyes-ou-carabassa.png",
+          "imageAlt": "Nido de puré de castañas con huevo de calabaza y salsas de boniato",
+          "time": "90 minutos",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Castañas de Viladrau",
+            "Calabaza",
+            "Boniato"
+          ]
+        }
+      ]
+    },
+    "homeTraditionsSection": {
+      "title": "PLATOS PRINCIPALES CON CASTAÑA DE VILADRAU",
+      "intro": "Platos consistentes y cocina de mercado que convierten la castaña en el alma de cada comida. Del campo a la mesa, con todo el sabor del Montseny.",
+      "ctaLabel": "VER TODAS",
+      "ctaHref": "/es/gastronomic/receptes/resultats/?dishType=homeTraditions",
+      "slides": [
+        {
+          "title": "CARNE CON SALSA DE CASTAÑAS",
+          "image": "/assets/images/gallery/receptes/carn-salsa-castanyes.png",
+          "imageAlt": "Solomillo de ternera con salsa intensa de castañas y Pedro Ximénez",
+          "time": "45 minutos",
+          "difficulty": "dificil",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Solomillo de ternera",
+            "Castañas cocidas",
+            "Pedro Ximénez"
+          ]
+        },
+        {
+          "title": "POLLO ASADO CON CASTAÑAS",
+          "image": "/assets/images/gallery/receptes/pollastre-rostit-castanyes.png",
+          "imageAlt": "Pollo asado al horno con castañas y hierbas aromáticas",
+          "time": "75 minutos",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Pollo",
+            "Castañas de Viladrau",
+            "Vino blanco"
+          ]
+        },
+        {
+          "title": "ALBÓNDIGAS CON CASTAÑAS Y SETAS",
+          "image": "/assets/images/gallery/receptes/mandonguilles-castanyes-bolets.png",
+          "imageAlt": "Albóndigas en salsa de vino rancio con castañas y setas",
+          "time": "75 minutos",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Carne de cerdo y ternera",
+            "Castañas cocidas",
+            "Setas variadas"
+          ]
+        }
+      ]
+    },
+    "classicsSection": {
+      "title": "LOS CLÁSICOS QUE NUNCA FALLAN",
+      "intro": "Las recetas de toda la vida con el sello de autenticidad del Montseny",
+      "ctaLabel": "VER TODAS",
+      "ctaHref": "/es/contact/",
+      "slides": [
+        {
+          "title": "CÓMO HIDRATAR LA SECALLONA",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Grupo en el entorno del bosque de castaños",
+          "time": "20 minutos",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Castaña tostada",
+            "Harina de castaña"
+          ]
+        },
+        {
+          "title": "CÓMO HIDRATAR LA SECALLONA",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Sesión práctica con castaña en el Montseny",
+          "time": "20 minutos",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Castaña tostada",
+            "Harina de castaña"
+          ]
+        },
+        {
+          "title": "CÓMO HIDRATAR LA SECALLONA",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Taller gastronómico con castaña",
+          "time": "20 minutos",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Castaña tostada",
+            "Harina de castaña"
+          ]
+        },
+        {
+          "title": "CASTAÑA HERVIDA PERFECTA",
+          "image": "/assets/images/gallery/espai-gastronomic/castanya_plat.jpg",
+          "imageAlt": "Plato con elaboración de castaña",
+          "time": "25 minutos",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Castaña hervida",
+            "Caldo vegetal"
+          ]
+        },
+        {
+          "title": "CREMA DE OTOÑO",
+          "image": "/assets/images/gallery/espai-gastronomic/cake.jpg",
+          "imageAlt": "Preparación casera con castaña",
+          "time": "35 minutos",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Harina de castaña",
+            "Leche"
+          ]
+        },
+        {
+          "title": "GUARNICIÓN DE CASTAÑA",
+          "image": "/assets/images/gallery/espai-gastronomic/castanya_camp.jpg",
+          "imageAlt": "Castaña en el paisaje del Montseny",
+          "time": "15 minutos",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Castaña fresca",
+            "Sal fina"
+          ]
+        }
+      ]
+    },
+    "healthySection": {
+      "title": "COCINA SALUDABLE Y FIT",
+      "intro": "Energía natural y platos ligeros para cuidarte sin renunciar al mejor sabor.",
+      "ctaLabel": "VER TODAS",
+      "ctaHref": "/es/contact/",
+      "slides": [
+        {
+          "title": "CÓMO HIDRATAR LA SECALLONA",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Grupo en el entorno del bosque de castaños",
+          "time": "20 minutos",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Castaña tostada",
+            "Harina de castaña"
+          ]
+        },
+        {
+          "title": "CÓMO HIDRATAR LA SECALLONA",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Sesión práctica con castaña en el Montseny",
+          "time": "20 minutos",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Castaña tostada",
+            "Harina de castaña"
+          ]
+        },
+        {
+          "title": "CÓMO HIDRATAR LA SECALLONA",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Taller gastronómico con castaña",
+          "time": "20 minutos",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Castaña tostada",
+            "Harina de castaña"
+          ]
+        },
+        {
+          "title": "POSTRES MÁS LIGEROS",
+          "image": "/assets/images/gallery/espai-gastronomic/baixa_en_greixos.jpg",
+          "imageAlt": "Castaña preparada para receta saludable",
+          "time": "30 minutos",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Castaña",
+            "Aceite de oliva"
+          ]
+        },
+        {
+          "title": "TEXTURA PARA POSTRES",
+          "image": "/assets/images/gallery/espai-gastronomic/cake.jpg",
+          "imageAlt": "Postre con castaña",
+          "time": "35 minutos",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Harina de castaña",
+            "Chocolate"
+          ]
+        },
+        {
+          "title": "CASTAÑA DE TEMPORADA",
+          "image": "/assets/images/gallery/espai-gastronomic/castanya_camp.jpg",
+          "imageAlt": "Castaña en el paisaje del Montseny",
+          "time": "15 minutos",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Castaña fresca",
+            "Sal fina"
+          ]
+        }
+      ]
+    },
+    "sweetSection": {
+      "title": "MOMENTO DULCE (REPOSTERÍA FÁCIL)",
+      "intro": "Caprichos irresistibles y postres artesanos para endulzar tus momentos especiales.",
+      "ctaLabel": "VER TODAS",
+      "ctaHref": "/es/gastronomic/receptes/resultats/?dishType=sweet",
+      "slides": [
+        {
+          "title": "CASTAÑAS CARAMELIZADAS",
+          "image": "/assets/images/gallery/receptes/castanyes-caramelitzades.png",
+          "imageAlt": "Castañas caramelizadas doradas con miel y canela",
+          "time": "30 minutos",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Castañas de Viladrau",
+            "Miel artesana",
+            "Canela en rama"
+          ]
+        },
+        {
+          "title": "PANELLETS DE CASTAÑA",
+          "image": "/assets/images/gallery/receptes/panellets-de-castanya.png",
+          "imageAlt": "Panellets de castaña con piñones dorados al horno",
+          "time": "45 minutos",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Castañas de Viladrau",
+            "Piñones",
+            "Azúcar"
+          ]
+        },
+        {
+          "title": "BIZCOCHO DE CREMA DE CASTAÑAS",
+          "image": "/assets/images/gallery/receptes/pastis-castanya.png",
+          "imageAlt": "Bizcocho esponjoso de crema de castañas con azúcar glas",
+          "time": "60 minutos",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Crema de castaña",
+            "Harina de espelta",
+            "Aceite de oliva virgen extra"
+          ]
+        },
+        {
+          "title": "MOUSSE DE CASTAÑAS Y CHOCOLATE",
+          "image": "/assets/images/gallery/receptes/mousse-castanyes-xocolata.png",
+          "imageAlt": "Mousse de castañas y chocolate negro servida en copas",
+          "time": "40 minutos",
+          "difficulty": "mitja",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Castañas de Viladrau",
+            "Chocolate negro",
+            "Claras de huevo"
+          ]
+        }
+      ]
+    },
+    "remediesSection": {
+      "title": "LA FARMACIA DEL BOSQUE: REMEDIOS TRADICIONALES CON CASTAÑO",
+      "intro": "Exploramos el uso medicinal del castaño de Viladrau, un árbol con siglos de sabiduría en el cuidado de la salud.",
+      "ctaLabel": "VER TODAS",
+      "ctaHref": "/es/contact/",
+      "slides": [
+        {
+          "title": "CÓMO HIDRATAR LA SECALLONA",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Grupo en el entorno del bosque de castaños",
+          "time": "20 minutos",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Castaña tostada",
+            "Harina de castaña"
+          ]
+        },
+        {
+          "title": "CÓMO HIDRATAR LA SECALLONA",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Sesión práctica con castaña en el Montseny",
+          "time": "20 minutos",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Castaña tostada",
+            "Harina de castaña"
+          ]
+        },
+        {
+          "title": "CÓMO HIDRATAR LA SECALLONA",
+          "image": "/assets/images/gallery/espai-gastronomic/cotxe.jpg",
+          "imageAlt": "Taller gastronómico con castaña",
+          "time": "20 minutos",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Castaña tostada",
+            "Harina de castaña"
+          ]
+        },
+        {
+          "title": "INFUSIÓN DE HOJA",
+          "image": "/assets/images/gallery/espai-gastronomic/castanya.jpg",
+          "imageAlt": "Castaña todavía en el árbol",
+          "time": "10 minutos",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Hoja de castaño",
+            "Agua"
+          ]
+        },
+        {
+          "title": "USO TRADICIONAL DEL FRUTO",
+          "image": "/assets/images/gallery/espai-gastronomic/castanya_camp.jpg",
+          "imageAlt": "Castaña en el paisaje del Montseny",
+          "time": "15 minutos",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Castaña fresca",
+            "Miel"
+          ]
+        },
+        {
+          "title": "REMEDIO DE TEMPORADA",
+          "image": "/assets/images/gallery/espai-gastronomic/recollida.jpg",
+          "imageAlt": "Recogida y selección manual",
+          "time": "20 minutos",
+          "difficulty": "facil",
+          "ingredientsLabel": "INGREDIENTES",
+          "ingredients": [
+            "Castaña seleccionada",
+            "Agua"
+          ]
+        }
+      ]
+    }
   }
 }

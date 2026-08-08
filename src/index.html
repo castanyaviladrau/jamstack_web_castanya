@@ -45,7 +45,9 @@ name: home
   </div>
 </section>
 
+{% set lang = page.url | pageLang %}
 {% set homeCategories = shopCategories | default([]) %}
+{% set catalogUrl = '/es/shop/products/catalog/' if lang == 'es' else '/shop/products/catalog/' %}
 
 <section class="botiga-section-updated unified-bg">
   <div class="botiga-header-centered block-content-style">
@@ -69,17 +71,19 @@ name: home
   <div class="gallery-container">
     <div class="gallery-scroll" id="galleryScroll">
       {% for category in homeCategories %}
-        <a href="/shop/products/catalog/?category={{ category.slug }}" class="gallery-item">
+        {% set categoryTitle = category.titleEs if lang == 'es' else category.title %}
+        {% set categoryImageAlt = category.imageAltEs if lang == 'es' else category.imageAlt %}
+        <a href="{{ catalogUrl }}?category={{ category.slug }}" class="gallery-item">
           <img
             src="{{ category.image }}"
-            alt="{{ category.imageAlt or category.title }}"
+            alt="{{ categoryImageAlt or categoryTitle }}"
             class="item-img"
             width="322"
             height="372"
             loading="lazy"
             decoding="async"
           >
-          <span class="item-name">{{ category.title }}</span>
+          <span class="item-name">{{ categoryTitle }}</span>
         </a>
       {% endfor %}
     </div>
@@ -158,7 +162,7 @@ name: home
     <h2 class="hero-title-elegant home-section-title block_content_style__title">L’ÚLTIM A LA CASTANYA DE VILADRAU</h2>
     <p class="home-section-description block_content_style__description">Receptes, nous productes i històries de la vida al Montseny.</p>
 
-    {% set latestPosts = collections.posts | head(3) %}
+    {% set latestPosts = collections.posts | filterByLang(lang) | head(3) %}
 
     <div class="actualitat-home-grid" aria-label="Últimes publicacions">
       {% for post in latestPosts %}

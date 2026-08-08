@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="{{ site.language }}">
+<html lang="{{ page.url | pageLang }}">
 
   {% include "head.html" %}
 
-  <body class="{% if page.url == '/' %}home{% else %}internal{% endif %}{% if name %} page-{{ name }}{% endif %}">
+  <body class="{% if page.url == '/' or page.url == '/es/' %}home{% else %}internal{% endif %}{% if name %} page-{{ name }}{% endif %}">
     <script>
       (function () {
         try {
@@ -23,20 +23,19 @@
 
       {% include "footer.html" %}
 
+      {% set lang = page.url | pageLang %}
       <section
         class="cookie-banner"
         id="cookieBanner"
-        aria-label="Avís de cookies"
+        aria-label="{{ i18n[lang].cookieAria }}"
         hidden
       >
         <div class="cookie-banner__inner">
           <div class="cookie-banner__copy">
-            <p class="cookie-banner__eyebrow">Cookies</p>
+            <p class="cookie-banner__eyebrow">{{ i18n[lang].cookieEyebrow }}</p>
             <p class="cookie-banner__text">
-              Utilitzem cookies pròpies i de tercers per millorar la navegació,
-              analitzar l'ús del web i oferir una experiència més rellevant.
-              Pots acceptar-les, rebutjar-les o consultar-ne el detall a la
-              <a href="/politica-de-cookies/">política de cookies</a>.
+              {{ i18n[lang].cookieTextPre }}
+              <a href="{% if lang == 'es' %}/es/politica-de-cookies/{% else %}/politica-de-cookies/{% endif %}">{{ i18n[lang].cookieLinkLabel }}</a>.
             </p>
           </div>
           <div class="cookie-banner__actions">
@@ -45,14 +44,14 @@
               class="cookie-banner__button cookie-banner__button--secondary"
               data-cookie-action="reject"
             >
-              Rebutjar
+              {{ i18n[lang].cookieReject }}
             </button>
             <button
               type="button"
               class="cookie-banner__button cookie-banner__button--primary"
               data-cookie-action="accept"
             >
-              Acceptar
+              {{ i18n[lang].cookieAccept }}
             </button>
           </div>
         </div>

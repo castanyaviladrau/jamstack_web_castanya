@@ -1,0 +1,339 @@
+---
+layout: base
+title: "Tienda"
+seoTitle: "Tienda | Productos de castaña artesanos de Castanya de Viladrau"
+description: "Compra productos artesanos de castaña de Castanya de Viladrau, elaborados en el Montseny con respeto por el territorio y disponibles todo el año."
+seoImage: /assets/images/gallery/elaborats.jpg
+name: botiga
+footerVariant: projecte-newsletter
+lang: es
+---
+
+{% set lang = page.url | pageLang %}
+{% set productsList = collections.products | default([]) | filterByLang(lang) %}
+{% set catalogUrl = '/es/shop/products/catalog/' if lang == 'es' else '/shop/products/catalog/' %}
+
+<section class="shop-page-hero">
+  <img
+    src="/assets/images/gallery/botiga/botiga_hero.png"
+    alt="Productos artesanos de Castanya de Viladrau"
+    class="shop-page-hero__image"
+  />
+  <div class="shop-page-hero__overlay"></div>
+  <div class="shop-page-hero__content">
+    <span class="shop-page-hero__kicker">TIENDA</span>
+    <h1 class="shop-page-hero__title">
+      EL SABOR AUTÉNTICO DEL<br />
+      MONTSENY, EN TU MESA
+    </h1>
+    <p class="shop-page-hero__text">
+      Productos artesanos de castaña 100 % locales, hechos con respeto por el bosque y
+      la tradición.
+    </p>
+  </div>
+</section>
+
+{% include "shop-filter-bar.njk" %}
+
+<section class="shop-page-categories" aria-labelledby="shop-categories-title">
+  <div class="shop-page-categories__header">
+    <p class="shop-page-products__kicker block_title_style block_title_style--label">TIENDA</p>
+    <div class="shop-page-categories__title-row">
+      <button
+        type="button"
+        class="nav-arrow-inline left shop-page-categories__arrow"
+        id="shopCategoriesPrev"
+        aria-label="Categorías anteriores"
+      >
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <h2 id="shop-categories-title" class="shop-page-products__title block_title_style">
+        ELIGE TU CATEGORÍA
+      </h2>
+      <button
+        type="button"
+        class="nav-arrow-inline right shop-page-categories__arrow"
+        id="shopCategoriesNext"
+        aria-label="Categorías siguientes"
+      >
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+    <p class="shop-page-products__subtitle block_title_style block_title_style--copy">
+      Castañas para los 365 días del año
+    </p>
+  </div>
+
+  <div class="shop-page-categories__scroller" id="shopCategoriesCarousel">
+    {% for category in shopCategories %}
+    {% set categoryTitle = category.titleEs if lang == 'es' else category.title %}
+    {% set categoryDescription = category.descriptionEs if lang == 'es' else category.description %}
+    {% set categoryImageAlt = category.imageAltEs if lang == 'es' else category.imageAlt %}
+    <a
+      href="{{ catalogUrl }}?category={{ category.slug }}"
+      class="shop-page-category-card gallery-item"
+    >
+      <span class="shop-page-category-card__media">
+        <img
+          src="{{ category.image }}"
+          alt="{{ categoryImageAlt }}"
+          class="shop-page-category-card__image"
+        />
+      </span>
+      <span class="shop-page-category-card__content">
+        <span class="shop-page-category-card__title">{{ categoryTitle }}</span>
+        <span class="shop-page-category-card__description"
+          >{{ categoryDescription }}</span
+        >
+        <span class="shop-page-category-card__cta">{% if lang == 'es' %}Ver productos{% else %}Veure productes{% endif %}</span>
+      </span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="shop-page-seasonal" aria-labelledby="shop-seasonal-title">
+  <img
+    src="/assets/images/gallery/botiga/botiga_chocolate.png"
+    alt="Dulces artesanos con castaña"
+    class="shop-page-seasonal__image"
+  />
+  <div class="shop-page-seasonal__overlay"></div>
+  <div class="shop-page-seasonal__content">
+    <p class="shop-page-seasonal__kicker">PRODUCTOS EXCLUSIVOS DE TEMPORADA</p>
+    <h2 id="shop-seasonal-title" class="shop-page-seasonal__title">
+      ROCAS DE<br />
+      CHOCOLATE
+    </h2>
+    <p class="shop-page-seasonal__text">
+      Nuestro marron glacé, ahora en chocolate negro. Tu nueva tentación.
+    </p>
+    <a href="/es/contact/" class="shop-page-seasonal__cta"
+      >CONTACTA CON NOSOTROS</a
+    >
+  </div>
+</section>
+
+<section class="shop-page-commitment" aria-labelledby="shop-commitment-title">
+  <div class="shop-page-commitment__frame">
+    <div class="shop-page-commitment__inner">
+      <h2 id="shop-commitment-title" class="shop-page-commitment__title">
+        NUESTRO COMPROMISO
+      </h2>
+
+      <div class="shop-page-commitment__grid">
+        <article class="shop-page-commitment-card">
+          <div class="shop-page-commitment-card__icon">
+            <img
+              src="/assets/images/gallery/botiga/botiga_location.png"
+              alt="Directo del productor"
+            />
+          </div>
+        </article>
+
+        <article class="shop-page-commitment-card">
+          <div class="shop-page-commitment-card__icon">
+            <img
+              src="/assets/images/gallery/botiga/botiga_natural.png"
+              alt="100 % natural"
+            />
+          </div>
+        </article>
+
+        <article class="shop-page-commitment-card">
+          <div class="shop-page-commitment-card__icon">
+            <img
+              src="/assets/images/gallery/botiga/botiga_gestió.png"
+              alt="Gestión sostenible"
+            />
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="shop-page-featured" aria-labelledby="shop-featured-title">
+  <div class="shop-page-featured__header">
+    <div class="shop-page-featured__title-row">
+      <button
+        type="button"
+        class="nav-arrow-inline left shop-page-featured__arrow"
+        id="shopFeaturedPrev"
+        aria-label="Productos estrella anteriores"
+      >
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <h2 id="shop-featured-title" class="shop-page-products__title block_title_style">
+        PRODUCTOS ESTRELLA
+      </h2>
+      <button
+        type="button"
+        class="nav-arrow-inline right shop-page-featured__arrow"
+        id="shopFeaturedNext"
+        aria-label="Productos estrella siguientes"
+      >
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+    <p class="shop-page-products__subtitle block_title_style block_title_style--copy">
+      Los productos que más gustan
+    </p>
+  </div>
+
+  <div class="shop-page-featured__scroller" id="shopFeaturedCarousel">
+    {% for product in productsList %} {% set productCategories =
+    product.data.categories | default([]) %} {% if 'productes-estrella' in
+    productCategories %} {% set productImage = product.data.image or '' %}
+    {% if not productImage or 'pending-product-image.svg' in productImage %}
+    {% set productImage = '/assets/images/gallery/elaborats.jpg' %} {% endif
+    %}
+    <a href="{{ product.url }}" class="shop-page-featured-product gallery-item">
+      <img
+        src="{{ productImage }}"
+        alt="{{ product.data.title }}"
+        class="shop-page-featured-product__image"
+      />
+      <h3 class="shop-page-featured-product__title">
+        {{ product.data.title | replace(' ', '<br />') | safe }}
+      </h3>
+      <p class="shop-page-featured-product__meta">
+        {{ product.data.availability }}
+      </p>
+      <p class="shop-page-featured-product__price">
+        {{ product.data.priceLabel or product.data.price }}
+      </p>
+    </a>
+    {% endif %} {% endfor %}
+  </div>
+
+  <a href="/es/shop/products/catalog/" class="shop-page-featured__cta">VER TODOS</a>
+</section>
+
+<section class="shop-page-editorial" aria-labelledby="shop-editorial-title">
+  <div class="shop-page-editorial__cards">
+    <article class="shop-page-editorial-card shop-page-editorial-card--product">
+      <img
+        src="/assets/images/gallery/botiga/botiga_castanya.jpg"
+        alt="Castaña recién asada"
+        class="shop-page-editorial-card__image"
+      />
+      <div class="shop-page-editorial-card__overlay"></div>
+      <div class="shop-page-editorial-card__content">
+        <p class="shop-page-editorial-card__kicker">CASTAÑA LOS 365 DÍAS DEL AÑO</p>
+        <h2 id="shop-editorial-title" class="shop-page-editorial-card__title">
+          EL CALOR DE LA CASTAÑADA,<br />
+          CUANDO TÚ QUIERAS.
+        </h2>
+        <p class="shop-page-editorial-card__text">
+          Disfruta del sabor auténtico de la castaña recién asada los 365
+          días del año. Abrir, calentar y sentir el Montseny en casa.
+        </p>
+        <a href="/es/shop/products/catalog/" class="shop-page-seasonal__cta">COMPRAR</a>
+      </div>
+    </article>
+
+    <article class="shop-page-editorial-card shop-page-editorial-card--visit">
+      <img
+        src="/assets/images/gallery/visites/visites_guiades_bg.jpg"
+        alt="Visitas guiadas al Montseny"
+        class="shop-page-editorial-card__image"
+      />
+      <div class="shop-page-editorial-card__overlay"></div>
+      <div class="shop-page-editorial-card__content">
+        <p class="shop-page-editorial-card__kicker">VISITAS GUIADAS</p>
+        <h2 class="shop-page-editorial-card__title">
+          VIVE EL MONTSENY: RESERVA<br />
+          DE LA BIOSFERA
+        </h2>
+        <p class="shop-page-editorial-card__text">
+          Descubre los árboles centenarios del Montseny. Vive el turismo
+          consciente y ayuda a preservar la naturaleza mientras respiras aire puro.
+        </p>
+        <a href="/es/visits/" class="shop-page-seasonal__cta">VER VISITAS GUIADAS</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="shop-page-gifts" aria-labelledby="shop-gifts-title">
+  <div class="shop-page-gifts__header">
+    <div class="shop-page-gifts__title-row">
+      <button
+        type="button"
+        class="nav-arrow-inline left shop-page-gifts__arrow"
+        id="shopGiftsPrev"
+        aria-label="Packs anteriores"
+      >
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <h2 id="shop-gifts-title" class="shop-page-products__title block_title_style">
+        PACKS Y REGALOS
+      </h2>
+      <button
+        type="button"
+        class="nav-arrow-inline right shop-page-gifts__arrow"
+        id="shopGiftsNext"
+        aria-label="Packs siguientes"
+      >
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+    <p class="shop-page-products__subtitle block_title_style block_title_style--copy">
+      Lotes y packs de regalo de la Castanya de Viladrau: la esencia artesana
+      del Montseny en tu casa.
+    </p>
+  </div>
+
+  <div class="shop-page-gifts__scroller" id="shopGiftsCarousel">
+    {% for product in productsList %} {% set homepageTags =
+    product.data.homepageTags | default([]) %} {% if 'pack-regalo' in
+    homepageTags %} {% set productCategories = product.data.categories |
+    default([]) %} {% set productImage = product.data.image or '' %} {% if not
+    productImage or 'pending-product-image.svg' in productImage %} {% if
+    'packs' in productCategories %} {% set productImage =
+    '/assets/images/gallery/botiga/botiga_productes.png' %} {% else %} {% set
+    productImage = '/assets/images/gallery/elaborats.jpg' %} {% endif %} {%
+    endif %}
+    <a href="{{ product.url }}" class="shop-page-featured-product gallery-item">
+      <img
+        src="{{ productImage }}"
+        alt="{{ product.data.title }}"
+        class="shop-page-featured-product__image"
+      />
+      <h3 class="shop-page-featured-product__title">
+        {{ product.data.title | replace(' ', '<br />') | safe }}
+      </h3>
+      <p class="shop-page-featured-product__meta">
+        {{ product.data.availability }}
+      </p>
+      <p class="shop-page-featured-product__price">
+        {{ product.data.priceLabel or product.data.price }}
+      </p>
+    </a>
+    {% endif %} {% endfor %}
+  </div>
+
+  <a href="/es/shop/products/catalog/" class="shop-page-featured__cta">VER TODOS</a>
+</section>
+
+<section
+  class="shop-page-professionals"
+  aria-labelledby="shop-professionals-title"
+>
+  <img
+    src="/assets/images/gallery/botiga/botiga_productes.png"
+    alt="Tarifas para profesionales"
+    class="shop-page-professionals__image"
+  />
+  <div class="shop-page-professionals__overlay"></div>
+  <div class="shop-page-professionals__content block-content-style">
+    <h2 id="shop-professionals-title" class="shop-page-professionals__title">
+      ¿ERES UNA TIENDA O UN RESTAURANTE?<br />
+      CONSULTA NUESTRAS TARIFAS PARA PROFESIONALES.
+    </h2>
+    <a href="/es/contact/" class="shop-page-professionals__cta"
+      >PIDE LOS PRECIOS PROFESIONALES</a
+    >
+  </div>
+</section>

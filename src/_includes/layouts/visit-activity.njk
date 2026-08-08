@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="{{ site.language }}">
+<html lang="{{ page.url | pageLang }}">
 
   {% include "head.html" %}
 
+  {% set lang = page.url | pageLang %}
+  {% set visitsIndexUrl = '/es/visits/' if lang == 'es' else '/visits/' %}
+
   <body class="internal page-visit-activity{% if name %} page-{{ name }}{% endif %}">
     {% include "header.html" %}
-    <aside class="visit-reservation-banner" aria-label="Reserva la visita">
+    <aside class="visit-reservation-banner" aria-label="{{ i18n[lang].visitReservationAria }}">
       <div class="visit-reservation-banner__inner">
         <p class="visit-reservation-banner__prompt">{{ reservationPrompt }}</p>
         <div class="visit-reservation-banner__actions">
@@ -22,7 +25,7 @@
           {% endif %}
 
           {% if emailAddress %}
-          <a href="mailto:{{ emailAddress }}" class="visit-reservation-banner__icon" aria-label="Email">
+          <a href="mailto:{{ emailAddress }}" class="visit-reservation-banner__icon" aria-label="{{ i18n[lang].emailAria }}">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <rect x="3" y="5" width="18" height="14" rx="2"></rect>
               <path d="m4 7 8 6 8-6"></path>
@@ -34,7 +37,7 @@
           <a
             href="tel:{{ phoneNumber | replace(' ', '') }}"
             class="visit-reservation-banner__icon"
-            aria-label="Telefon"
+            aria-label="{{ i18n[lang].telefonAria }}"
           >
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path
@@ -51,7 +54,7 @@
             aria-haspopup="dialog"
             aria-controls="visitBookingModal"
           >
-            RESERVA
+            {{ i18n[lang].visitReserveButton }}
           </button>
         </div>
       </div>
@@ -67,11 +70,11 @@
 
           <div class="hero-content-overlay visit-activity-hero__overlay">
             <div class="visit-activity-hero__content">
-              <a href="/visits/" class="visit-activity-hero__back">
+              <a href="{{ visitsIndexUrl }}" class="visit-activity-hero__back">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M19 12H5m6-6-6 6 6 6" />
                 </svg>
-                <span>Tornar</span>
+                <span>{{ i18n[lang].visitBack }}</span>
               </a>
               <h1 class="visit-activity-hero__title">{{ title }}</h1>
 
@@ -99,7 +102,7 @@
                 <a
                   href="mailto:{{ emailAddress }}"
                   class="visit-activity-hero__icon"
-                  aria-label="Email"
+                  aria-label="{{ i18n[lang].emailAria }}"
                 >
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <rect x="3" y="5" width="18" height="14" rx="2"></rect>
@@ -112,7 +115,7 @@
                 <a
                   href="tel:{{ phoneNumber | replace(' ', '') }}"
                   class="visit-activity-hero__icon"
-                  aria-label="Telefon"
+                  aria-label="{{ i18n[lang].telefonAria }}"
                 >
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path
@@ -129,19 +132,19 @@
                   aria-haspopup="dialog"
                   aria-controls="visitBookingModal"
                 >
-                  RESERVA
+                  {{ i18n[lang].visitReserveButton }}
                 </button>
               </div>
             </div>
 
-            <div class="visit-activity-hero__reserve-bar" aria-label="Condicions de reserva">
+            <div class="visit-activity-hero__reserve-bar" aria-label="{{ i18n[lang].visitReserveBarAria }}">
               <p class="visit-activity-hero__reserve-row">
-                <span class="visit-activity-hero__reserve-label">RESERVA ARA I PAGA DESPRÉS</span>
-                <span class="visit-activity-hero__reserve-text">Reserva plaça mantenint la flexibilitat</span>
+                <span class="visit-activity-hero__reserve-label">{{ i18n[lang].visitReserveBarLabel1 }}</span>
+                <span class="visit-activity-hero__reserve-text">{{ i18n[lang].visitReserveBarText1 }}</span>
               </p>
               <p class="visit-activity-hero__reserve-row">
-                <span class="visit-activity-hero__reserve-label">POLÍTICA DE CANCEL·LACIÓ FLEXIBLE</span>
-                <span class="visit-activity-hero__reserve-text">Fins a 48 hores abans de la visita</span>
+                <span class="visit-activity-hero__reserve-label">{{ i18n[lang].visitReserveBarLabel2 }}</span>
+                <span class="visit-activity-hero__reserve-text">{{ i18n[lang].visitReserveBarText2 }}</span>
               </p>
             </div>
           </div>
@@ -156,7 +159,7 @@
                 class="visit-activity-facts__icon"
               />
               <div>
-                <strong>De {{ personsMin }} a {{ personsMax }} persones</strong>
+                <strong>{{ i18n[lang].visitDe }} {{ personsMin }} {{ i18n[lang].visitA }} {{ personsMax }} {{ i18n[lang].visitPersones }}</strong>
               </div>
             </div>
             <div class="visit-activity-facts__item">
@@ -176,7 +179,7 @@
                 class="visit-activity-facts__icon"
               />
               <div>
-                <strong>A partir de {{ priceFrom }}</strong>
+                <strong>{{ i18n[lang].visitPriceFromLabel }} {{ priceFrom }}</strong>
                 <small>{{ priceNote }}</small>
               </div>
             </div>
@@ -217,7 +220,7 @@
           <div class="visit-activity-body__inner">
             <div class="visit-activity-body__main">
               <details class="visit-activity-accordion" open>
-                <summary class="block_heavy_content_style">DESCRIPCIO GENERAL</summary>
+                <summary class="block_heavy_content_style">{{ i18n[lang].visitAccordionOverview }}</summary>
                 <div class="visit-activity-accordion__content block_heavy_content_style">
                   {% if overviewIntro %}
                   <p class="visit-activity-body__intro">{{ overviewIntro }}</p>
@@ -227,21 +230,21 @@
               </details>
 
               <details class="visit-activity-accordion">
-                <summary class="block_heavy_content_style">SERVEIS INCLOSOS</summary>
+                <summary class="block_heavy_content_style">{{ i18n[lang].visitAccordionServices }}</summary>
                 <div class="visit-activity-accordion__content prose block_heavy_content_style">
                   {{ includedServices | markdownify | safe }}
                 </div>
               </details>
 
               <details class="visit-activity-accordion">
-                <summary class="block_heavy_content_style">TROBADA I PUNT DE RECOLLIDA</summary>
+                <summary class="block_heavy_content_style">{{ i18n[lang].visitAccordionMeeting }}</summary>
                 <div class="visit-activity-accordion__content prose block_heavy_content_style">
                   {{ meetingPoint | markdownify | safe }}
                 </div>
               </details>
 
               <details class="visit-activity-accordion">
-                <summary class="block_heavy_content_style">INFORMACIO ADDICIONAL</summary>
+                <summary class="block_heavy_content_style">{{ i18n[lang].visitAccordionInfo }}</summary>
                 <div class="visit-activity-accordion__content prose block_heavy_content_style">
                   {{ additionalInfo | markdownify | safe }}
                 </div>
@@ -251,7 +254,7 @@
 
             <aside class="visit-activity-sidebar">
               <section class="visit-activity-sidebar__section">
-                <h2 class="visit-activity-sidebar__title block_title_style">ITINERARI</h2>
+                <h2 class="visit-activity-sidebar__title block_title_style">{{ i18n[lang].visitItineraryTitle }}</h2>
                 <div class="visit-activity-timeline">
                   {% for item in itinerary %}
                   <div class="visit-activity-timeline__item">
@@ -266,11 +269,11 @@
               </section>
 
               <section class="visit-activity-sidebar__section">
-                <h2 class="visit-activity-sidebar__title block_title_style">PREUS X PERSONA</h2>
+                <h2 class="visit-activity-sidebar__title block_title_style">{{ i18n[lang].visitPricingTitle }}</h2>
                 <div class="visit-activity-pricing">
                   {% for item in pricing %}
                   <div class="visit-activity-pricing__row">
-                    <span class="block_heavy_content_style">{{ item.group }} persones</span>
+                    <span class="block_heavy_content_style">{{ item.group }} {{ i18n[lang].visitPricingSuffix }}</span>
                     <strong class="block_title_style">{{ item.price }}</strong>
                   </div>
                   {% endfor %}
@@ -292,18 +295,18 @@
               type="button"
               class="visit-booking-modal__close"
               data-booking-close="button"
-              aria-label="Tancar formulari"
+              aria-label="{{ i18n[lang].visitModalCloseAria }}"
             >
               <span aria-hidden="true">&times;</span>
             </button>
 
             <div class="visit-booking-modal__header">
-              <p class="visit-booking-cta__eyebrow">RESERVA ARA</p>
+              <p class="visit-booking-cta__eyebrow">{{ i18n[lang].visitModalEyebrow }}</p>
               <h2 id="visitBookingModalTitle" class="visit-booking-cta__title">
-                Sol.licita aquesta activitat
+                {{ i18n[lang].visitModalTitle }}
               </h2>
               <p class="visit-booking-modal__text">
-                Ens has seleccionat <strong>{{ title }}</strong>. Completa el formulari i t'enviarem una confirmacio al teu correu.
+                {{ i18n[lang].visitModalTextPre }} <strong>{{ title }}</strong>. {{ i18n[lang].visitModalTextPost }}
               </p>
             </div>
 
@@ -313,44 +316,44 @@
 
               <div class="contact-form__grid visit-booking-modal__grid">
                 <label class="contact-form__field">
-                  <span>Nom i cognoms</span>
-                  <input type="text" name="name" autocomplete="name" placeholder="Nom i cognoms" required />
+                  <span>{{ i18n[lang].visitFormName }}</span>
+                  <input type="text" name="name" autocomplete="name" placeholder="{{ i18n[lang].visitFormName }}" required />
                 </label>
 
                 <label class="contact-form__field">
-                  <span>Correu electronic</span>
-                  <input type="email" name="email" autocomplete="email" placeholder="correu@exemple.cat" required />
+                  <span>{{ i18n[lang].visitFormEmail }}</span>
+                  <input type="email" name="email" autocomplete="email" placeholder="{{ i18n[lang].visitFormEmailPlaceholder }}" required />
                 </label>
 
                 <label class="contact-form__field">
-                  <span>Telefon</span>
+                  <span>{{ i18n[lang].visitFormPhone }}</span>
                   <input type="tel" name="phone" autocomplete="tel" placeholder="600 123 456" />
                 </label>
 
                 <label class="contact-form__field">
-                  <span>Data preferida</span>
-                  <input type="text" name="preferredDate" placeholder="Per exemple, 14 de novembre" required />
+                  <span>{{ i18n[lang].visitFormDate }}</span>
+                  <input type="text" name="preferredDate" placeholder="{{ i18n[lang].visitFormDatePlaceholder }}" required />
                 </label>
 
                 <label class="contact-form__field">
-                  <span>Nombre de persones</span>
+                  <span>{{ i18n[lang].visitFormPersons }}</span>
                   <input type="number" name="partySize" min="1" step="1" placeholder="4" required />
                 </label>
 
                 <label class="contact-form__field">
-                  <span>Activitat</span>
+                  <span>{{ i18n[lang].visitFormActivity }}</span>
                   <input type="text" value="{{ title }}" readonly />
                 </label>
               </div>
 
               <label class="contact-form__field contact-form__field--full">
-                <span>Comentaris</span>
-                <textarea name="message" rows="5" placeholder="Explica'ns si prefereixes un horari concret o si hi ha alguna necessitat especial."></textarea>
+                <span>{{ i18n[lang].visitFormComments }}</span>
+                <textarea name="message" rows="5" placeholder="{{ i18n[lang].visitFormCommentsPlaceholder }}"></textarea>
               </label>
 
               <div class="contact-form__actions contact-form__actions--stacked visit-booking-modal__actions">
-                <button type="submit" class="btn-olive contact-form__submit">ENVIAR SOL·LICITUD</button>
-                <p class="visit-booking-modal__note">Et respondrem amb disponibilitat i detalls de reserva.</p>
+                <button type="submit" class="btn-olive contact-form__submit">{{ i18n[lang].visitFormSubmit }}</button>
+                <p class="visit-booking-modal__note">{{ i18n[lang].visitFormNote }}</p>
                 <p class="contact-form__status" data-booking-status aria-live="polite"></p>
               </div>
             </form>
@@ -382,7 +385,7 @@
                   data-experience-trigger
                   aria-haspopup="dialog"
                   aria-controls="visitExperienceModal{{ loop.index0 }}"
-                  aria-label="Mes informacio sobre {{ item.title }}"
+                  aria-label="{{ i18n[lang].visitExperienceMoreInfoAria }} {{ item.title }}"
                 ></button>
               </article>
 
@@ -399,7 +402,7 @@
                     type="button"
                     class="visit-experience-modal__close"
                     data-experience-close="button"
-                    aria-label="Tancar informacio"
+                    aria-label="{{ i18n[lang].visitExperienceModalAria }}"
                   >
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -407,7 +410,7 @@
                   <div id="visitExperienceModalDescription{{ loop.index0 }}" class="visit-experience-modal__text prose block_heavy_content_style">
                     {{ item.text | markdownify | safe }}
                   </div>
-                  <p class="visit-experience-modal__prompt">Demana'ns mes informacio!</p>
+                  <p class="visit-experience-modal__prompt">{{ i18n[lang].visitExperiencePrompt }}</p>
                 </div>
               </div>
               {% endfor %}
@@ -416,15 +419,15 @@
         </section>
         {% endif %}
 
-        <section class="visit-activity-more unified-bg" aria-label="Altres activitats">
+        <section class="visit-activity-more unified-bg" aria-label="{{ i18n[lang].visitMoreAria }}">
           <div class="visit-activity-more__inner">
             <div class="visit-activity-more__header">
-              <h2 class="visit-activity-more__title block_title_style">O MIRA'T AQUESTES ALTRES VISITES</h2>
-              <a href="/visits/" class="visit-activity-more__button">MIRAR TOTES ></a>
+              <h2 class="visit-activity-more__title block_title_style">{{ i18n[lang].visitMoreTitle }}</h2>
+              <a href="{{ visitsIndexUrl }}" class="visit-activity-more__button">{{ i18n[lang].visitMoreButton }}</a>
             </div>
             <div class="visit-activity-more__track">
               {% set shownActivities = 0 %}
-              {% for activity in collections.visitActivities %}
+              {% for activity in collections.visitActivities | filterByLang(lang) %}
               {% if activity.url != page.url and shownActivities < 3 %}
               <a href="{{ activity.url }}" class="visits-card-link visit-activity-more__link">
                 <article class="visits-card visit-activity-more__card">
@@ -455,7 +458,7 @@
                           <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
                           <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                         </svg>
-                        <span>De {{ activity.data.personsMin }} a {{ activity.data.personsMax }} persones</span>
+                        <span>{{ i18n[lang].visitDe }} {{ activity.data.personsMin }} {{ i18n[lang].visitA }} {{ activity.data.personsMax }} {{ i18n[lang].visitPersones }}</span>
                       </div>
                       <div class="visits-card__meta-item">
                         <svg
@@ -498,14 +501,14 @@
           {
             "@type": "ListItem",
             "position": 1,
-            "name": "Inici",
+            "name": {{ i18n[lang].breadcrumbHome | dump | safe }},
             "item": {{ site.url | dump | safe }}
           },
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "Visites guiades",
-            "item": {{ ('/visits/' | absoluteUrl(site.url)) | dump | safe }}
+            "name": {{ i18n[lang].breadcrumbVisites | dump | safe }},
+            "item": {{ (visitsIndexUrl | absoluteUrl(site.url)) | dump | safe }}
           },
           {
             "@type": "ListItem",

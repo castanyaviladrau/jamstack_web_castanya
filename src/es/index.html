@@ -1,0 +1,283 @@
+---
+layout: default
+footerVariant: home
+title: "Castanya de Viladrau"
+seoTitle: "Castanya de Viladrau | Productos artesanos, visitas guiadas y gastronomía en el Montseny"
+description: "Descubre Castanya de Viladrau: productos artesanos de castaña, visitas guiadas al Montseny y propuestas gastronómicas arraigadas al territorio."
+seoImage: /assets/images/gallery/index_background-1920.jpg
+name: home
+lang: es
+---
+
+<section class="hero-wrapper">
+  <picture>
+    <source
+      type="image/webp"
+      srcset="
+        /assets/images/gallery/index_background-640.webp   640w,
+        /assets/images/gallery/index_background-1024.webp 1024w,
+        /assets/images/gallery/index_background-1920.webp 1920w,
+        /assets/images/gallery/index_background-2560.webp 2560w
+      "
+      sizes="100vw"
+    >
+    <img
+      src="/assets/images/gallery/index_background-1920.jpg"
+      alt="Montseny"
+      class="hero-img"
+      width="1920"
+      height="1249"
+      fetchpriority="high"
+      decoding="async"
+    >
+  </picture>
+
+  <div class="hero-logo-group">
+    <img src="/assets/images/castanya.svg" alt="Castanya de Viladrau - Desde 2009" class="hero-central-logo">
+  </div>
+
+  <div class="hero-content-overlay">
+    <div class="hero-center-branding">
+      <h1 class="hero-title">EL LEGADO DEL MONTSENY*</h1>
+      <h2 class="hero-subtitle">EN TU MESA</h2>
+
+      <p class="hero-tagline">* Parque Natural del Montseny, Reserva de la Biosfera</p>
+    </div>
+  </div>
+</section>
+
+{% set lang = page.url | pageLang %}
+{% set homeCategories = shopCategories | default([]) %}
+{% set catalogUrl = '/es/shop/products/catalog/' if lang == 'es' else '/shop/products/catalog/' %}
+
+<section class="botiga-section-updated unified-bg">
+  <div class="botiga-header-centered block-content-style">
+    <span class="label-small">TIENDA</span>
+
+    <div class="title-nav-wrapper">
+      <button class="nav-arrow-inline left" id="prevBtn" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+
+      <h2 class="section-title-main section-title-main--products home-section-title block_title_style">NUESTROS PRODUCTOS</h2>
+
+      <button class="nav-arrow-inline right" id="nextBtn" aria-label="Next">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+
+    <p class="section-subtitle-italic home-section-description block_title_content">Castañas para los 365 días del año</p>
+  </div>
+
+  <div class="gallery-container">
+    <div class="gallery-scroll" id="galleryScroll">
+      {% for category in homeCategories %}
+        {% set categoryTitle = category.titleEs if lang == 'es' else category.title %}
+        {% set categoryImageAlt = category.imageAltEs if lang == 'es' else category.imageAlt %}
+        <a href="{{ catalogUrl }}?category={{ category.slug }}" class="gallery-item">
+          <img
+            src="{{ category.image }}"
+            alt="{{ categoryImageAlt or categoryTitle }}"
+            class="item-img"
+            width="322"
+            height="372"
+            loading="lazy"
+            decoding="async"
+          >
+          <span class="item-name">{{ categoryTitle }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="project-highlight-section unified-bg">
+  <div class="project-content-centered block-content-style block_content_style">
+    <span class="label-small block_content_style__eyebrow">SOBRE EL PROYECTO</span>
+
+    <h2 class="hero-title-elegant home-section-title block_content_style__title">
+      LA ÚNICA CASTAÑA 100 % CATALANA<br>Y ARTESANA, LOS 365 DÍAS DEL AÑO
+    </h2>
+
+    <div class="info-text-body-centered">
+      <p class="home-section-description block_content_style__description">Somos la única castaña 100 % catalana y artesana disponible todo el año. Desde el corazón del Parque Natural del Montseny, Reserva de la Biosfera, te acercamos el bosque al plato mientras tú nos ayudas a cuidarlo: cada producto impulsa la gestión forestal sostenible y la economía local de esta Reserva de la Biosfera.</p>
+    </div>
+
+    <!-- This button will now be perfectly centered -->
+    <a href="/es/projecte" class="btn-olive">CONOCE NUESTRO PROYECTO</a>
+  </div>
+</section>
+
+<section class="visites-guiades-hero home-banner-section">
+  <picture>
+    <source
+      type="image/webp"
+      srcset="
+        /assets/images/gallery/banner-parc-natural-640.webp   640w,
+        /assets/images/gallery/banner-parc-natural-1024.webp 1024w,
+        /assets/images/gallery/banner-parc-natural-1920.webp 1920w
+      "
+      sizes="100vw"
+    >
+    <img
+      src="/assets/images/gallery/banner-parc-natural-1920.jpg"
+      alt="Bosque del Montseny"
+      class="hero-bg-img"
+      width="1920"
+      height="813"
+      loading="lazy"
+      decoding="async"
+    >
+  </picture>
+  <div class="hero-dark-overlay"></div>
+  <div class="hero-overlay-content block-content-style">
+    <span class="label-small light">VISITAS GUIADAS</span>
+    <h2 class="hero-title-elegant light home-section-title">CONECTA CON EL ALMA DEL PARQUE NATURAL<br>DEL MONTSENY – RESERVA DE LA BIOSFERA</h2>
+    <p class="hero-text-body light home-section-description">Ven a conocer a los guardianes centenarios del Montseny. Una experiencia de turismo consciente donde disfrutas de la naturaleza mientras colaboras activamente en preservarla. El bosque te da aire puro, tú le das vida.</p>
+    <a href="/es/visits/" class="btn-olive">EXPLORAR VISITAS GUIADAS</a>
+  </div>
+</section>
+
+<section class="gastronomic-split unified-bg home-banner-section home-banner-section--split">
+  <div class="split-image home-banner-section__pane">
+    <img
+      src="/assets/images/gallery/chalet_coromina_dish.jpg"
+      alt="Plato de risotto con castañas"
+      width="1122"
+      height="1402"
+      loading="lazy"
+      decoding="async"
+    >
+  </div>
+  <div class="split-text-content home-banner-section__pane block-content-style">
+    <span class="label-small">ESPACIO GASTRONÓMICO</span>
+    <h2 class="hero-title-elegant home-section-title">EL XALET LA COROMINA:<br>EL EMBAJADOR DE<br>NUESTRA CASTAÑA</h2>
+    <p class="info-text-body-centered home-section-description">Descubre cómo la joya histórica de Viladrau eleva la castaña 100 % catalana a la categoría de gastronomía de autor. El punto de partida de nuestra ruta.</p>
+    <a href="/es/gastronomic/" class="btn-olive">EXPLORA NUESTRA RUTA GASTRONÓMICA</a>
+  </div>
+</section>
+
+<section class="actualitat-section-updated unified-bg">
+  <div class="actualitat-content-centered block-content-style block_content_style">
+    <span class="label-small block_content_style__eyebrow">ACTUALIDAD</span>
+    <h2 class="hero-title-elegant home-section-title block_content_style__title">LO ÚLTIMO DE CASTANYA DE VILADRAU</h2>
+    <p class="home-section-description block_content_style__description">Recetas, nuevos productos e historias de la vida en el Montseny.</p>
+
+    {% set latestPosts = collections.posts | filterByLang(lang) | head(3) %}
+
+    <div class="actualitat-home-grid" aria-label="Últimas publicaciones">
+      {% for post in latestPosts %}
+      <a class="actualitat-card actualitat-card--home" href="{{ post.url }}">
+        <div class="actualitat-card-image">
+          <span class="featured-news-chip">Actualidad</span>
+          <img
+            src="{{ post.data.image or site.defaultOgImage }}"
+            alt="{{ post.data.imageAlt or post.data.title }}"
+            class="fit-img"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
+        <div class="actualitat-card-content">
+          <p class="actualitat-card-date">{% if post.data.displayDate %}{{ post.data.displayDate }}{% else %}{{ post.date | readableDate }}{% endif %}</p>
+          <h3 class="actualitat-card-title">
+            {{ post.data.title | replace("\n", "<br />") | safe }}
+          </h3>
+          <p class="actualitat-card-excerpt">{{ post.data.description }}</p>
+          <div class="actualitat-card-meta">
+            <p>
+              <strong>Tiempo de lectura</strong><br />
+              {% if post.data.readingTimeValue %}{{ post.data.readingTimeValue }}{% else %}{{ post.templateContent | readingTime }} minutos{% endif %}
+            </p>
+            <p class="actualitat-card-tags">
+              <strong>Etiquetas</strong><br />
+              {% if post.data.tags %}
+                {% for tag in post.data.tags %}{% if tag != 'posts' %}{{ tag }} {% endif %}{% endfor %}
+              {% else %}
+                Actualidad
+              {% endif %}
+            </p>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+
+    <a href="/es/blog" class="btn-olive">VER LA ACTUALIDAD</a>
+
+    <div class="home-carousel-section home-carousel-section--testimonials">
+      <div class="title-nav-wrapper title-nav-wrapper--testimonials">
+        <button class="nav-arrow-inline left" id="prevTestimonial" aria-label="Previous">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+
+        <h2 class="section-title-main home-section-title block_title_style">NO LO DECIMOS SOLO NOSOTROS</h2>
+
+        <button class="nav-arrow-inline right" id="nextTestimonial" aria-label="Next">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+
+      {% set testimonials = [
+        {
+          "text": "Una experiencia fantástica, un lugar para relajarte y aprender. Los productos a base de castañas, buenísimos. Padre e hija transmiten su fascinación por todo el bosque, yo desde ayer miro los arboles de otra manera, gracias........",
+          "name": "Pilar Coderch Negra",
+          "initials": "PC",
+          "link": "https://www.google.com/maps/contrib/110053115233318064539/reviews?hl=ca-ES"
+        },
+        {
+          "text": "He comprado en su tienda los productos y seguro que volveré, son de gran calidad y muy naturales, las castañas naturales y el licor de castañas lo mejor, pero les sigue de cerca todos los demás.",
+          "name": "Maria Angels Civil Bargallo",
+          "initials": "MA",
+          "link": "https://www.google.com/maps/contrib/112331947256621114497/reviews?hl=ca-ES"
+        },
+        {
+          "text": "Sorprendente. Transmiten la pasión por la naturaleza. Realmente increíble todo lo que rodea a un producto tan \"corriente\" como es la castaña. Un mundo entero. Una experiencia con degustación incluida que no te dejarán indiferente. Recomendable.",
+          "name": "Claudia Magela",
+          "initials": "CM",
+          "link": "https://www.google.com/maps/contrib/106538847581198166744/reviews?hl=ca-ES"
+        },
+        {
+          "text": "Ens ha encantat la visita que ens han fet. Hem après molt sobre el món de la castanya i tot el que l'envolta. En Joaquim un home que viu la seva feina amb molta intensitat i es nota que ho fa de gust. I hem fet una sortida molt maca per la montanya envoltats d'alzines, roures, castanyes... Tots, grans i petits hem disfrutat. Gràcies família!",
+          "name": "Laura Espinosa",
+          "initials": "LE",
+          "link": "https://www.google.com/maps/contrib/117734609603352656660/reviews?hl=ca-ES"
+        },
+        {
+          "text": "Gent emprenadora. De la Castanya, elaboren productes tradicionals. Com la cervesa, el licor o el formatge. Del formatge, puc dir, que és una veritable joia. No només per la presentació. També per la seva exquisitesa.",
+          "name": "Carles Sancho Sales",
+          "initials": "CS",
+          "link": "https://www.google.com/maps/contrib/110374509453266244852/reviews?hl=ca-ES"
+        },
+        {
+          "text": "Una visita guiada per la Merce, molt interesant, ideal per nens!!! Despres ens hem kedat a dinar i hem tastat un deliciosa botifarra de carxofa.",
+          "name": "Mercè Balletbó",
+          "initials": "MB",
+          "link": "https://www.google.com/maps/contrib/113020132556096350540/reviews?hl=ca-ES"
+        },
+        {
+          "text": "Hay productos que desconocía que su ingrediente sea la castaña, y que la mayor parte de la que consumimos es de Galicia. Hay miel de castaña, cerveza, queso... ahora se está potenciando el producto de Catalunya.",
+          "name": "Miquel Teruel",
+          "initials": "MT",
+          "link": "https://www.google.com/maps/contrib/111928591362084004724/reviews?hl=ca-ES"
+        }
+      ] %}
+
+      <div class="home-inline-carousel-wrap home-inline-carousel-wrap--testimonials" aria-label="Testimonios">
+        <div class="home-inline-carousel home-inline-carousel--testimonials" id="testimonialScroll">
+          {% for item in testimonials %}
+          <article class="review-card">
+            <img src="/assets/images/logo-google.png" alt="Google" class="google-logo" />
+            <div class="stars" aria-label="5 estrellas">★★★★★</div>
+            <p class="review-text">{{ item.text }}</p>
+            <div class="reviewer-info">
+              <div class="reviewer-name"><a href="{{ item.link }}" target="_blank" rel="noopener noreferrer">{{ item.name }}</a></div>
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

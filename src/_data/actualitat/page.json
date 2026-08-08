@@ -1,105 +1,212 @@
 {
-  "hero": {
-    "title": "ACTUALITAT I NOTÍCIES DE\nLA CASTANYA DE VILADRAU",
-    "text": "Descobreix el dia a dia de la Castanya de Viladrau, des de la cura dels nostres boscos fins a la cultura que ens defineix.",
-    "backgroundImage": "/assets/images/gallery/actualitat_hero.jpg",
-    "backgroundAlt": "Espai exterior amb porxo de fusta i taules de pícnic a la Castanya de Viladrau",
-    "tagsTitle": "ÚLTIMES ETIQUETES",
-    "tags": [
-      "Gastronomia",
-      "Patrimoni",
-      "Natura",
-      "Territori",
-      "Tradició"
-    ]
+  "ca": {
+    "hero": {
+      "title": "ACTUALITAT I NOTÍCIES DE\nLA CASTANYA DE VILADRAU",
+      "text": "Descobreix el dia a dia de la Castanya de Viladrau, des de la cura dels nostres boscos fins a la cultura que ens defineix.",
+      "backgroundImage": "/assets/images/gallery/actualitat_hero.jpg",
+      "backgroundAlt": "Espai exterior amb porxo de fusta i taules de pícnic a la Castanya de Viladrau",
+      "tagsTitle": "ÚLTIMES ETIQUETES",
+      "tags": [
+        "Gastronomia",
+        "Patrimoni",
+        "Natura",
+        "Territori",
+        "Tradició"
+      ]
+    },
+    "filtersBar": {
+      "items": [
+        {
+          "label": "Més nou primer",
+          "type": "sort",
+          "options": [
+            {
+              "label": "Més nou primer",
+              "value": "newest"
+            },
+            {
+              "label": "Més antic primer",
+              "value": "oldest"
+            }
+          ]
+        },
+        {
+          "label": "Per temàtica",
+          "type": "topic",
+          "options": [
+            {
+              "label": "Gastronomia",
+              "value": "gastronomia"
+            },
+            {
+              "label": "Patrimoni",
+              "value": "patrimoni"
+            },
+            {
+              "label": "Natura",
+              "value": "natura"
+            },
+            {
+              "label": "Territori",
+              "value": "territori"
+            },
+            {
+              "label": "Tradició",
+              "value": "tradicio"
+            }
+          ]
+        },
+        {
+          "label": "Tipus de notícia",
+          "type": "type",
+          "options": [
+            {
+              "label": "Producte",
+              "value": "producte"
+            },
+            {
+              "label": "Projecte",
+              "value": "projecte"
+            },
+            {
+              "label": "Patrimoni",
+              "value": "patrimoni"
+            }
+          ]
+        },
+        {
+          "label": "Per temps de lectura",
+          "type": "readingTime",
+          "options": [
+            {
+              "label": "Menys de 3 minuts",
+              "value": "short"
+            },
+            {
+              "label": "3–5 minuts",
+              "value": "medium"
+            },
+            {
+              "label": "Més de 5 minuts",
+              "value": "long"
+            }
+          ]
+        }
+      ],
+      "resetLabel": "Restableix filtres",
+      "emptyLabel": "No hem trobat cap notícia amb aquests filtres. Prova una altra combinació."
+    },
+    "loadMoreLabel": "CARREGAR MÉS",
+    "newsletter": {
+      "title": "BUTLLETÍ",
+      "text": "Uneix-te al nostre butlletí per estar al dia de nous productes i activitats, a més de rebre descomptes.",
+      "inputLabel": "Correu electrònic",
+      "buttonLabel": "AFEGEIX-ME!"
+    }
   },
-  "filtersBar": {
-    "items": [
-      {
-        "label": "Més nou primer",
-        "type": "sort",
-        "options": [
-          {
-            "label": "Més nou primer",
-            "value": "newest"
-          },
-          {
-            "label": "Més antic primer",
-            "value": "oldest"
-          }
-        ]
-      },
-      {
-        "label": "Per temàtica",
-        "type": "topic",
-        "options": [
-          {
-            "label": "Gastronomia",
-            "value": "gastronomia"
-          },
-          {
-            "label": "Patrimoni",
-            "value": "patrimoni"
-          },
-          {
-            "label": "Natura",
-            "value": "natura"
-          },
-          {
-            "label": "Territori",
-            "value": "territori"
-          },
-          {
-            "label": "Tradició",
-            "value": "tradicio"
-          }
-        ]
-      },
-      {
-        "label": "Tipus de notícia",
-        "type": "type",
-        "options": [
-          {
-            "label": "Producte",
-            "value": "producte"
-          },
-          {
-            "label": "Projecte",
-            "value": "projecte"
-          },
-          {
-            "label": "Patrimoni",
-            "value": "patrimoni"
-          }
-        ]
-      },
-      {
-        "label": "Per temps de lectura",
-        "type": "readingTime",
-        "options": [
-          {
-            "label": "Menys de 3 minuts",
-            "value": "short"
-          },
-          {
-            "label": "3–5 minuts",
-            "value": "medium"
-          },
-          {
-            "label": "Més de 5 minuts",
-            "value": "long"
-          }
-        ]
-      }
-    ],
-    "resetLabel": "Restableix filtres",
-    "emptyLabel": "No hem trobat cap notícia amb aquests filtres. Prova una altra combinació."
-  },
-  "loadMoreLabel": "CARREGAR MÉS",
-  "newsletter": {
-    "title": "BUTLLETÍ",
-    "text": "Uneix-te al nostre butlletí per estar al dia de nous productes i activitats, a més de rebre descomptes.",
-    "inputLabel": "Correu electrònic",
-    "buttonLabel": "AFEGEIX-ME!"
+  "es": {
+    "hero": {
+      "title": "ACTUALIDAD Y NOTICIAS DE\nLA CASTANYA DE VILADRAU",
+      "text": "Descubre el día a día de la Castanya de Viladrau, desde el cuidado de nuestros bosques hasta la cultura que nos define.",
+      "backgroundImage": "/assets/images/gallery/actualitat_hero.jpg",
+      "backgroundAlt": "Espacio exterior con porche de madera y mesas de picnic en la Castanya de Viladrau",
+      "tagsTitle": "ÚLTIMAS ETIQUETAS",
+      "tags": [
+        "Gastronomía",
+        "Patrimonio",
+        "Naturaleza",
+        "Territorio",
+        "Tradición"
+      ]
+    },
+    "filtersBar": {
+      "items": [
+        {
+          "label": "Más nuevo primero",
+          "type": "sort",
+          "options": [
+            {
+              "label": "Más nuevo primero",
+              "value": "newest"
+            },
+            {
+              "label": "Más antiguo primero",
+              "value": "oldest"
+            }
+          ]
+        },
+        {
+          "label": "Por temática",
+          "type": "topic",
+          "options": [
+            {
+              "label": "Gastronomía",
+              "value": "gastronomia"
+            },
+            {
+              "label": "Patrimonio",
+              "value": "patrimonio"
+            },
+            {
+              "label": "Naturaleza",
+              "value": "naturaleza"
+            },
+            {
+              "label": "Territorio",
+              "value": "territorio"
+            },
+            {
+              "label": "Tradición",
+              "value": "tradicion"
+            }
+          ]
+        },
+        {
+          "label": "Tipo de noticia",
+          "type": "type",
+          "options": [
+            {
+              "label": "Producto",
+              "value": "producte"
+            },
+            {
+              "label": "Proyecto",
+              "value": "projecte"
+            },
+            {
+              "label": "Patrimonio",
+              "value": "patrimoni"
+            }
+          ]
+        },
+        {
+          "label": "Por tiempo de lectura",
+          "type": "readingTime",
+          "options": [
+            {
+              "label": "Menos de 3 minutos",
+              "value": "short"
+            },
+            {
+              "label": "3–5 minutos",
+              "value": "medium"
+            },
+            {
+              "label": "Más de 5 minutos",
+              "value": "long"
+            }
+          ]
+        }
+      ],
+      "resetLabel": "Restablecer filtros",
+      "emptyLabel": "No hemos encontrado ninguna noticia con estos filtros. Prueba otra combinación."
+    },
+    "loadMoreLabel": "CARGAR MÁS",
+    "newsletter": {
+      "title": "BOLETÍN",
+      "text": "Únete a nuestro boletín para estar al día de nuevos productos y actividades, además de recibir descuentos.",
+      "inputLabel": "Correo electrónico",
+      "buttonLabel": "¡APÚNTAME!"
+    }
   }
 }

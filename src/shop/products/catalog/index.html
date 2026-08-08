@@ -8,23 +8,29 @@ name: botiga
 footerVariant: projecte-newsletter
 ---
 
-{% set productsList = collections.products %}
+{% set lang = page.url | pageLang %}
+{% set productsList = collections.products | filterByLang(lang) %}
 
 <section class="shop-page-hero shop-page-hero--compact">
   <img
     src="/assets/images/gallery/botiga/botiga_productes.png"
-    alt="Catàleg de productes de Castanya de Viladrau"
+    alt="{% if lang == 'es' %}Catálogo de productos de Castanya de Viladrau{% else %}Catàleg de productes de Castanya de Viladrau{% endif %}"
     class="shop-page-hero__image"
   />
   <div class="shop-page-hero__overlay"></div>
   <div class="shop-page-hero__content">
-    <span class="shop-page-hero__kicker">CATÀLEG</span>
+    <span class="shop-page-hero__kicker">{% if lang == 'es' %}CATÁLOGO{% else %}CATÀLEG{% endif %}</span>
     <h1 class="shop-page-hero__title">
+      {% if lang == 'es' %}
+      BUSCA TU<br />
+      PRODUCTO
+      {% else %}
       BUSCA EL TEU<br />
       PRODUCTE
+      {% endif %}
     </h1>
     <p class="shop-page-hero__text">
-      Filtra la col·lecció per categoria, moment de consum o necessitats alimentàries.
+      {% if lang == 'es' %}Filtra la colección por categoría, momento de consumo o necesidades alimentarias.{% else %}Filtra la col·lecció per categoria, moment de consum o necessitats alimentàries.{% endif %}
     </p>
   </div>
 </section>
@@ -34,17 +40,17 @@ footerVariant: projecte-newsletter
 <section class="shop-page-catalog shop-page-catalog--standalone" id="shopProductCatalog" aria-labelledby="shop-catalog-title">
   <div class="shop-page-catalog__header">
     <div class="shop-page-products__heading">
-      <p class="shop-page-products__kicker block_title_style block_title_style--label">CATÀLEG</p>
+      <p class="shop-page-products__kicker block_title_style block_title_style--label">{% if lang == 'es' %}CATÁLOGO{% else %}CATÀLEG{% endif %}</p>
       <h2 id="shop-catalog-title" class="shop-page-products__title block_title_style" data-shop-catalog-title>
-        TOTS ELS PRODUCTES
+        {% if lang == 'es' %}TODOS LOS PRODUCTOS{% else %}TOTS ELS PRODUCTES{% endif %}
       </h2>
       <p class="shop-page-products__subtitle block_title_style block_title_style--copy" data-shop-catalog-status>
-        Explora tota la col·lecció o tria un filtre.
+        {% if lang == 'es' %}Explora toda la colección o elige un filtro.{% else %}Explora tota la col·lecció o tria un filtre.{% endif %}
       </p>
     </div>
 
-    <a href="/shop/products/catalog/" class="btn-olive professionals-inspiration-hero__cta" data-shop-filter-reset hidden>
-      Tots els productes
+    <a href="{% if lang == 'es' %}/es/shop/products/catalog/{% else %}/shop/products/catalog/{% endif %}" class="btn-olive professionals-inspiration-hero__cta" data-shop-filter-reset hidden>
+      {% if lang == 'es' %}Todos los productos{% else %}Tots els productes{% endif %}
     </a>
   </div>
 

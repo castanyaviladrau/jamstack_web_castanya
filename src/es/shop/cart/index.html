@@ -1,0 +1,460 @@
+---
+layout: base
+title: Cesta
+seoTitle: Cesta | Castanya de Viladrau
+description: Revisa los productos seleccionados antes de continuar con el pago en la tienda de Castanya de Viladrau.
+name: cart
+footerVariant: projecte-newsletter
+lang: es
+---
+
+<section class="shop-cart-hero">
+  <img
+    src="/assets/images/gallery/elaborats.jpg"
+    alt="Productos artesanos de Castanya de Viladrau"
+    class="shop-cart-hero__image"
+  />
+  <div class="shop-cart-hero__overlay"></div>
+  <div class="shop-cart-hero__content">
+    <span class="shop-cart-hero__kicker">CESTA</span>
+    <h1 class="shop-cart-hero__title">
+      TUS PRODUCTOS, LISTOS PARA SALIR DEL MONTSENY
+    </h1>
+    <p class="shop-cart-hero__text">
+      Aquí podrás revisar tu selección antes de confirmar la compra y
+      continuar con el pago.
+    </p>
+  </div>
+</section>
+
+<section class="shop-cart" aria-labelledby="shop-cart-title">
+  <div class="shop-cart__inner">
+    <div class="shop-cart__main">
+      <div class="shop-cart__heading">
+        <span class="shop-cart__eyebrow">CESTA ACTUAL</span>
+        <h2 id="shop-cart-title" class="shop-cart__title" data-cart-title>
+          TODAVÍA NO HAY NINGÚN PRODUCTO EN TU CESTA
+        </h2>
+        <p class="shop-cart__intro" data-cart-intro>
+          Cuando añadas productos desde la tienda, los encontrarás aquí para
+          revisar formatos, cantidades y el resumen del pedido.
+        </p>
+      </div>
+
+      <p
+        class="shop-cart-resume-banner"
+        data-resume-message
+        hidden
+      ></p>
+
+      <article class="shop-cart-empty-card" data-cart-empty>
+        <div class="shop-cart-empty-card__media" aria-hidden="true">
+          <img
+            src="/assets/images/shopping_cart_button.png"
+            alt=""
+            class="shop-cart-empty-card__icon"
+          />
+        </div>
+
+        <div class="shop-cart-empty-card__body">
+          <p class="shop-cart-empty-card__kicker">TIENDA ARTESANA</p>
+          <h3 class="shop-cart-empty-card__title">
+            LLENA LA CESTA CON EL SABOR DE LA CASTAÑA 365 DÍAS AL AÑO
+          </h3>
+          <p class="shop-cart-empty-card__text">
+            Descubre nuestros productos artesanos y añade lo que
+            quieras comprar. Esta página ya está preparada para recibir la
+            futura lógica de cesta y pago.
+          </p>
+
+          <div class="shop-cart-empty-card__actions">
+            <a href="/es/shop/products/" class="btn-olive">IR A LA TIENDA</a>
+            <a href="/es/contact/" class="shop-cart-empty-card__link"
+              >¿NECESITAS AYUDA CON EL PEDIDO?</a
+            >
+          </div>
+        </div>
+      </article>
+
+      <div class="shop-cart-items" data-cart-items hidden></div>
+
+      <section
+        class="shop-cart-checkout"
+        aria-labelledby="shop-cart-checkout-title"
+        data-checkout-section
+        data-shipping-minimum="{{ shopSettings.shipping.minimumAmount }}"
+        data-shipping-cost="{{ shopSettings.shipping.cost }}"
+        hidden
+      >
+        <div class="shop-cart-checkout__heading">
+          <p class="shop-cart__eyebrow">DATOS DE ENVÍO</p>
+          <h3 id="shop-cart-checkout-title" class="shop-cart-checkout__title">
+            PREPARA TU PEDIDO
+          </h3>
+        </div>
+
+        <div class="shop-cart-checkout__shipping-info" data-shipping-info>
+          <span class="shop-cart__eyebrow">RECOGIDA EN TIENDA</span>
+          <p class="shop-cart-checkout__shipping-info-text">
+            Si prefieres recoger el pedido en una de nuestras
+            tiendas, activa esta opción. La facturación no cambia.
+          </p>
+          <p class="shop-cart-checkout__shipping-info-text">
+            Los envíos requieren un pedido mínimo de
+            {{ shopSettings.shipping.minimumAmount | eur }} €. Los pedidos
+            con recogida en tienda se pueden tramitar por debajo de este
+            importe.
+          </p>
+          <p class="shop-cart-checkout__shipping-info-text">
+            Si no llegas al importe mínimo y prefieres recibir el pedido a
+            domicilio, el coste de envío será de
+            {{ shopSettings.shipping.cost | eur }} €.
+          </p>
+        </div>
+
+        <form class="shop-cart-checkout__form" data-checkout-form novalidate>
+          <div class="shop-cart-checkout__grid">
+            <div
+              class="shop-cart-checkout__pickup shop-cart-checkout__field--full"
+              data-pickup-section
+            >
+              <label
+                class="shop-cart-checkout__checkbox shop-cart-checkout__checkbox--pickup"
+              >
+                <input type="checkbox" name="isPickup" data-pickup-checkbox />
+                <span
+                  class="shop-cart-checkout__checkbox-mark"
+                  aria-hidden="true"
+                ></span>
+                <span class="shop-cart-checkout__checkbox-label"
+                  >Quiero recoger el pedido en tienda</span
+                >
+              </label>
+
+              <div
+                class="shop-cart-checkout__grid shop-cart-checkout__pickup-fields"
+                data-pickup-fields
+                data-state="readonly"
+              >
+                <label
+                  class="shop-cart-checkout__field shop-cart-checkout__field--select shop-cart-checkout__field--full"
+                >
+                  <span>Tienda de recogida</span>
+                  <select name="pickupStore" data-pickup-store-select>
+                    <option value="">Selecciona una tienda</option>
+                    <option value="Viladrau">
+                      Viladrau - Carretera de les afores, s/n, 17406 Masvidal,
+                      Girona
+                    </option>
+                    <option value="Barcelona">
+                      Barcelona - Carrer de la Encarnacio 159, Guinardo 08025
+                      Barcelona
+                    </option>
+                  </select>
+                </label>
+              </div>
+            </div>
+
+            <label class="shop-cart-checkout__field">
+              <span>Nombre y apellidos</span>
+              <input
+                type="text"
+                name="name"
+                autocomplete="name"
+                placeholder="Nombre y apellidos"
+                required
+              />
+            </label>
+            <label class="shop-cart-checkout__field">
+              <span>Correo electrónico</span>
+              <input
+                type="email"
+                name="email"
+                autocomplete="email"
+                placeholder="nombre@ejemplo.cat"
+                required
+              />
+            </label>
+            <label class="shop-cart-checkout__field">
+              <span>Teléfono</span>
+              <input
+                type="tel"
+                name="phone"
+                autocomplete="tel"
+                inputmode="tel"
+                placeholder="Ej. +34 600 123 123"
+                required
+              />
+            </label>
+            <div
+              class="shop-cart-checkout__shipping-fields shop-cart-checkout__field--full"
+              data-shipping-fields
+              data-state="editable"
+            >
+              <label
+                class="shop-cart-checkout__field shop-cart-checkout__field--select"
+              >
+                <span>País</span>
+                <select name="country" autocomplete="country-name" required>
+                  <option value="Espanya" selected>España</option>
+                  <option value="Portugal">Portugal</option>
+                  <option value="Franca">Francia</option>
+                  <option value="Italia">Italia</option>
+                  <option value="Alemanya">Alemania</option>
+                  <option value="Regne Unit">Reino Unido</option>
+                  <option value="Irlanda">Irlanda</option>
+                  <option value="Belgica">Bélgica</option>
+                  <option value="Paisos Baixos">Países Bajos</option>
+                  <option value="Luxemburg">Luxemburgo</option>
+                  <option value="Suissa">Suiza</option>
+                  <option value="Austria">Austria</option>
+                  <option value="Dinamarca">Dinamarca</option>
+                  <option value="Suecia">Suecia</option>
+                  <option value="Noruega">Noruega</option>
+                  <option value="Finlandia">Finlandia</option>
+                  <option value="Polonia">Polonia</option>
+                  <option value="Republica Txeca">República Checa</option>
+                  <option value="Eslovaquia">Eslovaquia</option>
+                  <option value="Hongria">Hungría</option>
+                  <option value="Eslovenia">Eslovenia</option>
+                  <option value="Croacia">Croacia</option>
+                  <option value="Grecia">Grecia</option>
+                  <option value="Romania">Rumanía</option>
+                  <option value="Bulgaria">Bulgaria</option>
+                </select>
+              </label>
+              <label
+                class="shop-cart-checkout__field shop-cart-checkout__field--full"
+              >
+                <span>Dirección</span>
+                <input
+                  type="text"
+                  name="address"
+                  autocomplete="street-address"
+                  placeholder="Calle, número y piso"
+                  required
+                />
+              </label>
+              <label class="shop-cart-checkout__field">
+                <span>Ciudad</span>
+                <input
+                  type="text"
+                  name="city"
+                  autocomplete="address-level2"
+                  placeholder="Población"
+                  required
+                />
+              </label>
+              <label class="shop-cart-checkout__field">
+                <span>Código postal</span>
+                <input
+                  type="text"
+                  name="postalCode"
+                  autocomplete="postal-code"
+                  placeholder="Ej. 17406"
+                  required
+                />
+              </label>
+            </div>
+            <label
+              class="shop-cart-checkout__field shop-cart-checkout__field--full"
+            >
+              <span>Notas del pedido</span>
+              <textarea
+                name="notes"
+                rows="4"
+                placeholder="Indicaciones para el pedido, entrega o recogida"
+              ></textarea>
+            </label>
+          </div>
+
+          <div class="shop-cart-checkout__billing" data-billing-section>
+            <div class="shop-cart-checkout__divider">
+              <span class="shop-cart__eyebrow">DATOS DE FACTURACIÓN</span>
+            </div>
+
+            <p class="shop-cart-checkout__intro">
+              Si la compra la realiza una empresa o necesitas una factura con
+              datos diferentes, rellena este apartado.
+            </p>
+
+            <label class="shop-cart-checkout__checkbox">
+              <input
+                type="checkbox"
+                name="billingSameAsShipping"
+                data-billing-same-checkbox
+                checked
+              />
+              <span
+                class="shop-cart-checkout__checkbox-mark"
+                aria-hidden="true"
+              ></span>
+              <span class="shop-cart-checkout__checkbox-label"
+                >Los datos de facturación son los mismos que los
+                de envío</span
+              >
+            </label>
+
+            <div
+              class="shop-cart-checkout__grid"
+              data-billing-fields
+              data-state="readonly"
+            >
+              <label class="shop-cart-checkout__field">
+                <span>Nombre de la empresa / Razón social</span>
+                <input
+                  type="text"
+                  name="billingCompany"
+                  autocomplete="organization"
+                />
+              </label>
+              <label class="shop-cart-checkout__field">
+                <span>NIF / VAT</span>
+                <input type="text" name="billingVat" />
+              </label>
+              <label
+                class="shop-cart-checkout__field shop-cart-checkout__field--full"
+              >
+                <span>Dirección</span>
+                <input
+                  type="text"
+                  name="billingAddress"
+                  autocomplete="billing street-address"
+                />
+              </label>
+              <label class="shop-cart-checkout__field">
+                <span>Ciudad</span>
+                <input
+                  type="text"
+                  name="billingCity"
+                  autocomplete="billing address-level2"
+                />
+              </label>
+              <label class="shop-cart-checkout__field">
+                <span>Código postal</span>
+                <input
+                  type="text"
+                  name="billingPostalCode"
+                  autocomplete="billing postal-code"
+                />
+              </label>
+              <label class="shop-cart-checkout__field">
+                <span>País</span>
+                <input
+                  type="text"
+                  name="billingCountry"
+                  autocomplete="billing country-name"
+                />
+              </label>
+            </div>
+          </div>
+
+          <p
+            class="shop-cart-checkout__message"
+            data-checkout-message
+            hidden
+          ></p>
+
+          <div class="shop-cart-checkout__compliance">
+            <p class="shop-cart-checkout__compliance-title">
+              Antes de continuar
+            </p>
+            <p class="shop-cart-checkout__compliance-text">
+              Revisa que los datos de envío sean correctos. Si eliges
+              recogida en tienda, avisaremos al cliente y al punto de recogida
+              seleccionado en la confirmación del pedido.
+            </p>
+
+            <label class="shop-cart-checkout__checkbox">
+              <input type="checkbox" name="acceptLegal" />
+              <span
+                class="shop-cart-checkout__checkbox-mark"
+                aria-hidden="true"
+              ></span>
+              <span class="shop-cart-checkout__checkbox-label"
+                >He leído y acepto el <a href="/es/avis-legal/"
+                  >Aviso legal</a
+                ></span
+              >
+            </label>
+
+            <label class="shop-cart-checkout__checkbox">
+              <input type="checkbox" name="acceptPrivacy" />
+              <span
+                class="shop-cart-checkout__checkbox-mark"
+                aria-hidden="true"
+              ></span>
+              <span class="shop-cart-checkout__checkbox-label"
+                >He leído y acepto la
+                <a href="/es/politica-de-privacitat/"
+                  >Política de privacidad</a
+                ></span
+              >
+            </label>
+
+            <label class="shop-cart-checkout__checkbox">
+              <input type="checkbox" name="acceptFulfillmentTerms" />
+              <span
+                class="shop-cart-checkout__checkbox-mark"
+                aria-hidden="true"
+              ></span>
+              <span class="shop-cart-checkout__checkbox-label"
+                >Entiendo las condiciones de envío y recogida del
+                pedido</span
+              >
+            </label>
+          </div>
+
+          <button type="submit" class="shop-cart-summary__cta">
+            CONTINUAR HACIA EL PAGO
+          </button>
+        </form>
+      </section>
+    </div>
+
+    <aside class="shop-cart-summary" aria-labelledby="shop-cart-summary-title">
+      <p class="shop-cart-summary__kicker">RESUMEN</p>
+      <h2 id="shop-cart-summary-title" class="shop-cart-summary__title">
+        TU PEDIDO
+      </h2>
+
+      <div class="shop-cart-summary__rows">
+        <div class="shop-cart-summary__row">
+          <span>Productos</span>
+          <strong data-cart-product-count>0</strong>
+        </div>
+        <div class="shop-cart-summary__row">
+          <span>Subtotal</span>
+          <strong data-cart-subtotal>0,00 €</strong>
+        </div>
+        <div class="shop-cart-summary__row">
+          <span>Envío</span>
+          <strong data-cart-shipping>A calcular en el próximo paso</strong>
+        </div>
+      </div>
+
+      <div class="shop-cart-summary__total">
+        <span>Total estimado</span>
+        <strong data-cart-total>0,00 €</strong>
+      </div>
+
+      <p
+        class="shop-cart-summary__warning"
+        data-cart-shipping-warning
+        hidden
+      ></p>
+
+      <p class="shop-cart-summary__note" data-cart-summary-note>
+        La cesta se guarda en este navegador. Cuando confirmes, en el próximo paso
+        conectaremos estos datos con la creación de pedidos real en Supabase.
+      </p>
+
+      <a
+        href="/es/shop/products/"
+        class="shop-cart-summary__cta"
+        data-cart-summary-link
+        >SEGUIR COMPRANDO</a
+      >
+    </aside>
+  </div>
+</section>
