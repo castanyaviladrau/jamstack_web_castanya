@@ -13844,6 +13844,22 @@ body.home .gastronomic-split.home-banner-section {
   color: var(--color-beige) !important;
 }
 
+/* On mobile the dropdown panel behind these links is light cream
+   (#efe5d3, see the .nav-dropdown rule above), so the beige text color
+   set just above is nearly invisible against it. Restore the original
+   brown text there. */
+@media (max-width: 980px) {
+  .site-header .nav-dropdown .nav-dropdown__link {
+    color: #8d7748 !important;
+  }
+
+  .site-header .nav-dropdown .nav-dropdown__link:hover,
+  .site-header .nav-dropdown .nav-dropdown__link:focus-visible,
+  .site-header .nav-dropdown .nav-dropdown__link.is-active {
+    color: #6b5738 !important;
+  }
+}
+
 .site-header .icon {
   stroke: var(--color-beige);
 }
