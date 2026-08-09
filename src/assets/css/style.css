@@ -2928,9 +2928,11 @@ body.has-lang-switcher-open .header-nav {
   display: none;
 }
 
-/* Fixed top-left overlay: shown on pages where the header sits at the bottom */
+/* Fixed top-left language switcher, used on every page (mirrors the fixed
+   top-right utility actions below) so it always sits at the same left:20px
+   position instead of drifting with .header-top's padding/search icon. */
 .utility-top-left-overlay {
-  display: none;
+  display: flex;
   position: fixed;
   top: 20px;
   left: 20px;
@@ -2940,14 +2942,12 @@ body.has-lang-switcher-open .header-nav {
   font-family: "Gotham-Medium", "Gotham Medium", sans-serif;
 }
 
-body.home .utility-top-left-overlay {
-  display: flex;
-}
-
-/* Hide the original language selector from the header on these pages;
-   .utility-top-left-overlay (fixed, outside .site-header) replaces it. */
-body.home .utility-left .idioma-selector,
-body.home .utility-left .lang-switcher {
+/* Hide the original language selector from the header everywhere;
+   .utility-top-left-overlay (fixed, outside .site-header) replaces it.
+   Keeping it out of .header-top also stops its dropdown from opening
+   over the nav row underneath (see [[lang-switcher-dropdown-overlap]]). */
+body .utility-left .idioma-selector,
+body .utility-left .lang-switcher {
   display: none !important;
 }
 

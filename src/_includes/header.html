@@ -236,12 +236,14 @@
   </nav>
 </header>
 
-<!-- Fixed top-left overlay for pages where the header sits at the bottom.
-     Must live outside <header>: body.home applies a transform to
-     .site-header for the hero "climb" effect, and a transform on an
-     ancestor makes it the containing block for position:fixed descendants
-     — so a fixed element nested inside .site-header stays pinned to the
-     header's own (bottom-docked) box instead of the viewport. -->
+<!-- Fixed top-left language switcher, used on every page: keeps it pinned
+     at the same left:20px spot everywhere and out of .header-top's flow
+     (so its dropdown never opens over the nav row underneath).
+     Must live outside <header>: on the homepage, body.home applies a
+     transform to .site-header for the hero "climb" effect, and a transform
+     on an ancestor makes it the containing block for position:fixed
+     descendants — so a fixed element nested inside .site-header would stay
+     pinned to the header's own (bottom-docked) box instead of the viewport. -->
 <div class="utility-top-left-overlay">
   <div class="lang-switcher">
     <button
