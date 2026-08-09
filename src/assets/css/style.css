@@ -11398,223 +11398,6 @@ summary.product-detail__format-select::-webkit-details-marker {
   text-transform: uppercase;
 }
 
-@media screen and (max-width: 1024px) {
-  .visits-slider__track {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 4px;
-    padding: 0 24px;
-  }
-
-  .visits-card-link,
-  .visits-slider__track > .visits-card-link:nth-last-child(2):nth-child(3n + 1),
-  .visits-slider__track > .visits-card-link:last-child:nth-child(3n + 2) {
-    grid-column: span 1;
-  }
-
-  .visits-slider__header {
-    padding: 0 24px;
-  }
-
-  .visit-activity-hero__content,
-  .visit-activity-facts__inner,
-  .visit-activity-body__inner,
-  .visit-activity-gallery__inner,
-  .visit-activity-more__inner,
-  .visit-activity-experience__inner,
-  .visit-activity-reviews__inner {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-
-  .visit-activity-body__inner {
-    gap: 36px;
-  }
-
-  .visit-booking-cta {
-    padding: 28px 24px;
-  }
-
-  .visit-activity-experience__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .visit-activity-more__track {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .visit-activity-reviews__header {
-    grid-template-columns: 45px minmax(0, 1fr) 45px;
-    align-items: center;
-  }
-
-  .visit-activity-reviews__nav {
-    justify-self: end;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .visits-slider__header {
-    gap: 16px;
-    padding: 0 20px;
-  }
-
-  .visits-slider__track {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 0 20px;
-  }
-
-  .visits-card__content {
-    padding: 15px 20px;
-  }
-
-  .visit-activity-hero__overlay {
-    padding-top: 88px;
-  }
-
-  .visit-activity-hero__content,
-  .visit-activity-facts__inner,
-  .visit-activity-body__inner,
-  .visit-activity-gallery__inner,
-  .visit-activity-more__inner,
-  .visit-activity-experience__inner,
-  .visit-activity-reviews__inner {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  .visit-activity-hero__reserve-bar {
-    text-align: left;
-    align-items: flex-start;
-  }
-
-  .visit-activity-hero__reserve-row {
-    justify-content: flex-start;
-    gap: 6px;
-  }
-
-  .visit-activity-hero__content {
-    padding-bottom: 104px;
-  }
-
-  .visit-activity-facts__inner,
-  .visit-activity-body__inner,
-  .visit-activity-more__track,
-  .visit-activity-experience__header,
-  .visit-activity-experience__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .visit-activity-body__inner {
-    gap: 32px;
-  }
-
-  .visit-booking-cta {
-    padding: 24px 20px;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .visit-booking-cta__button,
-  .visit-booking-modal__form .contact-form__submit {
-    width: 100%;
-  }
-
-  .visit-booking-modal__dialog {
-    width: calc(100% - 24px);
-    max-height: calc(100vh - 24px);
-    margin: 12px auto;
-    padding: 28px 20px 24px;
-  }
-
-  .visit-booking-modal__header {
-    padding-right: 34px;
-  }
-
-  .visit-booking-modal__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .visit-activity-experience__card {
-    min-height: 0;
-  }
-
-  .visit-experience-modal__dialog {
-    width: calc(100% - 24px);
-    max-height: calc(100vh - 24px);
-    margin: 12px auto;
-    padding: 58px 28px 48px;
-  }
-
-  .visit-experience-modal__dialog h2 {
-    font-size: clamp(24px, 8vw, 34px);
-  }
-
-  .visit-activity-experience__card h3 {
-    font-size: clamp(24px, 8vw, 34px);
-  }
-
-  .visit-activity-more__title {
-    font-size: 22px;
-  }
-
-  .visit-activity-reviews__header {
-    grid-template-columns: 45px minmax(0, 1fr) 45px;
-    gap: 10px;
-  }
-
-  .visit-activity-reviews__card {
-    min-width: min(100%, 310px);
-  }
-
-  .visit-activity-pricing__row strong {
-    font-size: 28px;
-  }
-}
-
-@media screen and (max-width: 560px) {
-  .visits-slider__intro {
-    padding: 0 10px;
-  }
-
-  .visits-card__title {
-    font-size: clamp(16px, 4vw, 20px);
-  }
-
-  .visits-card__text {
-    font-size: 14px;
-  }
-
-  .visits-card__meta {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .visit-activity-hero__title {
-    font-size: clamp(30px, 10vw, 42px);
-  }
-
-  .visit-activity-hero__reserve-bar {
-    gap: 12px;
-    padding: 16px 20px;
-  }
-
-  .visit-activity-hero__reserve-label,
-  .visit-activity-hero__reserve-text {
-    font-size: 12px;
-    line-height: 1.4;
-  }
-
-  .visit-activity-facts__item {
-    gap: 10px;
-  }
-
-  .visit-activity-timeline__time {
-    font-size: 24px;
-  }
-}
-
-
 .footer-cta-section--visits {
   min-height: var(--section-banner-min-height);
   height: auto;
@@ -13831,6 +13614,222 @@ body.home .gastronomic-split.home-banner-section {
   stroke: #7f6f4b;
 }
 
+@media screen and (max-width: 1024px) {
+  .visits-slider__track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px;
+    padding: 0 24px;
+  }
+
+  .visits-card-link,
+  .visits-slider__track > .visits-card-link:nth-last-child(2):nth-child(3n + 1),
+  .visits-slider__track > .visits-card-link:last-child:nth-child(3n + 2) {
+    grid-column: span 1;
+  }
+
+  .visits-slider__header {
+    padding: 0 24px;
+  }
+
+  .visit-activity-hero__content,
+  .visit-activity-facts__inner,
+  .visit-activity-body__inner,
+  .visit-activity-gallery__inner,
+  .visit-activity-more__inner,
+  .visit-activity-experience__inner,
+  .visit-activity-reviews__inner {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .visit-activity-body__inner {
+    gap: 36px;
+  }
+
+  .visit-booking-cta {
+    padding: 28px 24px;
+  }
+
+  .visit-activity-experience__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .visit-activity-more__track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .visit-activity-reviews__header {
+    grid-template-columns: 45px minmax(0, 1fr) 45px;
+    align-items: center;
+  }
+
+  .visit-activity-reviews__nav {
+    justify-self: end;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .visits-slider__header {
+    gap: 16px;
+    padding: 0 20px;
+  }
+
+  .visits-slider__track {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 20px;
+  }
+
+  .visits-card__content {
+    padding: 15px 20px;
+  }
+
+  .visit-activity-hero__overlay {
+    padding-top: 88px;
+  }
+
+  .visit-activity-hero__content,
+  .visit-activity-facts__inner,
+  .visit-activity-body__inner,
+  .visit-activity-gallery__inner,
+  .visit-activity-more__inner,
+  .visit-activity-experience__inner,
+  .visit-activity-reviews__inner {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .visit-activity-hero__reserve-bar {
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .visit-activity-hero__reserve-row {
+    justify-content: flex-start;
+    gap: 6px;
+  }
+
+  .visit-activity-hero__content {
+    padding-bottom: 104px;
+  }
+
+  .visit-activity-facts__inner,
+  .visit-activity-body__inner,
+  .visit-activity-more__track,
+  .visit-activity-experience__header,
+  .visit-activity-experience__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .visit-activity-body__inner {
+    gap: 32px;
+  }
+
+  .visit-booking-cta {
+    padding: 24px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .visit-booking-cta__button,
+  .visit-booking-modal__form .contact-form__submit {
+    width: 100%;
+  }
+
+  .visit-booking-modal__dialog {
+    width: calc(100% - 24px);
+    max-height: calc(100vh - 24px);
+    margin: 12px auto;
+    padding: 28px 20px 24px;
+  }
+
+  .visit-booking-modal__header {
+    padding-right: 34px;
+  }
+
+  .visit-booking-modal__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .visit-activity-experience__card {
+    min-height: 0;
+  }
+
+  .visit-experience-modal__dialog {
+    width: calc(100% - 24px);
+    max-height: calc(100vh - 24px);
+    margin: 12px auto;
+    padding: 58px 28px 48px;
+  }
+
+  .visit-experience-modal__dialog h2 {
+    font-size: clamp(24px, 8vw, 34px);
+  }
+
+  .visit-activity-experience__card h3 {
+    font-size: clamp(24px, 8vw, 34px);
+  }
+
+  .visit-activity-more__title {
+    font-size: 22px;
+  }
+
+  .visit-activity-reviews__header {
+    grid-template-columns: 45px minmax(0, 1fr) 45px;
+    gap: 10px;
+  }
+
+  .visit-activity-reviews__card {
+    min-width: min(100%, 310px);
+  }
+
+  .visit-activity-pricing__row strong {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .visits-slider__intro {
+    padding: 0 10px;
+  }
+
+  .visits-card__title {
+    font-size: clamp(16px, 4vw, 20px);
+  }
+
+  .visits-card__text {
+    font-size: 14px;
+  }
+
+  .visits-card__meta {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .visit-activity-hero__title {
+    font-size: clamp(30px, 10vw, 42px);
+  }
+
+  .visit-activity-hero__reserve-bar {
+    gap: 12px;
+    padding: 16px 20px;
+  }
+
+  .visit-activity-hero__reserve-label,
+  .visit-activity-hero__reserve-text {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .visit-activity-facts__item {
+    gap: 10px;
+  }
+
+  .visit-activity-timeline__time {
+    font-size: 24px;
+  }
+}
+
 /* Keep every header and navigation light tone on the shared beige. */
 .site-header,
 .logo-text {
@@ -13894,11 +13893,12 @@ body.home .header-nav li:not(:last-child) {
 @media (max-width: 980px) {
   /* --- Slider arrows -------------------------------------------------------
      Touch/swipe already replaces these as the navigation method on mobile,
-     so the prev/next buttons are hidden here. Desktop is untouched.
+     so the prev/next buttons are hidden here. The professionals value
+     feature slider keeps its arrows visible on mobile since the swipe
+     gesture isn't discoverable there. Desktop is untouched.
      -------------------------------------------------------------------- */
 
-  .nav-arrow-inline,
-  .professionals-value-feature__arrow {
+  .nav-arrow-inline {
     display: none !important;
   }
 
