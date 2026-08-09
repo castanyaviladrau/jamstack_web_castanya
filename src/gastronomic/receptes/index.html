@@ -5,7 +5,7 @@ name: gastronomic-recipes
 footerVariant: visits-newsletter
 ---
 
-{% from "partials/recipe-filters.njk" import recipeFiltersBar %}
+{% from "partials/recipe-filters.njk" import recipeFiltersBar with context %}
 {% set lang = page.url | pageLang %}
 {% set langRecipes = collections.recipes | filterByLang(lang) %}
 {% set pageContent = gastronomicRecipes.page[lang] if gastronomicRecipes.page[lang] else gastronomicRecipes.page %}

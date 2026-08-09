@@ -6,7 +6,7 @@ footerVariant: visits-newsletter
 robots: noindex
 ---
 
-{% from "partials/recipe-filters.njk" import recipeFiltersBar %}
+{% from "partials/recipe-filters.njk" import recipeFiltersBar with context %}
 {% set lang = page.url | pageLang %}
 {% set langRecipes = collections.recipes | filterByLang(lang) %}
 {% set difficultyOptions = langRecipes | uniqueByField("difficulty", ["facil", "mitja", "dificil"]) %}
