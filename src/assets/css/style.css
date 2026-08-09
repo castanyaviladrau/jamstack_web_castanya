@@ -13893,29 +13893,13 @@ body.home .header-nav li:not(:last-child) {
 
 @media (max-width: 980px) {
   /* --- Slider arrows -------------------------------------------------------
-     Lift the arrows into their own band above the section heading so they
-     stop covering the title. Horizontal offsets are deliberately left alone.
+     Touch/swipe already replaces these as the navigation method on mobile,
+     so the prev/next buttons are hidden here. Desktop is untouched.
      -------------------------------------------------------------------- */
 
-  .title-nav-wrapper {
-    padding-top: 57px;
-  }
-
-  .title-nav-wrapper .nav-arrow-inline.left,
-  .title-nav-wrapper .nav-arrow-inline.right {
-    top: 0;
-  }
-
-  .shop-page-categories__title-row,
-  .shop-page-featured__title-row,
-  .shop-page-gifts__title-row {
-    padding-top: 57px;
-  }
-
-  .shop-page-categories__title-row .shop-page-categories__arrow,
-  .shop-page-featured__title-row .shop-page-featured__arrow,
-  .shop-page-gifts__title-row .shop-page-gifts__arrow {
-    top: 0;
+  .nav-arrow-inline,
+  .professionals-value-feature__arrow {
+    display: none !important;
   }
 
   /* Fusta showcase: the arrows overlay the photo, so take them out of the

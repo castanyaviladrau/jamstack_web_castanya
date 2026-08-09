@@ -433,6 +433,56 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleArrows();
   }
 
+  // Click-driven sliders (fusta showcase, professionals value feature) swap
+  // content instead of scrolling, so they get no touch support for free the
+  // way native overflow-scroll carousels do. This wires swipe gestures to
+  // the same prev/next logic so mobile still works once the arrow buttons
+  // are hidden there.
+  const addSwipeNavigation = (
+    element,
+    { onSwipeLeft, onSwipeRight, threshold = 40 } = {},
+  ) => {
+    if (!element) return;
+
+    let startX = 0;
+    let startY = 0;
+    let tracking = false;
+
+    element.addEventListener(
+      "touchstart",
+      (event) => {
+        const touch = event.touches[0];
+        startX = touch.clientX;
+        startY = touch.clientY;
+        tracking = true;
+      },
+      { passive: true },
+    );
+
+    element.addEventListener(
+      "touchend",
+      (event) => {
+        if (!tracking) return;
+        tracking = false;
+
+        const touch = event.changedTouches[0];
+        const deltaX = touch.clientX - startX;
+        const deltaY = touch.clientY - startY;
+
+        if (Math.abs(deltaX) < threshold || Math.abs(deltaX) < Math.abs(deltaY)) {
+          return;
+        }
+
+        if (deltaX < 0) {
+          onSwipeLeft?.();
+        } else {
+          onSwipeRight?.();
+        }
+      },
+      { passive: true },
+    );
+  };
+
   const setupCarousel = (
     scrollId,
     prevId,
@@ -1677,6 +1727,17 @@ document.addEventListener("DOMContentLoaded", () => {
       currentIndex = (currentIndex + 1) % slides.length;
       renderSlide(currentIndex, "next");
     });
+
+    addSwipeNavigation(prev.closest(".professionals-value-feature__hero"), {
+      onSwipeLeft: () => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        renderSlide(currentIndex, "next");
+      },
+      onSwipeRight: () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        renderSlide(currentIndex, "prev");
+      },
+    });
   };
 
   const setupProjecteFireTextSlider = () => {
@@ -2303,6 +2364,17 @@ document.addEventListener("DOMContentLoaded", () => {
     next.addEventListener("click", () => {
       changeSlide((index + 1) % slides.length);
       restartAutoAdvance();
+    });
+
+    addSwipeNavigation(showcaseHero, {
+      onSwipeLeft: () => {
+        changeSlide((index + 1) % slides.length);
+        restartAutoAdvance();
+      },
+      onSwipeRight: () => {
+        changeSlide((index - 1 + slides.length) % slides.length);
+        restartAutoAdvance();
+      },
     });
 
     renderSlide();
