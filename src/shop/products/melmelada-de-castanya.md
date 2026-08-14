@@ -4,8 +4,8 @@ layout: product
 title: Melmelada de castanya
 tagline: Elaboració dolça i artesana per gaudir la castanya tot l’any.
 categories:
-  - elaborats-de-castanyes
   - dolcos
+  - elaborats-de-castanyes
 consumptionMoments:
   - moments-dolcos
   - regals-detalls
