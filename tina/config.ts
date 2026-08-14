@@ -1,6 +1,32 @@
 import { defineConfig } from "tinacms";
 
 const branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
+// Collapsed list rows default to "<Field label> Item", which makes every entry
+// look identical. These helpers build a readable summary per row instead.
+// They must never throw: itemProps also runs on blank rows the editor just added.
+const truncate = (value: unknown, max = 40) => {
+  const text =
+    typeof value === "string"
+      ? value.trim()
+      : typeof value === "number" && Number.isFinite(value)
+        ? String(value)
+        : "";
+  return text.length > max ? `${text.slice(0, max - 1)}…` : text;
+};
+
+const formatEuros = (value: unknown) =>
+  typeof value === "number" && Number.isFinite(value)
+    ? `${value.toFixed(2).replace(".", ",")} €`
+    : "";
+
+const fileName = (value: unknown) => {
+  const text = typeof value === "string" ? value.trim() : "";
+  return text ? (text.split("/").pop() ?? "") : "";
+};
+
+const itemLabel = (parts: string[], fallback: string) =>
+  parts.filter(Boolean).join(" — ") || fallback;
+
 const recipeProductOptions = [
   { label: "Castanya torrada", value: "castanya-torrada" },
   { label: "Farina de castanya", value: "farina-castanya" },
@@ -258,6 +284,11 @@ export default defineConfig({
             name: "gallery",
             label: "Thumbnail gallery",
             list: true,
+            ui: {
+              itemProps: (item) => ({
+                label: itemLabel([fileName(item?.image)], "New image"),
+              }),
+            },
             fields: [
               { type: "image", name: "image", label: "Image", required: true },
             ],
@@ -274,6 +305,14 @@ export default defineConfig({
             label: "Format options",
             list: true,
             required: true,
+            ui: {
+              itemProps: (item) => ({
+                label: itemLabel(
+                  [truncate(item?.label), formatEuros(item?.price)],
+                  "New format",
+                ),
+              }),
+            },
             fields: [
               {
                 type: "string",
@@ -306,6 +345,11 @@ export default defineConfig({
             name: "highlights",
             label: "Highlights",
             list: true,
+            ui: {
+              itemProps: (item) => ({
+                label: itemLabel([truncate(item?.text)], "New highlight"),
+              }),
+            },
             fields: [
               { type: "string", name: "text", label: "Text", required: true },
             ],
@@ -321,6 +365,11 @@ export default defineConfig({
             name: "detailNotes",
             label: "Detail notes",
             list: true,
+            ui: {
+              itemProps: (item) => ({
+                label: itemLabel([truncate(item?.text)], "New note"),
+              }),
+            },
             fields: [
               { type: "string", name: "text", label: "Text", required: true },
             ],
@@ -636,6 +685,14 @@ export default defineConfig({
             name: "itinerary",
             label: "Itinerary",
             list: true,
+            ui: {
+              itemProps: (item) => ({
+                label: itemLabel(
+                  [truncate(item?.time), truncate(item?.title)],
+                  "New stop",
+                ),
+              }),
+            },
             fields: [
               {
                 type: "string",
@@ -663,6 +720,16 @@ export default defineConfig({
             name: "pricing",
             label: "Pricing",
             list: true,
+            ui: {
+              // `group` is a number and `price` is a free-text string here,
+              // so neither goes through formatEuros.
+              itemProps: (item) => ({
+                label: itemLabel(
+                  [truncate(item?.group), truncate(item?.price)],
+                  "New price row",
+                ),
+              }),
+            },
             fields: [
               {
                 type: "number",
@@ -727,6 +794,11 @@ export default defineConfig({
                 name: "items",
                 label: "Cards",
                 list: true,
+                ui: {
+                  itemProps: (item) => ({
+                    label: itemLabel([truncate(item?.title)], "New card"),
+                  }),
+                },
                 fields: [
                   {
                     type: "image",
@@ -752,7 +824,6 @@ export default defineConfig({
                     label: "Card Text",
                     ui: { component: "textarea" },
                   },
-
                 ],
               },
             ],
@@ -793,6 +864,14 @@ export default defineConfig({
                 name: "reviews",
                 label: "Reviews",
                 list: true,
+                ui: {
+                  itemProps: (item) => ({
+                    label: itemLabel(
+                      [truncate(item?.author), truncate(item?.quote)],
+                      "New review",
+                    ),
+                  }),
+                },
                 fields: [
                   {
                     type: "string",
@@ -832,6 +911,14 @@ export default defineConfig({
             name: "gallery",
             label: "Gallery",
             list: true,
+            ui: {
+              itemProps: (item) => ({
+                label: itemLabel(
+                  [truncate(item?.alt) || fileName(item?.image)],
+                  "New image",
+                ),
+              }),
+            },
             fields: [
               {
                 type: "image",
@@ -972,6 +1059,14 @@ export default defineConfig({
             name: "steps",
             label: "Passos",
             list: true,
+            ui: {
+              itemProps: (item) => ({
+                label: itemLabel(
+                  [truncate(item?.title) || truncate(item?.text)],
+                  "New step",
+                ),
+              }),
+            },
             fields: [
               {
                 type: "string",
@@ -1110,6 +1205,14 @@ export default defineConfig({
                 label: "Filter Items",
                 list: true,
                 required: true,
+                ui: {
+                  itemProps: (item) => ({
+                    label: itemLabel(
+                      [truncate(item?.label), truncate(item?.type)],
+                      "New filter",
+                    ),
+                  }),
+                },
                 fields: [
                   {
                     type: "string",
@@ -1129,6 +1232,14 @@ export default defineConfig({
                     label: "Options",
                     list: true,
                     required: true,
+                    ui: {
+                      itemProps: (item) => ({
+                        label: itemLabel(
+                          [truncate(item?.label), truncate(item?.value)],
+                          "New option",
+                        ),
+                      }),
+                    },
                     fields: [
                       {
                         type: "string",
@@ -1289,6 +1400,14 @@ export default defineConfig({
                 name: "slides",
                 label: "Recipe Cards",
                 list: true,
+                ui: {
+                  itemProps: (item) => ({
+                    label: itemLabel(
+                      [truncate(item?.title), truncate(item?.time)],
+                      "New recipe card",
+                    ),
+                  }),
+                },
                 fields: [
                   {
                     type: "string",
@@ -1371,6 +1490,14 @@ export default defineConfig({
                 name: "slides",
                 label: "Recipe Cards",
                 list: true,
+                ui: {
+                  itemProps: (item) => ({
+                    label: itemLabel(
+                      [truncate(item?.title), truncate(item?.time)],
+                      "New recipe card",
+                    ),
+                  }),
+                },
                 fields: [
                   {
                     type: "string",
@@ -1453,6 +1580,14 @@ export default defineConfig({
                 name: "slides",
                 label: "Recipe Cards",
                 list: true,
+                ui: {
+                  itemProps: (item) => ({
+                    label: itemLabel(
+                      [truncate(item?.title), truncate(item?.time)],
+                      "New recipe card",
+                    ),
+                  }),
+                },
                 fields: [
                   {
                     type: "string",
@@ -1535,6 +1670,14 @@ export default defineConfig({
                 name: "slides",
                 label: "Recipe Cards",
                 list: true,
+                ui: {
+                  itemProps: (item) => ({
+                    label: itemLabel(
+                      [truncate(item?.title), truncate(item?.time)],
+                      "New recipe card",
+                    ),
+                  }),
+                },
                 fields: [
                   {
                     type: "string",
@@ -1617,6 +1760,14 @@ export default defineConfig({
                 name: "slides",
                 label: "Recipe Cards",
                 list: true,
+                ui: {
+                  itemProps: (item) => ({
+                    label: itemLabel(
+                      [truncate(item?.title), truncate(item?.time)],
+                      "New recipe card",
+                    ),
+                  }),
+                },
                 fields: [
                   {
                     type: "string",
@@ -1699,6 +1850,14 @@ export default defineConfig({
                 name: "slides",
                 label: "Recipe Cards",
                 list: true,
+                ui: {
+                  itemProps: (item) => ({
+                    label: itemLabel(
+                      [truncate(item?.title), truncate(item?.time)],
+                      "New recipe card",
+                    ),
+                  }),
+                },
                 fields: [
                   {
                     type: "string",
@@ -1840,6 +1999,14 @@ export default defineConfig({
                 name: "partners",
                 label: "Partner Logos",
                 list: true,
+                ui: {
+                  itemProps: (item) => ({
+                    label: itemLabel(
+                      [truncate(item?.alt) || fileName(item?.src)],
+                      "New partner",
+                    ),
+                  }),
+                },
                 fields: [
                   {
                     type: "image",

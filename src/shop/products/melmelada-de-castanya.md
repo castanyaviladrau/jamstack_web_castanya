@@ -27,10 +27,10 @@ formatLabel: Selecciona format
 formats:
   - label: Pot de 120 g
     sku: ml010
-    price: 6.11
+    price: 6.1
   - label: Pot de 275 g
     sku: ml011
-    price: 6.11
+    price: 6.1
 shippingNote: Enviaments a tota la península en 24/48 hores.
 highlights:
   - text: 'Formats disponibles: Pot de 120 g, Pot de 275 g'
