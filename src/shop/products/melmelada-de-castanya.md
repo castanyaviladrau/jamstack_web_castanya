@@ -1,9 +1,8 @@
 ---
-layout: product
 permalink: /shop/products/melmelada-de-castanya/
-title: "Melmelada de castanya"
-description: "De sabor dolç, amb la textura dels trossets de castanya. Ideal per acompanyar torrades i formatges, i també per elaborar pastisseria."
-tagline: "Elaboració dolça i artesana per gaudir la castanya tot l’any."
+layout: product
+title: Melmelada de castanya
+tagline: Elaboració dolça i artesana per gaudir la castanya tot l’any.
 categories:
   - elaborats-de-castanyes
   - dolcos
@@ -13,32 +12,33 @@ consumptionMoments:
 dietTags:
   - vega
   - sense-gluten
+price: 6.1
+priceLabel: 'Des de 6,10 €'
 sku: ml010
 currency: EUR
-price: 6.11
-priceLabel: "Des de 6,11 €"
-availability: "Disponible a la botiga online"
+availability: Disponible a la botiga online
 ingredientsLabel: INGREDIENTS
-ingredients: "Castanya, sucre i llimona. Sense llet, sense ous. Sense gluten."
-image: "/assets/images/products/melmelada-de-castanya.png"
-imageAlt: "Melmelada de castanya"
+ingredients: 'Castanya, sucre i llimona. Sense llet, sense ous. Sense gluten.'
+image: /assets/images/products/melmelada-de-castanya.png
+description: 'De sabor dolç, amb la textura dels trossets de castanya. Ideal per acompanyar torrades i formatges, i també per elaborar pastisseria.'
+imageAlt: Melmelada de castanya
 gallery: []
 formatLabel: Selecciona format
 formats:
-  - label: "Pot de 120 g"
-    sku: "ml010"
+  - label: Pot de 120 g
+    sku: ml010
     price: 6.11
-  - label: "Pot de 275 g"
-    sku: "ml011"
+  - label: Pot de 275 g
+    sku: ml011
     price: 6.11
-shippingNote: "Enviaments a tota la península en 24/48 hores."
+shippingNote: Enviaments a tota la península en 24/48 hores.
 highlights:
-  - text: "Formats disponibles: Pot de 120 g, Pot de 275 g"
-  - text: "Ingredients destacats: Castanya, sucre i llimona. Sense llet, sense ous. Sense gluten."
-  - text: "Elaboració artesanal amb producte local del Montseny."
+  - text: 'Formats disponibles: Pot de 120 g, Pot de 275 g'
+  - text: 'Ingredients destacats: Castanya, sucre i llimona. Sense llet, sense ous. Sense gluten.'
+  - text: Elaboració artesanal amb producte local del Montseny.
 detailLabel: DESCRIPCIÓ
 detailNotes:
-  - text: "De sabor dolç, amb la textura dels trossets de castanya. Ideal per acompanyar torrades i formatges, i també per elaborar pastisseria"
+  - text: 'De sabor dolç, amb la textura dels trossets de castanya. Ideal per acompanyar torrades i formatges, i també per elaborar pastisseria'
 ctaLabel: AFEGIR A LA CISTELLA
 ctaHref: /shop/cart/
 featured: false
@@ -48,6 +48,5 @@ De sabor dolç, amb la textura dels trossets de castanya. Ideal per acompanyar t
 
 ### Formats disponibles
 
-- **ML010** · Pot de 120 g · 6,11 €
-
-- **ML011** · Pot de 275 g · 6,11 €
+* **ML010** · Pot de 120 g · 6,10 €
+* **ML011** · Pot de 275 g · 6,10 €
