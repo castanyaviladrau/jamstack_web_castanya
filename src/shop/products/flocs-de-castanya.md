@@ -31,7 +31,7 @@ formats:
     price: 4.4
   - label: Bossa de 500 g
     sku: 888fc011
-    price: 16
+    price: 15.5
 shippingNote: Enviaments a tota la península en 24/48 hores.
 highlights:
   - text: 'Formats disponibles: Bossa de 150 g, Bossa de 500 g'
