@@ -27,7 +27,7 @@ formatLabel: Selecciona format
 formats:
   - label: Pot de 120 g
     sku: ml010
-    price: 6.1
+    price: 5.55
   - label: Pot de 275 g
     sku: ml011
     price: 6.1
