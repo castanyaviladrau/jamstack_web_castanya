@@ -1,9 +1,8 @@
 ---
-layout: product
 permalink: /shop/products/flocs-de-castanya/
-title: "Flocs de castanya"
-description: "Castanya deshidratada i laminada molt fina. Ideal per esmorzars, per barrejar amb iogurts, per elaborar porridge o com a topping per a cremes i sopes."
-tagline: "Castanya de Viladrau transformada amb cura artesanal."
+layout: product
+title: Flocs de castanya
+tagline: Castanya de Viladrau transformada amb cura artesanal.
 categories:
   - castanyes
 consumptionMoments:
@@ -13,35 +12,36 @@ dietTags:
   - vega
   - sense-gluten
   - sense-sucres-afegits
+price: 4.4
+priceLabel: 'Des de 4,40 €'
 sku: 888fc010
 currency: EUR
-price: 4.3
-priceLabel: "Des de 4,30 €"
-availability: "Disponible a la botiga online"
+availability: Disponible a la botiga online
 ingredientsLabel: INGREDIENTS
-ingredients: "Castanya ecològica. Pot contenir traces de blat, sègol, civada, espelta, kamut, llavors de sèsam i soja."
-image: "/assets/images/products/flocs-de-castanya.jpeg"
-imageAlt: "Flocs de castanya"
+ingredients: 'Castanya ecològica. Pot contenir traces de blat, sègol, civada, espelta, kamut, llavors de sèsam i soja.'
+image: /assets/images/products/flocs-de-castanya.jpeg
+description: 'Castanya deshidratada i laminada molt fina. Ideal per esmorzars, per barrejar amb iogurts, per elaborar porridge o com a topping per a cremes i sopes.'
+imageAlt: Flocs de castanya
 gallery:
-  - image: "/assets/images/products/flocs-de-castanya.jpeg"
+  - image: /assets/images/products/flocs-de-castanya.jpeg
 formatLabel: Selecciona format
 formats:
-  - label: "Bossa de 150 g"
-    sku: "888fc010"
-    price: 4.3
-  - label: "Bossa de 500 g"
-    sku: "888fc011"
-    price: 16.0
-shippingNote: "Enviaments a tota la península en 24/48 hores."
+  - label: Bossa de 150 g
+    sku: 888fc010
+    price: 4.4
+  - label: Bossa de 500 g
+    sku: 888fc011
+    price: 15.5
+shippingNote: Enviaments a tota la península en 24/48 hores.
 highlights:
-  - text: "Formats disponibles: Bossa de 150 g, Bossa de 500 g"
-  - text: "Ingredients destacats: Castanya ecològica. Pot contenir traces de blat, sègol, civada, espelta, kamut, llavors de sèsam i soja."
-  - text: "Elaboració artesanal amb producte local del Montseny."
+  - text: 'Formats disponibles: Bossa de 150 g, Bossa de 500 g'
+  - text: 'Ingredients destacats: Castanya ecològica. Pot contenir traces de blat, sègol, civada, espelta, kamut, llavors de sèsam i soja.'
+  - text: Elaboració artesanal amb producte local del Montseny.
 detailLabel: DESCRIPCIÓ
 detailNotes:
-  - text: "Castanya deshidratada i laminada molt fina. Ideal per esmorzars, per barrejar amb iogurts, per elaborar porridge o com a topping per a cremes i sopes"
-  - text: "Aporta un toc cruixent amb la dolçor natural de la castanya"
-  - text: "Mantenir el producte en un lloc fresc, sec i protegit d’olors i de la llum solar directa"
+  - text: 'Castanya deshidratada i laminada molt fina. Ideal per esmorzars, per barrejar amb iogurts, per elaborar porridge o com a topping per a cremes i sopes'
+  - text: Aporta un toc cruixent amb la dolçor natural de la castanya
+  - text: 'Mantenir el producte en un lloc fresc, sec i protegit d’olors i de la llum solar directa'
 ctaLabel: AFEGIR A LA CISTELLA
 ctaHref: /shop/cart/
 featured: false
@@ -55,6 +55,5 @@ Mantenir el producte en un lloc fresc, sec i protegit d’olors i de la llum sol
 
 ### Formats disponibles
 
-- **888FC010** · Bossa de 150 g · 4,30 €
-
-- **888FC011** · Bossa de 500 g · 16,00 €
+* **888FC010** · Bossa de 150 g · 4,30 €
+* **888FC011** · Bossa de 500 g · 16,00 €
