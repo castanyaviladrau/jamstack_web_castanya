@@ -183,3 +183,75 @@ test("create-order handler charges the configured shipping fee for shipping orde
     global.fetch = originalFetch;
   }
 });
+
+test("create-order handler rejects SKUs flagged out of stock", async () => {
+  process.env.SUPABASE_URL = "https://example.supabase.co";
+  process.env.SUPABASE_SERVICE_ROLE_KEY = "service-role";
+
+  const fs = require("node:fs");
+  const path = require("node:path");
+  const productsPath = path.join(
+    process.cwd(),
+    "src",
+    "_data",
+    "products.json",
+  );
+
+  // Pin a fixture so the assertion does not depend on which real products
+  // happen to be flagged in the CMS at the time the suite runs.
+  const savedProducts = fs.readFileSync(productsPath, "utf8");
+  fs.writeFileSync(
+    productsPath,
+    JSON.stringify({
+      list: [
+        {
+          slug: "test-product",
+          name: "Test product",
+          currency: "EUR",
+          image: "/assets/images/products/test.png",
+          outOfStock: false,
+          variants: [
+            { sku: "in-stock-1", label: "In stock", price: 5, outOfStock: false },
+            { sku: "sold-out-1", label: "Sold out", price: 5, outOfStock: true },
+          ],
+        },
+      ],
+    }),
+    "utf8",
+  );
+
+  const originalFetch = global.fetch;
+  global.fetch = async () => {
+    throw new Error("Fetch should not be called when an item is out of stock");
+  };
+
+  try {
+    const mod = freshRequire("../netlify/functions/create-order.js");
+    const response = await mod.handler({
+      httpMethod: "POST",
+      body: JSON.stringify({
+        items: [
+          { sku: "in-stock-1", quantity: 1 },
+          { sku: "sold-out-1", quantity: 1 },
+        ],
+        customer: {
+          name: "Buyer",
+          email: "buyer@example.com",
+          phone: "+34123456789",
+          country: "Espanya",
+          address: "Carrer Major 1",
+          city: "Viladrau",
+          postalCode: "17406",
+        },
+      }),
+    });
+
+    assert.equal(response.statusCode, 409);
+    const body = JSON.parse(response.body);
+    assert.equal(body.code, "out_of_stock");
+    assert.deepEqual(body.skus, ["sold-out-1"]);
+  } finally {
+    fs.writeFileSync(productsPath, savedProducts, "utf8");
+    global.fetch = originalFetch;
+  }
+});

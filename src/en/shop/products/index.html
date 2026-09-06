@@ -188,7 +188,8 @@ lang: en
     {% if not productImage or 'pending-product-image.svg' in productImage %}
     {% set productImage = '/assets/images/gallery/elaborats.jpg' %} {% endif
     %}
-    <a href="{{ product.url }}" class="shop-page-featured-product gallery-item">
+    <a href="{{ product.url }}" class="shop-page-featured-product gallery-item{% if product.url | isOutOfStock %} is-out-of-stock{% endif %}">
+      {% if product.url | isOutOfStock %}<span class="shop-stock-badge">{{ i18n[lang].productOutOfStockCta }}</span>{% endif %}
       <img
         src="{{ productImage }}"
         alt="{{ product.data.title }}"
@@ -296,7 +297,8 @@ lang: en
     '/assets/images/gallery/botiga/botiga_productes.png' %} {% else %} {% set
     productImage = '/assets/images/gallery/elaborats.jpg' %} {% endif %} {%
     endif %}
-    <a href="{{ product.url }}" class="shop-page-featured-product gallery-item">
+    <a href="{{ product.url }}" class="shop-page-featured-product gallery-item{% if product.url | isOutOfStock %} is-out-of-stock{% endif %}">
+      {% if product.url | isOutOfStock %}<span class="shop-stock-badge">{{ i18n[lang].productOutOfStockCta }}</span>{% endif %}
       <img
         src="{{ productImage }}"
         alt="{{ product.data.title }}"

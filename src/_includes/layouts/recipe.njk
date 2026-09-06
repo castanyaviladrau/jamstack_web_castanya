@@ -123,7 +123,8 @@
                 {% for productKey in relatedProductKeys %}
                   {% set product = recipeProductsByLang[productKey] %}
                   {% if product %}
-                  <a href="{{ product.href }}" class="recipe-detail__related-product-card">
+                  <a href="{{ product.href }}" class="recipe-detail__related-product-card{% if product.href | isOutOfStock %} is-out-of-stock{% endif %}">
+                    {% if product.href | isOutOfStock %}<span class="shop-stock-badge">{{ i18n[lang].productOutOfStockCta }}</span>{% endif %}
                     <img
                       src="{{ product.image }}"
                       alt="{{ product.imageAlt }}"

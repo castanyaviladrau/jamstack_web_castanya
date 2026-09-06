@@ -24,6 +24,13 @@ document.addEventListener("DOMContentLoaded", () => {
         "Aquest producte encara no te un format o preu valid per comprar-lo.",
       cartProductAdded: "Producte afegit a la cistella.",
       cartDefaultFormatLabel: "Format general",
+      formatOutOfStock: "Aquest format s'ha esgotat. Tria'n un altre.",
+      productOutOfStock: "Aquest producte esta esgotat temporalment.",
+      cartItemOutOfStock: "Esgotat: elimina'l per continuar amb la comanda.",
+      cartOutOfStockWarning:
+        "Hi ha productes esgotats a la cistella. No es comptabilitzen al total i cal eliminar-los per continuar.",
+      checkoutOutOfStock:
+        "Hi ha productes esgotats a la cistella. Elimina'ls abans de continuar cap al pagament.",
       checkoutMissingFields:
         "Completa tots els camps obligatoris abans de continuar.",
       checkoutInvalidEmail: "Introdueix un correu electronic valid.",
@@ -119,6 +126,13 @@ document.addEventListener("DOMContentLoaded", () => {
         "Este producto todavia no tiene un formato o precio valido para comprarlo.",
       cartProductAdded: "Producto anadido a la cesta.",
       cartDefaultFormatLabel: "Formato general",
+      formatOutOfStock: "Este formato se ha agotado. Elige otro.",
+      productOutOfStock: "Este producto esta agotado temporalmente.",
+      cartItemOutOfStock: "Agotado: eliminalo para continuar con el pedido.",
+      cartOutOfStockWarning:
+        "Hay productos agotados en la cesta. No se cuentan en el total y hay que eliminarlos para continuar.",
+      checkoutOutOfStock:
+        "Hay productos agotados en la cesta. Eliminalos antes de continuar hacia el pago.",
       checkoutMissingFields:
         "Completa todos los campos obligatorios antes de continuar.",
       checkoutInvalidEmail: "Introduce un correo electronico valido.",
@@ -213,6 +227,13 @@ document.addEventListener("DOMContentLoaded", () => {
         "This product doesn't have a valid format or price to purchase yet.",
       cartProductAdded: "Product added to the cart.",
       cartDefaultFormatLabel: "General format",
+      formatOutOfStock: "This format has sold out. Please choose another.",
+      productOutOfStock: "This product is temporarily out of stock.",
+      cartItemOutOfStock: "Sold out: remove it to continue with your order.",
+      cartOutOfStockWarning:
+        "Some items in your cart have sold out. They are excluded from the total and must be removed to continue.",
+      checkoutOutOfStock:
+        "Some items in your cart have sold out. Please remove them before continuing to payment.",
       checkoutMissingFields:
         "Fill in all the required fields before continuing.",
       checkoutInvalidEmail: "Enter a valid email address.",
@@ -715,6 +736,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       options.forEach((option) => {
         option.addEventListener("click", () => {
+          // Sold-out formats stay visible (so the shopper sees the range) but
+          // cannot be picked.
+          if (option.dataset.outOfStock === "true") {
+            return;
+          }
+
           const label = option.dataset.variantLabel || option.textContent.trim();
 
           if (select) {
@@ -2431,6 +2458,29 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const setupCart = () => {
+    // SKUs that sold out after a shopper put them in their cart. The cart lives
+    // in localStorage and has no other way to learn this; the create-order
+    // function re-checks server-side, so a stale or failed fetch is safe.
+    const outOfStockSkus = new Set();
+
+    const loadStockFeed = async () => {
+      try {
+        const response = await fetch("/shop/stock.json", { cache: "no-store" });
+        if (!response.ok) {
+          return;
+        }
+
+        const data = await response.json();
+        const list = Array.isArray(data?.outOfStock) ? data.outOfStock : [];
+        list.forEach((sku) => outOfStockSkus.add(String(sku)));
+      } catch {
+        // Offline or feed missing: the server still rejects sold-out SKUs.
+      }
+    };
+
+    const isItemOutOfStock = (item) =>
+      outOfStockSkus.has(String(item?.sku || ""));
+
     const cartStorageKey = "castanya-cart";
     const checkoutStorageKey = "castanya-checkout-draft";
     const checkoutSessionKey = "castanya-checkout-session";
@@ -2719,6 +2769,15 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       const data = await response.json().catch(() => ({}));
 
+      if (data?.code === "out_of_stock") {
+        // Our copy of the feed was stale; adopt the server's list and re-render
+        // so the offending lines are flagged.
+        (Array.isArray(data.skus) ? data.skus : []).forEach((sku) =>
+          outOfStockSkus.add(String(sku)),
+        );
+        throw new Error(t.checkoutOutOfStock);
+      }
+
       if (!response.ok || !data?.success || !data?.order?.id) {
         throw new Error(
           data?.details || data?.error || t.orderCreateError,
@@ -2792,6 +2851,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
           const selectedOption =
             formatSelect.options[formatSelect.selectedIndex];
+          const selectedOutOfStock =
+            selectedOption.dataset.outOfStock === "true";
+
+          if (button.dataset.outOfStock !== "true") {
+            button.disabled = selectedOutOfStock;
+          }
+
           const selectedPrice = Number(
             selectedOption.dataset.price || button.dataset.productPrice || 0,
           );
@@ -2824,6 +2890,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         button.addEventListener("click", () => {
+          if (button.dataset.outOfStock === "true") {
+            if (feedbackNode) {
+              feedbackNode.hidden = false;
+              feedbackNode.dataset.state = "error";
+              feedbackNode.textContent = t.productOutOfStock;
+            }
+            return;
+          }
+
           if (requiresFormatSelection && !formatSelected) {
             if (feedbackNode) {
               feedbackNode.hidden = false;
@@ -2836,6 +2911,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
           const selectedOption =
             formatSelect?.options[formatSelect.selectedIndex];
+
+          if (selectedOption?.dataset.outOfStock === "true") {
+            if (feedbackNode) {
+              feedbackNode.hidden = false;
+              feedbackNode.dataset.state = "error";
+              feedbackNode.textContent = t.formatOutOfStock;
+            }
+            return;
+          }
+
           const variantLabel =
             selectedOption?.value || t.cartDefaultFormatLabel;
           const productSlug = button.dataset.productSlug;
@@ -2902,6 +2987,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "[data-cart-shipping-warning]",
       );
       const summaryLink = document.querySelector("[data-cart-summary-link]");
+      const stockWarningNode = document.querySelector(
+        "[data-cart-stock-warning]",
+      );
       const checkoutSection = document.querySelector("[data-checkout-section]");
       const checkoutForm = document.querySelector("[data-checkout-form]");
       const checkoutMessage = document.querySelector("[data-checkout-message]");
@@ -3149,8 +3237,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const renderCartPage = () => {
         const cart = readCart();
         const hasItems = cart.items.length > 0;
-        const itemCount = getCartCount(cart);
-        const subtotal = getCartSubtotal(cart);
+        // Sold-out lines stay visible so the shopper can see what to remove,
+        // but they are excluded from every total.
+        const sellable = { items: cart.items.filter((item) => !isItemOutOfStock(item)) };
+        const blockedCount = cart.items.length - sellable.items.length;
+        const itemCount = getCartCount(sellable);
+        const subtotal = getCartSubtotal(sellable);
         const isPickup = pickupCheckbox?.checked;
         const shippingFee =
           hasItems && !isPickup && subtotal < shippingMinimumAmount
@@ -3203,6 +3295,17 @@ document.addEventListener("DOMContentLoaded", () => {
           noteNode.textContent = hasItems ? "" : t.cartSummaryNote;
         }
         renderShippingMinimumWarning();
+
+        if (stockWarningNode) {
+          stockWarningNode.hidden = blockedCount === 0;
+          stockWarningNode.textContent =
+            blockedCount > 0 ? t.cartOutOfStockWarning : "";
+        }
+
+        if (checkoutSubmitButton) {
+          checkoutSubmitButton.disabled = blockedCount > 0;
+        }
+
         if (summaryLink) {
           summaryLink.textContent = hasItems
             ? t.cartCtaBackToShop
@@ -3217,9 +3320,10 @@ document.addEventListener("DOMContentLoaded", () => {
           .map((item) => {
             const lineTotal =
               Number(item.unitPrice || 0) * Number(item.quantity || 0);
+            const unavailable = isItemOutOfStock(item);
 
             return `
-              <article class="shop-cart-item" data-cart-item data-sku="${item.sku}" data-slug="${item.productSlug}" data-variant="${item.variantLabel}">
+              <article class="shop-cart-item${unavailable ? " is-unavailable" : ""}" data-cart-item data-sku="${item.sku}" data-slug="${item.productSlug}" data-variant="${item.variantLabel}">
                 <img src="${item.image}" alt="${item.name}" class="shop-cart-item__image" />
                 <div class="shop-cart-item__body">
                   <div class="shop-cart-item__top">
@@ -3232,6 +3336,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                     <p class="shop-cart-item__line-total">${formatMoney(lineTotal)}</p>
                   </div>
+                  ${unavailable ? `<p class="shop-cart-item__stock-warning">${t.cartItemOutOfStock}</p>` : ""}
                   <div class="shop-cart-item__actions">
                     <div class="shop-cart-item__qty" aria-label="${t.cartItemQtyAria}">
                       <button type="button" class="shop-cart-item__qty-button" data-cart-decrease>-</button>
@@ -3364,6 +3469,15 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
+        if (cart.items.some(isItemOutOfStock)) {
+          if (checkoutMessage) {
+            checkoutMessage.dataset.state = "error";
+            checkoutMessage.textContent = t.checkoutOutOfStock;
+          }
+          renderCartPage();
+          return;
+        }
+
         const invalidItem = cart.items.find(
           (item) => !String(item.sku || "").trim(),
         );
@@ -3468,6 +3582,8 @@ document.addEventListener("DOMContentLoaded", () => {
             checkoutSubmitButton.disabled = false;
             checkoutSubmitButton.textContent = t.checkoutSubmitLabel;
           }
+          // Re-applies the disabled state if anything in the cart sold out.
+          renderCartPage();
         }
       });
 
@@ -3475,11 +3591,20 @@ document.addEventListener("DOMContentLoaded", () => {
       applyPickupState();
       renderCartPage();
       handleResumePayment();
+
+      return renderCartPage;
     };
 
     updateCartCount();
     bindProductActions();
-    bindCartPage();
+    const rerenderCartPage = bindCartPage();
+
+    // The feed lands after first paint; repaint so sold-out lines are flagged.
+    loadStockFeed().then(() => {
+      if (rerenderCartPage) {
+        rerenderCartPage();
+      }
+    });
   };
 
   setupProfessionalsValueFeature();

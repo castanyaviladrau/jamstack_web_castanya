@@ -3,6 +3,11 @@ const fs = require("fs");
 const markdownIt = require("markdown-it");
 // Import the secure minifier
 const htmlmin = require("html-minifier-terser");
+const {
+  loadStock,
+  slugFromUrl,
+} = require("./scripts/product-stock.js");
+const { writeIfChanged } = require("./scripts/generate-products-json.js");
 
 const md = markdownIt({
   html: true,
@@ -11,6 +16,14 @@ const md = markdownIt({
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.setDataDeepMerge(true);
+
+  // products.json is a build artefact of the Catalan product markdown. It is
+  // written before each build (including dev rebuilds) and ignored by the
+  // watcher, since watching a file we regenerate would loop forever.
+  eleventyConfig.watchIgnores.add("src/_data/products.json");
+  eleventyConfig.on("eleventy.before", () => {
+    writeIfChanged();
+  });
 
   eleventyConfig.addFilter("absoluteUrl", (path, base) => {
     if (!path) {
@@ -80,6 +93,25 @@ module.exports = function (eleventyConfig) {
     return (items || []).filter(
       (item) => (item.data && (item.data.lang || "ca")) === lang,
     );
+  });
+
+  // Stock is flagged once on the Catalan product and resolved by slug, so the
+  // same toggle drives /shop/, /es/shop/ and /en/shop/ alike.
+  eleventyConfig.addFilter("productSlug", (url = "") => slugFromUrl(url));
+
+  eleventyConfig.addFilter("isOutOfStock", (url = "") => {
+    const entry = loadStock().bySlug[slugFromUrl(url)];
+    return Boolean(entry && entry.outOfStock);
+  });
+
+  eleventyConfig.addFilter("isSkuOutOfStock", (sku = "") => {
+    return loadStock().bySku[String(sku)] === true;
+  });
+
+  // Formats still on sale, so the product page never preselects a sold-out one.
+  eleventyConfig.addFilter("availableFormats", (formats = []) => {
+    const bySku = loadStock().bySku;
+    return (formats || []).filter((format) => bySku[String(format?.sku)] !== true);
   });
 
   eleventyConfig.addFilter("slugify", (value = "") => {

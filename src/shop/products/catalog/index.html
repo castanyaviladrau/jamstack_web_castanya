@@ -79,12 +79,13 @@ footerVariant: projecte-newsletter
       {% endif %}
     <a
       href="{{ product.url }}"
-      class="shop-page-product gallery-item"
+      class="shop-page-product gallery-item{% if product.url | isOutOfStock %} is-out-of-stock{% endif %}"
       data-shop-product
       data-shop-product-category="{{ productCategories | join(' ') }}"
       data-shop-product-moments="{{ productMoments | join(' ') }}"
       data-shop-product-diets="{{ productDiets | join(' ') }}"
     >
+      {% if product.url | isOutOfStock %}<span class="shop-stock-badge">{{ i18n[lang].productOutOfStockCta }}</span>{% endif %}
       <img
         src="{{ productImage }}"
         alt="{{ product.data.title }}"

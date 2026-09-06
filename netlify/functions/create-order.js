@@ -59,6 +59,14 @@ function isValidPickupStore(value) {
   return ["Viladrau", "Barcelona"].includes(normalizeText(value));
 }
 
+class OutOfStockError extends Error {
+  constructor(skus) {
+    super(`Out of stock SKUs in cart: ${skus.join(", ")}`);
+    this.name = "OutOfStockError";
+    this.skus = skus;
+  }
+}
+
 function loadProductsIndex() {
   const filePath = path.join(process.cwd(), "src", "_data", "products.json");
   const raw = fs.readFileSync(filePath, "utf8");
@@ -81,6 +89,7 @@ function loadProductsIndex() {
         variant_label: normalizeText(variant?.label),
         unit_price: Number(variant?.price),
         vat_rate: Number(variant?.vatRate),
+        out_of_stock: variant?.outOfStock === true,
       });
     });
   });
@@ -160,6 +169,14 @@ function buildValidatedItems(rawItems) {
   }
 
   const productsIndex = loadProductsIndex();
+
+  const outOfStockSkus = rawItems
+    .map((item) => normalizeText(item?.sku))
+    .filter((sku) => sku && productsIndex.get(sku)?.out_of_stock === true);
+
+  if (outOfStockSkus.length) {
+    throw new OutOfStockError([...new Set(outOfStockSkus)]);
+  }
 
   return rawItems.map((item, index) => {
     const safeItem = item && typeof item === "object" ? item : {};
@@ -351,6 +368,14 @@ exports.handler = async (event) => {
       },
     });
   } catch (error) {
+    if (error instanceof OutOfStockError) {
+      return jsonResponse(409, {
+        error: "Some items are out of stock",
+        code: "out_of_stock",
+        skus: error.skus,
+      });
+    }
+
     console.error("Create order error:", error);
     const statusCode =
       /^Missing customer field:/.test(error.message) ||

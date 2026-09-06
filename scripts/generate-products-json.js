@@ -1,121 +1,61 @@
 /* eslint-disable no-console */
 const fs = require('fs');
 const path = require('path');
+const matter = require('gray-matter');
 
-function readFrontmatter(markdown) {
-  const text = String(markdown || '');
-  if (!text.startsWith('---')) {
-    return null;
-  }
+const LANGS = ['ca', 'es', 'en'];
 
-  const endIndex = text.indexOf('\n---', 3);
-  if (endIndex === -1) {
-    return null;
-  }
-
-  return text.slice(3, endIndex + 1).trimEnd();
+function text(value) {
+  return typeof value === 'string' ? value.trim() : '';
 }
 
-function parseScalar(value) {
-  const raw = String(value || '').trim();
-  if (!raw) {
-    return '';
-  }
+// Per-language override blocks (banner / note). Returns undefined when the
+// editor left every language blank, so products.json stays free of empty noise.
+function langBlock(value) {
+  const source = value && typeof value === 'object' ? value : {};
+  const result = {};
 
-  const unquoted = /^"(.*)"$/.test(raw) || /^'(.*)'$/.test(raw)
-    ? raw.slice(1, -1)
-    : raw;
+  LANGS.forEach((lang) => {
+    const entry = text(source[lang]);
+    if (entry) {
+      result[lang] = entry;
+    }
+  });
 
-  const numberValue = Number(unquoted);
-  if (Number.isFinite(numberValue) && String(numberValue) === unquoted) {
-    return numberValue;
-  }
-
-  return unquoted;
+  return Object.keys(result).length ? result : undefined;
 }
 
-function parseProductFrontmatter(frontmatter) {
-  const lines = String(frontmatter || '')
-    .split(/\r?\n/)
-    .map((line) => line.replace(/\t/g, '  '));
+function parseProduct(data) {
+  const slugMatch = text(data.permalink).match(/\/shop\/products\/([^/]+)\//);
+  const productOutOfStock = data.outOfStock === true;
 
-  const product = {
-    slug: '',
-    name: '',
-    currency: 'EUR',
-    image: '',
-    variants: [],
-  };
-
-  let currentList = null;
-  let currentEntry = null;
-
-  for (const line of lines) {
-    if (!line.trim()) {
-      continue;
-    }
-
-    if (line.startsWith('formats:')) {
-      currentList = 'formats';
-      currentEntry = null;
-      continue;
-    }
-
-    if (currentList === 'formats' && line.trimStart().startsWith('- ')) {
-      currentEntry = {};
-      product.variants.push(currentEntry);
-      const rest = line.trimStart().slice(2).trim();
-      if (rest.includes(':')) {
-        const [k, ...v] = rest.split(':');
-        currentEntry[k.trim()] = parseScalar(v.join(':'));
-      }
-      continue;
-    }
-
-    if (currentList === 'formats' && currentEntry && /^\s{2,}\w+\s*:/.test(line)) {
-      const trimmed = line.trim();
-      const [k, ...v] = trimmed.split(':');
-      currentEntry[k.trim()] = parseScalar(v.join(':'));
-      continue;
-    }
-
-    const trimmed = line.trim();
-    if (!trimmed.includes(':')) {
-      continue;
-    }
-
-    const [key, ...rest] = trimmed.split(':');
-    const value = rest.join(':').trim();
-
-    if (key === 'permalink') {
-      const match = value.match(/\/shop\/products\/([^/]+)\//);
-      if (match) {
-        product.slug = match[1];
-      }
-    }
-
-    if (key === 'title') {
-      product.name = String(parseScalar(value));
-    }
-
-    if (key === 'currency') {
-      product.currency = String(parseScalar(value) || 'EUR');
-    }
-
-    if (key === 'image') {
-      product.image = String(parseScalar(value));
-    }
-  }
-
-  product.variants = product.variants
-    .map((variant) => ({
-      sku: String(variant.sku || '').trim(),
-      label: String(variant.label || '').trim(),
-      price: Number(variant.price),
-    }))
+  const variants = (Array.isArray(data.formats) ? data.formats : [])
+    .map((format) => {
+      const entry = format && typeof format === 'object' ? format : {};
+      return {
+        sku: text(entry.sku),
+        label: text(entry.label),
+        price: Number(entry.price),
+        // A product-level flag takes every one of its formats off sale.
+        outOfStock: productOutOfStock || entry.outOfStock === true,
+      };
+    })
     .filter((variant) => variant.sku && variant.label && Number.isFinite(variant.price));
 
-  return product;
+  return {
+    slug: slugMatch ? slugMatch[1] : '',
+    name: text(data.title),
+    currency: text(data.currency) || 'EUR',
+    image: text(data.image),
+    // Out of stock either because the editor flagged the whole product, or
+    // because every single format sold out individually.
+    outOfStock:
+      productOutOfStock ||
+      (variants.length > 0 && variants.every((variant) => variant.outOfStock)),
+    outOfStockBanner: langBlock(data.outOfStockBanner),
+    outOfStockNote: langBlock(data.outOfStockNote),
+    variants,
+  };
 }
 
 function generate() {
@@ -132,14 +72,16 @@ function generate() {
     }
 
     const filePath = path.join(productsDir, entry.name);
-    const content = fs.readFileSync(filePath, 'utf8');
-    const fm = readFrontmatter(content);
-    if (!fm) {
-      console.warn(`Skipping ${entry.name}: missing frontmatter`);
+    let parsed;
+
+    try {
+      parsed = matter(fs.readFileSync(filePath, 'utf8'));
+    } catch (error) {
+      console.warn(`Skipping ${entry.name}: ${error.message}`);
       continue;
     }
 
-    const product = parseProductFrontmatter(fm);
+    const product = parseProduct(parsed.data || {});
     if (!product.slug) {
       product.slug = path.basename(entry.name, '.md');
     }
@@ -153,11 +95,28 @@ function generate() {
   }
 
   products.sort((a, b) => a.slug.localeCompare(b.slug));
-  const payload = JSON.stringify({ list: products }, null, 2) + '\n';
-  fs.mkdirSync(path.dirname(outFile), { recursive: true });
-  fs.writeFileSync(outFile, payload, 'utf8');
-
-  console.log(`Wrote ${outFile} (${products.length} products)`);
+  return JSON.stringify({ list: products }, null, 2) + '\n';
 }
 
-generate();
+// Only touch the file when something actually changed: an unconditional write
+// bumps its mtime, which would make the Eleventy dev server rebuild forever.
+function writeIfChanged() {
+  const outFile = path.join(process.cwd(), 'src', '_data', 'products.json');
+  const payload = generate();
+  const current = fs.existsSync(outFile) ? fs.readFileSync(outFile, 'utf8') : null;
+
+  if (current === payload) {
+    return { outFile, changed: false };
+  }
+
+  fs.mkdirSync(path.dirname(outFile), { recursive: true });
+  fs.writeFileSync(outFile, payload, 'utf8');
+  return { outFile, changed: true };
+}
+
+module.exports = { generate, writeIfChanged };
+
+if (require.main === module) {
+  const { outFile, changed } = writeIfChanged();
+  console.log(`${changed ? 'Wrote' : 'Unchanged'} ${outFile}`);
+}

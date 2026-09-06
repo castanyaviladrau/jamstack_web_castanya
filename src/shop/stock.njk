@@ -1,0 +1,10 @@
+---
+permalink: /shop/stock.json
+eleventyExcludeFromCollections: true
+---
+{#
+  Machine-readable stock feed for the cart page: a shopper may already hold an
+  item in localStorage when it sells out, and the cart has no other way to know.
+  Only sold-out SKUs are listed, so the file stays tiny.
+#}
+{{ { "outOfStock": stock.outOfStockSkus } | dump | safe }}

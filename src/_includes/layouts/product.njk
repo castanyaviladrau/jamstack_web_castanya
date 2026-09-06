@@ -13,7 +13,13 @@ footerVariant: projecte-newsletter
 {% set currentIndex = productsList | indexOfUrl(currentUrl) %}
 {% set prevProduct = productsList[(currentIndex - 1 + totalProducts) % totalProducts] if totalProducts and currentIndex > -1 else null %}
 {% set nextProduct = productsList[(currentIndex + 1) % totalProducts] if totalProducts and currentIndex > -1 else null %}
-{% set defaultFormat = formats[0] if formats and formats.length else null %}
+{% set stockEntry = stock.bySlug[page.url | productSlug] | default({}) %}
+{% set stockVariants = stockEntry.variants | default({}) %}
+{% set isOutOfStock = stockEntry.outOfStock | default(false) %}
+{% set stockBannerText = (stockEntry.banner | default({}))[lang] | default(i18n[lang].productOutOfStockBanner, true) %}
+{% set stockNoteText = (stockEntry.note | default({}))[lang] | default('', true) %}
+{% set sellableFormats = formats | default([]) | availableFormats %}
+{% set defaultFormat = sellableFormats[0] | default(formats[0] if formats and formats.length else null, true) %}
 {% set defaultVariantLabel = defaultFormat.label if defaultFormat and defaultFormat.label else (defaultFormat if defaultFormat else '') %}
 {% set defaultPrice = defaultFormat.price if defaultFormat and defaultFormat.price else price %}
 {% set defaultSku = defaultFormat.sku if defaultFormat and defaultFormat.sku else sku %}
@@ -52,8 +58,15 @@ footerVariant: projecte-newsletter
         <h1 class="product-detail__title{% if titleClass %} {{ titleClass }}{% endif %}">{{ title }}</h1>
         <p class="product-detail__tagline{% if taglineClass %} {{ taglineClass }}{% endif %}">{{ tagline }}</p>
 
+        {% if isOutOfStock %}
+          <p class="product-detail__stock-banner">{{ stockBannerText }}</p>
+          {% if stockNoteText %}
+            <p class="product-detail__stock-note">{{ stockNoteText }}</p>
+          {% endif %}
+        {% endif %}
+
         <div class="product-detail__purchase">
-          <details class="product-detail__format-menu" data-product-format-menu>
+          <details class="product-detail__format-menu" data-product-format-menu{% if isOutOfStock %} data-disabled{% endif %}>
             <summary class="product-detail__format-select">
               <span data-product-format-summary-label>{{ formatLabel }}</span>
               <img class="product-detail__format-arrow" src="/assets/images/recipe-filter-arrow.svg" alt="" aria-hidden="true" />
@@ -63,14 +76,16 @@ footerVariant: projecte-newsletter
                 {% set optionLabel = option.label if option.label else option %}
                 {% set optionPrice = option.price if option.price else price %}
                 {% set optionSku = option.sku if option.sku else sku %}
+                {% set optionOutOfStock = stockVariants[optionSku] | default(false) %}
                 <button
                   type="button"
-                  class="product-detail__format-menu__item"
+                  class="product-detail__format-menu__item{% if optionOutOfStock %} is-out-of-stock{% endif %}"
                   data-product-format-option
                   data-variant-label="{{ optionLabel }}"
                   data-price="{{ optionPrice }}"
                   data-sku="{{ optionSku }}"
-                >{{ optionLabel }}</button>
+                  {%- if optionOutOfStock %} data-out-of-stock="true" aria-disabled="true"{% endif %}
+                >{{ optionLabel }}{% if optionOutOfStock %} <span class="product-detail__format-menu__flag">{{ i18n[lang].productOutOfStockCta }}</span>{% endif %}</button>
               {% endfor %}
             </div>
           </details>
@@ -80,7 +95,8 @@ footerVariant: projecte-newsletter
               {% set optionLabel = option.label if option.label else option %}
               {% set optionPrice = option.price if option.price else price %}
               {% set optionSku = option.sku if option.sku else sku %}
-              <option value="{{ optionLabel }}" data-variant-label="{{ optionLabel }}" data-price="{{ optionPrice }}" data-sku="{{ optionSku }}">{{ optionLabel }}</option>
+              {% set optionOutOfStock = stockVariants[optionSku] | default(false) %}
+              <option value="{{ optionLabel }}" data-variant-label="{{ optionLabel }}" data-price="{{ optionPrice }}" data-sku="{{ optionSku }}"{% if optionOutOfStock %} data-out-of-stock="true"{% endif %}>{{ optionLabel }}</option>
             {% endfor %}
           </select>
 
@@ -95,8 +111,9 @@ footerVariant: projecte-newsletter
             data-product-price="{{ defaultPrice }}"
             data-product-sku="{{ defaultSku }}"
             data-product-currency="{{ currency or 'EUR' }}"
+            {%- if isOutOfStock %} disabled data-out-of-stock="true"{% endif %}
           >
-            {{ ctaLabel }}
+            {% if isOutOfStock %}{{ i18n[lang].productOutOfStockCta }}{% else %}{{ ctaLabel }}{% endif %}
           </button>
           <p class="product-detail__cta-feedback" data-add-to-cart-feedback hidden></p>
         </div>
@@ -123,7 +140,7 @@ footerVariant: projecte-newsletter
 
         <div class="product-detail__notes">
           <p class="product-detail__price" data-product-price-display>{{ priceText }}</p>
-          <p class="product-detail__availability">{{ availability }}</p>
+          <p class="product-detail__availability">{% if isOutOfStock %}{{ i18n[lang].productOutOfStockAvailability }}{% else %}{{ availability }}{% endif %}</p>
 
           {% if detailNotes and detailNotes.length %}
             {% for item in detailNotes %}
@@ -170,7 +187,7 @@ footerVariant: projecte-newsletter
       "name": {{ site.name | dump | safe }}
     },
     "url": {{ (page.url | absoluteUrl(site.url)) | dump | safe }},
-    "availability": {{ availability | dump | safe }}
+    "availability": {{ ("https://schema.org/OutOfStock" if isOutOfStock else "https://schema.org/InStock") | dump | safe }}
   }
 </script>
 
@@ -211,7 +228,8 @@ footerVariant: projecte-newsletter
       {% if relatedCollection and relatedCollection.length > 1 %}
         {% for product in relatedCollection %}
           {% if product.url != currentUrl and loop.index0 < 8 %}
-            <a href="{{ product.url }}" class="product-detail__related-card">
+            <a href="{{ product.url }}" class="product-detail__related-card{% if product.url | isOutOfStock %} is-out-of-stock{% endif %}">
+              {% if product.url | isOutOfStock %}<span class="shop-stock-badge">{{ i18n[lang].productOutOfStockCta }}</span>{% endif %}
               <img
                 src="{{ product.data.image }}"
                 alt="{{ product.data.title }}"
@@ -226,7 +244,8 @@ footerVariant: projecte-newsletter
       {% else %}
         {% for product in relatedFallback %}
           {% if loop.index0 < 8 %}
-            <a href="{{ product.url }}" class="product-detail__related-card">
+            <a href="{{ product.url }}" class="product-detail__related-card{% if product.url | isOutOfStock %} is-out-of-stock{% endif %}">
+              {% if product.url | isOutOfStock %}<span class="shop-stock-badge">{{ i18n[lang].productOutOfStockCta }}</span>{% endif %}
               <img
                 src="{{ product.image }}"
                 alt="{{ product.title }}"

@@ -5,11 +5,13 @@
       "name": "Castanya al brandi extra",
       "currency": "EUR",
       "image": "/assets/images/products/castanya-al-brandi-extra.png",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "br010",
           "label": "Pot de 300 g",
-          "price": 8.09
+          "price": 8.09,
+          "outOfStock": false
         }
       ]
     },
@@ -18,29 +20,34 @@
       "name": "Castanya en almívar",
       "currency": "EUR",
       "image": "/assets/images/products/castanya-en-almivar.jpeg",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "ca010",
           "label": "Pot de 350 g",
-          "price": 7.6
+          "price": 7.6,
+          "outOfStock": false
         }
       ]
     },
     {
       "slug": "castanya-pilonga-deshidratada",
-      "name": "Castanya pilonga deshidratada",
+      "name": "Secallona (castanya deshidratada)",
       "currency": "EUR",
       "image": "/assets/images/products/castanya-pilonga-deshidratada.jpeg",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "se010",
           "label": "Bossa de 200 g",
-          "price": 4.2
+          "price": 4.2,
+          "outOfStock": false
         },
         {
           "sku": "se0101",
           "label": "Bossa d’1 kg",
-          "price": 19
+          "price": 19,
+          "outOfStock": false
         }
       ]
     },
@@ -49,11 +56,13 @@
       "name": "Castanya torrada",
       "currency": "EUR",
       "image": "/assets/images/products/castanya-torrada.png",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "ct010",
           "label": "Bossa de 150 g",
-          "price": 5.7
+          "price": 5.7,
+          "outOfStock": false
         }
       ]
     },
@@ -62,11 +71,13 @@
       "name": "Cervesa de castanya",
       "currency": "EUR",
       "image": "/assets/images/products/cervesa-de-castanya.jpeg",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "ce013",
           "label": "Ampolla de 33 cl · 5,1% vol.",
-          "price": 4.01
+          "price": 4.01,
+          "outOfStock": false
         }
       ]
     },
@@ -75,11 +86,13 @@
       "name": "Cervesa de castanya sense alcohol",
       "currency": "EUR",
       "image": "/assets/images/products/cervesa-de-castanya-sense-alcohol.png",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "ce014",
           "label": "Ampolla de 33 cl · 0,6% vol.",
-          "price": 4.1
+          "price": 4.1,
+          "outOfStock": false
         }
       ]
     },
@@ -88,11 +101,13 @@
       "name": "Cervesa Torrent “Sureda”",
       "currency": "EUR",
       "image": "/assets/images/products/cervesa-torrent-sureda.png",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "ce010",
           "label": "Cervesa Torrent “Sureda”",
-          "price": 16.5
+          "price": 16.5,
+          "outOfStock": false
         }
       ]
     },
@@ -101,11 +116,13 @@
       "name": "Crema de castanya",
       "currency": "EUR",
       "image": "/assets/images/products/crema-de-castanya.jpeg",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "cc010",
           "label": "Pot de 230 g",
-          "price": 6
+          "price": 6,
+          "outOfStock": false
         }
       ]
     },
@@ -114,11 +131,13 @@
       "name": "Crema de castanya i carbassa",
       "currency": "EUR",
       "image": "/assets/images/products/crema-de-castanya-i-carbassa.jpeg",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "cb010",
           "label": "Pot de vidre de 500 ml · dues racions",
-          "price": 7.1
+          "price": 7.1,
+          "outOfStock": false
         }
       ]
     },
@@ -127,16 +146,19 @@
       "name": "Farina de castanya",
       "currency": "EUR",
       "image": "/assets/images/products/farina-de-castanya.jpeg",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "fa010",
           "label": "Bosseta de 200 g",
-          "price": 4.2
+          "price": 4.2,
+          "outOfStock": false
         },
         {
           "sku": "fa012",
           "label": "Bossa d’1 kg",
-          "price": 19
+          "price": 19,
+          "outOfStock": false
         }
       ]
     },
@@ -145,16 +167,19 @@
       "name": "Flocs de castanya",
       "currency": "EUR",
       "image": "/assets/images/products/flocs-de-castanya.jpeg",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "888fc010",
           "label": "Bossa de 150 g",
-          "price": 4.3
+          "price": 4.4,
+          "outOfStock": false
         },
         {
           "sku": "888fc011",
           "label": "Bossa de 500 g",
-          "price": 16
+          "price": 15.5,
+          "outOfStock": false
         }
       ]
     },
@@ -163,11 +188,13 @@
       "name": "Formatge cremós de castanya",
       "currency": "EUR",
       "image": "/assets/images/products/pending-product-image.svg",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "fc010",
           "label": "Formatge sencer",
-          "price": 21
+          "price": 21,
+          "outOfStock": false
         }
       ]
     },
@@ -176,11 +203,13 @@
       "name": "Formatge curat amb castanya",
       "currency": "EUR",
       "image": "/assets/images/products/formatge-curat-amb-castanya.png",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "fq010",
           "label": "Formatge sencer",
-          "price": 20.5
+          "price": 20.5,
+          "outOfStock": false
         }
       ]
     },
@@ -189,11 +218,13 @@
       "name": "Licor de castanya",
       "currency": "EUR",
       "image": "/assets/images/products/licor-de-castanya.jpeg",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "li010",
           "label": "Ampolla de 50 cl · 20% vol.",
-          "price": 21.01
+          "price": 21.01,
+          "outOfStock": false
         }
       ]
     },
@@ -202,11 +233,13 @@
       "name": "Lot Begudes del Montseny",
       "currency": "EUR",
       "image": "/assets/images/products/packs/lot-begudes-del-montseny.jpeg",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "lot-begudes-01",
           "label": "Lot de begudes artesanes",
-          "price": 29
+          "price": 29,
+          "outOfStock": false
         }
       ]
     },
@@ -215,11 +248,13 @@
       "name": "Lot Castanyes Essencials",
       "currency": "EUR",
       "image": "/assets/images/products/packs/lot-castanyes-essencials.jpeg",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "lot-castanyes-01",
           "label": "Lot de 3 elaborats de castanya",
-          "price": 18
+          "price": 18,
+          "outOfStock": false
         }
       ]
     },
@@ -228,11 +263,13 @@
       "name": "Lot Cremes del Bosc",
       "currency": "EUR",
       "image": "/assets/images/products/packs/lot-cremes-del-bosc.jpeg",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "lot-cremes-01",
           "label": "Lot de cremes de castanya",
-          "price": 21
+          "price": 21,
+          "outOfStock": false
         }
       ]
     },
@@ -241,11 +278,13 @@
       "name": "Lot Dolç de Castanya",
       "currency": "EUR",
       "image": "/assets/images/products/packs/lot-dolcos-de-castanya.png",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "lot-dolcos-01",
           "label": "Lot dolç de productes de castanya",
-          "price": 27
+          "price": 27,
+          "outOfStock": false
         }
       ]
     },
@@ -254,11 +293,13 @@
       "name": "Lot Essència: crema, infusió i melmelada",
       "currency": "EUR",
       "image": "/assets/images/gallery/packs.png",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "lot-5",
           "label": "Lot de 3 productes",
-          "price": 19
+          "price": 19,
+          "outOfStock": false
         }
       ]
     },
@@ -267,24 +308,13 @@
       "name": "Lot Mels del Territori",
       "currency": "EUR",
       "image": "/assets/images/products/packs/lot-mels-del-territori.png",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "lot-mels-01",
           "label": "Lot de mels del territori",
-          "price": 24
-        }
-      ]
-    },
-    {
-      "slug": "lot-que-castanyazo",
-      "name": "Lot “Que Castanyazo!”",
-      "currency": "EUR",
-      "image": "/assets/images/products/packs/lot-castanyes-essencials.jpeg",
-      "variants": [
-        {
-          "sku": "lot-1",
-          "label": "Lot de 5 productes",
-          "price": 22
+          "price": 24,
+          "outOfStock": false
         }
       ]
     },
@@ -293,11 +323,13 @@
       "name": "Lot Sabors del Montseny",
       "currency": "EUR",
       "image": "/assets/images/products/packs/lot-sabors-del-montseny.jpeg",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "lot-sabors-01",
           "label": "Lot de sabors del Montseny",
-          "price": 34
+          "price": 34,
+          "outOfStock": false
         }
       ]
     },
@@ -306,21 +338,25 @@
       "name": "Marron glacé",
       "currency": "EUR",
       "image": "/assets/images/products/marron-glace.jpeg",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "mg010",
           "label": "2 unitats",
-          "price": 3.6
+          "price": 3.6,
+          "outOfStock": false
         },
         {
           "sku": "mg011",
           "label": "7 unitats · 200 g",
-          "price": 12.5
+          "price": 12.5,
+          "outOfStock": false
         },
         {
           "sku": "mg012",
           "label": "Pot de 42 unitats · 1 kg",
-          "price": 65
+          "price": 65,
+          "outOfStock": false
         }
       ]
     },
@@ -329,11 +365,13 @@
       "name": "Mel de bruc",
       "currency": "EUR",
       "image": "/assets/images/products/mel-de-bruc.jpeg",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "me020",
           "label": "Pot de 500 g",
-          "price": 8.9
+          "price": 8.9,
+          "outOfStock": false
         }
       ]
     },
@@ -342,16 +380,19 @@
       "name": "Mel de castanyer",
       "currency": "EUR",
       "image": "/assets/images/products/mel-de-castanyer.jpeg",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "me011",
           "label": "Pot de 50 g",
-          "price": 1.9
+          "price": 1.9,
+          "outOfStock": false
         },
         {
           "sku": "me010",
           "label": "Pot de 500 g",
-          "price": 8.9
+          "price": 8.9,
+          "outOfStock": false
         }
       ]
     },
@@ -360,11 +401,13 @@
       "name": "Mel de mil flors",
       "currency": "EUR",
       "image": "/assets/images/products/mel-de-mil-flors.jpeg",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "me040",
           "label": "Pot de 500 g",
-          "price": 8.9
+          "price": 8.9,
+          "outOfStock": false
         }
       ]
     },
@@ -372,12 +415,14 @@
       "slug": "mel-de-romani",
       "name": "Mel de romaní",
       "currency": "EUR",
-      "image": "/assets/images/products/pending-product-image.svg",
+      "image": "/assets/images/products/Castanya de Viladrau (41).jpeg",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "me030",
           "label": "Pot de 500 g",
-          "price": 8.9
+          "price": 8.9,
+          "outOfStock": false
         }
       ]
     },
@@ -386,16 +431,19 @@
       "name": "Melmelada de castanya",
       "currency": "EUR",
       "image": "/assets/images/products/melmelada-de-castanya.png",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "ml010",
           "label": "Pot de 120 g",
-          "price": 6.11
+          "price": 5.55,
+          "outOfStock": false
         },
         {
           "sku": "ml011",
           "label": "Pot de 275 g",
-          "price": 6.11
+          "price": 6.1,
+          "outOfStock": false
         }
       ]
     },
@@ -404,11 +452,13 @@
       "name": "Melmelada de castanya i gerds",
       "currency": "EUR",
       "image": "/assets/images/products/melmelada-de-castanya-i-gerds.jpeg",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "melgerds22",
           "label": "Mida gran · 275 g",
-          "price": 9.8
+          "price": 9.8,
+          "outOfStock": false
         }
       ]
     },
@@ -417,11 +467,13 @@
       "name": "Mini Delícies",
       "currency": "EUR",
       "image": "/assets/images/products/packs/mini-delicies.jpeg",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "mini-delicies-01",
           "label": "Trio de mini pots",
-          "price": 17.81
+          "price": 17.81,
+          "outOfStock": false
         }
       ]
     },
@@ -430,11 +482,13 @@
       "name": "Moscatell",
       "currency": "EUR",
       "image": "/assets/images/products/moscatell.jpeg",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "mo010",
           "label": "Ampolla de 75 cl · 15% vol.",
-          "price": 9
+          "price": 9,
+          "outOfStock": false
         }
       ]
     },
@@ -443,11 +497,13 @@
       "name": "Oli de castanya",
       "currency": "EUR",
       "image": "/assets/images/products/oli-de-castanya.jpeg",
+      "outOfStock": false,
       "variants": [
         {
           "sku": "ol010",
           "label": "Ampolla de 100 ml",
-          "price": 7
+          "price": 7,
+          "outOfStock": false
         }
       ]
     }

@@ -142,6 +142,7 @@ export default defineConfig({
             dietTags: [],
             homepageTags: [],
             featured: false,
+            outOfStock: false,
           }),
         },
         fields: [
@@ -166,6 +167,37 @@ export default defineConfig({
             name: "tagline",
             label: "Tagline",
             required: true,
+          },
+          {
+            type: "boolean",
+            name: "outOfStock",
+            label: "Out of stock",
+            description:
+              "Shows an out-of-stock banner on the product page and disables the add-to-cart button.",
+          },
+          {
+            type: "object",
+            name: "outOfStockBanner",
+            label: "Out of stock banner text",
+            description:
+              "Leave blank to use the standard wording for each language (CAT: PRODUCTE TEMPORALMENT ESGOTAT / ES: PRODUCTO TEMPORALMENTE AGOTADO / EN: TEMPORARILY OUT OF STOCK).",
+            fields: [
+              { type: "string", name: "ca", label: "Catala" },
+              { type: "string", name: "es", label: "Castellano" },
+              { type: "string", name: "en", label: "English" },
+            ],
+          },
+          {
+            type: "object",
+            name: "outOfStockNote",
+            label: "Out of stock note",
+            description:
+              "Optional extra line under the banner, e.g. 'Available again in November'. Leave blank to show nothing.",
+            fields: [
+              { type: "string", name: "ca", label: "Catala" },
+              { type: "string", name: "es", label: "Castellano" },
+              { type: "string", name: "en", label: "English" },
+            ],
           },
           {
             type: "string",
@@ -308,7 +340,11 @@ export default defineConfig({
             ui: {
               itemProps: (item) => ({
                 label: itemLabel(
-                  [truncate(item?.label), formatEuros(item?.price)],
+                  [
+                    truncate(item?.label),
+                    formatEuros(item?.price),
+                    item?.outOfStock ? "ESGOTAT" : "",
+                  ],
                   "New format",
                 ),
               }),
@@ -331,6 +367,11 @@ export default defineConfig({
                 name: "price",
                 label: "Price",
                 required: true,
+              },
+              {
+                type: "boolean",
+                name: "outOfStock",
+                label: "This format is out of stock",
               },
             ],
           },
