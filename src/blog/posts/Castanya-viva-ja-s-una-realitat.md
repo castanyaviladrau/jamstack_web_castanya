@@ -14,7 +14,7 @@ tags:
 featured: true
 ---
 
-ls passats 18 i 19 de setembre vam viure dos dies molt especials amb la inauguració de Castanya Viva, un projecte que neix per donar continuïtat a la feina iniciada fa anys amb Castanya de Viladrau i per fer un pas més en la nostra manera d’explicar i compartir el territori.
+Els passats 18 i 19 de setembre vam viure dos dies molt especials amb la inauguració de Castanya Viva, un projecte que neix per donar continuïtat a la feina iniciada fa anys amb Castanya de Viladrau i per fer un pas més en la nostra manera d’explicar i compartir el territori.
 
 Castanya Viva vol ser molt més que una botiga. Volem que sigui una porta del Montseny a Barcelona, un espai on apropar el nostre paisatge, els seus productes, les persones que els fan possibles i una manera d’entendre i cuidar el territori.
 
