@@ -11,8 +11,8 @@ consumptionMoments:
 dietTags:
   - sense-gluten
 homepageTags: []
-price: 3.5
-priceLabel: '3,50€'
+price: 4.5
+priceLabel: '4,50€'
 sku: CASTP
 currency: EUR
 availability: Disponible a la botiga online
