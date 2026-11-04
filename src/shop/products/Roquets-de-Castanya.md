@@ -7,6 +7,7 @@ categories:
   - productes-estrella
 consumptionMoments:
   - picar-compartir
+  - moments-dolcos
 dietTags: []
 price: 15
 priceLabel: 15€
@@ -17,14 +18,14 @@ ingredientsLabel: INGREDIENTS
 ingredients: 'Castanya confitada, Banyada am xocolata negra'
 image: /assets/images/Roquets de Castanya.jpeg
 description: Botifarra de Castanya
-imageAlt: Botifarra de Castanya
+imageAlt: Roquets de castanya
 seoTitle: Castanya confitada banyada amb castanya
 gallery: []
 formatLabel: Selecciona format
 formats:
   - label: Unitat
-    sku: Bucas
-    price: 6.7
+    sku: Roqcast
+    price: 15
 shippingNote: Enviaments a tota la península en 24/48 hores.
 detailLabel: DESCRIPCIÓ
 ctaLabel: AFEGIR A LA CISTELLA
