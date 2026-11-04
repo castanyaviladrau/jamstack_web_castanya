@@ -11,13 +11,13 @@ consumptionMoments:
 dietTags: []
 price: 15
 priceLabel: 15€
-sku: ROQCAST
+sku: Roqcast
 currency: EUR
 availability: Disponible a la botiga online
 ingredientsLabel: INGREDIENTS
-ingredients: 'Castanya confitada, Banyada am xocolata negra'
+ingredients: 'Castanya confitada, Banyada amb xocolata negra'
 image: /assets/images/Roquets de Castanya.jpeg
-description: Botifarra de Castanya
+description: Castanya confitada banyada amb xocolata negra
 imageAlt: Roquets de castanya
 seoTitle: Castanya confitada banyada amb castanya
 gallery: []
@@ -33,4 +33,4 @@ ctaHref: /shop/cart/
 featured: false
 ---
 
-Botifarra de Castanya, feta amb carn de porc rustic,i castanya torrada.
+Roquets de Castanya confitada, banyats amb xocolata negre
