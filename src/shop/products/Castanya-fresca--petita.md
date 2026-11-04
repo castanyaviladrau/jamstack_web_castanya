@@ -27,7 +27,7 @@ formatLabel: 500gr
 formats:
   - label: Malla de 500 g
     sku: CASTP
-    price: 3.5
+    price: 4.5
 shippingNote: Enviaments a tota la península en 24/48 hores.
 detailLabel: DESCRIPCIÓ
 ctaLabel: AFEGIR A LA CISTELLA
