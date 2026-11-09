@@ -34,7 +34,7 @@ highlights:
   - text: Ideal per regalar o maridar en moments especials.
 detailLabel: DESCRIPCIÓ
 detailNotes:
-  - text: Cervesa d’alta fermentació. Sense pasteuritzar. Pot fer sediments per la presència de llevat. Cervesa refermentada en ampolla
+  - text: 'La nostra infusió de castanya combina la dolçor de la castanya i la mel de castanyer amb notes de romaní, farigola i un toc fresc de llimona.'
 ctaLabel: AFEGIR A LA CISTELLA
 ctaHref: /shop/cart/
 featured: false
