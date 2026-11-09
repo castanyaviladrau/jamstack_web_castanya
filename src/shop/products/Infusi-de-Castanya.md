@@ -11,7 +11,7 @@ dietTags:
   - vega
   - sense-gluten
 price: 7.35
-priceLabel: '7,35'
+priceLabel: '7,35€'
 sku: Infcast
 currency: EUR
 availability: Disponible a la botiga online
@@ -24,9 +24,9 @@ gallery:
   - image: /assets/images/infusi%C3%B3%20de%20castanya.jpeg
 formatLabel: Selecciona format
 formats:
-  - label: 'Ampolla de 33 cl · 5,1% vol.'
-    sku: ce013
-    price: 4.01
+  - label: Pot 290gr
+    sku: Infcast
+    price: 7.3
 shippingNote: Enviaments a tota la península en 24/48 hores.
 highlights:
   - text: 'Format disponible: Ampolla de 33 cl · 5,1% vol.'
