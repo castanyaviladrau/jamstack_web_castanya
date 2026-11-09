@@ -30,7 +30,7 @@ formats:
 shippingNote: Enviaments a tota la península en 24/48 hores.
 highlights:
   - text: ''
-  - text: 'Ingredients destacats: Castanya del Montseny, llevat, llúpols ecològics i maltes d’ordi.'
+  - text: ''
   - text: Ideal per regalar o maridar en moments especials.
 detailLabel: DESCRIPCIÓ
 detailNotes:
@@ -40,4 +40,4 @@ ctaHref: /shop/cart/
 featured: false
 ---
 
-Cervesa d’alta fermentació. Sense pasteuritzar. Pot fer sediments per la presència de llevat. Cervesa refermentada en ampolla.
+La nostra infusió de castanya combina la dolçor de la castanya i la mel de castanyer amb notes de romaní, farigola i un toc fresc de llimona.
